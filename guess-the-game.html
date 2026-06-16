@@ -12,6 +12,7 @@
     --bg:#eae8e5;
     --card:#ffffff;
     --text:#1a1a1a;
+
     --grey:#d0d0d0;
     --green:#2ecc71;
     --red:#e74c3c;
@@ -74,55 +75,69 @@ header{
     margin-top:40px;
 }
 
+/* TITLE REDESIGN */
 .title{
-    font-size:54px;
-    font-weight:900;
+    line-height:1;
+    margin-bottom:20px;
 }
 
-.title span{
+.title-top{
+    font-size:42px;
+    font-weight:800;
+}
+
+.title-top span{
+    color:var(--primary);
+}
+
+.title-bottom{
+    font-size:78px;
+    font-weight:900;
     color:var(--accent);
 }
 
-.subtitle{
-    opacity:0.7;
-    margin-top:5px;
-}
-
 /* DIFFICULTY */
-.diff-grid{
+.diff-row{
     display:flex;
     justify-content:center;
-    gap:15px;
-    margin-top:25px;
+    gap:10px;
+    margin-top:10px;
     flex-wrap:wrap;
 }
 
 .diff{
     background:white;
     border:2px solid var(--primary);
-    padding:14px;
-    border-radius:12px;
-    width:200px;
+    padding:8px 14px;
+    border-radius:10px;
     cursor:pointer;
+    font-size:14px;
 }
 
-.diff.selected{
+.diff.active{
     background:var(--primary);
     color:white;
 }
 
-.start-btn{
-    margin-top:25px;
-    padding:16px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:12px;
-    background:var(--accent);
-    cursor:pointer;
-    font-weight:bold;
+.diff-info{
+    margin-top:10px;
+    font-size:14px;
+    opacity:0.7;
 }
 
-/* GAME CARD */
+/* START BUTTON BIGGER */
+.start-btn{
+    margin-top:25px;
+    padding:18px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:14px;
+    background:var(--accent);
+    cursor:pointer;
+    font-weight:900;
+}
+
+/* GAME */
 .card{
     background:white;
     padding:20px;
@@ -130,6 +145,7 @@ header{
     display:none;
 }
 
+/* TOPBAR */
 .topbar{
     display:flex;
     justify-content:space-between;
@@ -143,10 +159,14 @@ header{
 
 /* EMOJI */
 .emoji{
-    font-size:72px;
+    font-size:78px;
     text-align:center;
-    margin:20px 0;
-    letter-spacing:10px;
+    margin:25px 0;
+}
+
+/* SPACING FIX */
+.spacer{
+    height:10px;
 }
 
 /* INPUT */
@@ -164,7 +184,7 @@ input{
     padding:12px;
     border:none;
     border-radius:10px;
-    margin-top:10px;
+    margin-top:12px;
     font-weight:bold;
     cursor:pointer;
 }
@@ -176,17 +196,48 @@ input{
 /* CLUE */
 .clue{
     display:none;
-    margin-top:10px;
+    margin-top:15px;
     background:#f4f4f4;
     padding:10px;
     border-radius:8px;
     font-size:14px;
 }
 
-/* GAME OVER */
+/* END SCREEN */
 .end{
     text-align:center;
 }
+
+.big{
+    font-size:48px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.big-score{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+/* ACTION BUTTONS */
+.action-btn{
+    padding:14px 18px;
+    border-radius:10px;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    margin:5px;
+}
+
+.primary{
+    background:var(--accent);
+}
+
+.secondary{
+    background:var(--primary);
+    color:white;
+}
+
 </style>
 </head>
 
@@ -199,30 +250,20 @@ input{
 <!-- MENU -->
 <div class="menu" id="menu">
 
-    <div class="title">Guess The <span>Game</span></div>
-    <div class="subtitle">Test your gaming knowledge</div>
-
-    <div class="diff-grid">
-
-        <div class="diff selected" onclick="setDiff('easy', this)">
-            <h3>Easy</h3>
-            <p>No timer</p>
-        </div>
-
-        <div class="diff" onclick="setDiff('normal', this)">
-            <h3>Normal</h3>
-            <p>30 seconds total</p>
-        </div>
-
-        <div class="diff" onclick="setDiff('hard', this)">
-            <h3>Hard</h3>
-            <p>15 seconds total</p>
-        </div>
-
+    <div class="title">
+        <div class="title-top"><span>Guess The</span></div>
+        <div class="title-bottom">Game</div>
     </div>
 
-    <button class="start-btn" onclick="start()">START GAME</button>
+    <div class="diff-row">
+        <div class="diff active" onclick="setDiff('easy',this)">Easy</div>
+        <div class="diff" onclick="setDiff('normal',this)">Normal</div>
+        <div class="diff" onclick="setDiff('hard',this)">Hard</div>
+    </div>
 
+    <div class="diff-info" id="info">No timer – relaxed play</div>
+
+    <button class="start-btn" onclick="start()">START GAME</button>
 </div>
 
 <!-- GAME -->
@@ -241,9 +282,11 @@ input{
 
 <div class="emoji" id="emoji"></div>
 
-<button class="btn" onclick="toggleClue()">Reveal Clue</button>
+<button class="btn secondary" onclick="toggleClue()">Reveal Clue</button>
 
 <div class="clue" id="clue"></div>
+
+<div class="spacer"></div>
 
 <input id="input" placeholder="Type your guess">
 
@@ -260,38 +303,42 @@ input{
 
 <script>
 
-/* GAME DATA */
 const ALL=[
 {emoji:"🍄👨‍🔧🏰", answer:["super mario bros","mario bros"], clue:"Plumber rescues princess", year:"1985"},
-{emoji:"🧱⛏️🌍", answer:["minecraft"], clue:"Build anything, survive night", year:"2011"},
+{emoji:"🧱⛏️🌍", answer:["minecraft"], clue:"Build and survive", year:"2011"},
 {emoji:"🧟‍♂️🔫🏚️", answer:["resident evil"], clue:"Zombie mansion outbreak", year:"1996"},
-{emoji:"⚔️🐉👑", answer:["skyrim","the elder scrolls skyrim"], clue:"You are the Dragonborn", year:"2011"},
-{emoji:"🔫🪖🌍", answer:["call of duty"], clue:"Military FPS franchise", year:"2003"},
-{emoji:"🎯🔫📦", answer:["fortnite"], clue:"Battle royale building game", year:"2017"},
+{emoji:"⚔️🐉👑", answer:["skyrim"], clue:"Dragonborn rises", year:"2011"},
+{emoji:"🔫🪖🌍", answer:["call of duty"], clue:"Military FPS series", year:"2003"},
+{emoji:"🎯🔫📦", answer:["fortnite"], clue:"Battle royale builder", year:"2017"},
 {emoji:"🪐👽🔫", answer:["halo","halo combat evolved"], clue:"Master Chief vs Covenant", year:"2001"}
 ];
 
-let questions=[];
-let i=0;
-let score=0;
-let status=[];
 let diff="easy";
-let timer;
-let time=0;
+let q=[], i=0, score=0, status=[], timer, timeLeft;
 
-/* DIFF SELECT */
+/* DIFF UI */
 function setDiff(d,el){
+
 diff=d;
-document.querySelectorAll(".diff").forEach(x=>x.classList.remove("selected"));
-el.classList.add("selected");
+
+document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
+el.classList.add("active");
+
+const info={
+easy:"No timer – relaxed play",
+normal:"30 seconds for entire game",
+hard:"15 seconds for entire game"
+};
+
+document.getElementById("info").innerText=info[d];
 }
 
 /* START */
 function start(){
 
-questions=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
+q=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
 i=0; score=0;
-status=Array(questions.length).fill("pending");
+status=Array(q.length).fill("pending");
 
 document.getElementById("menu").style.display="none";
 document.getElementById("game").style.display="block";
@@ -305,38 +352,43 @@ startTimer();
 function buildSidebar(){
 let s=document.getElementById("sidebar");
 s.innerHTML="";
-questions.forEach((q,idx)=>{
+
+q.forEach((_,idx)=>{
 let d=document.createElement("div");
 d.className="dot";
 d.innerText=idx+1;
 d.onclick=()=>go(idx);
 s.appendChild(d);
 });
+
 updateSidebar();
 }
 
 function updateSidebar(){
 document.querySelectorAll(".dot").forEach((d,idx)=>{
+
 d.className="dot";
 
 if(idx===i) d.classList.add("current");
 if(status[idx]==="correct") d.classList.add("correct");
 if(status[idx]==="wrong") d.classList.add("wrong");
+
 });
 }
 
 /* LOAD */
 function load(){
-if(i>=questions.length) return end();
 
-let q=questions[i];
+if(i>=q.length) return end();
 
-document.getElementById("emoji").innerText=q.emoji;
-document.getElementById("clue").innerHTML=`<b>${q.year}</b><br>${q.clue}`;
+let x=q[i];
+
+document.getElementById("emoji").innerText=x.emoji;
+document.getElementById("clue").innerHTML=`<b>${x.year}</b><br>${x.clue}`;
 document.getElementById("clue").style.display="none";
 
 document.getElementById("input").value="";
-document.getElementById("progress").innerText=`${i+1}/${questions.length} | Score: ${score}`;
+document.getElementById("progress").innerText=`${i+1}/${q.length} | Score: ${score}`;
 
 updateSidebar();
 }
@@ -347,36 +399,28 @@ let c=document.getElementById("clue");
 c.style.display=c.style.display==="block"?"none":"block";
 }
 
-/* ANSWER CHECK (lenient) */
-function match(user,answers){
-user=user.toLowerCase().trim();
-return answers.some(a=>user.includes(a));
+/* MATCH */
+function match(u,arr){
+u=u.toLowerCase().trim();
+return arr.some(a=>u.includes(a));
 }
 
 /* SUBMIT */
 function submit(){
-
-let val=document.getElementById("input").value;
-if(match(val,questions[i].answer)){
+if(match(document.getElementById("input").value,q[i].answer)){
 score++;
 status[i]="correct";
 }else{
 status[i]="wrong";
 }
-
 next();
 }
 
-/* SKIP */
-function skip(){
-next();
-}
+/* NAV */
+function skip(){ next(); }
+function back(){ if(i>0) i--; load(); }
 
-/* BACK */
-function back(){
-if(i>0) i--;
-load();
-}
+function go(x){ i=x; load(); }
 
 /* NEXT */
 function next(){
@@ -386,53 +430,49 @@ load();
 startTimer();
 }
 
-/* GO */
-function go(x){
-i=x;
-load();
-}
-
-/* TIMER (GLOBAL GAME TIMER) */
+/* TIMER */
 function startTimer(){
 
 clearInterval(timer);
 
-if(diff==="easy"){
-document.getElementById("timer").innerText="";
-return;
-}
+if(diff==="easy") return;
 
 if(i===0){
-time=diff==="normal"?30:15;
+timeLeft=diff==="normal"?30:15;
 }
 
-document.getElementById("timer").innerText=`⏱ ${time}s`;
+document.getElementById("timer").innerText=`⏱ ${timeLeft}s`;
 
 timer=setInterval(()=>{
-time--;
-document.getElementById("timer").innerText=`⏱ ${time}s`;
 
-if(time<=0){
+timeLeft--;
+document.getElementById("timer").innerText=`⏱ ${timeLeft}s`;
+
+if(timeLeft<=0){
 clearInterval(timer);
 gameOver();
 }
+
 },1000);
 }
 
-/* END */
+/* END GAME */
 function end(){
+
 document.getElementById("game").style.display="none";
 
 document.getElementById("end").style.display="block";
 
 document.getElementById("end").innerHTML=`
-<h2>Game Complete 🎉</h2>
-<p>Score: ${score}/${questions.length}</p>
-<button onclick="location.reload()">Play Again</button>
+<div class="big">Game Complete 🎉</div>
+<div class="big-score">${score}/${q.length}</div>
+
+<button class="action-btn primary" onclick="location.reload()">Play Again</button>
+<button class="action-btn secondary" onclick="reveal()">Reveal Answers</button>
 `;
 }
 
-/* GAME OVER (TIMER) */
+/* GAME OVER */
 function gameOver(){
 
 document.getElementById("game").style.display="none";
@@ -440,12 +480,24 @@ document.getElementById("game").style.display="none";
 document.getElementById("end").style.display="block";
 
 document.getElementById("end").innerHTML=`
-<h2>Time's Up ⏱</h2>
-<p>Score: ${score}/${questions.length}</p>
+<div class="big">TIME'S UP ⏱</div>
+<div class="big-score">${score}/${q.length}</div>
 
-<button onclick="location.reload()">Play Again</button>
-<button onclick="alert('We can add answer review screen next')">Reveal Answers</button>
+<button class="action-btn primary" onclick="location.reload()">Play Again</button>
+<button class="action-btn secondary" onclick="reveal()">Reveal Answers</button>
 `;
+}
+
+/* ANSWERS */
+function reveal(){
+
+let html="<h3>Answers</h3><br>";
+
+q.forEach((x,i)=>{
+html+=`${i+1}. ${x.answer[0]}<br>`;
+});
+
+document.getElementById("end").innerHTML+=html;
 }
 
 </script>
