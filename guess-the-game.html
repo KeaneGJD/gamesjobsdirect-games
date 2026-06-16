@@ -28,9 +28,26 @@ body{
 /* HEADER */
 header{
     background:white;
-    padding:12px;
-    text-align:center;
+    padding:10px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     border-bottom:2px solid #ddd;
+}
+
+header img{
+    height:38px;
+}
+
+/* HUB BUTTON */
+.hub-btn{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
 /* LAYOUT */
@@ -72,18 +89,18 @@ header{
 /* MENU */
 .menu{
     text-align:center;
-    margin-top:40px;
+    margin-top:30px;
 }
 
-/* TITLE REDESIGN */
+/* BIGGER TITLE */
 .title{
     line-height:1;
     margin-bottom:20px;
 }
 
 .title-top{
-    font-size:42px;
-    font-weight:800;
+    font-size:56px;
+    font-weight:900;
 }
 
 .title-top span{
@@ -91,7 +108,7 @@ header{
 }
 
 .title-bottom{
-    font-size:78px;
+    font-size:96px;
     font-weight:900;
     color:var(--accent);
 }
@@ -125,11 +142,11 @@ header{
     opacity:0.7;
 }
 
-/* START BUTTON BIGGER */
+/* START BUTTON BIG */
 .start-btn{
     margin-top:25px;
-    padding:18px 40px;
-    font-size:20px;
+    padding:18px 44px;
+    font-size:22px;
     border:none;
     border-radius:14px;
     background:var(--accent);
@@ -162,11 +179,6 @@ header{
     font-size:78px;
     text-align:center;
     margin:25px 0;
-}
-
-/* SPACING FIX */
-.spacer{
-    height:10px;
 }
 
 /* INPUT */
@@ -203,19 +215,24 @@ input{
     font-size:14px;
 }
 
+/* SPACING FIX */
+.spacer{
+    height:14px;
+}
+
 /* END SCREEN */
 .end{
     text-align:center;
 }
 
 .big{
-    font-size:48px;
+    font-size:52px;
     font-weight:900;
     margin-bottom:10px;
 }
 
 .big-score{
-    font-size:28px;
+    font-size:30px;
     margin-bottom:20px;
 }
 
@@ -229,13 +246,24 @@ input{
     margin:5px;
 }
 
-.primary{
-    background:var(--accent);
+.primary{ background:var(--accent); }
+.secondary{ background:var(--primary); color:white; }
+
+/* REVEALED ANSWERS */
+.answers{
+    margin-top:20px;
+    text-align:left;
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-.secondary{
-    background:var(--primary);
-    color:white;
+.answer-row{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
 }
 
 </style>
@@ -244,7 +272,9 @@ input{
 <body>
 
 <header>
-    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg" height="40">
+    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
+
+    <button class="hub-btn" onclick="goHub()">Game Hub</button>
 </header>
 
 <!-- MENU -->
@@ -313,21 +343,23 @@ const ALL=[
 {emoji:"🪐👽🔫", answer:["halo","halo combat evolved"], clue:"Master Chief vs Covenant", year:"2001"}
 ];
 
-let diff="easy";
-let q=[], i=0, score=0, status=[], timer, timeLeft;
+let q=[], i=0, score=0, status=[], diff="easy", timer, timeLeft;
 
-/* DIFF UI */
+/* HUB */
+function goHub(){
+window.location.href="index.html";
+}
+
+/* DIFF */
 function setDiff(d,el){
-
 diff=d;
-
 document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
 el.classList.add("active");
 
 const info={
 easy:"No timer – relaxed play",
-normal:"30 seconds for entire game",
-hard:"15 seconds for entire game"
+normal:"1 minute total game time",
+hard:"30 seconds total game time"
 };
 
 document.getElementById("info").innerText=info[d];
@@ -378,7 +410,6 @@ if(status[idx]==="wrong") d.classList.add("wrong");
 
 /* LOAD */
 function load(){
-
 if(i>=q.length) return end();
 
 let x=q[i];
@@ -405,6 +436,13 @@ u=u.toLowerCase().trim();
 return arr.some(a=>u.includes(a));
 }
 
+/* ENTER KEY SUPPORT */
+document.addEventListener("keydown",function(e){
+if(e.key==="Enter"){
+submit();
+}
+});
+
 /* SUBMIT */
 function submit(){
 if(match(document.getElementById("input").value,q[i].answer)){
@@ -419,7 +457,6 @@ next();
 /* NAV */
 function skip(){ next(); }
 function back(){ if(i>0) i--; load(); }
-
 function go(x){ i=x; load(); }
 
 /* NEXT */
@@ -432,19 +469,17 @@ startTimer();
 
 /* TIMER */
 function startTimer(){
-
 clearInterval(timer);
 
 if(diff==="easy") return;
 
 if(i===0){
-timeLeft=diff==="normal"?30:15;
+timeLeft=diff==="normal"?60:30;
 }
 
 document.getElementById("timer").innerText=`⏱ ${timeLeft}s`;
 
 timer=setInterval(()=>{
-
 timeLeft--;
 document.getElementById("timer").innerText=`⏱ ${timeLeft}s`;
 
@@ -469,6 +504,8 @@ document.getElementById("end").innerHTML=`
 
 <button class="action-btn primary" onclick="location.reload()">Play Again</button>
 <button class="action-btn secondary" onclick="reveal()">Reveal Answers</button>
+
+<div id="answers" class="answers"></div>
 `;
 }
 
@@ -485,19 +522,28 @@ document.getElementById("end").innerHTML=`
 
 <button class="action-btn primary" onclick="location.reload()">Play Again</button>
 <button class="action-btn secondary" onclick="reveal()">Reveal Answers</button>
+
+<div id="answers" class="answers"></div>
 `;
 }
 
-/* ANSWERS */
+/* REVEAL (ONE TIME ONLY) */
+let revealed=false;
+
 function reveal(){
 
-let html="<h3>Answers</h3><br>";
+if(revealed) return;
+revealed=true;
+
+let box=document.getElementById("answers");
 
 q.forEach((x,i)=>{
-html+=`${i+1}. ${x.answer[0]}<br>`;
+box.innerHTML+=`
+<div class="answer-row">
+<span>${x.emoji} ${x.answer[0]}</span>
+</div>`;
 });
 
-document.getElementById("end").innerHTML+=html;
 }
 
 </script>
