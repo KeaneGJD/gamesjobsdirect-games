@@ -35,6 +35,8 @@ header{
 
 header img{height:38px;}
 
+header a{display:flex;align-items:center;}
+
 .hub-btn{
     background:var(--primary);
     color:white;
@@ -117,7 +119,12 @@ header img{height:38px;}
 }
 
 /* GAME */
-.card{background:white;padding:20px;border-radius:12px;display:none;}
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    display:none;
+}
 
 .emoji{
     font-size:78px;
@@ -139,11 +146,25 @@ input{
     border-radius:10px;
     margin-top:12px;
     font-weight:bold;
+    cursor:pointer;
 }
 
 .submit{background:var(--accent);}
 .skip{background:#999;color:white;}
 .back{background:#ddd;}
+
+/* 🔥 FIXED CLUE BUTTON COLOUR */
+.clue-btn{
+    background:var(--primary);
+    color:white;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-top:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
 
 .clue{
     display:none;
@@ -188,6 +209,7 @@ input{
 }
 
 .answer-emoji{font-size:28px;}
+
 </style>
 </head>
 
@@ -206,12 +228,6 @@ input{
 <div class="title-top">GUESS THE</div>
 <div class="title-bottom">GAME</div>
 
-<div class="diff-row">
-<div class="diff active" onclick="setDiff('easy',this)">Easy</div>
-<div class="diff" onclick="setDiff('normal',this)">Normal</div>
-<div class="diff" onclick="setDiff('hard',this)">Hard</div>
-</div>
-
 <button class="start-btn" onclick="start()">START GAME</button>
 </div>
 
@@ -224,7 +240,7 @@ input{
 
 <div class="emoji" id="emoji"></div>
 
-<button class="btn" onclick="toggleClue()">Reveal Clue</button>
+<button class="clue-btn" onclick="toggleClue()">Reveal Clue</button>
 
 <div class="clue" id="clue"></div>
 
@@ -243,57 +259,30 @@ input{
 
 <script>
 
-/* 🔥 EXPANDED GAME BANK (30+ GAMES) */
+/* 🔥 BIG GAME POOL (USED FOR RANDOM SELECTION) */
 const ALL=[
 {emoji:"🍄👨‍🔧🏰",answer:["mario","super mario bros"],clue:"Plumber saves a princess"},
 {emoji:"🧱⛏️🌍",answer:["minecraft"],clue:"Build anything, survive anything"},
-{emoji:"🧟‍♂️🔫🏚️",answer:["resident evil"],clue:"Zombie outbreak horror series"},
-{emoji:"⚔️🐉👑",answer:["skyrim"],clue:"Dragonborn open world RPG"},
-{emoji:"🔫🪖🌍",answer:["call of duty"],clue:"Military FPS franchise"},
-{emoji:"🎯🔫📦",answer:["fortnite"],clue:"Battle royale + building"},
-{emoji:"🪐👽🔫",answer:["halo"],clue:"Master Chief vs Covenant"},
-{emoji:"🚗💥🌆",answer:["gta","grand theft auto"],clue:"Open world crime sandbox"},
-{emoji:"🧑‍🦹‍♂️🕷️🌆",answer:["spiderman","marvel spiderman"],clue:"Web swinging superhero"},
-{emoji:"⚡🐉👦",answer:["pokemon"],clue:"Catch and battle creatures"},
-{emoji:"🏹🏹🏹",answer:["zelda"],clue:"Legendary fantasy adventure"},
-{emoji:"🏝️🧟‍♀️🔫",answer:["last of us"],clue:"Post apocalypse survival"},
-{emoji:"🚀👨‍🚀🌌",answer:["mass effect"],clue:"Space opera RPG"},
-{emoji:"🧙‍♂️📜🔥",answer:["witcher","witcher 3"],clue:"Monster hunter Geralt"},
-{emoji:"🪓🌲🏚️",answer:["dont starve"],clue:"Survive the wilderness"},
-{emoji:"🧩🟦🟥",answer:["tetris"],clue:"Falling block puzzle"},
-{emoji:"👻🏚️🔦",answer:["phasmophobia"],clue:"Ghost hunting co-op"},
-{emoji:"🏎️💨🏁",answer:["forza"],clue:"Realistic racing sim"},
-{emoji:"⚔️🏰🛡️",answer:["dark souls"],clue:"You will die a lot"},
-{emoji:"🤖🔫🌆",answer:["cyberpunk","cyberpunk 2077"],clue:"Futuristic dystopia"},
-{emoji:"🐺🌲⚔️",answer:["the forest"],clue:"Survival horror island"},
-{emoji:"🧟‍♀️🏃‍♂️🏙️",answer:["dying light"],clue:"Parkour zombie survival"},
-{emoji:"🎮👾🕹️",answer:["pacman"],clue:"Classic arcade maze game"},
-{emoji:"🧙‍♂️🏰✨",answer:["hogwarts legacy"],clue:"Wizarding world RPG"},
-{emoji:"🪖🏝️🔥",answer:["far cry"],clue:"Open world chaos shooter"},
-{emoji:"🐧❄️⛏️",answer:["subnautica"],clue:"Underwater survival exploration"},
-{emoji:"🏹🔥🏜️",answer:["horizon"],clue:"Robot dinosaur world"},
-{emoji:"🧟‍♂️🏙️🔪",answer:["dead rising"],clue:"Zombie mall chaos"},
-{emoji:"🪐🚀🔫",answer:["destiny"],clue:"Loot shooter space saga"},
-{emoji:"🧑‍🌾🌽🚜",answer:["stardew valley"],clue:"Cozy farming life sim"}
+{emoji:"🧟‍♂️🔫🏚️",answer:["resident evil"],clue:"Zombie horror outbreak"},
+{emoji:"⚔️🐉👑",answer:["skyrim"],clue:"Dragonborn RPG"},
+{emoji:"🔫🪖🌍",answer:["call of duty"],clue:"Military FPS series"},
+{emoji:"🎯🔫📦",answer:["fortnite"],clue:"Battle royale builder"},
+{emoji:"🪐👽🔫",answer:["halo"],clue:"Master Chief saga"},
+{emoji:"🚗💥🌆",answer:["gta"],clue:"Open world crime chaos"},
+{emoji:"🧑‍🦹‍♂️🕷️🌆",answer:["spiderman"],clue:"Web swinging hero"},
+{emoji:"⚡🐉👦",answer:["pokemon"],clue:"Catch creatures"},
+{emoji:"🏹🏹🏹",answer:["zelda"],clue:"Fantasy adventure"},
+{emoji:"🏝️🧟‍♀️🔫",answer:["last of us"],clue:"Post apocalypse story"},
+{emoji:"🚀👨‍🚀🌌",answer:["mass effect"],clue:"Space RPG saga"},
+{emoji:"🧙‍♂️📜🔥",answer:["witcher"],clue:"Monster hunter"},
+{emoji:"🪓🌲🏚️",answer:["dont starve"],clue:"Survival crafting"}
 ];
 
-let q=[],i=0,score=0,status=[],diff="easy";
+let q=[],i=0,score=0,status=[];
 
-/* HUB */
-function goHub(){
-window.location.href="index.html";
-}
-
-/* DIFF */
-function setDiff(d,el){
-diff=d;
-document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
-el.classList.add("active");
-}
-
-/* START */
+/* 🎮 ONLY PICK 10 PER RUN */
 function start(){
-q=[...ALL].sort(()=>Math.random()-0.5);
+q=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
 i=0;score=0;
 status=Array(q.length).fill("pending");
 
@@ -308,6 +297,7 @@ load();
 function buildSidebar(){
 let s=document.getElementById("sidebar");
 s.innerHTML="";
+
 q.forEach((_,idx)=>{
 let d=document.createElement("div");
 d.className="dot";
@@ -343,18 +333,20 @@ updateSidebar();
 /* CLUE */
 function toggleClue(){
 let c=document.getElementById("clue");
-c.style.display = (c.style.display==="block") ? "none" : "block";
+c.style.display=(c.style.display==="block")?"none":"block";
 }
 
 /* SUBMIT */
 function submit(){
 let v=document.getElementById("input").value.toLowerCase();
+
 if(q[i].answer.some(a=>v.includes(a))){
 score++;
 status[i]="correct";
 }else{
 status[i]="wrong";
 }
+
 i++;
 load();
 }
