@@ -35,8 +35,6 @@ header{
 
 header img{height:38px;}
 
-header a{display:flex;align-items:center;}
-
 .hub-btn{
     background:var(--primary);
     color:white;
@@ -47,7 +45,56 @@ header a{display:flex;align-items:center;}
     cursor:pointer;
 }
 
-/* LAYOUT */
+/* MENU */
+.menu{
+    text-align:center;
+    margin-top:30px;
+}
+
+.title-top{
+    font-size:56px;
+    font-weight:900;
+}
+
+.title-bottom{
+    font-size:96px;
+    font-weight:900;
+    color:var(--accent);
+}
+
+/* DIFFICULTY */
+.diff-row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:15px;
+}
+
+.diff{
+    border:2px solid var(--primary);
+    background:white;
+    padding:8px 14px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.diff.active{
+    background:var(--primary);
+    color:white;
+}
+
+.start-btn{
+    margin-top:25px;
+    padding:18px 44px;
+    font-size:22px;
+    background:var(--accent);
+    border:none;
+    border-radius:14px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* GAME */
 .wrapper{
     display:flex;
     max-width:1100px;
@@ -80,45 +127,6 @@ header a{display:flex;align-items:center;}
 
 .main{flex:1;}
 
-/* MENU */
-.menu{text-align:center;margin-top:30px;}
-
-.title-top{
-    font-size:56px;
-    font-weight:900;
-}
-
-.title-bottom{
-    font-size:96px;
-    font-weight:900;
-    color:var(--accent);
-}
-
-/* DIFF */
-.diff-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
-
-.diff{
-    border:2px solid var(--primary);
-    background:white;
-    padding:8px 14px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.diff.active{background:var(--primary);color:white;}
-
-.start-btn{
-    margin-top:25px;
-    padding:18px 44px;
-    font-size:22px;
-    background:var(--accent);
-    border:none;
-    border-radius:14px;
-    font-weight:900;
-    cursor:pointer;
-}
-
-/* GAME */
 .card{
     background:white;
     padding:20px;
@@ -146,14 +154,13 @@ input{
     border-radius:10px;
     margin-top:12px;
     font-weight:bold;
-    cursor:pointer;
 }
 
 .submit{background:var(--accent);}
 .skip{background:#999;color:white;}
 .back{background:#ddd;}
 
-/* 🔥 FIXED CLUE BUTTON COLOUR */
+/* CLUE */
 .clue-btn{
     background:var(--primary);
     color:white;
@@ -192,10 +199,10 @@ input{
 .secondary{background:var(--primary);color:white;}
 
 .answers{
-    margin-top:25px;
-    text-align:left;
     max-width:600px;
     margin:auto;
+    text-align:left;
+    margin-top:20px;
 }
 
 .answer-card{
@@ -210,6 +217,11 @@ input{
 
 .answer-emoji{font-size:28px;}
 
+.timer{
+    text-align:center;
+    font-weight:bold;
+    margin-top:10px;
+}
 </style>
 </head>
 
@@ -223,14 +235,24 @@ input{
 <button class="hub-btn" onclick="goHub()">Return to Game Hub</button>
 </header>
 
+<!-- MENU -->
 <div class="menu" id="menu">
 
 <div class="title-top">GUESS THE</div>
 <div class="title-bottom">GAME</div>
 
+<div class="diff-row">
+<div class="diff active" onclick="setDiff('easy',this)">Easy</div>
+<div class="diff" onclick="setDiff('normal',this)">Normal</div>
+<div class="diff" onclick="setDiff('hard',this)">Hard</div>
+</div>
+
+<div class="timer" id="timerInfo"></div>
+
 <button class="start-btn" onclick="start()">START GAME</button>
 </div>
 
+<!-- GAME -->
 <div class="wrapper">
 <div class="sidebar" id="sidebar"></div>
 
@@ -259,28 +281,39 @@ input{
 
 <script>
 
-/* 🔥 BIG GAME POOL (USED FOR RANDOM SELECTION) */
+/* 🔥 BIG POOL (SESSION PICKS 10 ONLY) */
 const ALL=[
-{emoji:"🍄👨‍🔧🏰",answer:["mario","super mario bros"],clue:"Plumber saves a princess"},
-{emoji:"🧱⛏️🌍",answer:["minecraft"],clue:"Build anything, survive anything"},
-{emoji:"🧟‍♂️🔫🏚️",answer:["resident evil"],clue:"Zombie horror outbreak"},
+{emoji:"🍄👨‍🔧🏰",answer:["mario"],clue:"Plumber saves princess"},
+{emoji:"🧱⛏️🌍",answer:["minecraft"],clue:"Build and survive"},
+{emoji:"🧟‍♂️🔫🏚️",answer:["resident evil"],clue:"Zombie horror"},
 {emoji:"⚔️🐉👑",answer:["skyrim"],clue:"Dragonborn RPG"},
-{emoji:"🔫🪖🌍",answer:["call of duty"],clue:"Military FPS series"},
-{emoji:"🎯🔫📦",answer:["fortnite"],clue:"Battle royale builder"},
-{emoji:"🪐👽🔫",answer:["halo"],clue:"Master Chief saga"},
-{emoji:"🚗💥🌆",answer:["gta"],clue:"Open world crime chaos"},
-{emoji:"🧑‍🦹‍♂️🕷️🌆",answer:["spiderman"],clue:"Web swinging hero"},
-{emoji:"⚡🐉👦",answer:["pokemon"],clue:"Catch creatures"},
-{emoji:"🏹🏹🏹",answer:["zelda"],clue:"Fantasy adventure"},
-{emoji:"🏝️🧟‍♀️🔫",answer:["last of us"],clue:"Post apocalypse story"},
-{emoji:"🚀👨‍🚀🌌",answer:["mass effect"],clue:"Space RPG saga"},
+{emoji:"🔫🪖🌍",answer:["call of duty"],clue:"Military FPS"},
+{emoji:"🎯🔫📦",answer:["fortnite"],clue:"Battle royale"},
+{emoji:"🪐👽🔫",answer:["halo"],clue:"Space war saga"},
+{emoji:"🚗💥🌆",answer:["gta"],clue:"Crime sandbox"},
+{emoji:"⚡🐉👦",answer:["pokemon"],clue:"Creature battles"},
+{emoji:"🏹🏹🏹",answer:["zelda"],clue:"Fantasy quest"},
+{emoji:"🏝️🧟‍♀️🔫",answer:["last of us"],clue:"Post apocalypse"},
 {emoji:"🧙‍♂️📜🔥",answer:["witcher"],clue:"Monster hunter"},
-{emoji:"🪓🌲🏚️",answer:["dont starve"],clue:"Survival crafting"}
+{emoji:"🪓🌲🏚️",answer:["dont starve"],clue:"Survival crafting"},
+{emoji:"🚀👨‍🚀🌌",answer:["mass effect"],clue:"Space RPG"},
+{emoji:"🤖🔫🌆",answer:["cyberpunk"],clue:"Future city"}
 ];
 
-let q=[],i=0,score=0,status=[];
+let q=[],i=0,score=0,status=[],diff="easy";
+let timer,timeLeft,revealed=false;
 
-/* 🎮 ONLY PICK 10 PER RUN */
+/* DIFF */
+function setDiff(d,el){
+diff=d;
+document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
+el.classList.add("active");
+
+document.getElementById("timerInfo").innerText =
+d==="easy"?"No timer":d==="normal"?"1 minute total":"30 seconds total";
+}
+
+/* START (10 ONLY PER RUN) */
 function start(){
 q=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
 i=0;score=0;
@@ -291,13 +324,13 @@ document.getElementById("game").style.display="block";
 
 buildSidebar();
 load();
+startTimer();
 }
 
 /* SIDEBAR */
 function buildSidebar(){
 let s=document.getElementById("sidebar");
 s.innerHTML="";
-
 q.forEach((_,idx)=>{
 let d=document.createElement("div");
 d.className="dot";
@@ -333,7 +366,23 @@ updateSidebar();
 /* CLUE */
 function toggleClue(){
 let c=document.getElementById("clue");
-c.style.display=(c.style.display==="block")?"none":"block";
+c.style.display = (c.style.display==="block")?"none":"block";
+}
+
+/* TIMER (SESSION BASED) */
+function startTimer(){
+clearInterval(timer);
+if(diff==="easy") return;
+
+if(i===0) timeLeft=diff==="normal"?60:30;
+
+document.getElementById("timerInfo").innerText=`Time: ${timeLeft}s`;
+
+timer=setInterval(()=>{
+timeLeft--;
+document.getElementById("timerInfo").innerText=`Time: ${timeLeft}s`;
+if(timeLeft<=0) gameOver();
+},1000);
 }
 
 /* SUBMIT */
@@ -365,7 +414,31 @@ document.getElementById("end").innerHTML=`
 <div class="big-score">${score}/${q.length}</div>
 
 <button class="action-btn primary" onclick="location.reload()">Play Again</button>
+<button class="action-btn secondary" onclick="reveal()">Reveal Answers</button>
+
+<div id="answers" class="answers"></div>
 `;
+}
+
+/* GAME OVER */
+function gameOver(){
+end();
+}
+
+/* REVEAL (ONCE) */
+function reveal(){
+if(revealed) return;
+revealed=true;
+
+let box=document.getElementById("answers");
+
+q.forEach(x=>{
+box.innerHTML+=`
+<div class="answer-card">
+<div class="answer-emoji">${x.emoji}</div>
+<div>${x.answer[0]}</div>
+</div>`;
+});
 }
 
 </script>
