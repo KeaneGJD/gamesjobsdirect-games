@@ -3,386 +3,449 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guess The Game - Games Jobs Direct</title>
+<title>Guess The Game</title>
 
 <style>
-:root {
-    --primary: #553179;
-    --secondary: #bedc00;
-    --bg: #eae8e5;
-    --card: #ffffff;
-    --text: #1a1a1a;
-
-    --grey: #d6d6d6;
-    --green: #2ecc71;
-    --red: #e74c3c;
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --card:#ffffff;
+    --text:#1a1a1a;
+    --grey:#d0d0d0;
+    --green:#2ecc71;
+    --red:#e74c3c;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+body{
+    margin:0;
+    font-family:Arial;
+    background:var(--bg);
+    color:var(--text);
 }
 
 /* HEADER */
-header {
-    background: white;
-    padding: 12px;
-    text-align: center;
-    border-bottom: 2px solid #ddd;
-}
-
-header img {
-    height: 40px;
+header{
+    background:white;
+    padding:12px;
+    text-align:center;
+    border-bottom:2px solid #ddd;
 }
 
 /* LAYOUT */
-.wrapper {
-    display: flex;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    gap: 20px;
+.wrapper{
+    display:flex;
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+    gap:20px;
 }
 
-/* LEFT SIDE (progress) */
-.sidebar {
-    width: 70px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* SIDEBAR */
+.sidebar{
+    width:60px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
 }
 
-.dot {
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
-    background: var(--grey);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
+.dot{
+    width:44px;
+    height:44px;
+    border-radius:8px;
+    background:var(--grey);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.dot.current {
-    background: var(--primary);
-    color: white;
+.dot.current{ background:var(--primary); color:white; }
+.dot.correct{ background:var(--green); color:white; }
+.dot.wrong{ background:var(--red); color:white; }
+
+/* MAIN */
+.main{ flex:1; }
+
+/* MENU */
+.menu{
+    text-align:center;
+    margin-top:40px;
 }
 
-.dot.correct {
-    background: var(--green);
-    color: white;
+.title{
+    font-size:54px;
+    font-weight:900;
 }
 
-.dot.wrong {
-    background: var(--red);
-    color: white;
+.title span{
+    color:var(--accent);
 }
 
-/* MAIN GAME */
-.main {
-    flex: 1;
+.subtitle{
+    opacity:0.7;
+    margin-top:5px;
 }
 
-/* MENU SCREEN */
-.menu {
-    text-align: center;
-    margin-top: 40px;
+/* DIFFICULTY */
+.diff-grid{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:25px;
+    flex-wrap:wrap;
 }
 
-.title {
-    font-size: 42px;
-    color: var(--primary);
-    margin-bottom: 10px;
+.diff{
+    background:white;
+    border:2px solid var(--primary);
+    padding:14px;
+    border-radius:12px;
+    width:200px;
+    cursor:pointer;
 }
 
-.difficulty {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+.diff.selected{
+    background:var(--primary);
+    color:white;
 }
 
-.diff-btn {
-    padding: 12px 18px;
-    border-radius: 10px;
-    border: 2px solid var(--primary);
-    cursor: pointer;
-    background: white;
-}
-
-.diff-btn.selected {
-    background: var(--primary);
-    color: white;
+.start-btn{
+    margin-top:25px;
+    padding:16px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    background:var(--accent);
+    cursor:pointer;
+    font-weight:bold;
 }
 
 /* GAME CARD */
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    display: none;
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    display:none;
 }
 
-.emoji {
-    font-size: 50px;
-    margin: 10px 0;
-    letter-spacing: 8px;
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-bottom:10px;
 }
 
-.spacer {
-    height: 10px;
+.timer{
+    font-weight:bold;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
+/* EMOJI */
+.emoji{
+    font-size:72px;
+    text-align:center;
+    margin:20px 0;
+    letter-spacing:10px;
 }
 
-button {
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
+/* INPUT */
+input{
+    width:100%;
+    padding:14px;
+    font-size:16px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
 
-.primary {
-    background: var(--secondary);
+/* BUTTONS */
+.btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.secondary {
-    background: var(--primary);
-    color: white;
+.submit{ background:var(--accent); }
+.skip{ background:#999; color:white; }
+.back{ background:#ddd; }
+
+/* CLUE */
+.clue{
+    display:none;
+    margin-top:10px;
+    background:#f4f4f4;
+    padding:10px;
+    border-radius:8px;
+    font-size:14px;
 }
 
-.clue {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: #f4f4f4;
-    border-radius: 8px;
-    font-size: 14px;
+/* GAME OVER */
+.end{
+    text-align:center;
 }
-
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
+    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg" height="40">
 </header>
 
 <!-- MENU -->
 <div class="menu" id="menu">
 
-    <div class="title">Guess The Game</div>
-    <p>Select difficulty to begin</p>
+    <div class="title">Guess The <span>Game</span></div>
+    <div class="subtitle">Test your gaming knowledge</div>
 
-    <div class="difficulty">
-        <div class="diff-btn selected" onclick="setDiff('easy', this)">Easy</div>
-        <div class="diff-btn" onclick="setDiff('normal', this)">Normal</div>
-        <div class="diff-btn" onclick="setDiff('hard', this)">Hard</div>
+    <div class="diff-grid">
+
+        <div class="diff selected" onclick="setDiff('easy', this)">
+            <h3>Easy</h3>
+            <p>No timer</p>
+        </div>
+
+        <div class="diff" onclick="setDiff('normal', this)">
+            <h3>Normal</h3>
+            <p>30 seconds total</p>
+        </div>
+
+        <div class="diff" onclick="setDiff('hard', this)">
+            <h3>Hard</h3>
+            <p>15 seconds total</p>
+        </div>
+
     </div>
 
-    <button class="primary" onclick="startGame()">Start Game</button>
+    <button class="start-btn" onclick="start()">START GAME</button>
+
 </div>
 
 <!-- GAME -->
 <div class="wrapper">
 
-    <div class="sidebar" id="sidebar"></div>
+<div class="sidebar" id="sidebar"></div>
 
-    <div class="main">
+<div class="main">
 
-        <div class="card" id="gameCard">
+<div class="card" id="game">
 
-            <div class="topbar">
-                <div id="progressText"></div>
-                <div id="timer"></div>
-            </div>
+<div class="topbar">
+    <div id="progress"></div>
+    <div class="timer" id="timer"></div>
+</div>
 
-            <div class="emoji" id="emoji"></div>
+<div class="emoji" id="emoji"></div>
 
-            <div class="spacer"></div>
+<button class="btn" onclick="toggleClue()">Reveal Clue</button>
 
-            <button class="secondary" onclick="toggleClue()">Reveal Clue</button>
+<div class="clue" id="clue"></div>
 
-            <div class="clue" id="clueBox"></div>
+<input id="input" placeholder="Type your guess">
 
-            <div class="spacer"></div>
+<button class="btn submit" onclick="submit()">Submit</button>
+<button class="btn skip" onclick="skip()">Skip</button>
+<button class="btn back" onclick="back()">Back</button>
 
-            <input type="text" id="answer" placeholder="Type your guess...">
+</div>
 
-            <button class="primary" onclick="check()">Submit</button>
+<div id="end" class="end" style="display:none;"></div>
 
-        </div>
-
-    </div>
+</div>
 </div>
 
 <script>
 
-const ALL = [
-    { emoji:"🍄👨‍🔧🏰", answer:"super mario bros", year:"1985", clue:"A plumber rescues a princess from a turtle king." },
-    { emoji:"🧱⛏️🌍", answer:"minecraft", year:"2011", clue:"Place blocks, survive, build anything." },
-    { emoji:"🧟‍♂️🔫🏚️", answer:"resident evil", year:"1996", clue:"Horror survival in a mansion outbreak." },
-    { emoji:"⚔️🐉👑", answer:"skyrim", year:"2011", clue:"You are the dragonborn." },
-    { emoji:"🚗💥🏁", answer:"need for speed", year:"1994", clue:"High speed racing and police chases." },
-    { emoji:"🔫🪖🌍", answer:"call of duty", year:"2003", clue:"Military FPS franchise." },
-    { emoji:"🎯🔫📦", answer:"fortnite", year:"2017", clue:"Battle royale with building." },
-    { emoji:"🪐👽🔫", answer:"halo", year:"2001", clue:"Master Chief vs aliens." },
-    { emoji:"🗡️🐺👁️", answer:"the witcher 3", year:"2015", clue:"Monster hunter searching for Ciri." },
-    { emoji:"🏎️🌆🔥", answer:"grand theft auto", year:"1997", clue:"Open world crime sandbox." }
+/* GAME DATA */
+const ALL=[
+{emoji:"🍄👨‍🔧🏰", answer:["super mario bros","mario bros"], clue:"Plumber rescues princess", year:"1985"},
+{emoji:"🧱⛏️🌍", answer:["minecraft"], clue:"Build anything, survive night", year:"2011"},
+{emoji:"🧟‍♂️🔫🏚️", answer:["resident evil"], clue:"Zombie mansion outbreak", year:"1996"},
+{emoji:"⚔️🐉👑", answer:["skyrim","the elder scrolls skyrim"], clue:"You are the Dragonborn", year:"2011"},
+{emoji:"🔫🪖🌍", answer:["call of duty"], clue:"Military FPS franchise", year:"2003"},
+{emoji:"🎯🔫📦", answer:["fortnite"], clue:"Battle royale building game", year:"2017"},
+{emoji:"🪐👽🔫", answer:["halo","halo combat evolved"], clue:"Master Chief vs Covenant", year:"2001"}
 ];
 
-let diff = "easy";
-let questions = [];
-let index = 0;
-let score = 0;
-let status = []; // pending, correct, wrong, skipped
-
+let questions=[];
+let i=0;
+let score=0;
+let status=[];
+let diff="easy";
 let timer;
-let timeLeft;
+let time=0;
 
-function setDiff(d, el) {
-    diff = d;
-    document.querySelectorAll(".diff-btn").forEach(b => b.classList.remove("selected"));
-    el.classList.add("selected");
+/* DIFF SELECT */
+function setDiff(d,el){
+diff=d;
+document.querySelectorAll(".diff").forEach(x=>x.classList.remove("selected"));
+el.classList.add("selected");
 }
 
-function startGame() {
+/* START */
+function start(){
 
-    questions = [...ALL].sort(() => Math.random() - 0.5).slice(0, 10);
+questions=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
+i=0; score=0;
+status=Array(questions.length).fill("pending");
 
-    index = 0;
-    score = 0;
-    status = Array(questions.length).fill("pending");
+document.getElementById("menu").style.display="none";
+document.getElementById("game").style.display="block";
 
-    document.getElementById("menu").style.display = "none";
-    document.getElementById("gameCard").style.display = "block";
-
-    buildSidebar();
-    load();
+buildSidebar();
+load();
+startTimer();
 }
 
-function buildSidebar() {
-    let s = document.getElementById("sidebar");
-    s.innerHTML = "";
-
-    questions.forEach((q, i) => {
-        let d = document.createElement("div");
-        d.className = "dot";
-        d.innerText = i + 1;
-        d.onclick = () => jump(i);
-        s.appendChild(d);
-    });
-
-    updateSidebar();
+/* SIDEBAR */
+function buildSidebar(){
+let s=document.getElementById("sidebar");
+s.innerHTML="";
+questions.forEach((q,idx)=>{
+let d=document.createElement("div");
+d.className="dot";
+d.innerText=idx+1;
+d.onclick=()=>go(idx);
+s.appendChild(d);
+});
+updateSidebar();
 }
 
-function updateSidebar() {
-    document.querySelectorAll(".dot").forEach((d, i) => {
-        d.className = "dot";
+function updateSidebar(){
+document.querySelectorAll(".dot").forEach((d,idx)=>{
+d.className="dot";
 
-        if (i === index) d.classList.add("current");
-        if (status[i] === "correct") d.classList.add("correct");
-        if (status[i] === "wrong") d.classList.add("wrong");
-    });
+if(idx===i) d.classList.add("current");
+if(status[idx]==="correct") d.classList.add("correct");
+if(status[idx]==="wrong") d.classList.add("wrong");
+});
 }
 
-function load() {
-    let q = questions[index];
+/* LOAD */
+function load(){
+if(i>=questions.length) return end();
 
-    document.getElementById("emoji").innerText = q.emoji;
-    document.getElementById("clueBox").innerHTML =
-        `<b>Year:</b> ${q.year}<br><b>Hint:</b> ${q.clue}`;
+let q=questions[i];
 
-    document.getElementById("clueBox").style.display = "none";
-    document.getElementById("answer").value = "";
+document.getElementById("emoji").innerText=q.emoji;
+document.getElementById("clue").innerHTML=`<b>${q.year}</b><br>${q.clue}`;
+document.getElementById("clue").style.display="none";
 
-    document.getElementById("progressText").innerText =
-        `Q ${index+1}/${questions.length} | Score: ${score}`;
+document.getElementById("input").value="";
+document.getElementById("progress").innerText=`${i+1}/${questions.length} | Score: ${score}`;
 
-    updateSidebar();
-    startTimer();
+updateSidebar();
 }
 
-function toggleClue() {
-    let c = document.getElementById("clueBox");
-    c.style.display = c.style.display === "block" ? "none" : "block";
+/* CLUE */
+function toggleClue(){
+let c=document.getElementById("clue");
+c.style.display=c.style.display==="block"?"none":"block";
 }
 
-function check() {
-
-    let val = document.getElementById("answer").value.toLowerCase().trim();
-    let correct = questions[index].answer;
-
-    if (val === correct) {
-        score++;
-        status[index] = "correct";
-    } else {
-        status[index] = "wrong";
-    }
-
-    next();
+/* ANSWER CHECK (lenient) */
+function match(user,answers){
+user=user.toLowerCase().trim();
+return answers.some(a=>user.includes(a));
 }
 
-function next() {
-    clearInterval(timer);
-    index++;
-    if (index >= questions.length) return end();
-    load();
+/* SUBMIT */
+function submit(){
+
+let val=document.getElementById("input").value;
+if(match(val,questions[i].answer)){
+score++;
+status[i]="correct";
+}else{
+status[i]="wrong";
 }
 
-function jump(i) {
-    if (status[i] === "correct") return;
-    index = i;
-    load();
+next();
 }
 
-function startTimer() {
-
-    clearInterval(timer);
-
-    if (diff === "easy") return;
-
-    timeLeft = diff === "normal" ? 30 : 15;
-
-    document.getElementById("timer").innerText = timeLeft + "s";
-
-    timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timer").innerText = timeLeft + "s";
-
-        if (timeLeft <= 0) {
-            status[index] = "wrong";
-            next();
-        }
-    }, 1000);
+/* SKIP */
+function skip(){
+next();
 }
 
-function end() {
-    document.getElementById("gameCard").innerHTML =
-        `<h2>Game Complete 🎉</h2><p>Score: ${score}/${questions.length}</p>
-        <button onclick="location.reload()">Play Again</button>`;
+/* BACK */
+function back(){
+if(i>0) i--;
+load();
+}
+
+/* NEXT */
+function next(){
+clearInterval(timer);
+i++;
+load();
+startTimer();
+}
+
+/* GO */
+function go(x){
+i=x;
+load();
+}
+
+/* TIMER (GLOBAL GAME TIMER) */
+function startTimer(){
+
+clearInterval(timer);
+
+if(diff==="easy"){
+document.getElementById("timer").innerText="";
+return;
+}
+
+if(i===0){
+time=diff==="normal"?30:15;
+}
+
+document.getElementById("timer").innerText=`⏱ ${time}s`;
+
+timer=setInterval(()=>{
+time--;
+document.getElementById("timer").innerText=`⏱ ${time}s`;
+
+if(time<=0){
+clearInterval(timer);
+gameOver();
+}
+},1000);
+}
+
+/* END */
+function end(){
+document.getElementById("game").style.display="none";
+
+document.getElementById("end").style.display="block";
+
+document.getElementById("end").innerHTML=`
+<h2>Game Complete 🎉</h2>
+<p>Score: ${score}/${questions.length}</p>
+<button onclick="location.reload()">Play Again</button>
+`;
+}
+
+/* GAME OVER (TIMER) */
+function gameOver(){
+
+document.getElementById("game").style.display="none";
+
+document.getElementById("end").style.display="block";
+
+document.getElementById("end").innerHTML=`
+<h2>Time's Up ⏱</h2>
+<p>Score: ${score}/${questions.length}</p>
+
+<button onclick="location.reload()">Play Again</button>
+<button onclick="alert('We can add answer review screen next')">Reveal Answers</button>
+`;
 }
 
 </script>
