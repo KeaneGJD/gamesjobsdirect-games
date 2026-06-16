@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guess The Game</title>
+<title>GUESS THE GAME</title>
 
 <style>
 :root{
@@ -12,7 +12,6 @@
     --bg:#eae8e5;
     --card:#ffffff;
     --text:#1a1a1a;
-
     --grey:#d0d0d0;
     --green:#2ecc71;
     --red:#e74c3c;
@@ -35,19 +34,16 @@ header{
     border-bottom:2px solid #ddd;
 }
 
-header img{
-    height:38px;
-}
+header img{ height:38px; }
 
-/* HUB BUTTON */
 .hub-btn{
     background:var(--primary);
     color:white;
     border:none;
     padding:10px 14px;
     border-radius:10px;
-    cursor:pointer;
     font-weight:bold;
+    cursor:pointer;
 }
 
 /* LAYOUT */
@@ -59,7 +55,6 @@ header img{
     gap:20px;
 }
 
-/* SIDEBAR */
 .sidebar{
     width:60px;
     display:flex;
@@ -83,7 +78,6 @@ header img{
 .dot.correct{ background:var(--green); color:white; }
 .dot.wrong{ background:var(--red); color:white; }
 
-/* MAIN */
 .main{ flex:1; }
 
 /* MENU */
@@ -92,19 +86,10 @@ header img{
     margin-top:30px;
 }
 
-/* BIGGER TITLE */
-.title{
-    line-height:1;
-    margin-bottom:20px;
-}
-
 .title-top{
     font-size:56px;
     font-weight:900;
-}
-
-.title-top span{
-    color:var(--primary);
+    letter-spacing:1px;
 }
 
 .title-bottom{
@@ -118,8 +103,8 @@ header img{
     display:flex;
     justify-content:center;
     gap:10px;
-    margin-top:10px;
     flex-wrap:wrap;
+    margin-top:10px;
 }
 
 .diff{
@@ -142,7 +127,7 @@ header img{
     opacity:0.7;
 }
 
-/* START BUTTON BIG */
+/* START */
 .start-btn{
     margin-top:25px;
     padding:18px 44px;
@@ -162,19 +147,14 @@ header img{
     display:none;
 }
 
-/* TOPBAR */
 .topbar{
     display:flex;
     justify-content:space-between;
     font-size:14px;
-    margin-bottom:10px;
 }
 
-.timer{
-    font-weight:bold;
-}
+.timer{ font-weight:bold; }
 
-/* EMOJI */
 .emoji{
     font-size:78px;
     text-align:center;
@@ -190,7 +170,6 @@ input{
     border:1px solid #ccc;
 }
 
-/* BUTTONS */
 .btn{
     width:100%;
     padding:12px;
@@ -205,7 +184,6 @@ input{
 .skip{ background:#999; color:white; }
 .back{ background:#ddd; }
 
-/* CLUE */
 .clue{
     display:none;
     margin-top:15px;
@@ -215,12 +193,7 @@ input{
     font-size:14px;
 }
 
-/* SPACING FIX */
-.spacer{
-    height:14px;
-}
-
-/* END SCREEN */
+/* END */
 .end{
     text-align:center;
 }
@@ -228,15 +201,47 @@ input{
 .big{
     font-size:52px;
     font-weight:900;
-    margin-bottom:10px;
 }
 
 .big-score{
     font-size:30px;
-    margin-bottom:20px;
+    margin:10px 0 20px;
 }
 
-/* ACTION BUTTONS */
+/* ANSWERS (IMPROVED) */
+.answers{
+    margin-top:25px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+}
+
+.answer-card{
+    background:white;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:20px;
+}
+
+.answer-emoji{
+    font-size:32px;
+}
+
+.answer-text{
+    font-weight:bold;
+}
+
+.small-note{
+    font-size:13px;
+    opacity:0.7;
+    margin-top:10px;
+}
+
 .action-btn{
     padding:14px 18px;
     border-radius:10px;
@@ -249,23 +254,6 @@ input{
 .primary{ background:var(--accent); }
 .secondary{ background:var(--primary); color:white; }
 
-/* REVEALED ANSWERS */
-.answers{
-    margin-top:20px;
-    text-align:left;
-    max-width:400px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.answer-row{
-    display:flex;
-    justify-content:space-between;
-    padding:6px 0;
-    border-bottom:1px solid #eee;
-    font-size:14px;
-}
-
 </style>
 </head>
 
@@ -274,16 +262,14 @@ input{
 <header>
     <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
 
-    <button class="hub-btn" onclick="goHub()">Game Hub</button>
+    <button class="hub-btn" onclick="goHub()">Return to Game Hub</button>
 </header>
 
 <!-- MENU -->
 <div class="menu" id="menu">
 
-    <div class="title">
-        <div class="title-top"><span>Guess The</span></div>
-        <div class="title-bottom">Game</div>
-    </div>
+    <div class="title-top">GUESS THE</div>
+    <div class="title-bottom">GAME</div>
 
     <div class="diff-row">
         <div class="diff active" onclick="setDiff('easy',this)">Easy</div>
@@ -291,14 +277,13 @@ input{
         <div class="diff" onclick="setDiff('hard',this)">Hard</div>
     </div>
 
-    <div class="diff-info" id="info">No timer – relaxed play</div>
+    <div class="diff-info" id="info">No timer</div>
 
     <button class="start-btn" onclick="start()">START GAME</button>
 </div>
 
 <!-- GAME -->
 <div class="wrapper">
-
 <div class="sidebar" id="sidebar"></div>
 
 <div class="main">
@@ -306,8 +291,8 @@ input{
 <div class="card" id="game">
 
 <div class="topbar">
-    <div id="progress"></div>
-    <div class="timer" id="timer"></div>
+<div id="progress"></div>
+<div class="timer" id="timer"></div>
 </div>
 
 <div class="emoji" id="emoji"></div>
@@ -315,8 +300,6 @@ input{
 <button class="btn secondary" onclick="toggleClue()">Reveal Clue</button>
 
 <div class="clue" id="clue"></div>
-
-<div class="spacer"></div>
 
 <input id="input" placeholder="Type your guess">
 
@@ -334,57 +317,50 @@ input{
 <script>
 
 const ALL=[
-{emoji:"🍄👨‍🔧🏰", answer:["super mario bros","mario bros"], clue:"Plumber rescues princess", year:"1985"},
-{emoji:"🧱⛏️🌍", answer:["minecraft"], clue:"Build and survive", year:"2011"},
-{emoji:"🧟‍♂️🔫🏚️", answer:["resident evil"], clue:"Zombie mansion outbreak", year:"1996"},
-{emoji:"⚔️🐉👑", answer:["skyrim"], clue:"Dragonborn rises", year:"2011"},
-{emoji:"🔫🪖🌍", answer:["call of duty"], clue:"Military FPS series", year:"2003"},
-{emoji:"🎯🔫📦", answer:["fortnite"], clue:"Battle royale builder", year:"2017"},
-{emoji:"🪐👽🔫", answer:["halo","halo combat evolved"], clue:"Master Chief vs Covenant", year:"2001"}
+{emoji:"🍄👨‍🔧🏰", answer:["super mario bros","mario bros"]},
+{emoji:"🧱⛏️🌍", answer:["minecraft"]},
+{emoji:"🧟‍♂️🔫🏚️", answer:["resident evil"]},
+{emoji:"⚔️🐉👑", answer:["skyrim"]},
+{emoji:"🔫🪖🌍", answer:["call of duty"]},
+{emoji:"🎯🔫📦", answer:["fortnite"]},
+{emoji:"🪐👽🔫", answer:["halo","halo combat evolved"]}
 ];
 
-let q=[], i=0, score=0, status=[], diff="easy", timer, timeLeft;
+let q=[],i=0,score=0,status=[],diff="easy",timer,timeLeft;
+let revealUsed=false;
 
-/* HUB */
 function goHub(){
 window.location.href="index.html";
 }
 
-/* DIFF */
 function setDiff(d,el){
 diff=d;
 document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
 el.classList.add("active");
 
 const info={
-easy:"No timer – relaxed play",
-normal:"1 minute total game time",
-hard:"30 seconds total game time"
+easy:"No timer",
+normal:"1 minute total",
+hard:"30 seconds total"
 };
 
 document.getElementById("info").innerText=info[d];
 }
 
-/* START */
 function start(){
-
-q=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
-i=0; score=0;
+q=[...ALL].sort(()=>Math.random()-0.5);
+i=0;score=0;
 status=Array(q.length).fill("pending");
-
 document.getElementById("menu").style.display="none";
 document.getElementById("game").style.display="block";
-
 buildSidebar();
 load();
 startTimer();
 }
 
-/* SIDEBAR */
 function buildSidebar(){
 let s=document.getElementById("sidebar");
 s.innerHTML="";
-
 q.forEach((_,idx)=>{
 let d=document.createElement("div");
 d.className="dot";
@@ -392,60 +368,37 @@ d.innerText=idx+1;
 d.onclick=()=>go(idx);
 s.appendChild(d);
 });
-
 updateSidebar();
 }
 
 function updateSidebar(){
 document.querySelectorAll(".dot").forEach((d,idx)=>{
-
 d.className="dot";
-
 if(idx===i) d.classList.add("current");
 if(status[idx]==="correct") d.classList.add("correct");
 if(status[idx]==="wrong") d.classList.add("wrong");
-
 });
 }
 
-/* LOAD */
 function load(){
 if(i>=q.length) return end();
-
-let x=q[i];
-
-document.getElementById("emoji").innerText=x.emoji;
-document.getElementById("clue").innerHTML=`<b>${x.year}</b><br>${x.clue}`;
-document.getElementById("clue").style.display="none";
-
+document.getElementById("emoji").innerText=q[i].emoji;
 document.getElementById("input").value="";
-document.getElementById("progress").innerText=`${i+1}/${q.length} | Score: ${score}`;
-
 updateSidebar();
+document.getElementById("progress").innerText=`${i+1}/${q.length} | Score ${score}`;
 }
 
-/* CLUE */
 function toggleClue(){
 let c=document.getElementById("clue");
 c.style.display=c.style.display==="block"?"none":"block";
 }
 
-/* MATCH */
-function match(u,arr){
-u=u.toLowerCase().trim();
-return arr.some(a=>u.includes(a));
-}
-
-/* ENTER KEY SUPPORT */
-document.addEventListener("keydown",function(e){
-if(e.key==="Enter"){
-submit();
-}
+document.addEventListener("keydown",e=>{
+if(e.key==="Enter") submit();
 });
 
-/* SUBMIT */
 function submit(){
-if(match(document.getElementById("input").value,q[i].answer)){
+if(q[i].answer.some(a=>document.getElementById("input").value.toLowerCase().includes(a))){
 score++;
 status[i]="correct";
 }else{
@@ -454,12 +407,10 @@ status[i]="wrong";
 next();
 }
 
-/* NAV */
-function skip(){ next(); }
-function back(){ if(i>0) i--; load(); }
-function go(x){ i=x; load(); }
+function skip(){next();}
+function back(){if(i>0)i--;load();}
+function go(x){i=x;load();}
 
-/* NEXT */
 function next(){
 clearInterval(timer);
 i++;
@@ -467,39 +418,27 @@ load();
 startTimer();
 }
 
-/* TIMER */
 function startTimer(){
 clearInterval(timer);
+if(diff==="easy")return;
 
-if(diff==="easy") return;
-
-if(i===0){
-timeLeft=diff==="normal"?60:30;
-}
+if(i===0) timeLeft=diff==="normal"?60:30;
 
 document.getElementById("timer").innerText=`⏱ ${timeLeft}s`;
 
 timer=setInterval(()=>{
 timeLeft--;
 document.getElementById("timer").innerText=`⏱ ${timeLeft}s`;
-
-if(timeLeft<=0){
-clearInterval(timer);
-gameOver();
-}
-
+if(timeLeft<=0) gameOver();
 },1000);
 }
 
-/* END GAME */
 function end(){
-
 document.getElementById("game").style.display="none";
-
 document.getElementById("end").style.display="block";
 
 document.getElementById("end").innerHTML=`
-<div class="big">Game Complete 🎉</div>
+<div class="big">GAME COMPLETE 🎉</div>
 <div class="big-score">${score}/${q.length}</div>
 
 <button class="action-btn primary" onclick="location.reload()">Play Again</button>
@@ -509,11 +448,8 @@ document.getElementById("end").innerHTML=`
 `;
 }
 
-/* GAME OVER */
 function gameOver(){
-
 document.getElementById("game").style.display="none";
-
 document.getElementById("end").style.display="block";
 
 document.getElementById("end").innerHTML=`
@@ -527,23 +463,21 @@ document.getElementById("end").innerHTML=`
 `;
 }
 
-/* REVEAL (ONE TIME ONLY) */
-let revealed=false;
-
+/* IMPROVED REVEAL (BIGGER + ONCE ONLY) */
 function reveal(){
 
-if(revealed) return;
-revealed=true;
+if(revealUsed) return;
+revealUsed=true;
 
 let box=document.getElementById("answers");
 
-q.forEach((x,i)=>{
+q.forEach(x=>{
 box.innerHTML+=`
-<div class="answer-row">
-<span>${x.emoji} ${x.answer[0]}</span>
+<div class="answer-card">
+<div class="answer-emoji">${x.emoji}</div>
+<div class="answer-text">${x.answer[0]}</div>
 </div>`;
 });
-
 }
 
 </script>
