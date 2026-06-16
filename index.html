@@ -1,73 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games Jobs Direct - Games Hub</title>
+
     <style>
+        :root {
+            --primary: #553179;
+            --secondary: #bedc00;
+            --dark: #0f0f14;
+            --card: #1b1b24;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #111827;
-            color: white;
             margin: 0;
-            padding: 0;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background: var(--dark);
+            color: white;
         }
 
         header {
-            background: #2563eb;
-            padding: 30px;
+            background: var(--primary);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            height: 50px;
+            margin-bottom: 10px;
         }
 
         h1 {
+            margin: 10px 0 5px;
+        }
+
+        p.subtitle {
             margin: 0;
+            opacity: 0.85;
         }
 
         .container {
             max-width: 1000px;
             margin: auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
 
-        .game-card {
-            background: #1f2937;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
             padding: 20px;
-            margin: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.2s ease;
+            cursor: pointer;
         }
 
-        .coming-soon {
-            opacity: 0.7;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: var(--secondary);
+            color: black;
+            font-size: 12px;
+            border-radius: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 12px;
+            opacity: 0.6;
         }
 
         a {
-            color: #60a5fa;
+            color: inherit;
+            text-decoration: none;
         }
     </style>
 </head>
+
 <body>
 
 <header>
+    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg" alt="Games Jobs Direct Logo">
     <h1>Games Jobs Direct</h1>
-    <p>Free browser games for gamers and game developers</p>
+    <p class="subtitle">Free browser games for game developers & gamers</p>
 </header>
 
 <div class="container">
 
-    <div class="game-card coming-soon">
-        <h2>🎮 Guess The Game</h2>
-        <p>Coming Soon</p>
-    </div>
+    <div class="grid">
 
-    <div class="game-card coming-soon">
-        <h2>🏢 Studio Logo Quiz</h2>
-        <p>Coming Soon</p>
-    </div>
+        <div class="card">
+            <h3>🎮 Guess The Game</h3>
+            <p>Identify the game from clues</p>
+            <span class="tag">Coming Soon</span>
+        </div>
 
-    <div class="game-card coming-soon">
-        <h2>❓ Daily Trivia</h2>
-        <p>Coming Soon</p>
+        <div class="card">
+            <h3>🏢 Studio Quiz</h3>
+            <p>Can you name the studio?</p>
+            <span class="tag">Coming Soon</span>
+        </div>
+
+        <div class="card">
+            <h3>❓ Daily Trivia</h3>
+            <p>One question per day</p>
+            <span class="tag">Coming Soon</span>
+        </div>
+
+        <div class="card">
+            <h3>🎲 Loot Generator</h3>
+            <p>Spin for random game items</p>
+            <span class="tag">Coming Soon</span>
+        </div>
+
     </div>
 
 </div>
+
+<footer>
+    Built by Games Jobs Direct • Free browser games for the games industry
+</footer>
 
 </body>
 </html>
