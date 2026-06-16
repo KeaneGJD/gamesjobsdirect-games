@@ -36,6 +36,11 @@ header{
 
 header img{ height:38px; }
 
+header a{
+    display:flex;
+    align-items:center;
+}
+
 .hub-btn{
     background:var(--primary);
     color:white;
@@ -161,7 +166,6 @@ header img{ height:38px; }
     margin:25px 0;
 }
 
-/* INPUT */
 input{
     width:100%;
     padding:14px;
@@ -193,7 +197,7 @@ input{
     font-size:14px;
 }
 
-/* END */
+/* END SCREEN */
 .end{
     text-align:center;
 }
@@ -208,7 +212,19 @@ input{
     margin:10px 0 20px;
 }
 
-/* ANSWERS (IMPROVED) */
+/* ACTION BUTTONS */
+.action-btn{
+    padding:14px 18px;
+    border-radius:10px;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    margin:5px;
+}
+
+.primary{ background:var(--accent); }
+.secondary{ background:var(--primary); color:white; }
+
 .answers{
     margin-top:25px;
     max-width:600px;
@@ -228,31 +244,7 @@ input{
     font-size:20px;
 }
 
-.answer-emoji{
-    font-size:32px;
-}
-
-.answer-text{
-    font-weight:bold;
-}
-
-.small-note{
-    font-size:13px;
-    opacity:0.7;
-    margin-top:10px;
-}
-
-.action-btn{
-    padding:14px 18px;
-    border-radius:10px;
-    border:none;
-    font-weight:bold;
-    cursor:pointer;
-    margin:5px;
-}
-
-.primary{ background:var(--accent); }
-.secondary{ background:var(--primary); color:white; }
+.answer-emoji{ font-size:32px; }
 
 </style>
 </head>
@@ -260,7 +252,9 @@ input{
 <body>
 
 <header>
-    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
+    <a href="https://www.gamesjobsdirect.com/">
+        <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
+    </a>
 
     <button class="hub-btn" onclick="goHub()">Return to Game Hub</button>
 </header>
@@ -326,13 +320,14 @@ const ALL=[
 {emoji:"🪐👽🔫", answer:["halo","halo combat evolved"]}
 ];
 
-let q=[],i=0,score=0,status=[],diff="easy",timer,timeLeft;
-let revealUsed=false;
+let q=[], i=0, score=0, status=[], diff="easy", timer, timeLeft;
 
+/* HUB */
 function goHub(){
 window.location.href="index.html";
 }
 
+/* DIFF */
 function setDiff(d,el){
 diff=d;
 document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
@@ -340,24 +335,28 @@ el.classList.add("active");
 
 const info={
 easy:"No timer",
-normal:"1 minute total",
-hard:"30 seconds total"
+normal:"1 minute total game time",
+hard:"30 seconds total game time"
 };
 
 document.getElementById("info").innerText=info[d];
 }
 
+/* START */
 function start(){
 q=[...ALL].sort(()=>Math.random()-0.5);
-i=0;score=0;
+i=0; score=0;
 status=Array(q.length).fill("pending");
+
 document.getElementById("menu").style.display="none";
 document.getElementById("game").style.display="block";
+
 buildSidebar();
 load();
 startTimer();
 }
 
+/* SIDEBAR */
 function buildSidebar(){
 let s=document.getElementById("sidebar");
 s.innerHTML="";
@@ -380,23 +379,38 @@ if(status[idx]==="wrong") d.classList.add("wrong");
 });
 }
 
+/* LOAD */
 function load(){
 if(i>=q.length) return end();
+
 document.getElementById("emoji").innerText=q[i].emoji;
 document.getElementById("input").value="";
+
 updateSidebar();
 document.getElementById("progress").innerText=`${i+1}/${q.length} | Score ${score}`;
+
+/* RESET CLUE EVERY QUESTION */
+resetClue();
 }
 
+/* CLUE */
 function toggleClue(){
 let c=document.getElementById("clue");
-c.style.display=c.style.display==="block"?"none":"block";
+c.style.display = (c.style.display==="block") ? "none" : "block";
 }
 
+function resetClue(){
+let c=document.getElementById("clue");
+c.style.display="none";
+c.innerHTML=`<b>Hint:</b> Optional clue (click to reveal)`;
+}
+
+/* ENTER KEY */
 document.addEventListener("keydown",e=>{
 if(e.key==="Enter") submit();
 });
 
+/* SUBMIT */
 function submit(){
 if(q[i].answer.some(a=>document.getElementById("input").value.toLowerCase().includes(a))){
 score++;
@@ -407,6 +421,7 @@ status[i]="wrong";
 next();
 }
 
+/* NAV */
 function skip(){next();}
 function back(){if(i>0)i--;load();}
 function go(x){i=x;load();}
@@ -418,6 +433,7 @@ load();
 startTimer();
 }
 
+/* TIMER */
 function startTimer(){
 clearInterval(timer);
 if(diff==="easy")return;
@@ -433,6 +449,7 @@ if(timeLeft<=0) gameOver();
 },1000);
 }
 
+/* END */
 function end(){
 document.getElementById("game").style.display="none";
 document.getElementById("end").style.display="block";
@@ -448,6 +465,7 @@ document.getElementById("end").innerHTML=`
 `;
 }
 
+/* GAME OVER */
 function gameOver(){
 document.getElementById("game").style.display="none";
 document.getElementById("end").style.display="block";
@@ -463,11 +481,12 @@ document.getElementById("end").innerHTML=`
 `;
 }
 
-/* IMPROVED REVEAL (BIGGER + ONCE ONLY) */
-function reveal(){
+/* REVEAL ONCE ONLY */
+let revealed=false;
 
-if(revealUsed) return;
-revealUsed=true;
+function reveal(){
+if(revealed) return;
+revealed=true;
 
 let box=document.getElementById("answers");
 
@@ -475,7 +494,7 @@ q.forEach(x=>{
 box.innerHTML+=`
 <div class="answer-card">
 <div class="answer-emoji">${x.emoji}</div>
-<div class="answer-text">${x.answer[0]}</div>
+<div><b>${x.answer[0]}</b></div>
 </div>`;
 });
 }
