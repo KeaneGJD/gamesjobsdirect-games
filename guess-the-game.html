@@ -9,22 +9,23 @@
     :root {
         --primary: #553179;
         --secondary: #bedc00;
-        --dark: #0f0f14;
-        --card: #1b1b24;
+        --bg: #eae8e5;
+        --card: #ffffff;
+        --text: #1a1a1a;
     }
 
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: var(--dark);
-        color: white;
+        background: var(--bg);
+        color: var(--text);
         text-align: center;
     }
 
     header {
         background: white;
         padding: 15px;
-        color: var(--primary);
+        border-bottom: 2px solid #ddd;
     }
 
     header img {
@@ -34,60 +35,78 @@
     .container {
         max-width: 700px;
         margin: auto;
-        padding: 30px 20px;
+        padding: 20px;
+    }
+
+    .card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .emoji {
         font-size: 50px;
-        margin: 20px 0;
+        margin: 15px 0;
     }
 
     input {
         width: 100%;
-        padding: 15px;
+        padding: 12px;
         font-size: 16px;
         border-radius: 8px;
-        border: none;
-        margin-top: 10px;
+        border: 1px solid #ccc;
     }
 
     button {
-        margin-top: 15px;
-        padding: 12px 20px;
+        margin-top: 10px;
+        padding: 10px 15px;
         border: none;
         border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .primary {
         background: var(--secondary);
         color: black;
-        font-weight: bold;
-        cursor: pointer;
     }
 
-    button:hover {
-        opacity: 0.9;
-    }
-
-    .feedback {
-        margin-top: 15px;
-        font-size: 18px;
-        min-height: 30px;
-    }
-
-    .score {
-        margin-top: 10px;
-        opacity: 0.8;
-    }
-
-    .next {
-        margin-top: 10px;
-        display: none;
+    .secondary {
         background: var(--primary);
         color: white;
     }
 
-    .home-link {
+    .skip {
+        background: #999;
+        color: white;
+    }
+
+    .feedback {
+        margin-top: 10px;
+        min-height: 25px;
+    }
+
+    .progress {
+        margin-top: 10px;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    .clue-box {
+        margin-top: 10px;
+        display: none;
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .home {
         display: inline-block;
-        margin-top: 20px;
-        color: var(--secondary);
+        margin-top: 15px;
+        color: var(--primary);
         text-decoration: none;
     }
 </style>
@@ -102,73 +121,164 @@
 
 <div class="container">
 
-    <div class="score" id="score">Score: 0</div>
+<div class="card">
 
-    <div class="emoji" id="emoji">🎮❓</div>
+    <div>
+        Mode:
+        <select id="mode" onchange="startGame()">
+            <option value="easy">Easy (no timer)</option>
+            <option value="normal">Normal (30s)</option>
+            <option value="hard">Hard (15s)</option>
+        </select>
+    </div>
 
-    <input type="text" id="answer" placeholder="Type your answer here...">
+    <div class="progress" id="progress"></div>
 
-    <br>
+    <div class="emoji" id="emoji"></div>
 
-    <button onclick="checkAnswer()">Submit</button>
-    <button class="next" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+    <button onclick="toggleClue()">Reveal Clue</button>
+
+    <div class="clue-box" id="clueBox"></div>
+
+    <input type="text" id="answer" placeholder="Type your guess...">
+
+    <button class="primary" onclick="check()">Submit</button>
+    <button class="skip" onclick="skip()">Skip</button>
 
     <div class="feedback" id="feedback"></div>
 
-    <a class="home-link" href="index.html">← Back to Games Hub</a>
+    <div id="timer"></div>
+
+</div>
+
+<a class="home" href="index.html">← Back to Hub</a>
 
 </div>
 
 <script>
-const questions = [
-    { emoji: "🍄👨‍🔧🏰", answer: "super mario bros" },
-    { emoji: "🚗💨🏁", answer: "need for speed" },
-    { emoji: "🧱⛏️🌍", answer: "minecraft" },
-    { emoji: "🧟‍♂️🔫🏚️", answer: "resident evil" },
-    { emoji: "⚔️🐉👑", answer: "skyrim" }
+
+const ALL_QUESTIONS = [
+    { emoji:"🍄👨‍🔧🏰", answer:"super mario bros", year:"1985", clue:"A plumber rescues a princess from a turtle king." },
+    { emoji:"🧱⛏️🌍", answer:"minecraft", year:"2011", clue:"Place blocks, survive the night, build anything." },
+    { emoji:"🧟‍♂️🔫🏚️", answer:"resident evil", year:"1996", clue:"A survival horror game set in a zombie outbreak mansion." },
+    { emoji:"⚔️🐉👑", answer:"skyrim", year:"2011", clue:"You are the dragonborn." },
+    { emoji:"🚗💥🏁", answer:"need for speed", year:"1994", clue:"High speed police chases and racing culture." },
+    { emoji:"🔫🪖🌍", answer:"call of duty", year:"2003", clue:"Military first-person shooter franchise." },
+    { emoji:"🎯🔫📦", answer:"fortnite", year:"2017", clue:"Battle royale with building mechanics." },
+    { emoji:"🪐👽🔫", answer:"halo", year:"2001", clue:"Master Chief fights alien alliance." },
+    { emoji:"🗡️🧙‍♂️🐺", answer:"the witcher 3", year:"2015", clue:"Monster hunter searching for Ciri." },
+    { emoji:"🏎️🌆🔥", answer:"grand theft auto", year:"1997", clue:"Open world crime sandbox." }
 ];
 
-let current = 0;
+let questions = [];
+let index = 0;
 let score = 0;
+let skipped = [];
 
-function loadQuestion() {
-    document.getElementById("emoji").innerText = questions[current].emoji;
-    document.getElementById("answer").value = "";
-    document.getElementById("feedback").innerText = "";
-    document.getElementById("nextBtn").style.display = "none";
-}
+let timeLeft = 0;
+let timer;
 
-function checkAnswer() {
-    let user = document.getElementById("answer").value.toLowerCase().trim();
-    let correct = questions[current].answer;
+function startGame() {
+    questions = [...ALL_QUESTIONS]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10);
 
-    if (user === correct) {
-        document.getElementById("feedback").innerText = "✅ Correct!";
-        document.getElementById("feedback").style.color = "#bedc00";
-        score++;
-        document.getElementById("score").innerText = "Score: " + score;
-    } else {
-        document.getElementById("feedback").innerText = "❌ Wrong! Answer: " + correct;
-        document.getElementById("feedback").style.color = "#ff4d4d";
-    }
-
-    document.getElementById("nextBtn").style.display = "inline-block";
-}
-
-function nextQuestion() {
-    current++;
-
-    if (current >= questions.length) {
-        document.getElementById("emoji").innerText = "🎉";
-        document.getElementById("feedback").innerText = "Game Over! Final Score: " + score;
-        document.getElementById("nextBtn").style.display = "none";
-        return;
-    }
+    index = 0;
+    score = 0;
+    skipped = [];
 
     loadQuestion();
 }
 
-loadQuestion();
+function loadQuestion() {
+
+    if (index >= questions.length) {
+        endGame();
+        return;
+    }
+
+    let q = questions[index];
+
+    document.getElementById("emoji").innerText = q.emoji;
+    document.getElementById("clueBox").innerHTML =
+        `<b>Year:</b> ${q.year}<br><b>Hint:</b> ${q.clue}`;
+
+    document.getElementById("clueBox").style.display = "none";
+    document.getElementById("answer").value = "";
+    document.getElementById("feedback").innerText = "";
+
+    document.getElementById("progress").innerText =
+        `Question ${index + 1} / ${questions.length} | Score: ${score}`;
+
+    startTimer();
+}
+
+function toggleClue() {
+    let box = document.getElementById("clueBox");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+function check() {
+    let user = document.getElementById("answer").value.toLowerCase().trim();
+    let correct = questions[index].answer;
+
+    if (user === correct) {
+        score++;
+        document.getElementById("feedback").innerText = "Correct!";
+    } else {
+        document.getElementById("feedback").innerText = "Wrong! Answer: " + correct;
+    }
+
+    next();
+}
+
+function skip() {
+    skipped.push(questions[index]);
+    next();
+}
+
+function next() {
+    clearInterval(timer);
+    index++;
+    loadQuestion();
+}
+
+function startTimer() {
+
+    clearInterval(timer);
+
+    let mode = document.getElementById("mode").value;
+
+    if (mode === "easy") {
+        document.getElementById("timer").innerText = "";
+        return;
+    }
+
+    timeLeft = mode === "normal" ? 30 : 15;
+
+    document.getElementById("timer").innerText = `Time: ${timeLeft}s`;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").innerText = `Time: ${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            skip();
+        }
+    }, 1000);
+}
+
+function endGame() {
+    document.getElementById("emoji").innerText = "🎉";
+    document.getElementById("clueBox").style.display = "none";
+
+    document.getElementById("progress").innerText =
+        `Final Score: ${score} / ${questions.length}`;
+}
+
+startGame();
+
 </script>
 
 </body>
