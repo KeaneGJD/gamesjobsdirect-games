@@ -6,109 +6,181 @@
 <title>Guess The Game - Games Jobs Direct</title>
 
 <style>
-    :root {
-        --primary: #553179;
-        --secondary: #bedc00;
-        --bg: #eae8e5;
-        --card: #ffffff;
-        --text: #1a1a1a;
-    }
+:root {
+    --primary: #553179;
+    --secondary: #bedc00;
+    --bg: #eae8e5;
+    --card: #ffffff;
+    --text: #1a1a1a;
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        text-align: center;
-    }
+    --grey: #d6d6d6;
+    --green: #2ecc71;
+    --red: #e74c3c;
+}
 
-    header {
-        background: white;
-        padding: 15px;
-        border-bottom: 2px solid #ddd;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
 
-    header img {
-        height: 40px;
-    }
+/* HEADER */
+header {
+    background: white;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+}
 
-    .container {
-        max-width: 700px;
-        margin: auto;
-        padding: 20px;
-    }
+header img {
+    height: 40px;
+}
 
-    .card {
-        background: var(--card);
-        padding: 20px;
-        border-radius: 12px;
-        margin-top: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+/* LAYOUT */
+.wrapper {
+    display: flex;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    gap: 20px;
+}
 
-    .emoji {
-        font-size: 50px;
-        margin: 15px 0;
-    }
+/* LEFT SIDE (progress) */
+.sidebar {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-    input {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
+.dot {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
 
-    button {
-        margin-top: 10px;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+.dot.current {
+    background: var(--primary);
+    color: white;
+}
 
-    .primary {
-        background: var(--secondary);
-        color: black;
-    }
+.dot.correct {
+    background: var(--green);
+    color: white;
+}
 
-    .secondary {
-        background: var(--primary);
-        color: white;
-    }
+.dot.wrong {
+    background: var(--red);
+    color: white;
+}
 
-    .skip {
-        background: #999;
-        color: white;
-    }
+/* MAIN GAME */
+.main {
+    flex: 1;
+}
 
-    .feedback {
-        margin-top: 10px;
-        min-height: 25px;
-    }
+/* MENU SCREEN */
+.menu {
+    text-align: center;
+    margin-top: 40px;
+}
 
-    .progress {
-        margin-top: 10px;
-        font-size: 14px;
-        opacity: 0.7;
-    }
+.title {
+    font-size: 42px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
 
-    .clue-box {
-        margin-top: 10px;
-        display: none;
-        background: #f4f4f4;
-        padding: 10px;
-        border-radius: 8px;
-        font-size: 14px;
-    }
+.difficulty {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
 
-    .home {
-        display: inline-block;
-        margin-top: 15px;
-        color: var(--primary);
-        text-decoration: none;
-    }
+.diff-btn {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+    background: white;
+}
+
+.diff-btn.selected {
+    background: var(--primary);
+    color: white;
+}
+
+/* GAME CARD */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: none;
+}
+
+.emoji {
+    font-size: 50px;
+    margin: 10px 0;
+    letter-spacing: 8px;
+}
+
+.spacer {
+    height: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.primary {
+    background: var(--secondary);
+}
+
+.secondary {
+    background: var(--primary);
+    color: white;
+}
+
+.clue {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
 </style>
 </head>
 
@@ -116,87 +188,127 @@
 
 <header>
     <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
-    <h2>Guess The Game</h2>
 </header>
 
-<div class="container">
+<!-- MENU -->
+<div class="menu" id="menu">
 
-<div class="card">
+    <div class="title">Guess The Game</div>
+    <p>Select difficulty to begin</p>
 
-    <div>
-        Mode:
-        <select id="mode" onchange="startGame()">
-            <option value="easy">Easy (no timer)</option>
-            <option value="normal">Normal (30s)</option>
-            <option value="hard">Hard (15s)</option>
-        </select>
+    <div class="difficulty">
+        <div class="diff-btn selected" onclick="setDiff('easy', this)">Easy</div>
+        <div class="diff-btn" onclick="setDiff('normal', this)">Normal</div>
+        <div class="diff-btn" onclick="setDiff('hard', this)">Hard</div>
     </div>
 
-    <div class="progress" id="progress"></div>
-
-    <div class="emoji" id="emoji"></div>
-
-    <button onclick="toggleClue()">Reveal Clue</button>
-
-    <div class="clue-box" id="clueBox"></div>
-
-    <input type="text" id="answer" placeholder="Type your guess...">
-
-    <button class="primary" onclick="check()">Submit</button>
-    <button class="skip" onclick="skip()">Skip</button>
-
-    <div class="feedback" id="feedback"></div>
-
-    <div id="timer"></div>
-
+    <button class="primary" onclick="startGame()">Start Game</button>
 </div>
 
-<a class="home" href="index.html">← Back to Hub</a>
+<!-- GAME -->
+<div class="wrapper">
 
+    <div class="sidebar" id="sidebar"></div>
+
+    <div class="main">
+
+        <div class="card" id="gameCard">
+
+            <div class="topbar">
+                <div id="progressText"></div>
+                <div id="timer"></div>
+            </div>
+
+            <div class="emoji" id="emoji"></div>
+
+            <div class="spacer"></div>
+
+            <button class="secondary" onclick="toggleClue()">Reveal Clue</button>
+
+            <div class="clue" id="clueBox"></div>
+
+            <div class="spacer"></div>
+
+            <input type="text" id="answer" placeholder="Type your guess...">
+
+            <button class="primary" onclick="check()">Submit</button>
+
+        </div>
+
+    </div>
 </div>
 
 <script>
 
-const ALL_QUESTIONS = [
+const ALL = [
     { emoji:"🍄👨‍🔧🏰", answer:"super mario bros", year:"1985", clue:"A plumber rescues a princess from a turtle king." },
-    { emoji:"🧱⛏️🌍", answer:"minecraft", year:"2011", clue:"Place blocks, survive the night, build anything." },
-    { emoji:"🧟‍♂️🔫🏚️", answer:"resident evil", year:"1996", clue:"A survival horror game set in a zombie outbreak mansion." },
+    { emoji:"🧱⛏️🌍", answer:"minecraft", year:"2011", clue:"Place blocks, survive, build anything." },
+    { emoji:"🧟‍♂️🔫🏚️", answer:"resident evil", year:"1996", clue:"Horror survival in a mansion outbreak." },
     { emoji:"⚔️🐉👑", answer:"skyrim", year:"2011", clue:"You are the dragonborn." },
-    { emoji:"🚗💥🏁", answer:"need for speed", year:"1994", clue:"High speed police chases and racing culture." },
-    { emoji:"🔫🪖🌍", answer:"call of duty", year:"2003", clue:"Military first-person shooter franchise." },
-    { emoji:"🎯🔫📦", answer:"fortnite", year:"2017", clue:"Battle royale with building mechanics." },
-    { emoji:"🪐👽🔫", answer:"halo", year:"2001", clue:"Master Chief fights alien alliance." },
-    { emoji:"🗡️🧙‍♂️🐺", answer:"the witcher 3", year:"2015", clue:"Monster hunter searching for Ciri." },
+    { emoji:"🚗💥🏁", answer:"need for speed", year:"1994", clue:"High speed racing and police chases." },
+    { emoji:"🔫🪖🌍", answer:"call of duty", year:"2003", clue:"Military FPS franchise." },
+    { emoji:"🎯🔫📦", answer:"fortnite", year:"2017", clue:"Battle royale with building." },
+    { emoji:"🪐👽🔫", answer:"halo", year:"2001", clue:"Master Chief vs aliens." },
+    { emoji:"🗡️🐺👁️", answer:"the witcher 3", year:"2015", clue:"Monster hunter searching for Ciri." },
     { emoji:"🏎️🌆🔥", answer:"grand theft auto", year:"1997", clue:"Open world crime sandbox." }
 ];
 
+let diff = "easy";
 let questions = [];
 let index = 0;
 let score = 0;
-let skipped = [];
+let status = []; // pending, correct, wrong, skipped
 
-let timeLeft = 0;
 let timer;
+let timeLeft;
+
+function setDiff(d, el) {
+    diff = d;
+    document.querySelectorAll(".diff-btn").forEach(b => b.classList.remove("selected"));
+    el.classList.add("selected");
+}
 
 function startGame() {
-    questions = [...ALL_QUESTIONS]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 10);
+
+    questions = [...ALL].sort(() => Math.random() - 0.5).slice(0, 10);
 
     index = 0;
     score = 0;
-    skipped = [];
+    status = Array(questions.length).fill("pending");
 
-    loadQuestion();
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("gameCard").style.display = "block";
+
+    buildSidebar();
+    load();
 }
 
-function loadQuestion() {
+function buildSidebar() {
+    let s = document.getElementById("sidebar");
+    s.innerHTML = "";
 
-    if (index >= questions.length) {
-        endGame();
-        return;
-    }
+    questions.forEach((q, i) => {
+        let d = document.createElement("div");
+        d.className = "dot";
+        d.innerText = i + 1;
+        d.onclick = () => jump(i);
+        s.appendChild(d);
+    });
 
+    updateSidebar();
+}
+
+function updateSidebar() {
+    document.querySelectorAll(".dot").forEach((d, i) => {
+        d.className = "dot";
+
+        if (i === index) d.classList.add("current");
+        if (status[i] === "correct") d.classList.add("correct");
+        if (status[i] === "wrong") d.classList.add("wrong");
+    });
+}
+
+function load() {
     let q = questions[index];
 
     document.getElementById("emoji").innerText = q.emoji;
@@ -205,79 +317,73 @@ function loadQuestion() {
 
     document.getElementById("clueBox").style.display = "none";
     document.getElementById("answer").value = "";
-    document.getElementById("feedback").innerText = "";
 
-    document.getElementById("progress").innerText =
-        `Question ${index + 1} / ${questions.length} | Score: ${score}`;
+    document.getElementById("progressText").innerText =
+        `Q ${index+1}/${questions.length} | Score: ${score}`;
 
+    updateSidebar();
     startTimer();
 }
 
 function toggleClue() {
-    let box = document.getElementById("clueBox");
-    box.style.display = box.style.display === "none" ? "block" : "none";
+    let c = document.getElementById("clueBox");
+    c.style.display = c.style.display === "block" ? "none" : "block";
 }
 
 function check() {
-    let user = document.getElementById("answer").value.toLowerCase().trim();
+
+    let val = document.getElementById("answer").value.toLowerCase().trim();
     let correct = questions[index].answer;
 
-    if (user === correct) {
+    if (val === correct) {
         score++;
-        document.getElementById("feedback").innerText = "Correct!";
+        status[index] = "correct";
     } else {
-        document.getElementById("feedback").innerText = "Wrong! Answer: " + correct;
+        status[index] = "wrong";
     }
 
-    next();
-}
-
-function skip() {
-    skipped.push(questions[index]);
     next();
 }
 
 function next() {
     clearInterval(timer);
     index++;
-    loadQuestion();
+    if (index >= questions.length) return end();
+    load();
+}
+
+function jump(i) {
+    if (status[i] === "correct") return;
+    index = i;
+    load();
 }
 
 function startTimer() {
 
     clearInterval(timer);
 
-    let mode = document.getElementById("mode").value;
+    if (diff === "easy") return;
 
-    if (mode === "easy") {
-        document.getElementById("timer").innerText = "";
-        return;
-    }
+    timeLeft = diff === "normal" ? 30 : 15;
 
-    timeLeft = mode === "normal" ? 30 : 15;
-
-    document.getElementById("timer").innerText = `Time: ${timeLeft}s`;
+    document.getElementById("timer").innerText = timeLeft + "s";
 
     timer = setInterval(() => {
         timeLeft--;
-        document.getElementById("timer").innerText = `Time: ${timeLeft}s`;
+        document.getElementById("timer").innerText = timeLeft + "s";
 
         if (timeLeft <= 0) {
-            clearInterval(timer);
-            skip();
+            status[index] = "wrong";
+            next();
         }
     }, 1000);
 }
 
-function endGame() {
-    document.getElementById("emoji").innerText = "🎉";
-    document.getElementById("clueBox").style.display = "none";
-
-    document.getElementById("progress").innerText =
-        `Final Score: ${score} / ${questions.length}`;
+function end() {
+    document.getElementById("gameCard").innerHTML =
+        `<h2>Game Complete 🎉</h2><p>Score: ${score}/${questions.length}</p>
+        <button onclick="location.reload()">Play Again</button>`;
 }
-
-startGame();
 
 </script>
 
