@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess The Game - Games Jobs Direct</title>
+
+<style>
+    :root {
+        --primary: #553179;
+        --secondary: #bedc00;
+        --dark: #0f0f14;
+        --card: #1b1b24;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--dark);
+        color: white;
+        text-align: center;
+    }
+
+    header {
+        background: white;
+        padding: 15px;
+        color: var(--primary);
+    }
+
+    header img {
+        height: 40px;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 30px 20px;
+    }
+
+    .emoji {
+        font-size: 50px;
+        margin: 20px 0;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        margin-top: 10px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        background: var(--secondary);
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+
+    .feedback {
+        margin-top: 15px;
+        font-size: 18px;
+        min-height: 30px;
+    }
+
+    .score {
+        margin-top: 10px;
+        opacity: 0.8;
+    }
+
+    .next {
+        margin-top: 10px;
+        display: none;
+        background: var(--primary);
+        color: white;
+    }
+
+    .home-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: var(--secondary);
+        text-decoration: none;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
+    <h2>Guess The Game</h2>
+</header>
+
+<div class="container">
+
+    <div class="score" id="score">Score: 0</div>
+
+    <div class="emoji" id="emoji">🎮❓</div>
+
+    <input type="text" id="answer" placeholder="Type your answer here...">
+
+    <br>
+
+    <button onclick="checkAnswer()">Submit</button>
+    <button class="next" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+
+    <div class="feedback" id="feedback"></div>
+
+    <a class="home-link" href="index.html">← Back to Games Hub</a>
+
+</div>
+
+<script>
+const questions = [
+    { emoji: "🍄👨‍🔧🏰", answer: "super mario bros" },
+    { emoji: "🚗💨🏁", answer: "need for speed" },
+    { emoji: "🧱⛏️🌍", answer: "minecraft" },
+    { emoji: "🧟‍♂️🔫🏚️", answer: "resident evil" },
+    { emoji: "⚔️🐉👑", answer: "skyrim" }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+    document.getElementById("emoji").innerText = questions[current].emoji;
+    document.getElementById("answer").value = "";
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("nextBtn").style.display = "none";
+}
+
+function checkAnswer() {
+    let user = document.getElementById("answer").value.toLowerCase().trim();
+    let correct = questions[current].answer;
+
+    if (user === correct) {
+        document.getElementById("feedback").innerText = "✅ Correct!";
+        document.getElementById("feedback").style.color = "#bedc00";
+        score++;
+        document.getElementById("score").innerText = "Score: " + score;
+    } else {
+        document.getElementById("feedback").innerText = "❌ Wrong! Answer: " + correct;
+        document.getElementById("feedback").style.color = "#ff4d4d";
+    }
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+}
+
+function nextQuestion() {
+    current++;
+
+    if (current >= questions.length) {
+        document.getElementById("emoji").innerText = "🎉";
+        document.getElementById("feedback").innerText = "Game Over! Final Score: " + score;
+        document.getElementById("nextBtn").style.display = "none";
+        return;
+    }
+
+    loadQuestion();
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
