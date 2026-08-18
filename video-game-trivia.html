@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIDEO GAME TRIVIA</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --grey:#dedbd7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+/* =========================================
+HEADER
+========================================= */
+
+header{
+    background:white;
+    min-height:68px;
+    padding:12px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+
+    text-decoration:none;
+
+    padding:11px 17px;
+
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+.hub-btn:hover{
+    opacity:.92;
+}
+
+
+/* =========================================
+START SCREEN
+========================================= */
+
+.start-screen{
+    max-width:850px;
+    margin:55px auto;
+    padding:0 20px;
+
+    text-align:center;
+}
+
+.game-title{
+    margin-bottom:25px;
+    line-height:.9;
+}
+
+.title-top{
+    display:block;
+
+    color:var(--primary);
+
+    font-size:clamp(54px,8vw,92px);
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:clamp(75px,12vw,135px);
+
+    font-weight:900;
+
+    letter-spacing:-5px;
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.10);
+}
+
+.start-copy{
+    max-width:580px;
+
+    margin:0 auto 30px;
+
+    color:var(--muted);
+
+    line-height:1.5;
+
+    font-size:16px;
+}
+
+
+/* =========================================
+DIFFICULTY
+========================================= */
+
+.difficulty-heading{
+    margin-bottom:12px;
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.difficulty-row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.difficulty{
+    min-width:115px;
+
+    background:white;
+
+    border:2px solid var(--primary);
+
+    border-radius:12px;
+
+    padding:10px 16px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.difficulty:hover{
+    transform:translateY(-2px);
+}
+
+.difficulty.active{
+    background:var(--primary);
+    color:white;
+}
+
+.diff-name{
+    font-weight:900;
+}
+
+.diff-info{
+    max-height:0;
+    overflow:hidden;
+
+    opacity:0;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.difficulty.active .diff-info{
+    max-height:40px;
+
+    margin-top:5px;
+
+    opacity:.85;
+}
+
+.start-btn{
+    display:block;
+
+    margin:30px auto 0;
+
+    padding:18px 52px;
+
+    background:var(--accent);
+
+    color:#222;
+
+    border:0;
+
+    border-radius:14px;
+
+    font-size:22px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #9cb500;
+}
+
+.start-btn:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================================
+GAME AREA
+========================================= */
+
+.game-area{
+    display:none;
+
+    max-width:900px;
+
+    margin:35px auto;
+
+    padding:0 20px 60px;
+}
+
+.game-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+
+/* =========================================
+GAME HUD
+========================================= */
+
+.game-hud{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+.question-count,
+.score{
+    color:var(--muted);
+
+    font-size:14px;
+
+    font-weight:800;
+}
+
+.score strong{
+    color:var(--primary);
+}
+
+.timer{
+    display:none;
+
+    min-width:110px;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:12px;
+
+    padding:9px 13px;
+
+    text-align:center;
+}
+
+.timer-label{
+    display:block;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    opacity:.8;
+}
+
+.timer-value{
+    display:block;
+
+    margin-top:2px;
+
+    font-size:24px;
+
+    line-height:1;
+
+    font-weight:900;
+}
+
+.timer.warning{
+    background:var(--red);
+}
+
+
+/* =========================================
+PROGRESS BAR
+========================================= */
+
+.progress-track{
+    width:100%;
+    height:9px;
+
+    background:#e5e2de;
+
+    border-radius:20px;
+
+    margin:18px 0 32px;
+
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+
+    width:10%;
+
+    background:var(--accent);
+
+    border-radius:20px;
+
+    transition:width .25s ease;
+}
+
+
+/* =========================================
+QUESTION
+========================================= */
+
+.category{
+    display:inline-block;
+
+    padding:6px 10px;
+
+    background:#f1efec;
+
+    border-radius:20px;
+
+    color:var(--primary);
+
+    font-size:11px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.question{
+    color:var(--primary);
+
+    font-size:clamp(24px,4vw,36px);
+
+    line-height:1.2;
+
+    font-weight:900;
+
+    margin:18px 0 28px;
+}
+
+
+/* =========================================
+ANSWERS
+========================================= */
+
+.answers-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+}
+
+.answer-btn{
+    min-height:76px;
+
+    background:#f5f3f0;
+
+    color:var(--text);
+
+    border:2px solid transparent;
+
+    border-radius:14px;
+
+    padding:15px 18px;
+
+    text-align:left;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.15s;
+}
+
+.answer-btn:hover:not(:disabled){
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+}
+
+.answer-btn:disabled{
+    cursor:default;
+}
+
+.answer-btn.correct{
+    background:var(--green);
+
+    color:white;
+
+    border-color:var(--green);
+}
+
+.answer-btn.wrong{
+    background:var(--red);
+
+    color:white;
+
+    border-color:var(--red);
+}
+
+
+/* =========================================
+FEEDBACK
+========================================= */
+
+.feedback{
+    min-height:32px;
+
+    margin-top:18px;
+
+    text-align:center;
+
+    font-size:17px;
+
+    font-weight:900;
+}
+
+.feedback.correct{
+    color:var(--green);
+}
+
+.feedback.wrong{
+    color:var(--red);
+}
+
+
+/* =========================================
+RESULTS
+========================================= */
+
+.results-screen{
+    display:none;
+
+    max-width:850px;
+
+    margin:50px auto;
+
+    padding:0 20px 70px;
+
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:38px 25px;
+}
+
+.results-title{
+    color:var(--primary);
+
+    font-size:clamp(44px,8vw,74px);
+
+    line-height:1;
+
+    font-weight:900;
+
+    margin:0;
+}
+
+.results-title.times-up{
+    font-size:clamp(60px,10vw,100px);
+}
+
+.score-label{
+    margin-top:22px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.final-score{
+    color:var(--primary);
+
+    font-size:70px;
+
+    font-weight:900;
+
+    margin:3px 0 12px;
+}
+
+.result-message{
+    color:var(--muted);
+
+    margin-bottom:25px;
+}
+
+.results-actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.results-btn{
+    border:0;
+
+    border-radius:11px;
+
+    padding:14px 21px;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.play-again{
+    background:var(--accent);
+
+    color:#222;
+}
+
+.review-btn{
+    background:var(--primary);
+
+    color:white;
+}
+
+
+/* =========================================
+ANSWER REVIEW
+========================================= */
+
+.review{
+    display:none;
+
+    max-width:680px;
+
+    margin:32px auto 0;
+
+    text-align:left;
+}
+
+.review h2{
+    color:var(--primary);
+
+    text-align:center;
+}
+
+.review-item{
+    background:#f4f2ef;
+
+    border-radius:13px;
+
+    padding:16px;
+
+    margin-bottom:10px;
+}
+
+.review-question{
+    color:var(--primary);
+
+    font-size:17px;
+
+    font-weight:900;
+
+    margin-bottom:9px;
+}
+
+.review-answer{
+    font-weight:800;
+}
+
+.review-answer span{
+    color:var(--green);
+}
+
+
+/* =========================================
+MORE GAMES
+========================================= */
+
+.more-games{
+    margin-top:40px;
+
+    padding-top:28px;
+
+    border-top:1px solid var(--border);
+}
+
+.more-games h2{
+    color:var(--primary);
+}
+
+.more-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+}
+
+.more-card{
+    background:#f3f1ee;
+
+    border-radius:12px;
+
+    padding:18px 12px;
+}
+
+.more-card-icon{
+    font-size:32px;
+}
+
+.more-card strong{
+    display:block;
+
+    color:var(--primary);
+
+    margin-top:8px;
+}
+
+.more-card small{
+    color:var(--muted);
+}
+
+.more-card.playable{
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.more-card.playable:hover{
+    transform:translateY(-3px);
+}
+
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        padding:9px 10px;
+
+        font-size:11px;
+    }
+
+    .game-card{
+        padding:20px 16px;
+    }
+
+    .answers-grid{
+        grid-template-columns:1fr;
+    }
+
+    .game-hud{
+        align-items:flex-start;
+    }
+
+    .timer{
+        min-width:82px;
+    }
+
+    .timer-value{
+        font-size:20px;
+    }
+
+    .more-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+HEADER
+===================================== -->
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+    <img
+        src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+        alt="Games Jobs Direct">
+
+</a>
+
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+    Return to Game Hub
+
+</a>
+
+</header>
+
+
+
+<!-- =====================================
+START SCREEN
+===================================== -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+
+<div class="game-title">
+
+    <span class="title-top">
+        VIDEO GAME
+    </span>
+
+    <span class="title-bottom">
+        TRIVIA
+    </span>
+
+</div>
+
+
+<p class="start-copy">
+
+    How much do you really know about video games?
+    Answer 10 multiple-choice questions covering games,
+    characters, studios, consoles and gaming history.
+
+</p>
+
+
+<div class="difficulty-heading">
+    SELECT DIFFICULTY
+</div>
+
+
+<div class="difficulty-row">
+
+
+<button
+    class="difficulty active"
+    onclick="selectDifficulty('easy',this)">
+
+    <div class="diff-name">
+        Easy
+    </div>
+
+    <div class="diff-info">
+        No timer
+    </div>
+
+</button>
+
+
+<button
+    class="difficulty"
+    onclick="selectDifficulty('normal',this)">
+
+    <div class="diff-name">
+        Normal
+    </div>
+
+    <div class="diff-info">
+        90 seconds
+    </div>
+
+</button>
+
+
+<button
+    class="difficulty"
+    onclick="selectDifficulty('hard',this)">
+
+    <div class="diff-name">
+        Hard
+    </div>
+
+    <div class="diff-info">
+        60 seconds
+    </div>
+
+</button>
+
+
+</div>
+
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
+    START TRIVIA
+
+</button>
+
+
+</section>
+
+
+
+<!-- =====================================
+GAME
+===================================== -->
+
+<section
+    class="game-area"
+    id="gameArea">
+
+
+<div class="game-card">
+
+
+<div class="game-hud">
+
+    <div>
+
+        <div
+            class="question-count"
+            id="questionCount">
+
+            Question 1 of 10
+
+        </div>
+
+        <div class="score">
+
+            Score:
+            <strong id="scoreDisplay">0</strong>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="timer"
+        id="timerBox">
+
+        <span class="timer-label">
+            TIME LEFT
+        </span>
+
+        <span
+            class="timer-value"
+            id="timerValue">
+
+            90
+
+        </span>
+
+    </div>
+
+</div>
+
+
+<div class="progress-track">
+
+    <div
+        class="progress-fill"
+        id="progressFill">
+    </div>
+
+</div>
+
+
+<div
+    class="category"
+    id="category">
+
+    Gaming
+
+</div>
+
+
+<div
+    class="question"
+    id="questionText">
+</div>
+
+
+<div
+    class="answers-grid"
+    id="answersGrid">
+</div>
+
+
+<div
+    class="feedback"
+    id="feedback">
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+RESULTS
+===================================== -->
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+
+<div class="results-card">
+
+
+<h1
+    class="results-title"
+    id="resultsTitle">
+
+    TRIVIA COMPLETE
+
+</h1>
+
+
+<div class="score-label">
+    YOUR SCORE
+</div>
+
+
+<div
+    class="final-score"
+    id="finalScore">
+
+    0/10
+
+</div>
+
+
+<div
+    class="result-message"
+    id="resultMessage">
+</div>
+
+
+<div class="results-actions">
+
+
+<button
+    class="results-btn play-again"
+    onclick="playAgain()">
+
+    Play Again
+
+</button>
+
+
+<button
+    class="results-btn review-btn"
+    id="reviewButton"
+    onclick="toggleReview()">
+
+    Review Answers
+
+</button>
+
+
+</div>
+
+
+
+<div
+    class="review"
+    id="review">
+
+
+<h2>
+    Answer Review
+</h2>
+
+
+<div id="reviewList"></div>
+
+
+</div>
+
+
+
+<div class="more-games">
+
+
+<h2>
+    Try Another Game
+</h2>
+
+
+<div class="more-grid">
+
+
+<a
+    href="guess-the-game.html"
+    class="more-card playable">
+
+    <div class="more-card-icon">
+        🎮
+    </div>
+
+    <strong>
+        Guess The Game
+    </strong>
+
+    <small>
+        Play Now
+    </small>
+
+</a>
+
+
+<div class="more-card">
+
+    <div class="more-card-icon">
+        🗓️
+    </div>
+
+    <strong>
+        Which Came First?
+    </strong>
+
+    <small>
+        Coming Soon
+    </small>
+
+</div>
+
+
+<div class="more-card">
+
+    <div class="more-card-icon">
+        🧩
+    </div>
+
+    <strong>
+        Gaming Connections
+    </strong>
+
+    <small>
+        Coming Soon
+    </small>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+<script>
+
+/* ======================================================
+QUESTION BANK
+
+The player only sees 10 per game.
+
+We can keep adding hundreds of questions here later.
+====================================================== */
+
+const QUESTION_BANK = [
+
+{
+category:"Characters",
+question:"What is the name of Mario's brother?",
+answers:[
+    "Luigi",
+    "Wario",
+    "Toad",
+    "Yoshi"
+],
+correct:0
+},
+
+{
+category:"Nintendo",
+question:"Which Pokémon is number 025 in the original Pokédex?",
+answers:[
+    "Charmander",
+    "Pikachu",
+    "Squirtle",
+    "Meowth"
+],
+correct:1
+},
+
+{
+category:"Gaming History",
+question:"Which game features the falling shapes known as tetrominoes?",
+answers:[
+    "Pong",
+    "Tetris",
+    "Breakout",
+    "Pac-Man"
+],
+correct:1
+},
+
+{
+category:"Characters",
+question:"Who is the protagonist of The Legend of Zelda series?",
+answers:[
+    "Zelda",
+    "Ganondorf",
+    "Link",
+    "Epona"
+],
+correct:2
+},
+
+{
+category:"PlayStation",
+question:"Which character is the main protagonist of God of War?",
+answers:[
+    "Kratos",
+    "Atreus",
+    "Ares",
+    "Thor"
+],
+correct:0
+},
+
+{
+category:"Xbox",
+question:"What is the name of Halo's iconic supersoldier protagonist?",
+answers:[
+    "Commander Shepard",
+    "Marcus Fenix",
+    "Master Chief",
+    "Captain Price"
+],
+correct:2
+},
+
+{
+category:"Open World",
+question:"Which fictional city is the main setting of Grand Theft Auto V?",
+answers:[
+    "Vice City",
+    "Liberty City",
+    "Los Santos",
+    "San Fierro"
+],
+correct:2
+},
+
+{
+category:"RPG",
+question:"In The Elder Scrolls V: Skyrim, what title is given to the player character?",
+answers:[
+    "The Witcher",
+    "The Dragonborn",
+    "The Grey Warden",
+    "The Tarnished"
+],
+correct:1
+},
+
+{
+category:"Minecraft",
+question:"Which creature is famous for silently approaching players before exploding?",
+answers:[
+    "Skeleton",
+    "Zombie",
+    "Enderman",
+    "Creeper"
+],
+correct:3
+},
+
+{
+category:"Indie Games",
+question:"Which game sees the player inherit their grandfather's farm?",
+answers:[
+    "Terraria",
+    "Stardew Valley",
+    "Animal Crossing",
+    "Slime Rancher"
+],
+correct:1
+},
+
+{
+category:"Horror",
+question:"Which company is central to the events of Resident Evil?",
+answers:[
+    "Abstergo",
+    "Umbrella Corporation",
+    "Vault-Tec",
+    "Arasaka"
+],
+correct:1
+},
+
+{
+category:"RPG",
+question:"What is the name of the protagonist of The Witcher series?",
+answers:[
+    "Geralt of Rivia",
+    "Arthur Morgan",
+    "Ezio Auditore",
+    "Joel Miller"
+],
+correct:0
+},
+
+{
+category:"Post-Apocalypse",
+question:"Who accompanies Joel across much of The Last of Us?",
+answers:[
+    "Abby",
+    "Tess",
+    "Ellie",
+    "Marlene"
+],
+correct:2
+},
+
+{
+category:"Rockstar Games",
+question:"Which Red Dead Redemption 2 character leads the Van der Linde gang?",
+answers:[
+    "John Marston",
+    "Dutch van der Linde",
+    "Arthur Morgan",
+    "Micah Bell"
+],
+correct:1
+},
+
+{
+category:"Racing",
+question:"Which racing franchise includes the Horizon spin-off series?",
+answers:[
+    "Gran Turismo",
+    "Forza",
+    "Need for Speed",
+    "Burnout"
+],
+correct:1
+},
+
+{
+category:"Valve",
+question:"Which game introduced players to the Aperture Science Handheld Portal Device?",
+answers:[
+    "Half-Life",
+    "Portal",
+    "Team Fortress 2",
+    "Left 4 Dead"
+],
+correct:1
+},
+
+{
+category:"Survival",
+question:"Subnautica primarily takes place in what kind of environment?",
+answers:[
+    "Desert",
+    "Frozen tundra",
+    "Ocean",
+    "Space station"
+],
+correct:2
+},
+
+{
+category:"Indie Games",
+question:"Which game follows a knight exploring the ruined kingdom of Hallownest?",
+answers:[
+    "Dead Cells",
+    "Hollow Knight",
+    "Celeste",
+    "Hades"
+],
+correct:1
+},
+
+{
+category:"Indie Games",
+question:"In Celeste, what is Madeline attempting to do?",
+answers:[
+    "Escape a dungeon",
+    "Climb a mountain",
+    "Cross an ocean",
+    "Defeat a dragon"
+],
+correct:1
+},
+
+{
+category:"Battle Royale",
+question:"Which game famously begins matches with players jumping from a Battle Bus?",
+answers:[
+    "PUBG",
+    "Apex Legends",
+    "Fortnite",
+    "Warzone"
+],
+correct:2
+},
+
+{
+category:"Multiplayer",
+question:"In Among Us, what role secretly works against the Crewmates?",
+answers:[
+    "Guardian",
+    "Impostor",
+    "Commander",
+    "Saboteur"
+],
+correct:1
+},
+
+{
+category:"FromSoftware",
+question:"Which game takes place in the Lands Between?",
+answers:[
+    "Dark Souls",
+    "Bloodborne",
+    "Sekiro",
+    "Elden Ring"
+],
+correct:3
+},
+
+{
+category:"Cyberpunk",
+question:"Cyberpunk 2077 is primarily set in which city?",
+answers:[
+    "Night City",
+    "Liberty City",
+    "Rapture",
+    "Midgar"
+],
+correct:0
+},
+
+{
+category:"Sci-Fi",
+question:"Who commands the Normandy in the Mass Effect series?",
+answers:[
+    "Commander Shepard",
+    "Master Chief",
+    "Samus Aran",
+    "Isaac Clarke"
+],
+correct:0
+},
+
+{
+category:"Horror",
+question:"Which game involves investigating haunted locations using equipment such as EMF readers?",
+answers:[
+    "Outlast",
+    "Phasmophobia",
+    "Dead Space",
+    "Amnesia"
+],
+correct:1
+},
+
+{
+category:"Nintendo",
+question:"Which company created the Animal Crossing series?",
+answers:[
+    "Sony",
+    "Nintendo",
+    "Sega",
+    "Capcom"
+],
+correct:1
+},
+
+{
+category:"Arcade",
+question:"What colour is Pac-Man?",
+answers:[
+    "Blue",
+    "Red",
+    "Yellow",
+    "Green"
+],
+correct:2
+},
+
+{
+category:"Platformers",
+question:"Which character is famous for collecting bananas?",
+answers:[
+    "Sonic",
+    "Crash Bandicoot",
+    "Donkey Kong",
+    "Kirby"
+],
+correct:2
+},
+
+{
+category:"Sega",
+question:"Which animal is Sonic?",
+answers:[
+    "Fox",
+    "Hedgehog",
+    "Echidna",
+    "Rabbit"
+],
+correct:1
+},
+
+{
+category:"Nintendo",
+question:"What type of creature is Yoshi?",
+answers:[
+    "Dragon",
+    "Dinosaur",
+    "Turtle",
+    "Frog"
+],
+correct:1
+},
+
+{
+category:"PlayStation",
+question:"Which Naughty Dog series stars Nathan Drake?",
+answers:[
+    "The Last of Us",
+    "Uncharted",
+    "Jak and Daxter",
+    "Crash Bandicoot"
+],
+correct:1
+},
+
+{
+category:"Gaming History",
+question:"Which game is commonly associated with the phrase 'The cake is a lie'?",
+answers:[
+    "Portal",
+    "BioShock",
+    "Half-Life 2",
+    "Fallout"
+],
+correct:0
+},
+
+{
+category:"BioShock",
+question:"Where does the original BioShock primarily take place?",
+answers:[
+    "Columbia",
+    "Rapture",
+    "Night City",
+    "Midgar"
+],
+correct:1
+},
+
+{
+category:"Fallout",
+question:"Which company appears throughout the Fallout universe as the creator of the Vaults?",
+answers:[
+    "Umbrella",
+    "Arasaka",
+    "Vault-Tec",
+    "Aperture Science"
+],
+correct:2
+},
+
+{
+category:"Assassin's Creed",
+question:"Which Assassin's Creed protagonist is an Italian Renaissance assassin?",
+answers:[
+    "Altaïr Ibn-La'Ahad",
+    "Ezio Auditore",
+    "Edward Kenway",
+    "Bayek"
+],
+correct:1
+},
+
+{
+category:"Japanese RPG",
+question:"Which Final Fantasy VII character carries the enormous Buster Sword?",
+answers:[
+    "Sephiroth",
+    "Cloud Strife",
+    "Barret Wallace",
+    "Zack Fair"
+],
+correct:1
+},
+
+{
+category:"Nintendo",
+question:"Which Metroid character is a bounty hunter?",
+answers:[
+    "Samus Aran",
+    "Princess Zelda",
+    "Bayonetta",
+    "Jill Valentine"
+],
+correct:0
+},
+
+{
+category:"Fighting Games",
+question:"Which fighting series features Scorpion and Sub-Zero?",
+answers:[
+    "Tekken",
+    "Street Fighter",
+    "Mortal Kombat",
+    "Soulcalibur"
+],
+correct:2
+},
+
+{
+category:"Fighting Games",
+question:"Which Street Fighter character is famous for the Hadouken?",
+answers:[
+    "Ryu",
+    "Guile",
+    "Blanka",
+    "Zangief"
+],
+correct:0
+},
+
+{
+category:"Survival Horror",
+question:"Which survival-horror game is set aboard the USG Ishimura?",
+answers:[
+    "Alien: Isolation",
+    "Dead Space",
+    "Resident Evil 4",
+    "The Callisto Protocol"
+],
+correct:1
+},
+
+{
+category:"Strategy",
+question:"Which franchise is famous for the phrase 'One more turn' and building civilisations across history?",
+answers:[
+    "Civilization",
+    "StarCraft",
+    "Warcraft",
+    "Command & Conquer"
+],
+correct:0
+},
+
+{
+category:"Simulation",
+question:"Which game series lets players create people, build homes and manage their everyday lives?",
+answers:[
+    "SimCity",
+    "The Sims",
+    "Cities: Skylines",
+    "Planet Coaster"
+],
+correct:1
+},
+
+{
+category:"PC Gaming",
+question:"Which game focuses on constructing increasingly automated factories on an alien planet?",
+answers:[
+    "Factorio",
+    "RimWorld",
+    "Terraria",
+    "Rust"
+],
+correct:0
+},
+
+{
+category:"Survival",
+question:"Which game features increasingly dangerous zombie hordes every seven days?",
+answers:[
+    "DayZ",
+    "7 Days to Die",
+    "Project Zomboid",
+    "Dying Light"
+],
+correct:1
+},
+
+{
+category:"Valve",
+question:"Which co-op shooter features Survivors battling hordes of Infected?",
+answers:[
+    "Counter-Strike",
+    "Left 4 Dead",
+    "Half-Life",
+    "Portal"
+],
+correct:1
+},
+
+{
+category:"Platformers",
+question:"Which game features Cuphead and Mugman?",
+answers:[
+    "Cuphead",
+    "Hollow Knight",
+    "Shovel Knight",
+    "Bendy and the Ink Machine"
+],
+correct:0
+},
+
+{
+category:"Adventure",
+question:"In Stray, what animal does the player control?",
+answers:[
+    "Dog",
+    "Fox",
+    "Cat",
+    "Rabbit"
+],
+correct:2
+},
+
+{
+category:"Batman",
+question:"Which villain takes control of Arkham Asylum during Batman: Arkham Asylum?",
+answers:[
+    "Bane",
+    "The Joker",
+    "Two-Face",
+    "The Riddler"
+],
+correct:1
+},
+
+{
+category:"Stealth",
+question:"Which character is most closely associated with the Metal Gear Solid series?",
+answers:[
+    "Sam Fisher",
+    "Agent 47",
+    "Solid Snake",
+    "Adam Jensen"
+],
+correct:2
+},
+
+{
+category:"Adventure",
+question:"Which Tomb Raider character is an archaeologist and adventurer?",
+answers:[
+    "Aloy",
+    "Lara Croft",
+    "Jill Valentine",
+    "Faith Connors"
+],
+correct:1
+},
+
+{
+category:"Nintendo",
+question:"Which Kirby ability is most famous?",
+answers:[
+    "Flying a plane",
+    "Copying enemy abilities",
+    "Freezing time",
+    "Turning invisible"
+],
+correct:1
+},
+
+{
+category:"Horror",
+question:"Which game features animatronic characters such as Freddy Fazbear?",
+answers:[
+    "Five Nights at Freddy's",
+    "Poppy Playtime",
+    "Outlast",
+    "Until Dawn"
+],
+correct:0
+},
+
+{
+category:"Action",
+question:"Which franchise stars Agent 47?",
+answers:[
+    "Splinter Cell",
+    "Hitman",
+    "Metal Gear",
+    "Watch Dogs"
+],
+correct:1
+},
+
+{
+category:"PlayStation",
+question:"Which game features Aloy as its protagonist?",
+answers:[
+    "Forspoken",
+    "Horizon Zero Dawn",
+    "Returnal",
+    "Kena: Bridge of Spirits"
+],
+correct:1
+},
+
+{
+category:"Action",
+question:"Which game series is famous for the phrase 'Rip and tear'?",
+answers:[
+    "DOOM",
+    "Quake",
+    "Wolfenstein",
+    "Duke Nukem"
+],
+correct:0
+},
+
+{
+category:"RPG",
+question:"Which franchise uses Vault Boy as a mascot?",
+answers:[
+    "Fallout",
+    "Borderlands",
+    "BioShock",
+    "The Outer Worlds"
+],
+correct:0
+}
+
+];
+
+
+
+/* =========================================
+GAME STATE
+========================================= */
+
+const QUESTIONS_PER_GAME = 10;
+
+let currentQuestions = [];
+
+let currentQuestionIndex = 0;
+
+let currentScore = 0;
+
+let selectedDifficulty = "easy";
+
+let questionResults = [];
+
+let timerInterval = null;
+
+let timeRemaining = null;
+
+let gameOver = false;
+
+let answerLocked = false;
+
+
+
+/* =========================================
+DIFFICULTY
+========================================= */
+
+function selectDifficulty(level,button){
+
+    selectedDifficulty = level;
+
+    document
+        .querySelectorAll(".difficulty")
+        .forEach(item => item.classList.remove("active"));
+
+    button.classList.add("active");
+}
+
+
+
+/* =========================================
+SHUFFLE
+========================================= */
+
+function shuffle(array){
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--){
+
+        const j =
+            Math.floor(Math.random() * (i + 1));
+
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+
+
+/* =========================================
+START GAME
+========================================= */
+
+function startGame(){
+
+    currentQuestions =
+        shuffle(QUESTION_BANK)
+        .slice(0,QUESTIONS_PER_GAME);
+
+    currentQuestionIndex = 0;
+
+    currentScore = 0;
+
+    questionResults = [];
+
+    gameOver = false;
+
+    answerLocked = false;
+
+    document
+        .getElementById("startScreen")
+        .style.display = "none";
+
+    document
+        .getElementById("resultsScreen")
+        .style.display = "none";
+
+    document
+        .getElementById("gameArea")
+        .style.display = "block";
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent = "0";
+
+    loadQuestion();
+
+    startTimer();
+}
+
+
+
+/* =========================================
+LOAD QUESTION
+========================================= */
+
+function loadQuestion(){
+
+    answerLocked = false;
+
+    const question =
+        currentQuestions[currentQuestionIndex];
+
+    document
+        .getElementById("questionCount")
+        .textContent =
+        `Question ${currentQuestionIndex + 1} of ${QUESTIONS_PER_GAME}`;
+
+    document
+        .getElementById("category")
+        .textContent =
+        question.category;
+
+    document
+        .getElementById("questionText")
+        .textContent =
+        question.question;
+
+    document
+        .getElementById("feedback")
+        .textContent = "";
+
+    document
+        .getElementById("feedback")
+        .className = "feedback";
+
+
+    const progress =
+        ((currentQuestionIndex + 1) / QUESTIONS_PER_GAME) * 100;
+
+    document
+        .getElementById("progressFill")
+        .style.width =
+        progress + "%";
+
+
+    const grid =
+        document.getElementById("answersGrid");
+
+    grid.innerHTML = "";
+
+
+    question.answers.forEach((answer,index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "answer-btn";
+
+        button.textContent =
+            answer;
+
+        button.onclick = () =>
+            chooseAnswer(index,button);
+
+        grid.appendChild(button);
+    });
+}
+
+
+
+/* =========================================
+ANSWER QUESTION
+========================================= */
+
+function chooseAnswer(index,button){
+
+    if(answerLocked || gameOver){
+        return;
+    }
+
+    answerLocked = true;
+
+
+    const question =
+        currentQuestions[currentQuestionIndex];
+
+    const buttons =
+        document.querySelectorAll(".answer-btn");
+
+
+    buttons.forEach(item => {
+        item.disabled = true;
+    });
+
+
+    const isCorrect =
+        index === question.correct;
+
+
+    if(isCorrect){
+
+        button.classList.add("correct");
+
+        currentScore++;
+
+        document
+            .getElementById("feedback")
+            .textContent =
+            "Correct!";
+
+        document
+            .getElementById("feedback")
+            .className =
+            "feedback correct";
+
+    }else{
+
+        button.classList.add("wrong");
+
+        buttons[question.correct]
+            .classList.add("correct");
+
+        document
+            .getElementById("feedback")
+            .textContent =
+            `Correct answer: ${question.answers[question.correct]}`;
+
+        document
+            .getElementById("feedback")
+            .className =
+            "feedback wrong";
+    }
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        currentScore;
+
+
+    questionResults.push({
+
+        question:question.question,
+
+        correctAnswer:
+            question.answers[question.correct],
+
+        chosenAnswer:
+            question.answers[index],
+
+        correct:isCorrect
+
+    });
+
+
+    setTimeout(() => {
+
+        if(gameOver){
+            return;
+        }
+
+        currentQuestionIndex++;
+
+        if(currentQuestionIndex >= QUESTIONS_PER_GAME){
+
+            finishGame(false);
+
+        }else{
+
+            loadQuestion();
+        }
+
+    },900);
+}
+
+
+
+/* =========================================
+TIMER
+========================================= */
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+
+    const box =
+        document.getElementById("timerBox");
+
+
+    if(selectedDifficulty === "easy"){
+
+        box.style.display =
+            "none";
+
+        return;
+    }
+
+
+    timeRemaining =
+        selectedDifficulty === "normal"
+        ? 90
+        : 60;
+
+
+    box.style.display =
+        "block";
+
+    updateTimer();
+
+
+    timerInterval =
+        setInterval(() => {
+
+            timeRemaining--;
+
+            updateTimer();
+
+
+            if(timeRemaining <= 0){
+
+                clearInterval(timerInterval);
+
+                finishGame(true);
+            }
+
+        },1000);
+}
+
+
+
+function updateTimer(){
+
+    const box =
+        document.getElementById("timerBox");
+
+
+    document
+        .getElementById("timerValue")
+        .textContent =
+        timeRemaining;
+
+
+    if(timeRemaining <= 15){
+
+        box.classList.add("warning");
+
+    }else{
+
+        box.classList.remove("warning");
+    }
+}
+
+
+
+/* =========================================
+FINISH GAME
+========================================= */
+
+function finishGame(timesUp){
+
+    if(gameOver){
+        return;
+    }
+
+
+    gameOver = true;
+
+    answerLocked = true;
+
+    clearInterval(timerInterval);
+
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "block";
+
+
+    const title =
+        document.getElementById("resultsTitle");
+
+
+    if(timesUp){
+
+        title.textContent =
+            "TIME'S UP";
+
+        title.classList.add(
+            "times-up"
+        );
+
+    }else{
+
+        title.textContent =
+            "TRIVIA COMPLETE";
+
+        title.classList.remove(
+            "times-up"
+        );
+    }
+
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        `${currentScore}/${QUESTIONS_PER_GAME}`;
+
+
+    document
+        .getElementById("resultMessage")
+        .textContent =
+        createResultMessage(currentScore);
+
+
+    buildReview();
+}
+
+
+
+/* =========================================
+RESULT MESSAGE
+========================================= */
+
+function createResultMessage(score){
+
+    if(score === 10){
+
+        return "Perfect score. Gaming encyclopaedia status achieved.";
+
+    }
+
+    if(score >= 8){
+
+        return "Excellent. You clearly know your games.";
+
+    }
+
+    if(score >= 6){
+
+        return "Solid score — nicely played.";
+
+    }
+
+    if(score >= 4){
+
+        return "Not bad. Another round?";
+
+    }
+
+    return "There are definitely a few gaps in the gaming knowledge...";
+}
+
+
+
+/* =========================================
+ANSWER REVIEW
+========================================= */
+
+function buildReview(){
+
+    const list =
+        document.getElementById("reviewList");
+
+    list.innerHTML = "";
+
+
+    /*
+    Include unanswered questions when time expires.
+    */
+
+    currentQuestions.forEach((question,index) => {
+
+        const result =
+            questionResults[index];
+
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "review-item";
+
+
+        const questionText =
+            document.createElement("div");
+
+        questionText.className =
+            "review-question";
+
+        questionText.textContent =
+            `${index + 1}. ${question.question}`;
+
+
+        const answer =
+            document.createElement("div");
+
+        answer.className =
+            "review-answer";
+
+        answer.innerHTML =
+            `Answer: <span>${question.answers[question.correct]}</span>`;
+
+
+        item.appendChild(
+            questionText
+        );
+
+        item.appendChild(
+            answer
+        );
+
+
+        list.appendChild(
+            item
+        );
+    });
+
+
+    document
+        .getElementById("review")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("reviewButton")
+        .textContent =
+        "Review Answers";
+}
+
+
+
+/* =========================================
+TOGGLE REVIEW
+========================================= */
+
+function toggleReview(){
+
+    const review =
+        document.getElementById("review");
+
+
+    const button =
+        document.getElementById("reviewButton");
+
+
+    const hidden =
+        review.style.display === "none" ||
+        review.style.display === "";
+
+
+    if(hidden){
+
+        review.style.display =
+            "block";
+
+        button.textContent =
+            "Hide Answers";
+
+    }else{
+
+        review.style.display =
+            "none";
+
+        button.textContent =
+            "Review Answers";
+    }
+}
+
+
+
+/* =========================================
+PLAY AGAIN
+========================================= */
+
+function playAgain(){
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "none";
+
+    startGame();
+}
+
+</script>
+
+
+</body>
+
+</html>
