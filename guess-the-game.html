@@ -3,442 +3,2167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GUESS THE GAME</title>
 
 <style>
+
 :root{
     --primary:#553179;
     --accent:#bedc00;
     --bg:#eae8e5;
-    --text:#1a1a1a;
-    --grey:#d0d0d0;
-    --green:#2ecc71;
-    --red:#e74c3c;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --grey:#d5d2ce;
+    --green:#49a84f;
+    --red:#d9534f;
+    --border:#d9d6d2;
+}
+
+*{
+    box-sizing:border-box;
 }
 
 body{
     margin:0;
-    font-family:Arial;
+    font-family:Arial, Helvetica, sans-serif;
     background:var(--bg);
     color:var(--text);
 }
 
-/* HEADER */
+
+/* =========================
+HEADER
+========================= */
+
 header{
     background:white;
-    padding:10px 15px;
+    min-height:68px;
+    padding:12px 22px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    border-bottom:2px solid #ddd;
+    justify-content:space-between;
+    border-bottom:1px solid var(--border);
 }
 
-header img{height:38px;}
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
 
 .hub-btn{
     background:var(--primary);
     color:white;
+    text-decoration:none;
     border:none;
-    padding:10px 14px;
+    padding:11px 17px;
     border-radius:10px;
-    font-weight:bold;
+    font-size:14px;
+    font-weight:800;
     cursor:pointer;
 }
 
-/* MENU */
-.menu{
+.hub-btn:hover{
+    opacity:0.92;
+}
+
+
+/* =========================
+START SCREEN
+========================= */
+
+.start-screen{
+    max-width:850px;
+    margin:55px auto;
+    padding:0 20px;
     text-align:center;
-    margin-top:30px;
+}
+
+.title{
+    line-height:0.85;
+    margin-bottom:30px;
 }
 
 .title-top{
-    font-size:56px;
+    display:block;
+    color:var(--primary);
+    font-size:clamp(58px, 9vw, 105px);
     font-weight:900;
+    letter-spacing:-3px;
 }
 
-.title-bottom{
-    font-size:96px;
-    font-weight:900;
+.title-game{
+    display:block;
     color:var(--accent);
+    font-size:clamp(100px, 15vw, 175px);
+    font-weight:900;
+    letter-spacing:-6px;
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,0.12);
 }
 
-/* DIFFICULTY */
-.diff-row{
+.start-intro{
+    max-width:570px;
+    margin:0 auto 28px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.5;
+}
+
+
+/* =========================
+DIFFICULTY
+========================= */
+
+.difficulty-title{
+    color:var(--primary);
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.difficulty-row{
     display:flex;
     justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.diff-option{
+    background:white;
+    border:2px solid var(--primary);
+    border-radius:12px;
+    min-width:110px;
+    padding:10px 15px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.diff-option:hover{
+    transform:translateY(-2px);
+}
+
+.diff-option.active{
+    background:var(--primary);
+    color:white;
+}
+
+.diff-name{
+    font-weight:900;
+}
+
+.diff-detail{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    font-size:12px;
+    transition:0.2s;
+}
+
+.diff-option.active .diff-detail{
+    max-height:40px;
+    opacity:0.85;
+    margin-top:5px;
+}
+
+.start-btn{
+    display:block;
+    margin:30px auto 0;
+    background:var(--accent);
+    color:#202020;
+    border:none;
+    padding:18px 52px;
+    border-radius:14px;
+    font-size:22px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 4px 0 #9cb500;
+}
+
+.start-btn:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+GAME LAYOUT
+========================= */
+
+.game-area{
+    display:none;
+    max-width:1050px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.game-layout{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+}
+
+
+/* =========================
+QUESTION SIDEBAR
+========================= */
+
+.question-nav{
+    width:54px;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    flex-shrink:0;
+}
+
+.question-box{
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:9px;
+    background:var(--grey);
+    color:#444;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.question-box.correct{
+    background:var(--green);
+    color:white;
+}
+
+.question-box.wrong{
+    background:var(--red);
+    color:white;
+}
+
+/* CURRENT MUST OVERRIDE OTHER COLOURS */
+.question-box.current{
+    background:var(--primary) !important;
+    color:white !important;
+    box-shadow:0 0 0 3px rgba(85,49,121,0.15);
+}
+
+
+/* =========================
+GAME CARD
+========================= */
+
+.game-main{
+    flex:1;
+    min-width:0;
+}
+
+.game-card{
+    background:white;
+    border-radius:18px;
+    padding:24px;
+    border:1px solid var(--border);
+    box-shadow:0 8px 18px rgba(0,0,0,0.05);
+}
+
+.game-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:8px;
+}
+
+.progress{
+    color:var(--muted);
+    font-weight:700;
+    font-size:14px;
+}
+
+
+/* =========================
+TIMER
+========================= */
+
+.timer{
+    display:none;
+    min-width:106px;
+    background:var(--primary);
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.timer-label{
+    display:block;
+    font-size:10px;
+    letter-spacing:1px;
+    font-weight:800;
+    opacity:0.8;
+}
+
+.timer-value{
+    display:block;
+    font-size:24px;
+    font-weight:900;
+    line-height:1;
+    margin-top:2px;
+}
+
+.timer.warning{
+    background:var(--red);
+}
+
+
+/* =========================
+EMOJIS
+========================= */
+
+.emoji-display{
+    min-height:145px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    font-size:clamp(58px, 9vw, 90px);
+    letter-spacing:12px;
+
+    padding:20px 10px;
+}
+
+
+/* =========================
+CLUE
+========================= */
+
+.clue-btn{
+    width:100%;
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:13px;
+    border-radius:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.clue-box{
+    display:none;
+    margin-top:12px;
+    background:#f3f1ef;
+    border-left:4px solid var(--primary);
+    border-radius:9px;
+    padding:14px;
+    line-height:1.45;
+}
+
+.answer-section{
+    margin-top:24px;
+}
+
+
+/* =========================
+ANSWER INPUT
+========================= */
+
+.answer-input{
+    width:100%;
+    min-height:50px;
+    border:1px solid #bbb;
+    border-radius:10px;
+    padding:14px 15px;
+    font-size:16px;
+    outline:none;
+}
+
+.answer-input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(85,49,121,0.10);
+}
+
+.submit-btn{
+    width:100%;
+    background:var(--accent);
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    margin-top:10px;
+    font-weight:900;
+    font-size:16px;
+    cursor:pointer;
+}
+
+
+/* =========================
+NAV BUTTONS
+========================= */
+
+.nav-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:10px;
     margin-top:15px;
 }
 
-.diff{
-    border:2px solid var(--primary);
-    background:white;
-    padding:8px 14px;
+.back-btn,
+.skip-btn{
+    border:none;
+    padding:12px;
     border-radius:10px;
+    font-weight:800;
     cursor:pointer;
 }
 
-.diff.active{
-    background:var(--primary);
+.back-btn{
+    background:#dedbd7;
+}
+
+.skip-btn{
+    background:#8b8b8b;
     color:white;
 }
 
-.start-btn{
-    margin-top:25px;
-    padding:18px 44px;
-    font-size:22px;
-    background:var(--accent);
+.back-btn:disabled{
+    opacity:0.35;
+    cursor:not-allowed;
+}
+
+
+/* =========================
+END SCREEN
+========================= */
+
+.end-screen{
+    display:none;
+    max-width:850px;
+    margin:55px auto;
+    padding:0 20px 60px;
+    text-align:center;
+}
+
+.end-card{
+    background:white;
+    padding:38px 25px;
+    border-radius:20px;
+    border:1px solid var(--border);
+}
+
+.end-title{
+    color:var(--primary);
+    font-size:clamp(44px, 8vw, 76px);
+    font-weight:900;
+    margin:0;
+    line-height:1;
+}
+
+.end-title.times-up{
+    font-size:clamp(60px, 11vw, 105px);
+}
+
+.score-label{
+    color:var(--muted);
+    margin-top:22px;
+    text-transform:uppercase;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.final-score{
+    color:var(--primary);
+    font-size:60px;
+    font-weight:900;
+    margin:4px 0 20px;
+}
+
+.result-stats{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:24px;
+}
+
+.stat{
+    background:#f2f0ed;
+    border-radius:10px;
+    padding:10px 15px;
+    min-width:100px;
+}
+
+.stat strong{
+    display:block;
+    color:var(--primary);
+    font-size:20px;
+}
+
+.stat span{
+    font-size:11px;
+    color:var(--muted);
+}
+
+.end-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.end-btn{
     border:none;
-    border-radius:14px;
+    border-radius:11px;
+    padding:14px 20px;
     font-weight:900;
     cursor:pointer;
+    font-size:15px;
 }
 
-/* GAME */
-.wrapper{
-    display:flex;
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-    gap:20px;
+.play-again{
+    background:var(--accent);
+    color:#222;
 }
 
-.sidebar{
-    width:60px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.dot{
-    width:44px;
-    height:44px;
-    border-radius:8px;
-    background:var(--grey);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-}
-
-.dot.current{background:var(--primary);color:white;}
-.dot.correct{background:var(--green);color:white;}
-.dot.wrong{background:var(--red);color:white;}
-
-.main{flex:1;}
-
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    display:none;
-}
-
-.emoji{
-    font-size:78px;
-    text-align:center;
-    margin:25px 0;
-}
-
-input{
-    width:100%;
-    padding:14px;
-    border-radius:10px;
-    border:1px solid #ccc;
-}
-
-.btn{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    margin-top:12px;
-    font-weight:bold;
-}
-
-.submit{background:var(--accent);}
-.skip{background:#999;color:white;}
-.back{background:#ddd;}
-
-/* CLUE */
-.clue-btn{
+.reveal-btn{
     background:var(--primary);
     color:white;
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    margin-top:12px;
-    font-weight:bold;
-    cursor:pointer;
 }
 
-.clue{
+
+/* =========================
+ANSWER REVIEW
+========================= */
+
+.answer-review{
     display:none;
-    margin-top:15px;
-    background:#f4f4f4;
-    padding:10px;
-    border-radius:8px;
-}
-
-/* END */
-.end{text-align:center;}
-
-.big{font-size:52px;font-weight:900;}
-.big-score{font-size:30px;margin:10px 0 20px;}
-
-.action-btn{
-    padding:14px 18px;
-    border-radius:10px;
-    border:none;
-    margin:5px;
-    font-weight:bold;
-}
-
-.primary{background:var(--accent);}
-.secondary{background:var(--primary);color:white;}
-
-.answers{
-    max-width:600px;
-    margin:auto;
+    max-width:650px;
+    margin:30px auto 0;
     text-align:left;
-    margin-top:20px;
+}
+
+.answer-review h2{
+    color:var(--primary);
+    text-align:center;
+    margin-bottom:16px;
 }
 
 .answer-card{
     display:flex;
+    align-items:center;
+    gap:18px;
+    background:#f5f3f0;
+    padding:15px;
+    margin-bottom:9px;
+    border-radius:12px;
+}
+
+.answer-emoji{
+    font-size:34px;
+    flex-shrink:0;
+}
+
+.answer-name{
+    font-size:21px;
+    font-weight:900;
+    color:var(--primary);
+}
+
+.answer-status{
+    margin-left:auto;
+    font-size:13px;
+    font-weight:800;
+}
+
+.answer-status.correct-text{
+    color:var(--green);
+}
+
+.answer-status.wrong-text{
+    color:var(--red);
+}
+
+.answer-status.unanswered-text{
+    color:#888;
+}
+
+
+/* =========================
+MORE GAMES
+========================= */
+
+.more-games{
+    margin-top:40px;
+    border-top:1px solid var(--border);
+    padding-top:28px;
+}
+
+.more-games h2{
+    color:var(--primary);
+}
+
+.more-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
-    padding:10px;
-    background:white;
-    margin-bottom:8px;
-    border-radius:10px;
-    font-size:18px;
 }
 
-.answer-emoji{font-size:28px;}
-
-.timer{
-    text-align:center;
-    font-weight:bold;
-    margin-top:10px;
+.more-card{
+    background:#f3f1ee;
+    padding:18px 12px;
+    border-radius:12px;
 }
+
+.more-icon{
+    font-size:32px;
+}
+
+.more-card strong{
+    display:block;
+    color:var(--primary);
+    margin:8px 0 4px;
+}
+
+.more-card small{
+    color:var(--muted);
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+        padding:9px 10px;
+    }
+
+    .game-area{
+        padding:0 10px;
+    }
+
+    .game-layout{
+        gap:9px;
+    }
+
+    .question-nav{
+        width:38px;
+        gap:5px;
+    }
+
+    .question-box{
+        width:36px;
+        height:36px;
+        font-size:12px;
+    }
+
+    .game-card{
+        padding:16px;
+    }
+
+    .game-top{
+        align-items:flex-start;
+    }
+
+    .timer{
+        min-width:82px;
+        padding:8px;
+    }
+
+    .timer-value{
+        font-size:20px;
+    }
+
+    .emoji-display{
+        letter-spacing:5px;
+        min-height:125px;
+    }
+
+    .more-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-<a href="https://www.gamesjobsdirect.com/">
-<img src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg">
-</a>
 
-<button class="hub-btn" onclick="goHub()">Return to Game Hub</button>
+<!-- HEADER -->
+
+<header>
+
+    <a
+        class="logo-link"
+        href="https://www.gamesjobsdirect.com/"
+        aria-label="Visit Games Jobs Direct">
+
+        <img
+            src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+            alt="Games Jobs Direct">
+
+    </a>
+
+    <a class="hub-btn" href="index.html">
+        Return to Game Hub
+    </a>
+
 </header>
 
-<!-- MENU -->
-<div class="menu" id="menu">
 
-<div class="title-top">GUESS THE</div>
-<div class="title-bottom">GAME</div>
 
-<div class="diff-row">
-<div class="diff active" onclick="setDiff('easy',this)">Easy</div>
-<div class="diff" onclick="setDiff('normal',this)">Normal</div>
-<div class="diff" onclick="setDiff('hard',this)">Hard</div>
-</div>
+<!-- START SCREEN -->
 
-<div class="timer" id="timerInfo"></div>
+<section class="start-screen" id="startScreen">
 
-<button class="start-btn" onclick="start()">START GAME</button>
-</div>
+    <div class="title">
+
+        <span class="title-top">
+            GUESS THE
+        </span>
+
+        <span class="title-game">
+            GAME
+        </span>
+
+    </div>
+
+    <p class="start-intro">
+        Decode 10 emoji puzzles and name the video games.
+        Reveal a clue if you get stuck, skip around the board,
+        and see how many you can get right.
+    </p>
+
+    <div class="difficulty-title">
+        SELECT DIFFICULTY
+    </div>
+
+    <div class="difficulty-row">
+
+        <button
+            class="diff-option active"
+            data-difficulty="easy"
+            onclick="selectDifficulty('easy', this)">
+
+            <div class="diff-name">Easy</div>
+
+            <div class="diff-detail">
+                No timer
+            </div>
+
+        </button>
+
+        <button
+            class="diff-option"
+            data-difficulty="normal"
+            onclick="selectDifficulty('normal', this)">
+
+            <div class="diff-name">Normal</div>
+
+            <div class="diff-detail">
+                60 seconds
+            </div>
+
+        </button>
+
+        <button
+            class="diff-option"
+            data-difficulty="hard"
+            onclick="selectDifficulty('hard', this)">
+
+            <div class="diff-name">Hard</div>
+
+            <div class="diff-detail">
+                30 seconds
+            </div>
+
+        </button>
+
+    </div>
+
+    <button class="start-btn" onclick="startGame()">
+        START GAME
+    </button>
+
+</section>
+
+
 
 <!-- GAME -->
-<div class="wrapper">
-<div class="sidebar" id="sidebar"></div>
 
-<div class="main">
+<section class="game-area" id="gameArea">
 
-<div class="card" id="game">
+    <div class="game-layout">
 
-<div class="emoji" id="emoji"></div>
+        <aside class="question-nav" id="questionNav"></aside>
 
-<button class="clue-btn" onclick="toggleClue()">Reveal Clue</button>
+        <main class="game-main">
 
-<div class="clue" id="clue"></div>
+            <div class="game-card">
 
-<input id="input" placeholder="Type your guess">
+                <div class="game-top">
 
-<button class="btn submit" onclick="submit()">Submit</button>
-<button class="btn skip" onclick="skip()">Skip</button>
-<button class="btn back" onclick="back()">Back</button>
+                    <div class="progress" id="progressText">
+                        Question 1 of 10
+                    </div>
 
-</div>
+                    <div class="timer" id="timerBox">
 
-<div id="end" class="end" style="display:none;"></div>
+                        <span class="timer-label">
+                            TIME LEFT
+                        </span>
 
-</div>
-</div>
+                        <span class="timer-value" id="timerValue">
+                            60
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="emoji-display" id="emojiDisplay"></div>
+
+
+                <button
+                    class="clue-btn"
+                    onclick="toggleClue()">
+
+                    Reveal Clue
+
+                </button>
+
+
+                <div class="clue-box" id="clueBox"></div>
+
+
+                <div class="answer-section">
+
+                    <input
+                        class="answer-input"
+                        id="answerInput"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Type your guess...">
+
+                    <button
+                        class="submit-btn"
+                        onclick="submitAnswer()">
+
+                        Submit Answer
+
+                    </button>
+
+                </div>
+
+
+                <div class="nav-buttons">
+
+                    <button
+                        class="back-btn"
+                        id="backButton"
+                        onclick="previousQuestion()">
+
+                        ← Back
+
+                    </button>
+
+                    <button
+                        class="skip-btn"
+                        onclick="nextQuestion()">
+
+                        Skip →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</section>
+
+
+
+<!-- RESULTS -->
+
+<section class="end-screen" id="endScreen">
+
+    <div class="end-card">
+
+        <h1 class="end-title" id="endTitle">
+            GAME COMPLETE
+        </h1>
+
+        <div class="score-label">
+            YOUR SCORE
+        </div>
+
+        <div class="final-score" id="finalScore">
+            0/10
+        </div>
+
+
+        <div class="result-stats">
+
+            <div class="stat">
+                <strong id="correctStat">0</strong>
+                <span>Correct</span>
+            </div>
+
+            <div class="stat">
+                <strong id="wrongStat">0</strong>
+                <span>Wrong</span>
+            </div>
+
+            <div class="stat">
+                <strong id="unansweredStat">0</strong>
+                <span>Unanswered</span>
+            </div>
+
+        </div>
+
+
+        <div class="end-actions">
+
+            <button
+                class="end-btn play-again"
+                onclick="playAgain()">
+
+                Play Again
+            </button>
+
+            <button
+                class="end-btn reveal-btn"
+                id="revealAnswersButton"
+                onclick="toggleAnswers()">
+
+                Reveal Answers
+            </button>
+
+        </div>
+
+
+        <div class="answer-review" id="answerReview">
+
+            <h2>Answers</h2>
+
+            <div id="answerList"></div>
+
+        </div>
+
+
+        <div class="more-games">
+
+            <h2>Try Another Game</h2>
+
+            <div class="more-grid">
+
+                <div class="more-card">
+                    <div class="more-icon">🏢</div>
+                    <strong>Guess The Studio</strong>
+                    <small>Coming Soon</small>
+                </div>
+
+                <div class="more-card">
+                    <div class="more-icon">👤</div>
+                    <strong>Guess The Character</strong>
+                    <small>Coming Soon</small>
+                </div>
+
+                <div class="more-card">
+                    <div class="more-icon">🧠</div>
+                    <strong>Game Trivia</strong>
+                    <small>Coming Soon</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 <script>
 
-/* 🔥 BIG POOL (SESSION PICKS 10 ONLY) */
-const ALL=[
-{emoji:"🍄👨‍🔧🏰",answer:["mario"],clue:"Plumber saves princess"},
-{emoji:"🧱⛏️🌍",answer:["minecraft"],clue:"Build and survive"},
-{emoji:"🧟‍♂️🔫🏚️",answer:["resident evil"],clue:"Zombie horror"},
-{emoji:"⚔️🐉👑",answer:["skyrim"],clue:"Dragonborn RPG"},
-{emoji:"🔫🪖🌍",answer:["call of duty"],clue:"Military FPS"},
-{emoji:"🎯🔫📦",answer:["fortnite"],clue:"Battle royale"},
-{emoji:"🪐👽🔫",answer:["halo"],clue:"Space war saga"},
-{emoji:"🚗💥🌆",answer:["gta"],clue:"Crime sandbox"},
-{emoji:"⚡🐉👦",answer:["pokemon"],clue:"Creature battles"},
-{emoji:"🏹🏹🏹",answer:["zelda"],clue:"Fantasy quest"},
-{emoji:"🏝️🧟‍♀️🔫",answer:["last of us"],clue:"Post apocalypse"},
-{emoji:"🧙‍♂️📜🔥",answer:["witcher"],clue:"Monster hunter"},
-{emoji:"🪓🌲🏚️",answer:["dont starve"],clue:"Survival crafting"},
-{emoji:"🚀👨‍🚀🌌",answer:["mass effect"],clue:"Space RPG"},
-{emoji:"🤖🔫🌆",answer:["cyberpunk"],clue:"Future city"}
+/* =========================================================
+QUESTION BANK
+
+Only 10 questions are chosen from this larger pool each game.
+You can keep adding more entries here later.
+========================================================= */
+
+const QUESTION_BANK = [
+
+{
+    emoji:"🍄 👨‍🔧 👸 🐢",
+    answers:["super mario bros","super mario brothers","mario bros"],
+    displayAnswer:"Super Mario Bros.",
+    clue:"First released in 1985. A pair of plumbers travel through the Mushroom Kingdom to rescue Princess Peach."
+},
+
+{
+    emoji:"⛏️ 🧱 💎 🐷",
+    answers:["minecraft"],
+    displayAnswer:"Minecraft",
+    clue:"A block-based sandbox where players mine, craft, build and survive."
+},
+
+{
+    emoji:"🪐 👨‍🚀 👽 🔫",
+    answers:["halo","halo combat evolved"],
+    displayAnswer:"Halo: Combat Evolved",
+    clue:"Released in 2001. Master Chief battles the Covenant on a mysterious ringworld."
+},
+
+{
+    emoji:"🚗 💰 🔫 🌆",
+    answers:[
+        "gta",
+        "grand theft auto"
+    ],
+    displayAnswer:"Grand Theft Auto",
+    clue:"An open-world crime series known for sprawling cities, vehicles and wanted levels."
+},
+
+{
+    emoji:"🐉 ⚔️ ❄️ 🗣️",
+    answers:[
+        "skyrim",
+        "elder scrolls skyrim",
+        "the elder scrolls skyrim",
+        "the elder scrolls v skyrim"
+    ],
+    displayAnswer:"The Elder Scrolls V: Skyrim",
+    clue:"You play as the Dragonborn in the frozen province of Skyrim."
+},
+
+{
+    emoji:"🧟 🏚️ 🔫 🧪",
+    answers:["resident evil"],
+    displayAnswer:"Resident Evil",
+    clue:"A survival-horror franchise involving biological weapons, sinister corporations and plenty of zombies."
+},
+
+{
+    emoji:"⚡ 🐭 🔴 ⚪",
+    answers:["pokemon","pokémon"],
+    displayAnswer:"Pokémon",
+    clue:"Catch, train and battle creatures while working towards becoming a champion."
+},
+
+{
+    emoji:"🗡️ 🛡️ 👸 🔺",
+    answers:[
+        "zelda",
+        "legend of zelda",
+        "the legend of zelda"
+    ],
+    displayAnswer:"The Legend of Zelda",
+    clue:"A long-running Nintendo adventure series starring Link, Zelda and the Triforce."
+},
+
+{
+    emoji:"🔫 🪖 💥 🌍",
+    answers:["call of duty","cod"],
+    displayAnswer:"Call of Duty",
+    clue:"A hugely successful first-person shooter franchise with campaigns and competitive multiplayer."
+},
+
+{
+    emoji:"🚌 🪂 🏝️ 🔫",
+    answers:["fortnite"],
+    displayAnswer:"Fortnite",
+    clue:"Players drop from a flying bus before competing to be the last one standing."
+},
+
+{
+    emoji:"🐺 ⚔️ 🧙 👹",
+    answers:[
+        "witcher",
+        "the witcher",
+        "witcher 3",
+        "the witcher 3",
+        "the witcher 3 wild hunt"
+    ],
+    displayAnswer:"The Witcher 3: Wild Hunt",
+    clue:"Geralt of Rivia hunts monsters while searching for Ciri."
+},
+
+{
+    emoji:"👧 🧟 🍄 🌿",
+    answers:[
+        "last of us",
+        "the last of us"
+    ],
+    displayAnswer:"The Last of Us",
+    clue:"A fungal outbreak has devastated civilisation, and Joel must escort Ellie across America."
+},
+
+{
+    emoji:"🚀 👽 🤖 🌌",
+    answers:["mass effect"],
+    displayAnswer:"Mass Effect",
+    clue:"Commander Shepard travels the galaxy building alliances against a massive threat."
+},
+
+{
+    emoji:"🤠 🐎 🔫 🌵",
+    answers:[
+        "red dead redemption",
+        "rdr",
+        "red dead"
+    ],
+    displayAnswer:"Red Dead Redemption",
+    clue:"Rockstar's western series follows outlaws during the decline of the American frontier."
+},
+
+{
+    emoji:"🌃 🤖 🔫 💿",
+    answers:[
+        "cyberpunk",
+        "cyberpunk 2077"
+    ],
+    displayAnswer:"Cyberpunk 2077",
+    clue:"Set in Night City, this RPG follows mercenary V through a high-tech dystopian future."
+},
+
+{
+    emoji:"👻 📹 🏠 🔦",
+    answers:["phasmophobia"],
+    displayAnswer:"Phasmophobia",
+    clue:"A co-op paranormal investigation game where players identify ghosts using specialist equipment."
+},
+
+{
+    emoji:"🌾 🐔 🎣 💕",
+    answers:["stardew valley"],
+    displayAnswer:"Stardew Valley",
+    clue:"You inherit your grandfather's old farm and begin a new life in a small rural town."
+},
+
+{
+    emoji:"🟦 🟨 🟥 🧱",
+    answers:["tetris"],
+    displayAnswer:"Tetris",
+    clue:"Arrange falling geometric blocks to complete horizontal lines."
+},
+
+{
+    emoji:"🟡 👻 🍒 🕹️",
+    answers:[
+        "pacman",
+        "pac man",
+        "pac-man"
+    ],
+    displayAnswer:"Pac-Man",
+    clue:"Navigate a maze, eat pellets and avoid colourful ghosts."
+},
+
+{
+    emoji:"🏎️ 🏁 🌄 🚘",
+    answers:[
+        "forza",
+        "forza horizon"
+    ],
+    displayAnswer:"Forza Horizon",
+    clue:"An open-world racing series built around large automotive festivals."
+},
+
+{
+    emoji:"🔥 ⚔️ ☠️ 🏰",
+    answers:["dark souls"],
+    displayAnswer:"Dark Souls",
+    clue:"A famously challenging action RPG filled with bonfires, bosses and cryptic storytelling."
+},
+
+{
+    emoji:"🧙 🏰 🪄 📚",
+    answers:["hogwarts legacy"],
+    displayAnswer:"Hogwarts Legacy",
+    clue:"An open-world RPG where you attend the famous school of witchcraft and wizardry."
+},
+
+{
+    emoji:"🧟 🏃 🌇 🧗",
+    answers:["dying light"],
+    displayAnswer:"Dying Light",
+    clue:"A zombie survival game combining first-person combat with parkour."
+},
+
+{
+    emoji:"🌊 🤿 👽 🐟",
+    answers:["subnautica"],
+    displayAnswer:"Subnautica",
+    clue:"You crash on an alien ocean planet and must explore its depths to survive."
+},
+
+{
+    emoji:"🏹 🤖 🦖 🌄",
+    answers:[
+        "horizon",
+        "horizon zero dawn"
+    ],
+    displayAnswer:"Horizon Zero Dawn",
+    clue:"Aloy explores a post-apocalyptic world populated by enormous robotic creatures."
+},
+
+{
+    emoji:"🪓 👨‍🦲 👦 ❄️",
+    answers:[
+        "god of war",
+        "god of war 2018"
+    ],
+    displayAnswer:"God of War",
+    clue:"Kratos travels through the Norse realms alongside his son Atreus."
+},
+
+{
+    emoji:"🕷️ 🏙️ 🦸 🕸️",
+    answers:[
+        "spiderman",
+        "spider man",
+        "spider-man",
+        "marvel spiderman",
+        "marvels spiderman"
+    ],
+    displayAnswer:"Marvel's Spider-Man",
+    clue:"Swing across New York City as Marvel's famous web-slinging superhero."
+},
+
+{
+    emoji:"🤖 🧪 🔵 🟠",
+    answers:["portal"],
+    displayAnswer:"Portal",
+    clue:"Solve physics puzzles using a device capable of creating linked portals."
+},
+
+{
+    emoji:"🚀 🛰️ 🧑‍🚀 🪐",
+    answers:[
+        "kerbal space program",
+        "kerbal"
+    ],
+    displayAnswer:"Kerbal Space Program",
+    clue:"Design rockets and attempt space missions with a crew of enthusiastic green astronauts."
+},
+
+{
+    emoji:"🔨 🧟 🌙 🏚️",
+    answers:[
+        "7 days to die",
+        "seven days to die"
+    ],
+    displayAnswer:"7 Days to Die",
+    clue:"A survival crafting game where increasingly dangerous zombie hordes arrive on a regular cycle."
+},
+
+{
+    emoji:"🕵️ 🚀 🔴 👨‍🚀",
+    answers:["among us"],
+    displayAnswer:"Among Us",
+    clue:"Crewmates complete tasks while trying to uncover an impostor hiding among them."
+},
+
+{
+    emoji:"🐑 🏝️ 🏡 🍎",
+    answers:[
+        "animal crossing",
+        "animal crossing new horizons"
+    ],
+    displayAnswer:"Animal Crossing",
+    clue:"A relaxed Nintendo life simulation featuring friendly animal neighbours."
+},
+
+{
+    emoji:"⚔️ 🏰 👑 💍",
+    answers:["elden ring"],
+    displayAnswer:"Elden Ring",
+    clue:"A vast action RPG set in the Lands Between, created by FromSoftware."
+},
+
+{
+    emoji:"🧑‍🚀 🪐 🔫 🪲",
+    answers:[
+        "helldivers",
+        "helldivers 2",
+        "helldivers ii"
+    ],
+    displayAnswer:"Helldivers 2",
+    clue:"Co-operative soldiers spread Managed Democracy across hostile alien planets."
+},
+
+{
+    emoji:"🐐 🏙️ 💥 😂",
+    answers:["goat simulator"],
+    displayAnswer:"Goat Simulator",
+    clue:"A deliberately ridiculous sandbox starring a surprisingly destructive goat."
+},
+
+{
+    emoji:"🚛 📦 🛣️ 🇪🇺",
+    answers:[
+        "euro truck simulator",
+        "euro truck simulator 2",
+        "ets2"
+    ],
+    displayAnswer:"Euro Truck Simulator 2",
+    clue:"Drive trucks, deliver cargo and build a haulage business across Europe."
+},
+
+{
+    emoji:"🍌 🦍 🛢️ 👑",
+    answers:[
+        "donkey kong",
+        "donkey kong country"
+    ],
+    displayAnswer:"Donkey Kong",
+    clue:"Nintendo platforming icon famous for barrels, bananas and a powerful ape hero."
+},
+
+{
+    emoji:"💀 💀 🎮 😡",
+    answers:[
+        "cuphead"
+    ],
+    displayAnswer:"Cuphead",
+    clue:"A difficult run-and-gun game styled after cartoons from the 1930s."
+},
+
+{
+    emoji:"🪦 ⚔️ 🐛 🌧️",
+    answers:["hollow knight"],
+    displayAnswer:"Hollow Knight",
+    clue:"Explore the ruined underground kingdom of Hallownest in this hand-drawn metroidvania."
+},
+
+{
+    emoji:"🏃 🧗 🏔️ 🍓",
+    answers:["celeste"],
+    displayAnswer:"Celeste",
+    clue:"Madeline attempts to climb a mountain in a precision platformer about perseverance."
+},
+
+{
+    emoji:"🎸 🧟 🚗 🍄",
+    answers:[
+        "left 4 dead",
+        "left 4 dead 2",
+        "l4d",
+        "l4d2"
+    ],
+    displayAnswer:"Left 4 Dead",
+    clue:"Four survivors battle through enormous hordes of infected in this co-op shooter."
+},
+
+{
+    emoji:"🌲 ✈️ 🪓 👹",
+    answers:["the forest","forest"],
+    displayAnswer:"The Forest",
+    clue:"After a plane crash, you must survive on an island inhabited by dangerous mutants."
+},
+
+{
+    emoji:"🏝️ 🔫 🐅 💥",
+    answers:["far cry"],
+    displayAnswer:"Far Cry",
+    clue:"An open-world shooter series usually placing the player against a charismatic villain."
+},
+
+{
+    emoji:"🤖 🏭 🌌 🟦",
+    answers:[
+        "factorio"
+    ],
+    displayAnswer:"Factorio",
+    clue:"Build increasingly enormous automated factories while defending them from native creatures."
+},
+
+{
+    emoji:"🚪 👹 🗝️ 🏨",
+    answers:[
+        "doors",
+        "roblox doors"
+    ],
+    displayAnswer:"DOORS",
+    clue:"A horror experience where players move through rooms while avoiding dangerous entities."
+},
+
+{
+    emoji:"👨‍🚀 🌌 🏠 🪐",
+    answers:[
+        "no mans sky",
+        "no man's sky"
+    ],
+    displayAnswer:"No Man's Sky",
+    clue:"Explore a procedurally generated universe containing enormous numbers of planets."
+},
+
+{
+    emoji:"🐈 🌆 🤖 🎒",
+    answers:["stray"],
+    displayAnswer:"Stray",
+    clue:"Play as a lost cat exploring a futuristic city inhabited by robots."
+},
+
+{
+    emoji:"🦇 🌃 🤡 🏥",
+    answers:[
+        "batman arkham",
+        "batman arkham asylum",
+        "arkham asylum"
+    ],
+    displayAnswer:"Batman: Arkham Asylum",
+    clue:"Batman becomes trapped inside Gotham's infamous psychiatric hospital after the Joker takes control."
+},
+
+{
+    emoji:"📦 ❗ 🐍 🕵️",
+    answers:[
+        "metal gear solid",
+        "metal gear"
+    ],
+    displayAnswer:"Metal Gear Solid",
+    clue:"A stealth series famous for Solid Snake, cardboard boxes and tactical espionage action."
+}
+
 ];
 
-let q=[],i=0,score=0,status=[],diff="easy";
-let timer,timeLeft,revealed=false;
 
-/* DIFF */
-function setDiff(d,el){
-diff=d;
-document.querySelectorAll(".diff").forEach(x=>x.classList.remove("active"));
-el.classList.add("active");
+/* =========================================================
+GAME STATE
+========================================================= */
 
-document.getElementById("timerInfo").innerText =
-d==="easy"?"No timer":d==="normal"?"1 minute total":"30 seconds total";
+const QUESTIONS_PER_GAME = 10;
+
+let sessionQuestions = [];
+
+let currentIndex = 0;
+
+let selectedDifficulty = "easy";
+
+let statuses = [];
+
+let playerAnswers = [];
+
+let clueUsed = [];
+
+let gameFinished = false;
+
+let gameTimer = null;
+
+let timeRemaining = null;
+
+
+/* =========================================================
+DIFFICULTY
+========================================================= */
+
+function selectDifficulty(level, button){
+
+    selectedDifficulty = level;
+
+    document.querySelectorAll(".diff-option")
+        .forEach(item => item.classList.remove("active"));
+
+    button.classList.add("active");
 }
 
-/* START (10 ONLY PER RUN) */
-function start(){
-q=[...ALL].sort(()=>Math.random()-0.5).slice(0,10);
-i=0;score=0;
-status=Array(q.length).fill("pending");
 
-document.getElementById("menu").style.display="none";
-document.getElementById("game").style.display="block";
+/* =========================================================
+SHUFFLE
+========================================================= */
 
-buildSidebar();
-load();
-startTimer();
+function shuffled(array){
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--){
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
 }
 
-/* SIDEBAR */
-function buildSidebar(){
-let s=document.getElementById("sidebar");
-s.innerHTML="";
-q.forEach((_,idx)=>{
-let d=document.createElement("div");
-d.className="dot";
-d.innerText=idx+1;
-d.onclick=()=>{i=idx;load();};
-s.appendChild(d);
-});
-updateSidebar();
+
+/* =========================================================
+START GAME
+========================================================= */
+
+function startGame(){
+
+    sessionQuestions =
+        shuffled(QUESTION_BANK)
+        .slice(0, QUESTIONS_PER_GAME);
+
+    currentIndex = 0;
+
+    statuses =
+        Array(QUESTIONS_PER_GAME).fill("pending");
+
+    playerAnswers =
+        Array(QUESTIONS_PER_GAME).fill("");
+
+    clueUsed =
+        Array(QUESTIONS_PER_GAME).fill(false);
+
+    gameFinished = false;
+
+    document.getElementById("startScreen").style.display = "none";
+
+    document.getElementById("endScreen").style.display = "none";
+
+    document.getElementById("gameArea").style.display = "block";
+
+    buildQuestionNavigation();
+
+    loadQuestion();
+
+    startGameTimer();
 }
 
-function updateSidebar(){
-document.querySelectorAll(".dot").forEach((d,idx)=>{
-d.className="dot";
-if(idx===i) d.classList.add("current");
-if(status[idx]==="correct") d.classList.add("correct");
-if(status[idx]==="wrong") d.classList.add("wrong");
-});
+
+/* =========================================================
+QUESTION NAVIGATION
+========================================================= */
+
+function buildQuestionNavigation(){
+
+    const container =
+        document.getElementById("questionNav");
+
+    container.innerHTML = "";
+
+    sessionQuestions.forEach((question, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "question-box";
+
+        button.textContent = index + 1;
+
+        button.onclick = () => {
+
+            if(gameFinished) return;
+
+            currentIndex = index;
+
+            loadQuestion();
+        };
+
+        container.appendChild(button);
+    });
+
+    updateQuestionNavigation();
 }
 
-/* LOAD */
-function load(){
-if(i>=q.length) return end();
 
-document.getElementById("emoji").innerText=q[i].emoji;
-document.getElementById("input").value="";
+function updateQuestionNavigation(){
 
-document.getElementById("clue").style.display="none";
-document.getElementById("clue").innerText=q[i].clue;
+    const buttons =
+        document.querySelectorAll(".question-box");
 
-updateSidebar();
+    buttons.forEach((button, index) => {
+
+        button.className = "question-box";
+
+        if(statuses[index] === "correct"){
+            button.classList.add("correct");
+        }
+
+        if(statuses[index] === "wrong"){
+            button.classList.add("wrong");
+        }
+
+        /*
+        CURRENT is added last,
+        so purple always overrides green/red.
+        */
+
+        if(index === currentIndex && !gameFinished){
+            button.classList.add("current");
+        }
+    });
 }
 
-/* CLUE */
+
+/* =========================================================
+LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    const question =
+        sessionQuestions[currentIndex];
+
+    document.getElementById("emojiDisplay")
+        .textContent = question.emoji;
+
+    const input =
+        document.getElementById("answerInput");
+
+    input.value =
+        playerAnswers[currentIndex];
+
+    document.getElementById("clueBox")
+        .style.display = "none";
+
+    document.getElementById("clueBox")
+        .textContent = question.clue;
+
+    document.getElementById("progressText")
+        .textContent =
+        `Question ${currentIndex + 1} of ${QUESTIONS_PER_GAME}`;
+
+    document.getElementById("backButton")
+        .disabled = currentIndex === 0;
+
+    updateQuestionNavigation();
+
+    setTimeout(() => {
+        input.focus();
+    }, 50);
+}
+
+
+/* =========================================================
+CLUES
+========================================================= */
+
 function toggleClue(){
-let c=document.getElementById("clue");
-c.style.display = (c.style.display==="block")?"none":"block";
+
+    const clueBox =
+        document.getElementById("clueBox");
+
+    const isHidden =
+        clueBox.style.display === "none" ||
+        clueBox.style.display === "";
+
+    if(isHidden){
+
+        clueBox.style.display = "block";
+
+        clueUsed[currentIndex] = true;
+
+    } else {
+
+        clueBox.style.display = "none";
+    }
 }
 
-/* TIMER (SESSION BASED) */
-function startTimer(){
-clearInterval(timer);
-if(diff==="easy") return;
 
-if(i===0) timeLeft=diff==="normal"?60:30;
+/* =========================================================
+NORMALISE ANSWERS
+========================================================= */
 
-document.getElementById("timerInfo").innerText=`Time: ${timeLeft}s`;
+function normaliseAnswer(text){
 
-timer=setInterval(()=>{
-timeLeft--;
-document.getElementById("timerInfo").innerText=`Time: ${timeLeft}s`;
-if(timeLeft<=0) gameOver();
-},1000);
+    return text
+        .toLowerCase()
+        .trim()
+
+        /*
+        Turn symbols/punctuation into spaces.
+        */
+
+        .replace(/['’:.!,?®™-]/g, " ")
+
+        /*
+        Collapse repeated spaces.
+        */
+
+        .replace(/\s+/g, " ");
 }
 
-/* SUBMIT */
-function submit(){
-let v=document.getElementById("input").value.toLowerCase();
 
-if(q[i].answer.some(a=>v.includes(a))){
-score++;
-status[i]="correct";
-}else{
-status[i]="wrong";
+/* =========================================================
+ANSWER MATCHING
+========================================================= */
+
+function isCorrectAnswer(userAnswer, acceptedAnswers){
+
+    const user =
+        normaliseAnswer(userAnswer);
+
+    if(!user){
+        return false;
+    }
+
+    return acceptedAnswers.some(answer => {
+
+        const accepted =
+            normaliseAnswer(answer);
+
+        /*
+        Exact accepted answer.
+        */
+
+        if(user === accepted){
+            return true;
+        }
+
+        /*
+        Allow expanded/specific versions.
+
+        Example:
+        "grand theft auto v"
+        can match accepted answer
+        "grand theft auto".
+
+        But very short answers such as "gta"
+        are NOT used for substring matching
+        because that could cause false positives.
+        */
+
+        if(
+            accepted.length >= 5 &&
+            user.startsWith(accepted + " ")
+        ){
+            return true;
+        }
+
+        return false;
+    });
 }
 
-i++;
-load();
+
+/* =========================================================
+SUBMIT
+========================================================= */
+
+function submitAnswer(){
+
+    if(gameFinished){
+        return;
+    }
+
+    const input =
+        document.getElementById("answerInput");
+
+    const value =
+        input.value.trim();
+
+    if(!value){
+        return;
+    }
+
+    playerAnswers[currentIndex] = value;
+
+    const question =
+        sessionQuestions[currentIndex];
+
+    const correct =
+        isCorrectAnswer(
+            value,
+            question.answers
+        );
+
+    /*
+    Status is REPLACED rather than incrementing score.
+
+    This prevents revisiting a question and getting
+    multiple points for answering it repeatedly.
+    */
+
+    statuses[currentIndex] =
+        correct ? "correct" : "wrong";
+
+    updateQuestionNavigation();
+
+    moveToNextUsefulQuestion();
 }
 
-/* NAV */
-function skip(){i++;load();}
-function back(){if(i>0)i--;load();}
 
-/* END */
-function end(){
-document.getElementById("game").style.display="none";
-document.getElementById("end").style.display="block";
+/* =========================================================
+ENTER KEY
+========================================================= */
 
-document.getElementById("end").innerHTML=`
-<div class="big">GAME COMPLETE 🎉</div>
-<div class="big-score">${score}/${q.length}</div>
+document.getElementById("answerInput")
+    .addEventListener("keydown", function(event){
 
-<button class="action-btn primary" onclick="location.reload()">Play Again</button>
-<button class="action-btn secondary" onclick="reveal()">Reveal Answers</button>
+        if(event.key === "Enter"){
 
-<div id="answers" class="answers"></div>
-`;
+            event.preventDefault();
+
+            submitAnswer();
+        }
+    });
+
+
+/* =========================================================
+NAVIGATION
+========================================================= */
+
+function previousQuestion(){
+
+    if(gameFinished){
+        return;
+    }
+
+    if(currentIndex > 0){
+
+        currentIndex--;
+
+        loadQuestion();
+    }
 }
 
-/* GAME OVER */
-function gameOver(){
-end();
+
+function nextQuestion(){
+
+    if(gameFinished){
+        return;
+    }
+
+    if(currentIndex < QUESTIONS_PER_GAME - 1){
+
+        currentIndex++;
+
+        loadQuestion();
+
+    } else {
+
+        currentIndex = 0;
+
+        loadQuestion();
+    }
 }
 
-/* REVEAL (ONCE) */
-function reveal(){
-if(revealed) return;
-revealed=true;
 
-let box=document.getElementById("answers");
+/*
+After submitting, favour the next question that
+has NOT already been answered correctly.
+*/
 
-q.forEach(x=>{
-box.innerHTML+=`
-<div class="answer-card">
-<div class="answer-emoji">${x.emoji}</div>
-<div>${x.answer[0]}</div>
-</div>`;
-});
+function moveToNextUsefulQuestion(){
+
+    const start =
+        currentIndex;
+
+    for(let offset = 1; offset <= QUESTIONS_PER_GAME; offset++){
+
+        const index =
+            (start + offset) % QUESTIONS_PER_GAME;
+
+        if(statuses[index] !== "correct"){
+
+            currentIndex = index;
+
+            loadQuestion();
+
+            return;
+        }
+    }
+
+    /*
+    If all 10 are correct, finish immediately.
+    */
+
+    finishGame(false);
+}
+
+
+/* =========================================================
+TIMER
+========================================================= */
+
+function startGameTimer(){
+
+    clearInterval(gameTimer);
+
+    const timerBox =
+        document.getElementById("timerBox");
+
+    if(selectedDifficulty === "easy"){
+
+        timerBox.style.display = "none";
+
+        return;
+    }
+
+    timeRemaining =
+        selectedDifficulty === "normal"
+        ? 60
+        : 30;
+
+    timerBox.style.display = "block";
+
+    updateTimerDisplay();
+
+    gameTimer = setInterval(() => {
+
+        timeRemaining--;
+
+        updateTimerDisplay();
+
+        if(timeRemaining <= 0){
+
+            clearInterval(gameTimer);
+
+            finishGame(true);
+        }
+
+    }, 1000);
+}
+
+
+function updateTimerDisplay(){
+
+    const timerBox =
+        document.getElementById("timerBox");
+
+    const timerValue =
+        document.getElementById("timerValue");
+
+    timerValue.textContent =
+        timeRemaining;
+
+    if(timeRemaining <= 10){
+
+        timerBox.classList.add("warning");
+
+    } else {
+
+        timerBox.classList.remove("warning");
+    }
+}
+
+
+/* =========================================================
+END CONDITIONS
+========================================================= */
+
+function finishGame(timesUp){
+
+    if(gameFinished){
+        return;
+    }
+
+    gameFinished = true;
+
+    clearInterval(gameTimer);
+
+    document.getElementById("gameArea")
+        .style.display = "none";
+
+    document.getElementById("endScreen")
+        .style.display = "block";
+
+    const title =
+        document.getElementById("endTitle");
+
+    if(timesUp){
+
+        title.textContent = "TIME'S UP";
+
+        title.classList.add("times-up");
+
+    } else {
+
+        title.textContent = "GAME COMPLETE";
+
+        title.classList.remove("times-up");
+    }
+
+    const correctCount =
+        statuses.filter(status => status === "correct").length;
+
+    const wrongCount =
+        statuses.filter(status => status === "wrong").length;
+
+    const unansweredCount =
+        QUESTIONS_PER_GAME - correctCount - wrongCount;
+
+    document.getElementById("finalScore")
+        .textContent =
+        `${correctCount}/${QUESTIONS_PER_GAME}`;
+
+    document.getElementById("correctStat")
+        .textContent =
+        correctCount;
+
+    document.getElementById("wrongStat")
+        .textContent =
+        wrongCount;
+
+    document.getElementById("unansweredStat")
+        .textContent =
+        unansweredCount;
+
+    buildAnswerReview();
+
+    document.getElementById("answerReview")
+        .style.display = "none";
+
+    document.getElementById("revealAnswersButton")
+        .textContent = "Reveal Answers";
+}
+
+
+/* =========================================================
+ANSWER REVIEW
+========================================================= */
+
+function buildAnswerReview(){
+
+    const list =
+        document.getElementById("answerList");
+
+    list.innerHTML = "";
+
+    sessionQuestions.forEach((question, index) => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "answer-card";
+
+
+        const emoji =
+            document.createElement("div");
+
+        emoji.className =
+            "answer-emoji";
+
+        emoji.textContent =
+            question.emoji;
+
+
+        const name =
+            document.createElement("div");
+
+        name.className =
+            "answer-name";
+
+        name.textContent =
+            question.displayAnswer;
+
+
+        const status =
+            document.createElement("div");
+
+        status.className =
+            "answer-status";
+
+
+        if(statuses[index] === "correct"){
+
+            status.textContent =
+                "Correct";
+
+            status.classList.add(
+                "correct-text"
+            );
+
+        } else if(statuses[index] === "wrong"){
+
+            status.textContent =
+                "Wrong";
+
+            status.classList.add(
+                "wrong-text"
+            );
+
+        } else {
+
+            status.textContent =
+                "Skipped";
+
+            status.classList.add(
+                "unanswered-text"
+            );
+        }
+
+
+        card.appendChild(emoji);
+
+        card.appendChild(name);
+
+        card.appendChild(status);
+
+        list.appendChild(card);
+    });
+}
+
+
+/*
+Unlike the old version, answers are not permanently
+"used up".
+
+Players can open and close the answers as many
+times as they like.
+*/
+
+function toggleAnswers(){
+
+    const review =
+        document.getElementById("answerReview");
+
+    const button =
+        document.getElementById("revealAnswersButton");
+
+    const isHidden =
+        review.style.display === "none" ||
+        review.style.display === "";
+
+    if(isHidden){
+
+        review.style.display = "block";
+
+        button.textContent =
+            "Hide Answers";
+
+    } else {
+
+        review.style.display = "none";
+
+        button.textContent =
+            "Reveal Answers";
+    }
+}
+
+
+/* =========================================================
+PLAY AGAIN
+========================================================= */
+
+function playAgain(){
+
+    document.getElementById("endScreen")
+        .style.display = "none";
+
+    /*
+    Starts immediately using the same difficulty,
+    but chooses a brand-new random set of 10.
+    */
+
+    startGame();
 }
 
 </script>
