@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guess The Studio | Games Jobs Direct</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --grey:#dedbd7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    background:white;
+    min-height:68px;
+    padding:12px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+
+    text-decoration:none;
+
+    padding:11px 17px;
+
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================
+START SCREEN
+========================= */
+
+.start-screen{
+    max-width:900px;
+
+    margin:55px auto;
+
+    padding:0 20px;
+
+    text-align:center;
+}
+
+.game-title{
+    line-height:.88;
+
+    margin-bottom:25px;
+}
+
+.title-top{
+    display:block;
+
+    color:var(--primary);
+
+    font-size:clamp(52px,8vw,90px);
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:clamp(75px,12vw,135px);
+
+    font-weight:900;
+
+    letter-spacing:-5px;
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.10);
+}
+
+.intro{
+    max-width:630px;
+
+    margin:15px auto 30px;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.55;
+}
+
+
+/* =========================
+HOW TO PLAY
+========================= */
+
+.rules{
+    max-width:700px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin:0 auto 30px;
+}
+
+.rule{
+    background:white;
+
+    border-radius:13px;
+
+    padding:18px 12px;
+}
+
+.rule-icon{
+    font-size:28px;
+}
+
+.rule strong{
+    display:block;
+
+    color:var(--primary);
+
+    margin:7px 0 4px;
+}
+
+.rule small{
+    color:var(--muted);
+
+    line-height:1.4;
+}
+
+.start-btn{
+    background:var(--accent);
+
+    color:#222;
+
+    border:0;
+
+    border-radius:14px;
+
+    padding:18px 52px;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #9cb500;
+}
+
+
+/* =========================
+GAME AREA
+========================= */
+
+.game-area{
+    display:none;
+
+    max-width:900px;
+
+    margin:35px auto;
+
+    padding:0 20px 60px;
+}
+
+.game-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+
+/* =========================
+HUD
+========================= */
+
+.hud{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.progress-text{
+    color:var(--muted);
+
+    font-size:14px;
+
+    font-weight:800;
+}
+
+.score-pill{
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:9px 15px;
+
+    font-size:13px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+PROGRESS BAR
+========================= */
+
+.progress-track{
+    height:9px;
+
+    background:#e6e3df;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:17px 0 26px;
+}
+
+.progress-fill{
+    height:100%;
+
+    width:10%;
+
+    background:var(--accent);
+
+    transition:.25s;
+}
+
+
+/* =========================
+ROUND HEADING
+========================= */
+
+.round-heading{
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:clamp(27px,4vw,38px);
+
+    font-weight:900;
+
+    margin:10px 0 22px;
+}
+
+.points-available{
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+.points-number{
+    display:inline-block;
+
+    min-width:32px;
+
+    background:var(--accent);
+
+    color:#222;
+
+    padding:6px 9px;
+
+    border-radius:20px;
+
+    font-size:16px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+CLUES
+========================= */
+
+.clues{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.clue{
+    display:none;
+
+    background:#f3f1ee;
+
+    border-left:5px solid var(--primary);
+
+    border-radius:12px;
+
+    padding:17px 18px;
+
+    text-align:left;
+}
+
+.clue.visible{
+    display:block;
+}
+
+.clue-number{
+    display:block;
+
+    color:var(--primary);
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    margin-bottom:5px;
+}
+
+.clue-text{
+    font-size:17px;
+
+    line-height:1.45;
+
+    font-weight:700;
+}
+
+
+/* =========================
+GUESSING
+========================= */
+
+.guess-section{
+    margin-top:24px;
+}
+
+.answer-input{
+    width:100%;
+
+    min-height:51px;
+
+    padding:14px 15px;
+
+    border:1px solid #bbb;
+
+    border-radius:11px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.answer-input:focus{
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(85,49,121,.1);
+}
+
+.guess-btn{
+    width:100%;
+
+    margin-top:10px;
+
+    padding:14px;
+
+    background:var(--accent);
+
+    border:0;
+
+    border-radius:11px;
+
+    font-size:16px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.reveal-clue-btn{
+    width:100%;
+
+    margin-top:10px;
+
+    padding:13px;
+
+    background:var(--primary);
+
+    color:white;
+
+    border:0;
+
+    border-radius:11px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.reveal-clue-btn:disabled{
+    opacity:.4;
+
+    cursor:default;
+}
+
+
+/* =========================
+FEEDBACK
+========================= */
+
+.feedback{
+    min-height:75px;
+
+    margin-top:20px;
+
+    text-align:center;
+}
+
+.feedback-main{
+    font-size:25px;
+
+    font-weight:900;
+}
+
+.feedback-main.correct{
+    color:var(--green);
+}
+
+.feedback-main.wrong{
+    color:var(--red);
+}
+
+.feedback-detail{
+    color:var(--muted);
+
+    margin-top:5px;
+
+    line-height:1.45;
+}
+
+.next-btn{
+    display:none;
+
+    margin:17px auto 0;
+
+    background:var(--accent);
+
+    color:#222;
+
+    border:0;
+
+    border-radius:11px;
+
+    padding:13px 28px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+STUDIO REVEAL
+========================= */
+
+.studio-reveal{
+    display:none;
+
+    margin-top:20px;
+
+    padding:20px;
+
+    background:#f4f2ef;
+
+    border-radius:15px;
+
+    text-align:center;
+}
+
+.reveal-name{
+    color:var(--primary);
+
+    font-size:29px;
+
+    font-weight:900;
+}
+
+.reveal-games{
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+RESULTS
+========================= */
+
+.results-screen{
+    display:none;
+
+    max-width:850px;
+
+    margin:50px auto;
+
+    padding:0 20px 70px;
+
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:40px 25px;
+}
+
+.results-title{
+    margin:0;
+
+    color:var(--primary);
+
+    font-size:clamp(45px,8vw,76px);
+
+    font-weight:900;
+
+    line-height:1;
+}
+
+.score-label{
+    margin-top:23px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.final-score{
+    color:var(--primary);
+
+    font-size:75px;
+
+    font-weight:900;
+}
+
+.max-score{
+    color:var(--muted);
+
+    margin-top:-7px;
+
+    margin-bottom:25px;
+}
+
+.results-actions{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.result-btn{
+    border:0;
+
+    border-radius:11px;
+
+    padding:14px 21px;
+
+    font-weight:900;
+
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+.play-again{
+    background:var(--accent);
+}
+
+.review-btn{
+    background:var(--primary);
+
+    color:white;
+}
+
+
+/* =========================
+REVIEW
+========================= */
+
+.review{
+    display:none;
+
+    max-width:650px;
+
+    margin:30px auto 0;
+
+    text-align:left;
+}
+
+.review h2{
+    color:var(--primary);
+
+    text-align:center;
+}
+
+.review-item{
+    background:#f4f2ef;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin-bottom:9px;
+}
+
+.review-studio{
+    color:var(--primary);
+
+    font-size:18px;
+
+    font-weight:900;
+}
+
+.review-points{
+    color:var(--muted);
+
+    margin-top:4px;
+}
+
+
+/* =========================
+MORE GAMES
+========================= */
+
+.more-games{
+    margin-top:38px;
+
+    padding-top:28px;
+
+    border-top:1px solid var(--border);
+}
+
+.more-games h2{
+    color:var(--primary);
+}
+
+.more-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+}
+
+.more-card{
+    background:#f3f1ee;
+
+    border-radius:12px;
+
+    padding:18px 12px;
+
+    text-decoration:none;
+}
+
+.more-card-icon{
+    font-size:30px;
+}
+
+.more-card strong{
+    display:block;
+
+    color:var(--primary);
+
+    margin-top:7px;
+}
+
+.more-card small{
+    color:var(--muted);
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+        padding:9px 10px;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .game-card{
+        padding:19px 15px;
+    }
+
+    .more-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+<img
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
+</a>
+
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</header>
+
+
+
+<!-- START SCREEN -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+
+<div class="game-title">
+
+<span class="title-top">
+GUESS THE
+</span>
+
+<span class="title-bottom">
+STUDIO
+</span>
+
+</div>
+
+
+<p class="intro">
+
+How well do you know the people behind the games?
+
+Use increasingly obvious clues to identify 10 game studios.
+The earlier you guess correctly, the more points you earn.
+
+</p>
+
+
+<div class="rules">
+
+
+<div class="rule">
+
+<div class="rule-icon">
+💡
+</div>
+
+<strong>
+Reveal Clues
+</strong>
+
+<small>
+Four clues are available for each studio.
+</small>
+
+</div>
+
+
+<div class="rule">
+
+<div class="rule-icon">
+🏆
+</div>
+
+<strong>
+Guess Early
+</strong>
+
+<small>
+Fewer clues means more points.
+</small>
+
+</div>
+
+
+<div class="rule">
+
+<div class="rule-icon">
+🎮
+</div>
+
+<strong>
+10 Studios
+</strong>
+
+<small>
+A fresh random selection every game.
+</small>
+
+</div>
+
+
+</div>
+
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
+START GAME
+
+</button>
+
+
+</section>
+
+
+
+<!-- GAME AREA -->
+
+<section
+    class="game-area"
+    id="gameArea">
+
+
+<div class="game-card">
+
+
+<div class="hud">
+
+
+<div
+    class="progress-text"
+    id="progressText">
+
+Studio 1 of 10
+
+</div>
+
+
+<div class="score-pill">
+
+SCORE:
+<span id="scoreDisplay">
+0
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="progress-track">
+
+<div
+    class="progress-fill"
+    id="progressFill">
+</div>
+
+</div>
+
+
+<div class="round-heading">
+Which studio is it?
+</div>
+
+
+<div class="points-available">
+
+Worth
+
+<span
+    class="points-number"
+    id="pointsAvailable">
+
+4
+
+</span>
+
+points
+
+</div>
+
+
+<div
+    class="clues"
+    id="cluesContainer">
+
+<div class="clue" id="clue0">
+
+<span class="clue-number">
+CLUE 1
+</span>
+
+<div
+    class="clue-text"
+    id="clueText0">
+</div>
+
+</div>
+
+
+<div class="clue" id="clue1">
+
+<span class="clue-number">
+CLUE 2
+</span>
+
+<div
+    class="clue-text"
+    id="clueText1">
+</div>
+
+</div>
+
+
+<div class="clue" id="clue2">
+
+<span class="clue-number">
+CLUE 3
+</span>
+
+<div
+    class="clue-text"
+    id="clueText2">
+</div>
+
+</div>
+
+
+<div class="clue" id="clue3">
+
+<span class="clue-number">
+CLUE 4
+</span>
+
+<div
+    class="clue-text"
+    id="clueText3">
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="guess-section">
+
+
+<input
+    class="answer-input"
+    id="answerInput"
+    autocomplete="off"
+    placeholder="Type the studio name...">
+
+
+<button
+    class="guess-btn"
+    onclick="submitGuess()">
+
+Submit Guess
+
+</button>
+
+
+<button
+    class="reveal-clue-btn"
+    id="revealClueButton"
+    onclick="revealNextClue()">
+
+Reveal Another Clue
+
+</button>
+
+
+</div>
+
+
+
+<div
+    class="feedback"
+    id="feedback">
+
+
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
+
+
+<div
+    class="studio-reveal"
+    id="studioReveal">
+
+
+<div
+    class="reveal-name"
+    id="revealName">
+</div>
+
+
+<div
+    class="reveal-games"
+    id="revealGames">
+</div>
+
+
+</div>
+
+
+<button
+    class="next-btn"
+    id="nextButton"
+    onclick="nextStudio()">
+
+Next Studio →
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- RESULTS -->
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+
+<div class="results-card">
+
+
+<h1 class="results-title">
+GAME COMPLETE
+</h1>
+
+
+<div class="score-label">
+YOUR SCORE
+</div>
+
+
+<div
+    class="final-score"
+    id="finalScore">
+
+0
+
+</div>
+
+
+<div class="max-score">
+out of 40
+</div>
+
+
+<div class="results-actions">
+
+
+<button
+    class="result-btn play-again"
+    onclick="playAgain()">
+
+Play Again
+
+</button>
+
+
+<button
+    class="result-btn review-btn"
+    id="reviewButton"
+    onclick="toggleReview()">
+
+Review Studios
+
+</button>
+
+
+</div>
+
+
+
+<div
+    class="review"
+    id="review">
+
+
+<h2>
+Studio Review
+</h2>
+
+
+<div id="reviewList">
+</div>
+
+
+</div>
+
+
+
+<div class="more-games">
+
+
+<h2>
+Try Another Game
+</h2>
+
+
+<div class="more-grid">
+
+
+<a
+    class="more-card"
+    href="guess-the-game.html">
+
+<div class="more-card-icon">
+🎮
+</div>
+
+<strong>
+Guess The Game
+</strong>
+
+<small>
+Play Now
+</small>
+
+</a>
+
+
+<a
+    class="more-card"
+    href="video-game-trivia.html">
+
+<div class="more-card-icon">
+🧠
+</div>
+
+<strong>
+Video Game Trivia
+</strong>
+
+<small>
+Play Now
+</small>
+
+</a>
+
+
+<a
+    class="more-card"
+    href="which-came-first.html">
+
+<div class="more-card-icon">
+⏳
+</div>
+
+<strong>
+Which Came First?
+</strong>
+
+<small>
+Play Now
+</small>
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<script>
+
+/* ======================================================
+STUDIO BANK
+
+10 studios are chosen randomly each playthrough.
+
+Clues are ordered from least obvious to most obvious.
+====================================================== */
+
+const STUDIO_BANK = [
+
+{
+name:"Naughty Dog",
+answers:["naughty dog","naughtydog"],
+games:"Known for Crash Bandicoot, Uncharted and The Last of Us.",
+clues:[
+    "This studio's early 3D work included an adventurous orange bandicoot.",
+    "It later created a treasure-hunting action-adventure series.",
+    "One of its most famous protagonists is Nathan Drake.",
+    "It is the studio behind The Last of Us."
+]
+},
+
+{
+name:"Rockstar Games",
+answers:["rockstar","rockstar games"],
+games:"Known for Grand Theft Auto and Red Dead Redemption.",
+clues:[
+    "This company is closely associated with large open-world games.",
+    "One of its major series explores the American frontier.",
+    "Los Santos and Liberty City are strongly associated with its games.",
+    "It is the company behind Grand Theft Auto."
+]
+},
+
+{
+name:"Bethesda Game Studios",
+answers:[
+    "bethesda",
+    "bethesda game studios"
+],
+games:"Known for The Elder Scrolls, Fallout and Starfield.",
+clues:[
+    "This studio is particularly associated with enormous first-person RPG worlds.",
+    "It has taken players from Tamriel to the post-nuclear wasteland.",
+    "One of its games introduced players to the Dragonborn.",
+    "It develops The Elder Scrolls and modern mainline Fallout games."
+]
+},
+
+{
+name:"FromSoftware",
+answers:[
+    "fromsoftware",
+    "from software",
+    "fromsoft"
+],
+games:"Known for Dark Souls, Bloodborne, Sekiro and Elden Ring.",
+clues:[
+    "This Japanese studio has become famous for demanding action RPGs.",
+    "Bonfires became an iconic feature of one of its major series.",
+    "Its games include Bloodborne and Sekiro.",
+    "It created Dark Souls and Elden Ring."
+]
+},
+
+{
+name:"CD Projekt Red",
+answers:[
+    "cd projekt red",
+    "cdpr",
+    "cd projekt"
+],
+games:"Known for The Witcher series and Cyberpunk 2077.",
+clues:[
+    "This European studio specialises heavily in large narrative RPGs.",
+    "One major game is set in Night City.",
+    "Geralt of Rivia stars in its best-known fantasy series.",
+    "It created The Witcher games and Cyberpunk 2077."
+]
+},
+
+{
+name:"Insomniac Games",
+answers:[
+    "insomniac",
+    "insomniac games"
+],
+games:"Known for Ratchet & Clank, Resistance and Marvel's Spider-Man.",
+clues:[
+    "This studio has created games featuring a Lombax and his robotic companion.",
+    "It was also responsible for the Resistance series.",
+    "One of its recent franchises lets players swing across New York.",
+    "It develops Marvel's Spider-Man and Ratchet & Clank."
+]
+},
+
+{
+name:"Guerrilla Games",
+answers:[
+    "guerrilla",
+    "guerrilla games"
+],
+games:"Known for Killzone and Horizon.",
+clues:[
+    "This European studio initially became particularly well known for shooters.",
+    "It later moved into a colourful open world filled with machines.",
+    "Aloy is the protagonist of its biggest modern franchise.",
+    "It created the Killzone and Horizon series."
+]
+},
+
+{
+name:"Rare",
+answers:[
+    "rare",
+    "rare ltd",
+    "rare limited"
+],
+games:"Known for GoldenEye 007, Banjo-Kazooie and Sea of Thieves.",
+clues:[
+    "This British studio has worked across several generations of consoles.",
+    "Its history includes a bear and bird duo.",
+    "It created a famous Nintendo 64 James Bond shooter.",
+    "It is the studio behind Sea of Thieves and Banjo-Kazooie."
+]
+},
+
+{
+name:"Valve",
+answers:[
+    "valve",
+    "valve software",
+    "valve corporation"
+],
+games:"Known for Half-Life, Portal, Counter-Strike and Team Fortress.",
+clues:[
+    "This company has had an enormous influence on PC gaming.",
+    "Its games have included physics puzzles and competitive shooters.",
+    "Gordon Freeman is one of its most famous protagonists.",
+    "It created Half-Life and Portal."
+]
+},
+
+{
+name:"BioWare",
+answers:[
+    "bioware",
+    "bio ware"
+],
+games:"Known for Mass Effect, Dragon Age and Star Wars: Knights of the Old Republic.",
+clues:[
+    "This studio is particularly associated with party-based role-playing games.",
+    "Players have travelled from Ferelden to outer space in its games.",
+    "Commander Shepard stars in one of its most famous series.",
+    "It created Mass Effect and Dragon Age."
+]
+},
+
+{
+name:"Bungie",
+answers:[
+    "bungie"
+],
+games:"Known for Halo and Destiny.",
+clues:[
+    "This studio became particularly influential in console first-person shooters.",
+    "One of its major franchises features Guardians.",
+    "It originally created a series starring Master Chief.",
+    "It created Halo and later Destiny."
+]
+},
+
+{
+name:"Epic Games",
+answers:[
+    "epic",
+    "epic games"
+],
+games:"Known for Fortnite, Unreal Tournament and the Unreal Engine.",
+clues:[
+    "This company is important both as a game developer and a technology provider.",
+    "A major game engine carries part of its name.",
+    "Its biggest game features a Battle Bus.",
+    "It develops Fortnite and Unreal Engine."
+]
+},
+
+{
+name:"Capcom",
+answers:[
+    "capcom"
+],
+games:"Known for Resident Evil, Street Fighter, Monster Hunter and Devil May Cry.",
+clues:[
+    "This Japanese company has major franchises spanning horror, fighting and action games.",
+    "One of its series regularly involves enormous creatures being hunted.",
+    "Ryu and Leon Kennedy appear in its franchises.",
+    "It is the company behind Resident Evil and Street Fighter."
+]
+},
+
+{
+name:"Ubisoft",
+answers:[
+    "ubisoft"
+],
+games:"Known for Assassin's Creed, Far Cry and Rainbow Six.",
+clues:[
+    "This publisher and developer operates numerous studios around the world.",
+    "Its open-world games have frequently featured viewpoints and large maps.",
+    "The Animus appears in one of its flagship series.",
+    "It is the company behind Assassin's Creed and Far Cry."
+]
+},
+
+{
+name:"Sucker Punch Productions",
+answers:[
+    "sucker punch",
+    "sucker punch productions"
+],
+games:"Known for Sly Cooper, Infamous and Ghost of Tsushima.",
+clues:[
+    "This studio has developed several major action-adventure series.",
+    "An earlier franchise starred a raccoon thief.",
+    "It later created Infamous.",
+    "It is the studio behind Ghost of Tsushima."
+]
+},
+
+{
+name:"Santa Monica Studio",
+answers:[
+    "santa monica",
+    "santa monica studio",
+    "sony santa monica"
+],
+games:"Best known for the God of War series.",
+clues:[
+    "This studio is strongly associated with cinematic action games.",
+    "Its most famous series moved from Greek mythology into Norse mythology.",
+    "Atreus appears in its recent games.",
+    "It is the studio behind God of War."
+]
+},
+
+{
+name:"Larian Studios",
+answers:[
+    "larian",
+    "larian studios"
+],
+games:"Known for Divinity: Original Sin and Baldur's Gate 3.",
+clues:[
+    "This European developer specialises heavily in role-playing games.",
+    "Its games are known for deep systems and player choice.",
+    "It created the Divinity: Original Sin series.",
+    "It developed Baldur's Gate 3."
+]
+},
+
+{
+name:"Supergiant Games",
+answers:[
+    "supergiant",
+    "supergiant games"
+],
+games:"Known for Bastion, Transistor, Pyre and Hades.",
+clues:[
+    "This independent studio is known for strongly stylised games.",
+    "Its earlier games include Bastion and Transistor.",
+    "Zagreus stars in one of its biggest games.",
+    "It created Hades."
+]
+},
+
+{
+name:"Mojang Studios",
+answers:[
+    "mojang",
+    "mojang studios"
+],
+games:"Best known for Minecraft.",
+clues:[
+    "This studio created one of the world's most successful sandbox games.",
+    "Its most famous world is made entirely from blocks.",
+    "Creepers originate from its best-known game.",
+    "It is the studio behind Minecraft."
+]
+},
+
+{
+name:"Respawn Entertainment",
+answers:[
+    "respawn",
+    "respawn entertainment"
+],
+games:"Known for Titanfall, Apex Legends and Star Wars Jedi.",
+clues:[
+    "This studio has developed both first-person shooters and third-person action games.",
+    "Its history includes enormous pilotable Titans.",
+    "Apex Legends is one of its games.",
+    "It created Titanfall and the Star Wars Jedi series."
+]
+},
+
+{
+name:"id Software",
+answers:[
+    "id software",
+    "id"
+],
+games:"Known for DOOM, Quake and Wolfenstein.",
+clues:[
+    "This studio helped define the early first-person shooter genre.",
+    "Its history includes demons, space marines and fast movement.",
+    "Quake is one of its most famous franchises.",
+    "It created DOOM."
+]
+},
+
+{
+name:"Remedy Entertainment",
+answers:[
+    "remedy",
+    "remedy entertainment"
+],
+games:"Known for Max Payne, Alan Wake and Control.",
+clues:[
+    "This Finnish studio is strongly associated with cinematic storytelling.",
+    "One of its games follows the Federal Bureau of Control.",
+    "A fictional writer is the protagonist of another major series.",
+    "It created Alan Wake and Control."
+]
+},
+
+{
+name:"Creative Assembly",
+answers:[
+    "creative assembly",
+    "the creative assembly"
+],
+games:"Known for Total War and Alien: Isolation.",
+clues:[
+    "This British studio is strongly associated with large-scale strategy games.",
+    "Its flagship series combines turn-based campaigns with real-time battles.",
+    "It also created a celebrated survival-horror game involving a Xenomorph.",
+    "It develops Total War and created Alien: Isolation."
+]
+},
+
+{
+name:"Playground Games",
+answers:[
+    "playground games",
+    "playground"
+],
+games:"Known for the Forza Horizon series.",
+clues:[
+    "This British developer specialises heavily in open-world driving games.",
+    "Its games feature large automotive festivals.",
+    "Mexico and Britain have both been major settings in its series.",
+    "It develops Forza Horizon."
+]
+},
+
+{
+name:"Turn 10 Studios",
+answers:[
+    "turn 10",
+    "turn 10 studios"
+],
+games:"Known for Forza Motorsport.",
+clues:[
+    "This studio specialises heavily in racing games.",
+    "Its series places more emphasis on circuit racing than open-world festivals.",
+    "It shares the wider Forza franchise with another developer.",
+    "It develops Forza Motorsport."
+]
+},
+
+{
+name:"Team Cherry",
+answers:[
+    "team cherry"
+],
+games:"Known for Hollow Knight.",
+clues:[
+    "This independent studio became famous through a hand-drawn metroidvania.",
+    "Its best-known world is the kingdom of Hallownest.",
+    "The Knight is the protagonist of its breakout game.",
+    "It created Hollow Knight."
+]
+},
+
+{
+name:"ConcernedApe",
+answers:[
+    "concernedape",
+    "concerned ape",
+    "eric barone"
+],
+games:"Known for Stardew Valley.",
+clues:[
+    "This name represents an independent developer rather than a large traditional studio.",
+    "Its biggest game begins with the player inheriting a farm.",
+    "Pelican Town features prominently in its best-known title.",
+    "It created Stardew Valley."
+]
+},
+
+{
+name:"Hello Games",
+answers:[
+    "hello games"
+],
+games:"Known for No Man's Sky.",
+clues:[
+    "This British studio created a large procedural science-fiction game.",
+    "Its flagship title contains an enormous number of explorable planets.",
+    "Atlas is an important name within its best-known universe.",
+    "It created No Man's Sky."
+]
+},
+
+{
+name:"Kojima Productions",
+answers:[
+    "kojima productions",
+    "kojima"
+],
+games:"Known for Death Stranding.",
+clues:[
+    "This Japanese studio is closely associated with a famous game director.",
+    "Its first major independent title focuses heavily on reconnecting a fractured world.",
+    "Sam Porter Bridges is one of its protagonists.",
+    "It is Hideo Kojima's studio and created Death Stranding."
+]
+},
+
+{
+name:"Obsidian Entertainment",
+answers:[
+    "obsidian",
+    "obsidian entertainment"
+],
+games:"Known for Fallout: New Vegas, Pillars of Eternity and The Outer Worlds.",
+clues:[
+    "This RPG studio has developed games in both established and original universes.",
+    "One of its games takes place in the Halcyon colony.",
+    "It developed a fan-favourite Fallout entry set around Las Vegas.",
+    "It created Fallout: New Vegas and The Outer Worlds."
+]
+},
+
+{
+name:"Arkane Studios",
+answers:[
+    "arkane",
+    "arkane studios"
+],
+games:"Known for Dishonored, Prey and Deathloop.",
+clues:[
+    "This developer became known for immersive first-person games with flexible systems.",
+    "One of its franchises features supernatural assassins.",
+    "Talos I is the setting of one of its games.",
+    "It created Dishonored and Prey."
+]
+},
+
+{
+name:"Gearbox Software",
+answers:[
+    "gearbox",
+    "gearbox software"
+],
+games:"Best known for the Borderlands series.",
+clues:[
+    "This studio has worked extensively with first-person shooters.",
+    "Its best-known franchise mixes shooting with large quantities of loot.",
+    "Claptrap is closely associated with its biggest series.",
+    "It created Borderlands."
+]
+},
+
+{
+name:"Firaxis Games",
+answers:[
+    "firaxis",
+    "firaxis games"
+],
+games:"Known for Civilization and XCOM.",
+clues:[
+    "This studio is particularly associated with strategy games.",
+    "One of its major series asks players to build an empire through history.",
+    "Another features soldiers fighting an alien invasion.",
+    "It develops Civilization and XCOM."
+]
+},
+
+{
+name:"IO Interactive",
+answers:[
+    "io interactive",
+    "ioi",
+    "io"
+],
+games:"Best known for Hitman.",
+clues:[
+    "This European studio specialises heavily in stealth and assassination gameplay.",
+    "Its most famous protagonist is genetically engineered.",
+    "A barcode appears on the back of its best-known character's head.",
+    "It develops the Hitman series and Agent 47."
+]
+},
+
+{
+name:"NetherRealm Studios",
+answers:[
+    "netherrealm",
+    "netherrealm studios"
+],
+games:"Known for Mortal Kombat and Injustice.",
+clues:[
+    "This studio specialises predominantly in fighting games.",
+    "It has created games featuring both superheroes and extremely violent finishing moves.",
+    "Sub-Zero and Scorpion appear in its biggest series.",
+    "It develops Mortal Kombat."
+]
+},
+
+{
+name:"Sega",
+answers:[
+    "sega"
+],
+games:"Known for Sonic the Hedgehog, Yakuza/Like a Dragon and many arcade classics.",
+clues:[
+    "This Japanese games company was once a major console manufacturer.",
+    "The Dreamcast was one of its consoles.",
+    "A blue hedgehog became its most famous mascot.",
+    "It is the company behind Sonic the Hedgehog."
+]
+},
+
+{
+name:"Square Enix",
+answers:[
+    "square enix",
+    "squareenix"
+],
+games:"Known for Final Fantasy, Dragon Quest and Kingdom Hearts.",
+clues:[
+    "This Japanese company is strongly associated with role-playing games.",
+    "Its franchises include both fantasy crystals and Keyblade wielders.",
+    "Cloud Strife appears in one of its most famous games.",
+    "It publishes and develops the Final Fantasy series."
+]
+},
+
+{
+name:"Bandai Namco",
+answers:[
+    "bandai namco",
+    "bandai namco entertainment",
+    "namco"
+],
+games:"Associated with Tekken, Pac-Man and numerous anime games.",
+clues:[
+    "This Japanese company has a long history in both arcade and console gaming.",
+    "Its franchises include a famous yellow maze character.",
+    "Tekken is one of its major fighting series.",
+    "It is associated with Pac-Man and Tekken."
+]
+},
+
+{
+name:"Blizzard Entertainment",
+answers:[
+    "blizzard",
+    "blizzard entertainment"
+],
+games:"Known for Warcraft, Diablo, StarCraft and Overwatch.",
+clues:[
+    "This studio created several hugely influential PC franchises.",
+    "Its games have included real-time strategy, action RPGs and hero shooters.",
+    "Azeroth is one of its best-known worlds.",
+    "It created Warcraft, Diablo and Overwatch."
+]
+},
+
+{
+name:"Riot Games",
+answers:[
+    "riot",
+    "riot games"
+],
+games:"Known for League of Legends and Valorant.",
+clues:[
+    "This company became famous through competitive online games.",
+    "Runeterra is associated with one of its major universes.",
+    "It later launched a tactical first-person shooter.",
+    "It created League of Legends and Valorant."
+]
+}
+
+];
+
+
+/* ======================================================
+GAME STATE
+====================================================== */
+
+const STUDIOS_PER_GAME = 10;
+
+let sessionStudios = [];
+
+let currentIndex = 0;
+
+let cluesShown = 1;
+
+let score = 0;
+
+let roundLocked = false;
+
+let roundResults = [];
+
+
+/* ======================================================
+SHUFFLE
+====================================================== */
+
+function shuffle(array){
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--){
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+
+/* ======================================================
+START
+====================================================== */
+
+function startGame(){
+
+    sessionStudios =
+        shuffle(STUDIO_BANK)
+        .slice(0,STUDIOS_PER_GAME);
+
+
+    currentIndex = 0;
+
+    cluesShown = 1;
+
+    score = 0;
+
+    roundLocked = false;
+
+    roundResults = [];
+
+
+    document
+        .getElementById("startScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "block";
+
+
+    loadStudio();
+}
+
+
+/* ======================================================
+LOAD STUDIO
+====================================================== */
+
+function loadStudio(){
+
+    roundLocked = false;
+
+    cluesShown = 1;
+
+
+    const studio =
+        sessionStudios[currentIndex];
+
+
+    /*
+    Populate all four clue boxes.
+    */
+
+    studio.clues.forEach(
+        (clue,index) => {
+
+            document
+                .getElementById(
+                    "clueText" + index
+                )
+                .textContent =
+                clue;
+
+
+            document
+                .getElementById(
+                    "clue" + index
+                )
+                .className =
+                index === 0
+                ? "clue visible"
+                : "clue";
+        }
+    );
+
+
+    document
+        .getElementById("pointsAvailable")
+        .textContent =
+        4;
+
+
+    document
+        .getElementById("progressText")
+        .textContent =
+        `Studio ${currentIndex + 1} of ${STUDIOS_PER_GAME}`;
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        score;
+
+
+    document
+        .getElementById("progressFill")
+        .style.width =
+        `${((currentIndex + 1) / STUDIOS_PER_GAME) * 100}%`;
+
+
+    const input =
+        document.getElementById("answerInput");
+
+
+    input.value = "";
+
+    input.disabled = false;
+
+
+    document
+        .querySelector(".guess-btn")
+        .disabled =
+        false;
+
+
+    document
+        .getElementById("revealClueButton")
+        .disabled =
+        false;
+
+
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        "";
+
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main";
+
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        "";
+
+
+    document
+        .getElementById("studioReveal")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("nextButton")
+        .style.display =
+        "none";
+
+
+    setTimeout(() => {
+        input.focus();
+    },50);
+}
+
+
+/* ======================================================
+NORMALISE ANSWER
+====================================================== */
+
+function normalise(text){
+
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[.'’,-]/g," ")
+        .replace(/\s+/g," ");
+}
+
+
+/* ======================================================
+ANSWER MATCH
+====================================================== */
+
+function answerMatches(
+    playerAnswer,
+    acceptedAnswers
+){
+
+    const player =
+        normalise(playerAnswer);
+
+
+    if(!player){
+        return false;
+    }
+
+
+    return acceptedAnswers.some(answer => {
+
+        return player === normalise(answer);
+    });
+}
+
+
+/* ======================================================
+SUBMIT GUESS
+====================================================== */
+
+function submitGuess(){
+
+    if(roundLocked){
+        return;
+    }
+
+
+    const input =
+        document.getElementById(
+            "answerInput"
+        );
+
+
+    const guess =
+        input.value.trim();
+
+
+    if(!guess){
+        return;
+    }
+
+
+    const studio =
+        sessionStudios[currentIndex];
+
+
+    const correct =
+        answerMatches(
+            guess,
+            studio.answers
+        );
+
+
+    if(correct){
+
+        const points =
+            5 - cluesShown;
+
+
+        score += points;
+
+
+        finishRound(
+            true,
+            points
+        );
+
+    }else{
+
+
+        /*
+        Wrong guesses do not instantly end the round.
+
+        Instead another clue is automatically revealed,
+        meaning the maximum points decrease.
+
+        This discourages brute-force guessing.
+        */
+
+        document
+            .getElementById("feedbackMain")
+            .textContent =
+            "Not quite — here's another clue.";
+
+
+        document
+            .getElementById("feedbackMain")
+            .className =
+            "feedback-main wrong";
+
+
+        input.value = "";
+
+
+        if(cluesShown < 4){
+
+            revealNextClue();
+
+        }else{
+
+            finishRound(
+                false,
+                0
+            );
+        }
+    }
+}
+
+
+/* ======================================================
+ENTER KEY
+====================================================== */
+
+document
+    .getElementById("answerInput")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                event.preventDefault();
+
+                submitGuess();
+            }
+        }
+    );
+
+
+/* ======================================================
+REVEAL NEXT CLUE
+====================================================== */
+
+function revealNextClue(){
+
+    if(
+        roundLocked ||
+        cluesShown >= 4
+    ){
+        return;
+    }
+
+
+    const nextClue =
+        document.getElementById(
+            "clue" + cluesShown
+        );
+
+
+    nextClue.classList.add(
+        "visible"
+    );
+
+
+    cluesShown++;
+
+
+    document
+        .getElementById("pointsAvailable")
+        .textContent =
+        5 - cluesShown;
+
+
+    if(cluesShown >= 4){
+
+        document
+            .getElementById("revealClueButton")
+            .disabled =
+            true;
+    }
+}
+
+
+/* ======================================================
+FINISH ROUND
+====================================================== */
+
+function finishRound(
+    correct,
+    points
+){
+
+    roundLocked = true;
+
+
+    const studio =
+        sessionStudios[currentIndex];
+
+
+    document
+        .getElementById("answerInput")
+        .disabled =
+        true;
+
+
+    document
+        .querySelector(".guess-btn")
+        .disabled =
+        true;
+
+
+    document
+        .getElementById("revealClueButton")
+        .disabled =
+        true;
+
+
+    const feedback =
+        document.getElementById(
+            "feedbackMain"
+        );
+
+
+    if(correct){
+
+        feedback.textContent =
+            `Correct! +${points} points`;
+
+        feedback.className =
+            "feedback-main correct";
+
+    }else{
+
+        feedback.textContent =
+            "Studio revealed!";
+
+        feedback.className =
+            "feedback-main wrong";
+    }
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        score;
+
+
+    document
+        .getElementById("revealName")
+        .textContent =
+        studio.name;
+
+
+    document
+        .getElementById("revealGames")
+        .textContent =
+        studio.games;
+
+
+    document
+        .getElementById("studioReveal")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("nextButton")
+        .style.display =
+        "block";
+
+
+    roundResults.push({
+
+        studio:studio.name,
+
+        correct:correct,
+
+        points:points,
+
+        clues:cluesShown
+
+    });
+}
+
+
+/* ======================================================
+NEXT
+====================================================== */
+
+function nextStudio(){
+
+    currentIndex++;
+
+
+    if(
+        currentIndex >=
+        STUDIOS_PER_GAME
+    ){
+
+        finishGame();
+
+    }else{
+
+        loadStudio();
+    }
+}
+
+
+/* ======================================================
+FINISH GAME
+====================================================== */
+
+function finishGame(){
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        score;
+
+
+    buildReview();
+}
+
+
+/* ======================================================
+REVIEW
+====================================================== */
+
+function buildReview(){
+
+    const list =
+        document.getElementById(
+            "reviewList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    roundResults.forEach(
+        (result,index) => {
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "review-item";
+
+
+            const studio =
+                document.createElement(
+                    "div"
+                );
+
+
+            studio.className =
+                "review-studio";
+
+
+            studio.textContent =
+                `${index + 1}. ${result.studio}`;
+
+
+            const points =
+                document.createElement(
+                    "div"
+                );
+
+
+            points.className =
+                "review-points";
+
+
+            points.textContent =
+                result.correct
+                ? `${result.points} point${result.points === 1 ? "" : "s"} earned`
+                : "Not guessed";
+
+
+            item.appendChild(
+                studio
+            );
+
+
+            item.appendChild(
+                points
+            );
+
+
+            list.appendChild(
+                item
+            );
+        }
+    );
+
+
+    document
+        .getElementById("review")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("reviewButton")
+        .textContent =
+        "Review Studios";
+}
+
+
+/* ======================================================
+TOGGLE REVIEW
+====================================================== */
+
+function toggleReview(){
+
+    const review =
+        document.getElementById(
+            "review"
+        );
+
+
+    const button =
+        document.getElementById(
+            "reviewButton"
+        );
+
+
+    const hidden =
+        review.style.display === "none" ||
+        review.style.display === "";
+
+
+    if(hidden){
+
+        review.style.display =
+            "block";
+
+
+        button.textContent =
+            "Hide Studios";
+
+    }else{
+
+        review.style.display =
+            "none";
+
+
+        button.textContent =
+            "Review Studios";
+    }
+}
+
+
+/* ======================================================
+PLAY AGAIN
+====================================================== */
+
+function playAgain(){
+
+    startGame();
+}
+
+</script>
+
+
+</body>
+
+</html>
