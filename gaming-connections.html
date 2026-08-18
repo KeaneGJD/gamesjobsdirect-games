@@ -72,6 +72,10 @@ header{
     font-weight:800;
 }
 
+.hub-btn:hover{
+    opacity:.92;
+}
+
 
 /* =========================
 START SCREEN
@@ -105,7 +109,7 @@ START SCREEN
 
     color:var(--accent);
 
-    font-size:clamp(65px,10vw,115px);
+    font-size:clamp(60px,10vw,110px);
 
     font-weight:900;
     letter-spacing:-5px;
@@ -182,6 +186,10 @@ HOW TO PLAY
     cursor:pointer;
 
     box-shadow:0 4px 0 #9cb500;
+}
+
+.start-btn:hover{
+    transform:translateY(-2px);
 }
 
 
@@ -711,8 +719,6 @@ MOBILE
 <body>
 
 
-<!-- HEADER -->
-
 <header>
 
 <a
@@ -737,8 +743,6 @@ Return to Game Hub
 </header>
 
 
-
-<!-- START -->
 
 <section
     class="start-screen"
@@ -837,8 +841,6 @@ START PUZZLE
 </section>
 
 
-
-<!-- GAME -->
 
 <section
     class="game-area"
@@ -946,8 +948,6 @@ Submit Group
 </section>
 
 
-
-<!-- RESULTS -->
 
 <section
     class="results-screen"
@@ -1101,20 +1101,10 @@ Play Now
 
 /* ======================================================
 PUZZLE BANK
-
-Each puzzle contains exactly:
-4 groups × 4 items = 16 tiles.
-
-The groups are deliberately hand-made rather than
-randomly generated, which helps prevent ambiguous answers.
+30 COMPLETE PUZZLES
 ====================================================== */
 
 const PUZZLES = [
-
-
-/* =========================
-PUZZLE 1
-========================= */
 
 {
 id:1,
@@ -1122,51 +1112,27 @@ groups:[
 
 {
 name:"Mario Characters",
-items:[
-    "Luigi",
-    "Princess Peach",
-    "Bowser",
-    "Yoshi"
-]
+items:["Luigi","Princess Peach","Bowser","Yoshi"]
 },
 
 {
 name:"PlayStation Studios",
-items:[
-    "Naughty Dog",
-    "Insomniac Games",
-    "Guerrilla Games",
-    "Sucker Punch"
-]
+items:["Naughty Dog","Insomniac Games","Guerrilla Games","Sucker Punch"]
 },
 
 {
 name:"Battle Royale Games",
-items:[
-    "Fortnite",
-    "Apex Legends",
-    "PUBG",
-    "Warzone"
-]
+items:["Fortnite","Apex Legends","PUBG","Warzone"]
 },
 
 {
 name:"Game Engines",
-items:[
-    "Unreal Engine",
-    "Unity",
-    "Godot",
-    "GameMaker"
-]
+items:["Unreal Engine","Unity","Godot","GameMaker"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 2
-========================= */
 
 {
 id:2,
@@ -1174,51 +1140,27 @@ groups:[
 
 {
 name:"Locations From The Legend of Zelda",
-items:[
-    "Hyrule Castle",
-    "Kakariko Village",
-    "Death Mountain",
-    "Lost Woods"
-]
+items:["Hyrule Castle","Kakariko Village","Death Mountain","Lost Woods"]
 },
 
 {
 name:"Horror Game Series",
-items:[
-    "Resident Evil",
-    "Silent Hill",
-    "Amnesia",
-    "Outlast"
-]
+items:["Resident Evil","Silent Hill","Amnesia","Outlast"]
 },
 
 {
 name:"Racing Franchises",
-items:[
-    "Forza",
-    "Gran Turismo",
-    "Need for Speed",
-    "Burnout"
-]
+items:["Forza","Gran Turismo","Need for Speed","Burnout"]
 },
 
 {
 name:"Pokémon Types",
-items:[
-    "Fire",
-    "Water",
-    "Grass",
-    "Electric"
-]
+items:["Fire","Water","Grass","Electric"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 3
-========================= */
 
 {
 id:3,
@@ -1226,51 +1168,27 @@ groups:[
 
 {
 name:"Mass Effect Squadmates",
-items:[
-    "Garrus",
-    "Tali",
-    "Liara",
-    "Wrex"
-]
+items:["Garrus","Tali","Liara","Wrex"]
 },
 
 {
 name:"Bethesda-Published Franchises",
-items:[
-    "Fallout",
-    "The Elder Scrolls",
-    "DOOM",
-    "Dishonored"
-]
+items:["Fallout","The Elder Scrolls","DOOM","Dishonored"]
 },
 
 {
 name:"Nintendo Handhelds",
-items:[
-    "Game Boy",
-    "Game Boy Advance",
-    "Nintendo DS",
-    "Nintendo 3DS"
-]
+items:["Game Boy","Game Boy Advance","Nintendo DS","Nintendo 3DS"]
 },
 
 {
 name:"Farming / Life Sims",
-items:[
-    "Stardew Valley",
-    "Story of Seasons",
-    "Coral Island",
-    "My Time at Portia"
-]
+items:["Stardew Valley","Story of Seasons","Coral Island","My Time at Portia"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 4
-========================= */
 
 {
 id:4,
@@ -1278,51 +1196,27 @@ groups:[
 
 {
 name:"FromSoftware Games",
-items:[
-    "Dark Souls",
-    "Bloodborne",
-    "Sekiro",
-    "Elden Ring"
-]
+items:["Dark Souls","Bloodborne","Sekiro","Elden Ring"]
 },
 
 {
 name:"Rockstar Protagonists",
-items:[
-    "CJ",
-    "Niko Bellic",
-    "Arthur Morgan",
-    "John Marston"
-]
+items:["CJ","Niko Bellic","Arthur Morgan","John Marston"]
 },
 
 {
 name:"Valve Games",
-items:[
-    "Half-Life",
-    "Portal",
-    "Left 4 Dead",
-    "Team Fortress"
-]
+items:["Half-Life","Portal","Left 4 Dead","Team Fortress"]
 },
 
 {
 name:"Major Console Brands",
-items:[
-    "PlayStation",
-    "Xbox",
-    "Nintendo",
-    "Sega"
-]
+items:["PlayStation","Xbox","Nintendo","Sega"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 5
-========================= */
 
 {
 id:5,
@@ -1330,51 +1224,27 @@ groups:[
 
 {
 name:"Minecraft Mobs",
-items:[
-    "Creeper",
-    "Enderman",
-    "Skeleton",
-    "Villager"
-]
+items:["Creeper","Enderman","Skeleton","Villager"]
 },
 
 {
 name:"Overwatch Heroes",
-items:[
-    "Tracer",
-    "Reinhardt",
-    "Mercy",
-    "Genji"
-]
+items:["Tracer","Reinhardt","Mercy","Genji"]
 },
 
 {
 name:"Final Fantasy VII Characters",
-items:[
-    "Cloud",
-    "Tifa",
-    "Aerith",
-    "Sephiroth"
-]
+items:["Cloud","Tifa","Aerith","Sephiroth"]
 },
 
 {
 name:"Game Genres",
-items:[
-    "Roguelike",
-    "Metroidvania",
-    "RTS",
-    "MOBA"
-]
+items:["Roguelike","Metroidvania","RTS","MOBA"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 6
-========================= */
 
 {
 id:6,
@@ -1382,51 +1252,27 @@ groups:[
 
 {
 name:"Assassin's Creed Protagonists",
-items:[
-    "Ezio",
-    "Altaïr",
-    "Bayek",
-    "Kassandra"
-]
+items:["Ezio","Altaïr","Bayek","Kassandra"]
 },
 
 {
 name:"Hades Characters",
-items:[
-    "Zagreus",
-    "Megaera",
-    "Thanatos",
-    "Nyx"
-]
+items:["Zagreus","Megaera","Thanatos","Nyx"]
 },
 
 {
 name:"Grand Theft Auto Cities",
-items:[
-    "Los Santos",
-    "Liberty City",
-    "Vice City",
-    "San Fierro"
-]
+items:["Los Santos","Liberty City","Vice City","San Fierro"]
 },
 
 {
 name:"Nintendo Home Consoles",
-items:[
-    "NES",
-    "SNES",
-    "GameCube",
-    "Wii"
-]
+items:["NES","SNES","GameCube","Wii"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 7
-========================= */
 
 {
 id:7,
@@ -1434,51 +1280,27 @@ groups:[
 
 {
 name:"Halo Terms",
-items:[
-    "Master Chief",
-    "Cortana",
-    "Covenant",
-    "UNSC"
-]
+items:["Master Chief","Cortana","Covenant","UNSC"]
 },
 
 {
 name:"The Witcher Characters",
-items:[
-    "Geralt",
-    "Ciri",
-    "Yennefer",
-    "Triss"
-]
+items:["Geralt","Ciri","Yennefer","Triss"]
 },
 
 {
 name:"Major Sports Game Series",
-items:[
-    "EA Sports FC",
-    "NBA 2K",
-    "Madden NFL",
-    "NHL"
-]
+items:["EA Sports FC","NBA 2K","Madden NFL","NHL"]
 },
 
 {
 name:"Indie Hits",
-items:[
-    "Hollow Knight",
-    "Celeste",
-    "Undertale",
-    "Cuphead"
-]
+items:["Hollow Knight","Celeste","Undertale","Cuphead"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 8
-========================= */
 
 {
 id:8,
@@ -1486,51 +1308,27 @@ groups:[
 
 {
 name:"Sonic Characters",
-items:[
-    "Tails",
-    "Knuckles",
-    "Amy",
-    "Shadow"
-]
+items:["Tails","Knuckles","Amy","Shadow"]
 },
 
 {
 name:"Call of Duty Titles / Subseries",
-items:[
-    "Modern Warfare",
-    "Black Ops",
-    "Vanguard",
-    "Ghosts"
-]
+items:["Modern Warfare","Black Ops","Vanguard","Ghosts"]
 },
 
 {
 name:"Open-World Survival Games",
-items:[
-    "Rust",
-    "ARK",
-    "DayZ",
-    "7 Days to Die"
-]
+items:["Rust","ARK","DayZ","7 Days to Die"]
 },
 
 {
 name:"Game Development Roles",
-items:[
-    "Programmer",
-    "Producer",
-    "Environment Artist",
-    "QA Tester"
-]
+items:["Programmer","Producer","Environment Artist","QA Tester"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 9
-========================= */
 
 {
 id:9,
@@ -1538,51 +1336,27 @@ groups:[
 
 {
 name:"Resident Evil Characters",
-items:[
-    "Leon Kennedy",
-    "Jill Valentine",
-    "Claire Redfield",
-    "Chris Redfield"
-]
+items:["Leon Kennedy","Jill Valentine","Claire Redfield","Chris Redfield"]
 },
 
 {
 name:"Fighting Game Franchises",
-items:[
-    "Tekken",
-    "Street Fighter",
-    "Mortal Kombat",
-    "Soulcalibur"
-]
+items:["Tekken","Street Fighter","Mortal Kombat","Soulcalibur"]
 },
 
 {
 name:"Nintendo Heroes",
-items:[
-    "Mario",
-    "Kirby",
-    "Link",
-    "Samus"
-]
+items:["Mario","Kirby","Link","Samus"]
 },
 
 {
 name:"Strategy Franchises",
-items:[
-    "Civilization",
-    "Total War",
-    "XCOM",
-    "Age of Empires"
-]
+items:["Civilization","Total War","XCOM","Age of Empires"]
 }
 
 ]
 },
 
-
-/* =========================
-PUZZLE 10
-========================= */
 
 {
 id:10,
@@ -1590,42 +1364,582 @@ groups:[
 
 {
 name:"Famous Video Game Locations",
-items:[
-    "Rapture",
-    "Midgar",
-    "Hyrule",
-    "Night City"
-]
+items:["Rapture","Midgar","Hyrule","Night City"]
 },
 
 {
 name:"Games Built Around Co-op",
-items:[
-    "It Takes Two",
-    "Overcooked",
-    "Deep Rock Galactic",
-    "Left 4 Dead"
-]
+items:["It Takes Two","Overcooked","Deep Rock Galactic","Left 4 Dead"]
 },
 
 {
 name:"Indie Game Publishers",
-items:[
-    "Devolver Digital",
-    "Annapurna Interactive",
-    "Team17",
-    "Raw Fury"
-]
+items:["Devolver Digital","Annapurna Interactive","Team17","Raw Fury"]
 },
 
 {
 name:"RPG Companions",
-items:[
-    "Dogmeat",
-    "Garrus",
-    "Lydia",
-    "Panam"
+items:["Dogmeat","Garrus","Lydia","Panam"]
+}
+
 ]
+},
+
+
+{
+id:11,
+groups:[
+
+{
+name:"God of War Characters",
+items:["Kratos","Atreus","Freya","Mimir"]
+},
+
+{
+name:"Resident Evil Locations",
+items:["Raccoon City","Spencer Mansion","Baker Estate","Castle Dimitrescu"]
+},
+
+{
+name:"Valve Multiplayer Games",
+items:["Counter-Strike","Dota 2","Team Fortress 2","Left 4 Dead"]
+},
+
+{
+name:"Game Development Engines",
+items:["Unity","Unreal Engine","Godot","CryEngine"]
+}
+
+]
+},
+
+
+{
+id:12,
+groups:[
+
+{
+name:"Fallout Factions",
+items:["Brotherhood of Steel","NCR","The Institute","Caesar's Legion"]
+},
+
+{
+name:"Mario Kart Items",
+items:["Banana","Blue Shell","Mushroom","Bob-omb"]
+},
+
+{
+name:"PlayStation Characters",
+items:["Kratos","Aloy","Ratchet","Nathan Drake"]
+},
+
+{
+name:"Space Games",
+items:["No Man's Sky","Elite Dangerous","Starfield","Everspace"]
+}
+
+]
+},
+
+
+{
+id:13,
+groups:[
+
+{
+name:"Cyberpunk 2077 Characters",
+items:["V","Johnny Silverhand","Panam","Judy"]
+},
+
+{
+name:"Nintendo Villains",
+items:["Bowser","Ganondorf","King Dedede","Ridley"]
+},
+
+{
+name:"Survival Horror Games",
+items:["SOMA","Outlast","Amnesia","Alien: Isolation"]
+},
+
+{
+name:"Strategy Developers",
+items:["Firaxis","Creative Assembly","Paradox","Relic"]
+}
+
+]
+},
+
+
+{
+id:14,
+groups:[
+
+{
+name:"Red Dead Redemption Characters",
+items:["Arthur Morgan","John Marston","Dutch","Sadie Adler"]
+},
+
+{
+name:"Xbox Franchises",
+items:["Halo","Forza","Gears of War","Fable"]
+},
+
+{
+name:"Famous Game Swords",
+items:["Master Sword","Buster Sword","Energy Sword","Keyblade"]
+},
+
+{
+name:"Indie Roguelikes",
+items:["Hades","Dead Cells","Enter the Gungeon","Risk of Rain 2"]
+}
+
+]
+},
+
+
+{
+id:15,
+groups:[
+
+{
+name:"The Last of Us Characters",
+items:["Joel","Ellie","Abby","Tommy"]
+},
+
+{
+name:"Pokémon Regions",
+items:["Kanto","Johto","Hoenn","Sinnoh"]
+},
+
+{
+name:"Ubisoft Franchises",
+items:["Assassin's Creed","Far Cry","Watch Dogs","Rainbow Six"]
+},
+
+{
+name:"Gaming Stores / Platforms",
+items:["Steam","Epic Games Store","GOG","itch.io"]
+}
+
+]
+},
+
+
+{
+id:16,
+groups:[
+
+{
+name:"Metal Gear Characters",
+items:["Solid Snake","Big Boss","Raiden","Revolver Ocelot"]
+},
+
+{
+name:"Sega Franchises",
+items:["Sonic","Like a Dragon","Persona","Total War"]
+},
+
+{
+name:"Zombie Games",
+items:["Dying Light","Dead Rising","Project Zomboid","State of Decay"]
+},
+
+{
+name:"Game Industry Disciplines",
+items:["Animation","Programming","Production","Narrative"]
+}
+
+]
+},
+
+
+{
+id:17,
+groups:[
+
+{
+name:"Skyrim Cities",
+items:["Whiterun","Riften","Solitude","Windhelm"]
+},
+
+{
+name:"Nintendo Creatures",
+items:["Pikachu","Yoshi","Kirby","Toad"]
+},
+
+{
+name:"Famous FPS Franchises",
+items:["DOOM","Quake","Halo","Battlefield"]
+},
+
+{
+name:"Narrative Adventure Games",
+items:["Firewatch","Oxenfree","What Remains of Edith Finch","Life is Strange"]
+}
+
+]
+},
+
+
+{
+id:18,
+groups:[
+
+{
+name:"Batman Arkham Villains",
+items:["Joker","Scarecrow","Riddler","Harley Quinn"]
+},
+
+{
+name:"Popular MMOs",
+items:["World of Warcraft","Final Fantasy XIV","RuneScape","Guild Wars 2"]
+},
+
+{
+name:"Sony-Owned Studios",
+items:["Naughty Dog","Housemarque","Guerrilla Games","Insomniac Games"]
+},
+
+{
+name:"Card-Based Games",
+items:["Balatro","Slay the Spire","Hearthstone","Inscryption"]
+}
+
+]
+},
+
+
+{
+id:19,
+groups:[
+
+{
+name:"Ghost of Tsushima Characters",
+items:["Jin Sakai","Yuna","Shimura","Ryuzo"]
+},
+
+{
+name:"Mario Enemies",
+items:["Goomba","Koopa Troopa","Boo","Piranha Plant"]
+},
+
+{
+name:"Open-World RPGs",
+items:["Skyrim","The Witcher 3","Dragon's Dogma 2","Kingdom Come: Deliverance"]
+},
+
+{
+name:"Japanese Game Companies",
+items:["Capcom","Sega","Square Enix","Bandai Namco"]
+}
+
+]
+},
+
+
+{
+id:20,
+groups:[
+
+{
+name:"Borderlands Characters",
+items:["Claptrap","Lilith","Handsome Jack","Mordecai"]
+},
+
+{
+name:"Nintendo Switch Games",
+items:["Splatoon 3","Metroid Dread","Animal Crossing","Super Mario Odyssey"]
+},
+
+{
+name:"Games Featuring Vampires",
+items:["Vampire Survivors","V Rising","Castlevania","Vampire: The Masquerade"]
+},
+
+{
+name:"Game Engines / Tech",
+items:["Frostbite","Source","RE Engine","REDengine"]
+}
+
+]
+},
+
+
+{
+id:21,
+groups:[
+
+{
+name:"Portal Characters",
+items:["Chell","GLaDOS","Wheatley","Cave Johnson"]
+},
+
+{
+name:"Games With Animal Protagonists",
+items:["Stray","Spirit of the North","Untitled Goose Game","Goat Simulator"]
+},
+
+{
+name:"EA Franchises",
+items:["The Sims","Battlefield","Need for Speed","Mass Effect"]
+},
+
+{
+name:"Fantasy RPG Series",
+items:["Dragon Age","The Elder Scrolls","Divinity","Pillars of Eternity"]
+}
+
+]
+},
+
+
+{
+id:22,
+groups:[
+
+{
+name:"Horizon Characters",
+items:["Aloy","Erend","Sylens","Varl"]
+},
+
+{
+name:"Game Companies Beginning With R",
+items:["Rockstar","Rare","Respawn","Remedy"]
+},
+
+{
+name:"Co-op Survival Games",
+items:["Valheim","The Forest","Grounded","Raft"]
+},
+
+{
+name:"Retro Console Brands",
+items:["Atari","Sega","Nintendo","NEC"]
+}
+
+]
+},
+
+
+{
+id:23,
+groups:[
+
+{
+name:"DOOM Enemies",
+items:["Imp","Cacodemon","Revenant","Cyberdemon"]
+},
+
+{
+name:"Supergiant Games",
+items:["Bastion","Transistor","Pyre","Hades"]
+},
+
+{
+name:"Online Shooters",
+items:["Valorant","Overwatch 2","Counter-Strike 2","Rainbow Six Siege"]
+},
+
+{
+name:"Game Art Roles",
+items:["Concept Artist","Environment Artist","Character Artist","Technical Artist"]
+}
+
+]
+},
+
+
+{
+id:24,
+groups:[
+
+{
+name:"Baldur's Gate 3 Companions",
+items:["Astarion","Shadowheart","Gale","Lae'zel"]
+},
+
+{
+name:"Rockstar Games",
+items:["GTA V","Red Dead Redemption 2","Bully","Max Payne 3"]
+},
+
+{
+name:"Puzzle Games",
+items:["Portal","The Witness","Baba Is You","The Talos Principle"]
+},
+
+{
+name:"Gaming Events",
+items:["The Game Awards","Gamescom","GDC","Summer Game Fest"]
+}
+
+]
+},
+
+
+{
+id:25,
+groups:[
+
+{
+name:"Final Fantasy Games",
+items:["Final Fantasy VII","Final Fantasy IX","Final Fantasy X","Final Fantasy XVI"]
+},
+
+{
+name:"Famous Gaming Dogs",
+items:["Dogmeat","D-Dog","Chop","Cerberus"]
+},
+
+{
+name:"Sandbox Games",
+items:["Minecraft","Terraria","Garry's Mod","Roblox"]
+},
+
+{
+name:"UK Game Studios",
+items:["Rare","Frontier","Jagex","Codemasters"]
+}
+
+]
+},
+
+
+{
+id:26,
+groups:[
+
+{
+name:"Fallout Companions",
+items:["Dogmeat","Nick Valentine","Piper","Boone"]
+},
+
+{
+name:"Nintendo Racing Games",
+items:["Mario Kart","F-Zero","Diddy Kong Racing","Wave Race"]
+},
+
+{
+name:"Games With Time Loops",
+items:["Deathloop","Outer Wilds","The Forgotten City","Majora's Mask"]
+},
+
+{
+name:"Horror Developers",
+items:["Bloober Team","Frictional Games","Supermassive Games","Red Barrels"]
+}
+
+]
+},
+
+
+{
+id:27,
+groups:[
+
+{
+name:"Apex Legends Characters",
+items:["Wraith","Lifeline","Pathfinder","Bloodhound"]
+},
+
+{
+name:"Nintendo RPG Series",
+items:["Pokémon","Fire Emblem","Xenoblade Chronicles","Mario & Luigi"]
+},
+
+{
+name:"Stealth Games",
+items:["Hitman","Dishonored","Splinter Cell","Metal Gear Solid"]
+},
+
+{
+name:"Games With Crafting",
+items:["Minecraft","Rust","Subnautica","Valheim"]
+}
+
+]
+},
+
+
+{
+id:28,
+groups:[
+
+{
+name:"Street Fighter Characters",
+items:["Ryu","Ken","Chun-Li","Guile"]
+},
+
+{
+name:"Space Horror Games",
+items:["Dead Space","Alien: Isolation","SOMA","The Callisto Protocol"]
+},
+
+{
+name:"Microsoft-Owned Studios",
+items:["Rare","Obsidian","inXile","Playground Games"]
+},
+
+{
+name:"Game Dev Software",
+items:["Blender","Maya","Photoshop","ZBrush"]
+}
+
+]
+},
+
+
+{
+id:29,
+groups:[
+
+{
+name:"Mortal Kombat Characters",
+items:["Scorpion","Sub-Zero","Raiden","Johnny Cage"]
+},
+
+{
+name:"Bethesda Game Worlds",
+items:["Skyrim","Commonwealth","Capital Wasteland","Settled Systems"]
+},
+
+{
+name:"Co-op Games",
+items:["It Takes Two","A Way Out","Overcooked 2","Deep Rock Galactic"]
+},
+
+{
+name:"Game Publishers",
+items:["Devolver Digital","Team17","Annapurna Interactive","Raw Fury"]
+}
+
+]
+},
+
+
+{
+id:30,
+groups:[
+
+{
+name:"Elden Ring Characters",
+items:["Melina","Ranni","Malenia","Blaidd"]
+},
+
+{
+name:"Famous Gaming Cities",
+items:["Night City","Rapture","Midgar","Los Santos"]
+},
+
+{
+name:"Platforming Franchises",
+items:["Crash Bandicoot","Spyro","Rayman","Sonic"]
+},
+
+{
+name:"Game Development Roles",
+items:["Game Designer","Animator","Programmer","Producer"]
 }
 
 ]
@@ -1675,31 +1989,93 @@ function shuffle(array){
 
 
 /* ======================================================
-CHOOSE PUZZLE
+PUZZLE HISTORY
 
-Avoids serving the exact same puzzle twice in a row
-on the same browser.
+Remember the last 5 boards played on this browser,
+rather than just the previous board.
+====================================================== */
+
+function getPuzzleHistory(){
+
+    try{
+
+        const stored =
+            JSON.parse(
+                localStorage.getItem(
+                    "gjdConnectionsHistory"
+                )
+            );
+
+        return Array.isArray(stored)
+            ? stored
+            : [];
+
+    }catch(error){
+
+        return [];
+    }
+}
+
+
+function savePuzzleToHistory(id){
+
+    let history =
+        getPuzzleHistory();
+
+
+    history =
+        history.filter(
+            puzzleId =>
+            puzzleId !== id
+        );
+
+
+    history.push(id);
+
+
+    /*
+    Only retain the five most recent boards.
+    */
+
+    history =
+        history.slice(-5);
+
+
+    localStorage.setItem(
+        "gjdConnectionsHistory",
+        JSON.stringify(history)
+    );
+}
+
+
+/* ======================================================
+CHOOSE PUZZLE
 ====================================================== */
 
 function choosePuzzle(){
 
-    const lastPuzzle =
-        Number(
-            localStorage.getItem(
-                "gjdConnectionsLastPuzzle"
-            )
-        );
+    const history =
+        getPuzzleHistory();
 
 
     let available =
         PUZZLES.filter(
             puzzle =>
-            puzzle.id !== lastPuzzle
+            !history.includes(
+                puzzle.id
+            )
         );
 
 
+    /*
+    Emergency fallback if the bank/history ever changes
+    in future.
+    */
+
     if(available.length === 0){
-        available = [...PUZZLES];
+
+        available =
+            [...PUZZLES];
     }
 
 
@@ -1712,8 +2088,7 @@ function choosePuzzle(){
         ];
 
 
-    localStorage.setItem(
-        "gjdConnectionsLastPuzzle",
+    savePuzzleToHistory(
         puzzle.id
     );
 
@@ -1735,7 +2110,10 @@ function startGame(){
     remainingItems =
         shuffle(
             activePuzzle.groups
-            .flatMap(group => group.items)
+            .flatMap(
+                group =>
+                group.items
+            )
         );
 
 
@@ -1779,6 +2157,12 @@ function startGame(){
 
 
     document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main";
+
+
+    document
         .getElementById("feedbackDetail")
         .textContent =
         "";
@@ -1818,8 +2202,11 @@ function renderTiles(){
 
 
         if(
-            selectedItems.includes(item)
+            selectedItems.includes(
+                item
+            )
         ){
+
             tile.classList.add(
                 "selected"
             );
@@ -1830,8 +2217,8 @@ function renderTiles(){
             item;
 
 
-        tile.onclick = () =>
-            toggleTile(item);
+        tile.onclick =
+            () => toggleTile(item);
 
 
         container.appendChild(
@@ -1856,7 +2243,9 @@ function toggleTile(item){
 
 
     if(
-        selectedItems.includes(item)
+        selectedItems.includes(
+            item
+        )
     ){
 
         selectedItems =
@@ -1907,6 +2296,10 @@ CLEAR SELECTION
 
 function clearSelection(){
 
+    if(gameFinished){
+        return;
+    }
+
     selectedItems = [];
 
     renderTiles();
@@ -1914,10 +2307,14 @@ function clearSelection(){
 
 
 /* ======================================================
-SHUFFLE REMAINING
+SHUFFLE
 ====================================================== */
 
 function shuffleTiles(){
+
+    if(gameFinished){
+        return;
+    }
 
     remainingItems =
         shuffle(
@@ -1964,7 +2361,9 @@ function submitGroup(){
         );
 
 
-    if(matchedGroupIndex !== -1){
+    if(
+        matchedGroupIndex !== -1
+    ){
 
         solveGroup(
             matchedGroupIndex
@@ -1995,7 +2394,9 @@ function solveGroup(index){
     remainingItems =
         remainingItems.filter(
             item =>
-            !group.items.includes(item)
+            !group.items.includes(
+                item
+            )
         );
 
 
@@ -2104,7 +2505,9 @@ function wrongGroup(){
             "feedbackDetail"
         )
         .textContent =
-        "Try another combination.";
+        mistakesRemaining > 0
+        ? "Try another combination."
+        : "No mistakes remaining.";
 
 
     const tileGrid =
@@ -2159,7 +2562,11 @@ function updateMistakes(){
     let display = "";
 
 
-    for(let i = 0; i < 4; i++){
+    for(
+        let i = 0;
+        i < 4;
+        i++
+    ){
 
         display +=
             i < mistakesRemaining
@@ -2235,7 +2642,7 @@ function finishGame(success){
 
 
         message.textContent =
-            `You found ${solvedGroupIndexes.length} of the 4 connections. Review the answers below and try another puzzle.`;
+            `You found ${solvedGroupIndexes.length} of the 4 connections. Review the answers and try another puzzle.`;
     }
 
 
@@ -2353,7 +2760,7 @@ function toggleReview(){
 
 
 /* ======================================================
-PLAY AGAIN
+NEW PUZZLE
 ====================================================== */
 
 function playAgain(){
