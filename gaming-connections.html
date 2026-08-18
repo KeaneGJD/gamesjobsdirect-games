@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gaming Connections | Games Jobs Direct</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --tile:#f2f0ed;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    min-height:68px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    padding:12px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+
+    padding:11px 17px;
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================
+START SCREEN
+========================= */
+
+.start-screen{
+    max-width:900px;
+    margin:55px auto;
+    padding:0 20px;
+    text-align:center;
+}
+
+.game-title{
+    line-height:.87;
+    margin-bottom:25px;
+}
+
+.title-top{
+    display:block;
+
+    color:var(--primary);
+
+    font-size:clamp(50px,8vw,86px);
+
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:clamp(65px,10vw,115px);
+
+    font-weight:900;
+    letter-spacing:-5px;
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.10);
+}
+
+.intro{
+    max-width:650px;
+
+    margin:17px auto 30px;
+
+    color:var(--muted);
+
+    font-size:16px;
+    line-height:1.55;
+}
+
+
+/* =========================
+HOW TO PLAY
+========================= */
+
+.rules{
+    max-width:720px;
+
+    margin:0 auto 30px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+}
+
+.rule{
+    background:white;
+
+    border-radius:13px;
+
+    padding:18px 12px;
+}
+
+.rule-icon{
+    font-size:28px;
+}
+
+.rule strong{
+    display:block;
+
+    color:var(--primary);
+
+    margin:7px 0 4px;
+}
+
+.rule small{
+    color:var(--muted);
+    line-height:1.4;
+}
+
+.start-btn{
+    background:var(--accent);
+    color:#222;
+
+    border:0;
+    border-radius:14px;
+
+    padding:18px 52px;
+
+    font-size:21px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #9cb500;
+}
+
+
+/* =========================
+GAME
+========================= */
+
+.game-area{
+    display:none;
+
+    max-width:950px;
+
+    margin:35px auto;
+
+    padding:0 20px 60px;
+}
+
+.game-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+
+/* =========================
+HUD
+========================= */
+
+.game-heading{
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:clamp(25px,4vw,36px);
+
+    font-weight:900;
+
+    margin:0 0 7px;
+}
+
+.game-instruction{
+    text-align:center;
+
+    color:var(--muted);
+
+    margin-bottom:20px;
+}
+
+.hud{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:9px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:22px;
+}
+
+.mistakes-label{
+    color:var(--primary);
+
+    font-size:13px;
+
+    font-weight:900;
+}
+
+.mistakes{
+    letter-spacing:5px;
+    font-size:18px;
+}
+
+
+/* =========================
+SOLVED GROUPS
+========================= */
+
+.solved-groups{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    margin-bottom:10px;
+}
+
+.solved-group{
+    border-radius:13px;
+
+    padding:16px;
+
+    text-align:center;
+
+    background:var(--primary);
+
+    color:white;
+}
+
+.solved-group:nth-child(2){
+    background:#684390;
+}
+
+.solved-group:nth-child(3){
+    background:#7c5aa0;
+}
+
+.solved-group:nth-child(4){
+    background:#8e70ae;
+}
+
+.solved-title{
+    font-size:15px;
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+}
+
+.solved-items{
+    margin-top:5px;
+
+    font-size:13px;
+
+    opacity:.9;
+}
+
+
+/* =========================
+TILES
+========================= */
+
+.tiles{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:9px;
+
+    margin-top:12px;
+}
+
+.tile{
+    min-height:90px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px;
+
+    background:var(--tile);
+
+    border:3px solid transparent;
+
+    border-radius:13px;
+
+    color:var(--primary);
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.12s;
+}
+
+.tile:hover{
+    transform:translateY(-2px);
+
+    border-color:#b7afbc;
+}
+
+.tile.selected{
+    background:var(--primary);
+
+    color:white;
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+CONTROLS
+========================= */
+
+.controls{
+    display:flex;
+
+    justify-content:center;
+
+    gap:9px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+}
+
+.control-btn{
+    border:0;
+
+    border-radius:10px;
+
+    padding:12px 17px;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.submit-group{
+    background:var(--accent);
+
+    color:#222;
+}
+
+.secondary{
+    background:#ddd9d4;
+
+    color:#444;
+}
+
+.control-btn:disabled{
+    opacity:.4;
+
+    cursor:default;
+}
+
+
+/* =========================
+FEEDBACK
+========================= */
+
+.feedback{
+    min-height:55px;
+
+    margin-top:18px;
+
+    text-align:center;
+}
+
+.feedback-main{
+    font-size:21px;
+
+    font-weight:900;
+}
+
+.feedback-main.correct{
+    color:var(--green);
+}
+
+.feedback-main.wrong{
+    color:var(--red);
+}
+
+.feedback-detail{
+    color:var(--muted);
+
+    margin-top:4px;
+}
+
+
+/* =========================
+SHAKE
+========================= */
+
+.shake{
+    animation:shake .35s;
+}
+
+@keyframes shake{
+
+    0%{transform:translateX(0)}
+    20%{transform:translateX(-7px)}
+    40%{transform:translateX(7px)}
+    60%{transform:translateX(-5px)}
+    80%{transform:translateX(5px)}
+    100%{transform:translateX(0)}
+
+}
+
+
+/* =========================
+RESULTS
+========================= */
+
+.results-screen{
+    display:none;
+
+    max-width:850px;
+
+    margin:50px auto;
+
+    padding:0 20px 70px;
+
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:40px 25px;
+}
+
+.results-title{
+    margin:0;
+
+    color:var(--primary);
+
+    font-size:clamp(45px,8vw,75px);
+
+    line-height:1;
+
+    font-weight:900;
+}
+
+.result-message{
+    max-width:500px;
+
+    margin:16px auto 25px;
+
+    color:var(--muted);
+
+    line-height:1.5;
+}
+
+.result-actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.result-btn{
+    border:0;
+
+    border-radius:11px;
+
+    padding:14px 21px;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.play-again{
+    background:var(--accent);
+}
+
+.review-btn{
+    background:var(--primary);
+
+    color:white;
+}
+
+
+/* =========================
+ANSWER REVIEW
+========================= */
+
+.review{
+    display:none;
+
+    max-width:700px;
+
+    margin:32px auto 0;
+}
+
+.review h2{
+    color:var(--primary);
+}
+
+.review-group{
+    background:#f3f1ee;
+
+    border-radius:13px;
+
+    padding:17px;
+
+    margin-bottom:10px;
+
+    text-align:left;
+}
+
+.review-name{
+    color:var(--primary);
+
+    font-size:17px;
+
+    font-weight:900;
+}
+
+.review-items{
+    color:var(--muted);
+
+    margin-top:5px;
+
+    line-height:1.45;
+}
+
+
+/* =========================
+MORE GAMES
+========================= */
+
+.more-games{
+    margin-top:38px;
+
+    padding-top:28px;
+
+    border-top:1px solid var(--border);
+}
+
+.more-games h2{
+    color:var(--primary);
+}
+
+.more-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+}
+
+.more-card{
+    background:#f3f1ee;
+
+    border-radius:12px;
+
+    padding:18px 12px;
+
+    text-decoration:none;
+}
+
+.more-card-icon{
+    font-size:30px;
+}
+
+.more-card strong{
+    display:block;
+
+    color:var(--primary);
+
+    margin-top:7px;
+}
+
+.more-card small{
+    color:var(--muted);
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+
+        padding:9px 10px;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .game-card{
+        padding:18px 13px;
+    }
+
+    .tiles{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .tile{
+        min-height:76px;
+
+        font-size:13px;
+    }
+
+    .more-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+<img
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
+</a>
+
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</header>
+
+
+
+<!-- START -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+
+<div class="game-title">
+
+<span class="title-top">
+GAMING
+</span>
+
+<span class="title-bottom">
+CONNECTIONS
+</span>
+
+</div>
+
+
+<p class="intro">
+
+Sixteen gaming terms are hiding four different connections.
+
+Select four tiles that belong together, submit your guess,
+and solve all four groups before you run out of mistakes.
+
+</p>
+
+
+<div class="rules">
+
+
+<div class="rule">
+
+<div class="rule-icon">
+🧩
+</div>
+
+<strong>
+Find Four Groups
+</strong>
+
+<small>
+Each group contains four connected gaming terms.
+</small>
+
+</div>
+
+
+<div class="rule">
+
+<div class="rule-icon">
+❤️
+</div>
+
+<strong>
+4 Mistakes
+</strong>
+
+<small>
+Incorrect groups cost one attempt.
+</small>
+
+</div>
+
+
+<div class="rule">
+
+<div class="rule-icon">
+🔀
+</div>
+
+<strong>
+Shuffle Anytime
+</strong>
+
+<small>
+Rearrange the remaining tiles when you're stuck.
+</small>
+
+</div>
+
+
+</div>
+
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
+START PUZZLE
+
+</button>
+
+
+</section>
+
+
+
+<!-- GAME -->
+
+<section
+    class="game-area"
+    id="gameArea">
+
+
+<div class="game-card">
+
+
+<h1 class="game-heading">
+Find the Connections
+</h1>
+
+
+<div class="game-instruction">
+Select exactly four tiles that share something in common.
+</div>
+
+
+<div class="hud">
+
+<span class="mistakes-label">
+Mistakes remaining:
+</span>
+
+<span
+    class="mistakes"
+    id="mistakesDisplay">
+
+● ● ● ●
+
+</span>
+
+</div>
+
+
+<div
+    class="solved-groups"
+    id="solvedGroups">
+</div>
+
+
+<div
+    class="tiles"
+    id="tiles">
+</div>
+
+
+<div class="controls">
+
+
+<button
+    class="control-btn secondary"
+    onclick="shuffleTiles()">
+
+Shuffle
+
+</button>
+
+
+<button
+    class="control-btn secondary"
+    onclick="clearSelection()">
+
+Deselect All
+
+</button>
+
+
+<button
+    class="control-btn submit-group"
+    id="submitButton"
+    onclick="submitGroup()"
+    disabled>
+
+Submit Group
+
+</button>
+
+
+</div>
+
+
+<div class="feedback">
+
+
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- RESULTS -->
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+
+<div class="results-card">
+
+
+<h1
+    class="results-title"
+    id="resultsTitle">
+
+PUZZLE COMPLETE
+
+</h1>
+
+
+<p
+    class="result-message"
+    id="resultMessage">
+</p>
+
+
+<div class="result-actions">
+
+
+<button
+    class="result-btn play-again"
+    onclick="playAgain()">
+
+New Puzzle
+
+</button>
+
+
+<button
+    class="result-btn review-btn"
+    id="reviewButton"
+    onclick="toggleReview()">
+
+Review Connections
+
+</button>
+
+
+</div>
+
+
+
+<div
+    class="review"
+    id="review">
+
+
+<h2>
+Connections
+</h2>
+
+
+<div id="reviewList">
+</div>
+
+
+</div>
+
+
+
+<div class="more-games">
+
+
+<h2>
+Try Another Game
+</h2>
+
+
+<div class="more-grid">
+
+
+<a
+    class="more-card"
+    href="guess-the-game.html">
+
+<div class="more-card-icon">
+🎮
+</div>
+
+<strong>
+Guess The Game
+</strong>
+
+<small>
+Play Now
+</small>
+
+</a>
+
+
+<a
+    class="more-card"
+    href="video-game-trivia.html">
+
+<div class="more-card-icon">
+🧠
+</div>
+
+<strong>
+Video Game Trivia
+</strong>
+
+<small>
+Play Now
+</small>
+
+</a>
+
+
+<a
+    class="more-card"
+    href="guess-the-studio.html">
+
+<div class="more-card-icon">
+🏢
+</div>
+
+<strong>
+Guess The Studio
+</strong>
+
+<small>
+Play Now
+</small>
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<script>
+
+/* ======================================================
+PUZZLE BANK
+
+Each puzzle contains exactly:
+4 groups × 4 items = 16 tiles.
+
+The groups are deliberately hand-made rather than
+randomly generated, which helps prevent ambiguous answers.
+====================================================== */
+
+const PUZZLES = [
+
+
+/* =========================
+PUZZLE 1
+========================= */
+
+{
+id:1,
+groups:[
+
+{
+name:"Mario Characters",
+items:[
+    "Luigi",
+    "Princess Peach",
+    "Bowser",
+    "Yoshi"
+]
+},
+
+{
+name:"PlayStation Studios",
+items:[
+    "Naughty Dog",
+    "Insomniac Games",
+    "Guerrilla Games",
+    "Sucker Punch"
+]
+},
+
+{
+name:"Battle Royale Games",
+items:[
+    "Fortnite",
+    "Apex Legends",
+    "PUBG",
+    "Warzone"
+]
+},
+
+{
+name:"Game Engines",
+items:[
+    "Unreal Engine",
+    "Unity",
+    "Godot",
+    "GameMaker"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 2
+========================= */
+
+{
+id:2,
+groups:[
+
+{
+name:"Locations From The Legend of Zelda",
+items:[
+    "Hyrule Castle",
+    "Kakariko Village",
+    "Death Mountain",
+    "Lost Woods"
+]
+},
+
+{
+name:"Horror Game Series",
+items:[
+    "Resident Evil",
+    "Silent Hill",
+    "Amnesia",
+    "Outlast"
+]
+},
+
+{
+name:"Racing Franchises",
+items:[
+    "Forza",
+    "Gran Turismo",
+    "Need for Speed",
+    "Burnout"
+]
+},
+
+{
+name:"Pokémon Types",
+items:[
+    "Fire",
+    "Water",
+    "Grass",
+    "Electric"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 3
+========================= */
+
+{
+id:3,
+groups:[
+
+{
+name:"Mass Effect Squadmates",
+items:[
+    "Garrus",
+    "Tali",
+    "Liara",
+    "Wrex"
+]
+},
+
+{
+name:"Bethesda-Published Franchises",
+items:[
+    "Fallout",
+    "The Elder Scrolls",
+    "DOOM",
+    "Dishonored"
+]
+},
+
+{
+name:"Nintendo Handhelds",
+items:[
+    "Game Boy",
+    "Game Boy Advance",
+    "Nintendo DS",
+    "Nintendo 3DS"
+]
+},
+
+{
+name:"Farming / Life Sims",
+items:[
+    "Stardew Valley",
+    "Story of Seasons",
+    "Coral Island",
+    "My Time at Portia"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 4
+========================= */
+
+{
+id:4,
+groups:[
+
+{
+name:"FromSoftware Games",
+items:[
+    "Dark Souls",
+    "Bloodborne",
+    "Sekiro",
+    "Elden Ring"
+]
+},
+
+{
+name:"Rockstar Protagonists",
+items:[
+    "CJ",
+    "Niko Bellic",
+    "Arthur Morgan",
+    "John Marston"
+]
+},
+
+{
+name:"Valve Games",
+items:[
+    "Half-Life",
+    "Portal",
+    "Left 4 Dead",
+    "Team Fortress"
+]
+},
+
+{
+name:"Major Console Brands",
+items:[
+    "PlayStation",
+    "Xbox",
+    "Nintendo",
+    "Sega"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 5
+========================= */
+
+{
+id:5,
+groups:[
+
+{
+name:"Minecraft Mobs",
+items:[
+    "Creeper",
+    "Enderman",
+    "Skeleton",
+    "Villager"
+]
+},
+
+{
+name:"Overwatch Heroes",
+items:[
+    "Tracer",
+    "Reinhardt",
+    "Mercy",
+    "Genji"
+]
+},
+
+{
+name:"Final Fantasy VII Characters",
+items:[
+    "Cloud",
+    "Tifa",
+    "Aerith",
+    "Sephiroth"
+]
+},
+
+{
+name:"Game Genres",
+items:[
+    "Roguelike",
+    "Metroidvania",
+    "RTS",
+    "MOBA"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 6
+========================= */
+
+{
+id:6,
+groups:[
+
+{
+name:"Assassin's Creed Protagonists",
+items:[
+    "Ezio",
+    "Altaïr",
+    "Bayek",
+    "Kassandra"
+]
+},
+
+{
+name:"Hades Characters",
+items:[
+    "Zagreus",
+    "Megaera",
+    "Thanatos",
+    "Nyx"
+]
+},
+
+{
+name:"Grand Theft Auto Cities",
+items:[
+    "Los Santos",
+    "Liberty City",
+    "Vice City",
+    "San Fierro"
+]
+},
+
+{
+name:"Nintendo Home Consoles",
+items:[
+    "NES",
+    "SNES",
+    "GameCube",
+    "Wii"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 7
+========================= */
+
+{
+id:7,
+groups:[
+
+{
+name:"Halo Terms",
+items:[
+    "Master Chief",
+    "Cortana",
+    "Covenant",
+    "UNSC"
+]
+},
+
+{
+name:"The Witcher Characters",
+items:[
+    "Geralt",
+    "Ciri",
+    "Yennefer",
+    "Triss"
+]
+},
+
+{
+name:"Major Sports Game Series",
+items:[
+    "EA Sports FC",
+    "NBA 2K",
+    "Madden NFL",
+    "NHL"
+]
+},
+
+{
+name:"Indie Hits",
+items:[
+    "Hollow Knight",
+    "Celeste",
+    "Undertale",
+    "Cuphead"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 8
+========================= */
+
+{
+id:8,
+groups:[
+
+{
+name:"Sonic Characters",
+items:[
+    "Tails",
+    "Knuckles",
+    "Amy",
+    "Shadow"
+]
+},
+
+{
+name:"Call of Duty Titles / Subseries",
+items:[
+    "Modern Warfare",
+    "Black Ops",
+    "Vanguard",
+    "Ghosts"
+]
+},
+
+{
+name:"Open-World Survival Games",
+items:[
+    "Rust",
+    "ARK",
+    "DayZ",
+    "7 Days to Die"
+]
+},
+
+{
+name:"Game Development Roles",
+items:[
+    "Programmer",
+    "Producer",
+    "Environment Artist",
+    "QA Tester"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 9
+========================= */
+
+{
+id:9,
+groups:[
+
+{
+name:"Resident Evil Characters",
+items:[
+    "Leon Kennedy",
+    "Jill Valentine",
+    "Claire Redfield",
+    "Chris Redfield"
+]
+},
+
+{
+name:"Fighting Game Franchises",
+items:[
+    "Tekken",
+    "Street Fighter",
+    "Mortal Kombat",
+    "Soulcalibur"
+]
+},
+
+{
+name:"Nintendo Heroes",
+items:[
+    "Mario",
+    "Kirby",
+    "Link",
+    "Samus"
+]
+},
+
+{
+name:"Strategy Franchises",
+items:[
+    "Civilization",
+    "Total War",
+    "XCOM",
+    "Age of Empires"
+]
+}
+
+]
+},
+
+
+/* =========================
+PUZZLE 10
+========================= */
+
+{
+id:10,
+groups:[
+
+{
+name:"Famous Video Game Locations",
+items:[
+    "Rapture",
+    "Midgar",
+    "Hyrule",
+    "Night City"
+]
+},
+
+{
+name:"Games Built Around Co-op",
+items:[
+    "It Takes Two",
+    "Overcooked",
+    "Deep Rock Galactic",
+    "Left 4 Dead"
+]
+},
+
+{
+name:"Indie Game Publishers",
+items:[
+    "Devolver Digital",
+    "Annapurna Interactive",
+    "Team17",
+    "Raw Fury"
+]
+},
+
+{
+name:"RPG Companions",
+items:[
+    "Dogmeat",
+    "Garrus",
+    "Lydia",
+    "Panam"
+]
+}
+
+]
+}
+
+];
+
+
+/* ======================================================
+GAME STATE
+====================================================== */
+
+let activePuzzle = null;
+
+let remainingItems = [];
+
+let selectedItems = [];
+
+let solvedGroupIndexes = [];
+
+let mistakesRemaining = 4;
+
+let gameFinished = false;
+
+
+/* ======================================================
+SHUFFLE ARRAY
+====================================================== */
+
+function shuffle(array){
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--){
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+
+/* ======================================================
+CHOOSE PUZZLE
+
+Avoids serving the exact same puzzle twice in a row
+on the same browser.
+====================================================== */
+
+function choosePuzzle(){
+
+    const lastPuzzle =
+        Number(
+            localStorage.getItem(
+                "gjdConnectionsLastPuzzle"
+            )
+        );
+
+
+    let available =
+        PUZZLES.filter(
+            puzzle =>
+            puzzle.id !== lastPuzzle
+        );
+
+
+    if(available.length === 0){
+        available = [...PUZZLES];
+    }
+
+
+    const puzzle =
+        available[
+            Math.floor(
+                Math.random() *
+                available.length
+            )
+        ];
+
+
+    localStorage.setItem(
+        "gjdConnectionsLastPuzzle",
+        puzzle.id
+    );
+
+
+    return puzzle;
+}
+
+
+/* ======================================================
+START
+====================================================== */
+
+function startGame(){
+
+    activePuzzle =
+        choosePuzzle();
+
+
+    remainingItems =
+        shuffle(
+            activePuzzle.groups
+            .flatMap(group => group.items)
+        );
+
+
+    selectedItems = [];
+
+    solvedGroupIndexes = [];
+
+    mistakesRemaining = 4;
+
+    gameFinished = false;
+
+
+    document
+        .getElementById("startScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("solvedGroups")
+        .innerHTML =
+        "";
+
+
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        "";
+
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        "";
+
+
+    renderTiles();
+
+    updateMistakes();
+}
+
+
+/* ======================================================
+RENDER TILES
+====================================================== */
+
+function renderTiles(){
+
+    const container =
+        document.getElementById(
+            "tiles"
+        );
+
+
+    container.innerHTML = "";
+
+
+    remainingItems.forEach(item => {
+
+        const tile =
+            document.createElement(
+                "button"
+            );
+
+
+        tile.className =
+            "tile";
+
+
+        if(
+            selectedItems.includes(item)
+        ){
+            tile.classList.add(
+                "selected"
+            );
+        }
+
+
+        tile.textContent =
+            item;
+
+
+        tile.onclick = () =>
+            toggleTile(item);
+
+
+        container.appendChild(
+            tile
+        );
+    });
+
+
+    updateSubmitButton();
+}
+
+
+/* ======================================================
+SELECT TILE
+====================================================== */
+
+function toggleTile(item){
+
+    if(gameFinished){
+        return;
+    }
+
+
+    if(
+        selectedItems.includes(item)
+    ){
+
+        selectedItems =
+            selectedItems.filter(
+                selected =>
+                selected !== item
+            );
+
+
+    }else{
+
+
+        if(
+            selectedItems.length >= 4
+        ){
+            return;
+        }
+
+
+        selectedItems.push(
+            item
+        );
+    }
+
+
+    renderTiles();
+}
+
+
+/* ======================================================
+SUBMIT BUTTON
+====================================================== */
+
+function updateSubmitButton(){
+
+    document
+        .getElementById(
+            "submitButton"
+        )
+        .disabled =
+        selectedItems.length !== 4;
+}
+
+
+/* ======================================================
+CLEAR SELECTION
+====================================================== */
+
+function clearSelection(){
+
+    selectedItems = [];
+
+    renderTiles();
+}
+
+
+/* ======================================================
+SHUFFLE REMAINING
+====================================================== */
+
+function shuffleTiles(){
+
+    remainingItems =
+        shuffle(
+            remainingItems
+        );
+
+
+    renderTiles();
+}
+
+
+/* ======================================================
+SUBMIT GROUP
+====================================================== */
+
+function submitGroup(){
+
+    if(
+        gameFinished ||
+        selectedItems.length !== 4
+    ){
+        return;
+    }
+
+
+    const matchedGroupIndex =
+        activePuzzle.groups
+        .findIndex(
+            (group,index) => {
+
+                if(
+                    solvedGroupIndexes
+                    .includes(index)
+                ){
+                    return false;
+                }
+
+
+                return selectedItems.every(
+                    item =>
+                    group.items.includes(item)
+                );
+            }
+        );
+
+
+    if(matchedGroupIndex !== -1){
+
+        solveGroup(
+            matchedGroupIndex
+        );
+
+    }else{
+
+        wrongGroup();
+    }
+}
+
+
+/* ======================================================
+CORRECT GROUP
+====================================================== */
+
+function solveGroup(index){
+
+    const group =
+        activePuzzle.groups[index];
+
+
+    solvedGroupIndexes.push(
+        index
+    );
+
+
+    remainingItems =
+        remainingItems.filter(
+            item =>
+            !group.items.includes(item)
+        );
+
+
+    selectedItems = [];
+
+
+    const solvedContainer =
+        document.getElementById(
+            "solvedGroups"
+        );
+
+
+    const block =
+        document.createElement(
+            "div"
+        );
+
+
+    block.className =
+        "solved-group";
+
+
+    block.innerHTML =
+        `
+        <div class="solved-title">
+            ${group.name}
+        </div>
+
+        <div class="solved-items">
+            ${group.items.join(" • ")}
+        </div>
+        `;
+
+
+    solvedContainer.appendChild(
+        block
+    );
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .textContent =
+        "Connection found!";
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .className =
+        "feedback-main correct";
+
+
+    document
+        .getElementById(
+            "feedbackDetail"
+        )
+        .textContent =
+        group.name;
+
+
+    renderTiles();
+
+
+    if(
+        solvedGroupIndexes.length === 4
+    ){
+
+        setTimeout(
+            () => finishGame(true),
+            650
+        );
+    }
+}
+
+
+/* ======================================================
+WRONG GROUP
+====================================================== */
+
+function wrongGroup(){
+
+    mistakesRemaining--;
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .textContent =
+        "Not a connection.";
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .className =
+        "feedback-main wrong";
+
+
+    document
+        .getElementById(
+            "feedbackDetail"
+        )
+        .textContent =
+        "Try another combination.";
+
+
+    const tileGrid =
+        document.getElementById(
+            "tiles"
+        );
+
+
+    tileGrid.classList.remove(
+        "shake"
+    );
+
+
+    void tileGrid.offsetWidth;
+
+
+    tileGrid.classList.add(
+        "shake"
+    );
+
+
+    selectedItems = [];
+
+
+    updateMistakes();
+
+
+    setTimeout(
+        renderTiles,
+        300
+    );
+
+
+    if(
+        mistakesRemaining <= 0
+    ){
+
+        setTimeout(
+            () => finishGame(false),
+            650
+        );
+    }
+}
+
+
+/* ======================================================
+MISTAKES
+====================================================== */
+
+function updateMistakes(){
+
+    let display = "";
+
+
+    for(let i = 0; i < 4; i++){
+
+        display +=
+            i < mistakesRemaining
+            ? "● "
+            : "○ ";
+    }
+
+
+    document
+        .getElementById(
+            "mistakesDisplay"
+        )
+        .textContent =
+        display.trim();
+}
+
+
+/* ======================================================
+FINISH
+====================================================== */
+
+function finishGame(success){
+
+    if(gameFinished){
+        return;
+    }
+
+
+    gameFinished = true;
+
+
+    document
+        .getElementById(
+            "gameArea"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultsScreen"
+        )
+        .style.display =
+        "block";
+
+
+    const title =
+        document.getElementById(
+            "resultsTitle"
+        );
+
+
+    const message =
+        document.getElementById(
+            "resultMessage"
+        );
+
+
+    if(success){
+
+        title.textContent =
+            "PUZZLE COMPLETE";
+
+
+        message.textContent =
+            `You found all four connections with ${mistakesRemaining} mistake${mistakesRemaining === 1 ? "" : "s"} remaining.`;
+
+    }else{
+
+        title.textContent =
+            "OUT OF MOVES";
+
+
+        message.textContent =
+            `You found ${solvedGroupIndexes.length} of the 4 connections. Review the answers below and try another puzzle.`;
+    }
+
+
+    buildReview();
+}
+
+
+/* ======================================================
+BUILD REVIEW
+====================================================== */
+
+function buildReview(){
+
+    const list =
+        document.getElementById(
+            "reviewList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    activePuzzle.groups.forEach(
+        group => {
+
+
+            const block =
+                document.createElement(
+                    "div"
+                );
+
+
+            block.className =
+                "review-group";
+
+
+            block.innerHTML =
+                `
+                <div class="review-name">
+                    ${group.name}
+                </div>
+
+                <div class="review-items">
+                    ${group.items.join(" • ")}
+                </div>
+                `;
+
+
+            list.appendChild(
+                block
+            );
+        }
+    );
+
+
+    document
+        .getElementById(
+            "review"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "reviewButton"
+        )
+        .textContent =
+        "Review Connections";
+}
+
+
+/* ======================================================
+TOGGLE REVIEW
+====================================================== */
+
+function toggleReview(){
+
+    const review =
+        document.getElementById(
+            "review"
+        );
+
+
+    const button =
+        document.getElementById(
+            "reviewButton"
+        );
+
+
+    const hidden =
+        review.style.display === "none" ||
+        review.style.display === "";
+
+
+    if(hidden){
+
+        review.style.display =
+            "block";
+
+
+        button.textContent =
+            "Hide Connections";
+
+    }else{
+
+        review.style.display =
+            "none";
+
+
+        button.textContent =
+            "Review Connections";
+    }
+}
+
+
+/* ======================================================
+PLAY AGAIN
+====================================================== */
+
+function playAgain(){
+
+    startGame();
+}
+
+</script>
+
+
+</body>
+
+</html>
