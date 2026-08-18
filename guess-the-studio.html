@@ -34,20 +34,15 @@ body{
     color:var(--text);
 }
 
-
-/* =========================
-HEADER
-========================= */
+/* HEADER */
 
 header{
     background:white;
     min-height:68px;
     padding:12px 22px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     border-bottom:1px solid var(--border);
 }
 
@@ -64,61 +59,41 @@ header{
 .hub-btn{
     background:var(--primary);
     color:white;
-
     text-decoration:none;
-
     padding:11px 17px;
-
     border-radius:10px;
-
     font-size:14px;
     font-weight:800;
 }
 
-
-/* =========================
-START SCREEN
-========================= */
+/* START SCREEN */
 
 .start-screen{
     max-width:900px;
-
     margin:55px auto;
-
     padding:0 20px;
-
     text-align:center;
 }
 
 .game-title{
     line-height:.88;
-
     margin-bottom:25px;
 }
 
 .title-top{
     display:block;
-
     color:var(--primary);
-
     font-size:clamp(52px,8vw,90px);
-
     font-weight:900;
-
     letter-spacing:-3px;
 }
 
 .title-bottom{
     display:block;
-
     color:var(--accent);
-
     font-size:clamp(75px,12vw,135px);
-
     font-weight:900;
-
     letter-spacing:-5px;
-
     text-shadow:
         0 4px 0 #9cb500,
         0 8px 12px rgba(0,0,0,.10);
@@ -126,38 +101,23 @@ START SCREEN
 
 .intro{
     max-width:630px;
-
     margin:15px auto 30px;
-
     color:var(--muted);
-
     font-size:16px;
-
     line-height:1.55;
 }
 
-
-/* =========================
-HOW TO PLAY
-========================= */
-
 .rules{
     max-width:700px;
-
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:10px;
-
     margin:0 auto 30px;
 }
 
 .rule{
     background:white;
-
     border-radius:13px;
-
     padding:18px 12px;
 }
 
@@ -167,200 +127,126 @@ HOW TO PLAY
 
 .rule strong{
     display:block;
-
     color:var(--primary);
-
     margin:7px 0 4px;
 }
 
 .rule small{
     color:var(--muted);
-
     line-height:1.4;
 }
 
 .start-btn{
     background:var(--accent);
-
     color:#222;
-
     border:0;
-
     border-radius:14px;
-
     padding:18px 52px;
-
     font-size:21px;
-
     font-weight:900;
-
     cursor:pointer;
-
     box-shadow:0 4px 0 #9cb500;
 }
 
-
-/* =========================
-GAME AREA
-========================= */
+/* GAME AREA */
 
 .game-area{
     display:none;
-
     max-width:900px;
-
     margin:35px auto;
-
     padding:0 20px 60px;
 }
 
 .game-card{
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:20px;
-
     padding:28px;
-
     box-shadow:0 8px 20px rgba(0,0,0,.05);
 }
 
-
-/* =========================
-HUD
-========================= */
+/* HUD */
 
 .hud{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     gap:15px;
 }
 
 .progress-text{
     color:var(--muted);
-
     font-size:14px;
-
     font-weight:800;
 }
 
 .score-pill{
     background:var(--primary);
-
     color:white;
-
     border-radius:20px;
-
     padding:9px 15px;
-
     font-size:13px;
-
     font-weight:900;
 }
 
-
-/* =========================
-PROGRESS BAR
-========================= */
-
 .progress-track{
     height:9px;
-
     background:#e6e3df;
-
     border-radius:20px;
-
     overflow:hidden;
-
     margin:17px 0 26px;
 }
 
 .progress-fill{
     height:100%;
-
     width:10%;
-
     background:var(--accent);
-
     transition:.25s;
 }
 
-
-/* =========================
-ROUND HEADING
-========================= */
+/* ROUND */
 
 .round-heading{
     text-align:center;
-
     color:var(--primary);
-
     font-size:clamp(27px,4vw,38px);
-
     font-weight:900;
-
     margin:10px 0 22px;
 }
 
 .points-available{
     text-align:center;
-
     margin-bottom:20px;
-
     color:var(--muted);
-
     font-size:13px;
-
     font-weight:800;
 }
 
 .points-number{
     display:inline-block;
-
     min-width:32px;
-
     background:var(--accent);
-
     color:#222;
-
     padding:6px 9px;
-
     border-radius:20px;
-
     font-size:16px;
-
     font-weight:900;
 }
 
-
-/* =========================
-CLUES
-========================= */
+/* CLUES */
 
 .clues{
     display:flex;
-
     flex-direction:column;
-
     gap:10px;
 }
 
 .clue{
     display:none;
-
     background:#f3f1ee;
-
     border-left:5px solid var(--primary);
-
     border-radius:12px;
-
     padding:17px 18px;
-
     text-align:left;
 }
 
@@ -370,30 +256,20 @@ CLUES
 
 .clue-number{
     display:block;
-
     color:var(--primary);
-
     font-size:11px;
-
     font-weight:900;
-
     letter-spacing:1px;
-
     margin-bottom:5px;
 }
 
 .clue-text{
     font-size:17px;
-
     line-height:1.45;
-
     font-weight:700;
 }
 
-
-/* =========================
-GUESSING
-========================= */
+/* GUESS */
 
 .guess-section{
     margin-top:24px;
@@ -401,88 +277,58 @@ GUESSING
 
 .answer-input{
     width:100%;
-
     min-height:51px;
-
     padding:14px 15px;
-
     border:1px solid #bbb;
-
     border-radius:11px;
-
     font-size:16px;
-
     outline:none;
 }
 
 .answer-input:focus{
     border-color:var(--primary);
-
     box-shadow:0 0 0 3px rgba(85,49,121,.1);
 }
 
 .guess-btn{
     width:100%;
-
     margin-top:10px;
-
     padding:14px;
-
     background:var(--accent);
-
     border:0;
-
     border-radius:11px;
-
     font-size:16px;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
 .reveal-clue-btn{
     width:100%;
-
     margin-top:10px;
-
     padding:13px;
-
     background:var(--primary);
-
     color:white;
-
     border:0;
-
     border-radius:11px;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
 .reveal-clue-btn:disabled{
     opacity:.4;
-
     cursor:default;
 }
 
-
-/* =========================
-FEEDBACK
-========================= */
+/* FEEDBACK */
 
 .feedback{
     min-height:75px;
-
     margin-top:20px;
-
     text-align:center;
 }
 
 .feedback-main{
     font-size:25px;
-
     font-weight:900;
 }
 
@@ -496,157 +342,104 @@ FEEDBACK
 
 .feedback-detail{
     color:var(--muted);
-
     margin-top:5px;
-
     line-height:1.45;
 }
 
 .next-btn{
     display:none;
-
     margin:17px auto 0;
-
     background:var(--accent);
-
     color:#222;
-
     border:0;
-
     border-radius:11px;
-
     padding:13px 28px;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
-
-/* =========================
-STUDIO REVEAL
-========================= */
+/* STUDIO REVEAL */
 
 .studio-reveal{
     display:none;
-
     margin-top:20px;
-
     padding:20px;
-
     background:#f4f2ef;
-
     border-radius:15px;
-
     text-align:center;
 }
 
 .reveal-name{
     color:var(--primary);
-
     font-size:29px;
-
     font-weight:900;
 }
 
 .reveal-games{
     margin-top:7px;
-
     color:var(--muted);
-
     font-size:14px;
-
     line-height:1.5;
 }
 
-
-/* =========================
-RESULTS
-========================= */
+/* RESULTS */
 
 .results-screen{
     display:none;
-
     max-width:850px;
-
     margin:50px auto;
-
     padding:0 20px 70px;
-
     text-align:center;
 }
 
 .results-card{
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:20px;
-
     padding:40px 25px;
 }
 
 .results-title{
     margin:0;
-
     color:var(--primary);
-
     font-size:clamp(45px,8vw,76px);
-
     font-weight:900;
-
     line-height:1;
 }
 
 .score-label{
     margin-top:23px;
-
     color:var(--muted);
-
     font-size:12px;
-
     font-weight:900;
-
     letter-spacing:1px;
 }
 
 .final-score{
     color:var(--primary);
-
     font-size:75px;
-
     font-weight:900;
 }
 
 .max-score{
     color:var(--muted);
-
     margin-top:-7px;
-
     margin-bottom:25px;
 }
 
 .results-actions{
     display:flex;
-
     justify-content:center;
-
     flex-wrap:wrap;
-
     gap:10px;
 }
 
 .result-btn{
     border:0;
-
     border-radius:11px;
-
     padding:14px 21px;
-
     font-weight:900;
-
     font-size:15px;
-
     cursor:pointer;
 }
 
@@ -656,65 +449,46 @@ RESULTS
 
 .review-btn{
     background:var(--primary);
-
     color:white;
 }
 
-
-/* =========================
-REVIEW
-========================= */
+/* REVIEW */
 
 .review{
     display:none;
-
     max-width:650px;
-
     margin:30px auto 0;
-
     text-align:left;
 }
 
 .review h2{
     color:var(--primary);
-
     text-align:center;
 }
 
 .review-item{
     background:#f4f2ef;
-
     border-radius:12px;
-
     padding:15px;
-
     margin-bottom:9px;
 }
 
 .review-studio{
     color:var(--primary);
-
     font-size:18px;
-
     font-weight:900;
 }
 
 .review-points{
     color:var(--muted);
-
     margin-top:4px;
 }
 
-
-/* =========================
-MORE GAMES
-========================= */
+/* MORE GAMES */
 
 .more-games{
     margin-top:38px;
-
     padding-top:28px;
-
     border-top:1px solid var(--border);
 }
 
@@ -724,19 +498,14 @@ MORE GAMES
 
 .more-grid{
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:12px;
 }
 
 .more-card{
     background:#f3f1ee;
-
     border-radius:12px;
-
     padding:18px 12px;
-
     text-decoration:none;
 }
 
@@ -746,9 +515,7 @@ MORE GAMES
 
 .more-card strong{
     display:block;
-
     color:var(--primary);
-
     margin-top:7px;
 }
 
@@ -756,10 +523,7 @@ MORE GAMES
     color:var(--muted);
 }
 
-
-/* =========================
-MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:650px){
 
@@ -794,43 +558,24 @@ MOBILE
 
 </head>
 
-
 <body>
-
-
-<!-- HEADER -->
 
 <header>
 
-<a
-    class="logo-link"
-    href="https://www.gamesjobsdirect.com/">
-
+<a class="logo-link" href="https://www.gamesjobsdirect.com/">
 <img
     src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
     alt="Games Jobs Direct">
-
 </a>
 
-
-<a
-    class="hub-btn"
-    href="index.html">
-
+<a class="hub-btn" href="index.html">
 Return to Game Hub
-
 </a>
 
 </header>
 
 
-
-<!-- START SCREEN -->
-
-<section
-    class="start-screen"
-    id="startScreen">
-
+<section class="start-screen" id="startScreen">
 
 <div class="game-title">
 
@@ -844,219 +589,103 @@ STUDIO
 
 </div>
 
-
 <p class="intro">
-
 How well do you know the people behind the games?
-
 Use increasingly obvious clues to identify 10 game studios.
 The earlier you guess correctly, the more points you earn.
-
 </p>
-
 
 <div class="rules">
 
+<div class="rule">
+<div class="rule-icon">💡</div>
+<strong>Reveal Clues</strong>
+<small>Four clues are available for each studio.</small>
+</div>
 
 <div class="rule">
-
-<div class="rule-icon">
-💡
+<div class="rule-icon">🏆</div>
+<strong>Guess Early</strong>
+<small>Fewer clues means more points.</small>
 </div>
-
-<strong>
-Reveal Clues
-</strong>
-
-<small>
-Four clues are available for each studio.
-</small>
-
-</div>
-
 
 <div class="rule">
-
-<div class="rule-icon">
-🏆
+<div class="rule-icon">🎮</div>
+<strong>10 Studios</strong>
+<small>A fresh random selection every game.</small>
 </div>
-
-<strong>
-Guess Early
-</strong>
-
-<small>
-Fewer clues means more points.
-</small>
 
 </div>
 
-
-<div class="rule">
-
-<div class="rule-icon">
-🎮
-</div>
-
-<strong>
-10 Studios
-</strong>
-
-<small>
-A fresh random selection every game.
-</small>
-
-</div>
-
-
-</div>
-
-
-<button
-    class="start-btn"
-    onclick="startGame()">
-
+<button class="start-btn" onclick="startGame()">
 START GAME
-
 </button>
-
 
 </section>
 
 
-
-<!-- GAME AREA -->
-
-<section
-    class="game-area"
-    id="gameArea">
-
+<section class="game-area" id="gameArea">
 
 <div class="game-card">
 
-
 <div class="hud">
 
-
-<div
-    class="progress-text"
-    id="progressText">
-
+<div class="progress-text" id="progressText">
 Studio 1 of 10
-
 </div>
-
 
 <div class="score-pill">
-
 SCORE:
-<span id="scoreDisplay">
-0
-</span>
-
+<span id="scoreDisplay">0</span>
 </div>
 
-
 </div>
-
 
 <div class="progress-track">
-
-<div
-    class="progress-fill"
-    id="progressFill">
+<div class="progress-fill" id="progressFill"></div>
 </div>
-
-</div>
-
 
 <div class="round-heading">
 Which studio is it?
 </div>
 
-
 <div class="points-available">
 
 Worth
 
-<span
-    class="points-number"
-    id="pointsAvailable">
-
+<span class="points-number" id="pointsAvailable">
 4
-
 </span>
 
 points
 
 </div>
 
-
-<div
-    class="clues"
-    id="cluesContainer">
+<div class="clues" id="cluesContainer">
 
 <div class="clue" id="clue0">
-
-<span class="clue-number">
-CLUE 1
-</span>
-
-<div
-    class="clue-text"
-    id="clueText0">
+<span class="clue-number">CLUE 1</span>
+<div class="clue-text" id="clueText0"></div>
 </div>
-
-</div>
-
 
 <div class="clue" id="clue1">
-
-<span class="clue-number">
-CLUE 2
-</span>
-
-<div
-    class="clue-text"
-    id="clueText1">
+<span class="clue-number">CLUE 2</span>
+<div class="clue-text" id="clueText1"></div>
 </div>
-
-</div>
-
 
 <div class="clue" id="clue2">
-
-<span class="clue-number">
-CLUE 3
-</span>
-
-<div
-    class="clue-text"
-    id="clueText2">
+<span class="clue-number">CLUE 3</span>
+<div class="clue-text" id="clueText2"></div>
 </div>
-
-</div>
-
 
 <div class="clue" id="clue3">
-
-<span class="clue-number">
-CLUE 4
-</span>
-
-<div
-    class="clue-text"
-    id="clueText3">
+<span class="clue-number">CLUE 4</span>
+<div class="clue-text" id="clueText3"></div>
 </div>
 
 </div>
-
-
-</div>
-
 
 <div class="guess-section">
-
 
 <input
     class="answer-input"
@@ -1064,15 +693,9 @@ CLUE 4
     autocomplete="off"
     placeholder="Type the studio name...">
 
-
-<button
-    class="guess-btn"
-    onclick="submitGuess()">
-
+<button class="guess-btn" onclick="submitGuess()">
 Submit Guess
-
 </button>
-
 
 <button
     class="reveal-clue-btn"
@@ -1083,47 +706,21 @@ Reveal Another Clue
 
 </button>
 
-
 </div>
 
+<div class="feedback" id="feedback">
 
+<div class="feedback-main" id="feedbackMain"></div>
 
-<div
-    class="feedback"
-    id="feedback">
+<div class="feedback-detail" id="feedbackDetail"></div>
 
+<div class="studio-reveal" id="studioReveal">
 
-<div
-    class="feedback-main"
-    id="feedbackMain">
-</div>
+<div class="reveal-name" id="revealName"></div>
 
-
-<div
-    class="feedback-detail"
-    id="feedbackDetail">
-</div>
-
-
-<div
-    class="studio-reveal"
-    id="studioReveal">
-
-
-<div
-    class="reveal-name"
-    id="revealName">
-</div>
-
-
-<div
-    class="reveal-games"
-    id="revealGames">
-</div>
-
+<div class="reveal-games" id="revealGames"></div>
 
 </div>
-
 
 <button
     class="next-btn"
@@ -1134,53 +731,34 @@ Next Studio →
 
 </button>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
 
-
-<!-- RESULTS -->
-
-<section
-    class="results-screen"
-    id="resultsScreen">
-
+<section class="results-screen" id="resultsScreen">
 
 <div class="results-card">
-
 
 <h1 class="results-title">
 GAME COMPLETE
 </h1>
 
-
 <div class="score-label">
 YOUR SCORE
 </div>
 
-
-<div
-    class="final-score"
-    id="finalScore">
-
+<div class="final-score" id="finalScore">
 0
-
 </div>
-
 
 <div class="max-score">
 out of 40
 </div>
 
-
 <div class="results-actions">
-
 
 <button
     class="result-btn play-again"
@@ -1189,7 +767,6 @@ out of 40
 Play Again
 
 </button>
-
 
 <button
     class="result-btn review-btn"
@@ -1200,108 +777,47 @@ Review Studios
 
 </button>
 
-
 </div>
 
+<div class="review" id="review">
 
+<h2>Studio Review</h2>
 
-<div
-    class="review"
-    id="review">
-
-
-<h2>
-Studio Review
-</h2>
-
-
-<div id="reviewList">
-</div>
-
+<div id="reviewList"></div>
 
 </div>
-
-
 
 <div class="more-games">
 
-
-<h2>
-Try Another Game
-</h2>
-
+<h2>Try Another Game</h2>
 
 <div class="more-grid">
 
-
-<a
-    class="more-card"
-    href="guess-the-game.html">
-
-<div class="more-card-icon">
-🎮
-</div>
-
-<strong>
-Guess The Game
-</strong>
-
-<small>
-Play Now
-</small>
-
+<a class="more-card" href="guess-the-game.html">
+<div class="more-card-icon">🎮</div>
+<strong>Guess The Game</strong>
+<small>Play Now</small>
 </a>
 
-
-<a
-    class="more-card"
-    href="video-game-trivia.html">
-
-<div class="more-card-icon">
-🧠
-</div>
-
-<strong>
-Video Game Trivia
-</strong>
-
-<small>
-Play Now
-</small>
-
+<a class="more-card" href="video-game-trivia.html">
+<div class="more-card-icon">🧠</div>
+<strong>Video Game Trivia</strong>
+<small>Play Now</small>
 </a>
 
-
-<a
-    class="more-card"
-    href="which-came-first.html">
-
-<div class="more-card-icon">
-⏳
-</div>
-
-<strong>
-Which Came First?
-</strong>
-
-<small>
-Play Now
-</small>
-
+<a class="more-card" href="which-came-first.html">
+<div class="more-card-icon">⏳</div>
+<strong>Which Came First?</strong>
+<small>Play Now</small>
 </a>
 
+</div>
 
 </div>
 
-
 </div>
-
-
-</div>
-
 
 </section>
-
 
 
 <script>
@@ -1309,9 +825,8 @@ Play Now
 /* ======================================================
 STUDIO BANK
 
-10 studios are chosen randomly each playthrough.
-
-Clues are ordered from least obvious to most obvious.
+One clean list with no duplicate studio entries.
+10 studios are chosen randomly for each game.
 ====================================================== */
 
 const STUDIO_BANK = [
@@ -1323,7 +838,7 @@ games:"Known for Crash Bandicoot, Uncharted and The Last of Us.",
 clues:[
     "This studio's early 3D work included an adventurous orange bandicoot.",
     "It later created a treasure-hunting action-adventure series.",
-    "One of its most famous protagonists is Nathan Drake.",
+    "Nathan Drake is one of its most famous protagonists.",
     "It is the studio behind The Last of Us."
 ]
 },
@@ -1342,108 +857,83 @@ clues:[
 
 {
 name:"Bethesda Game Studios",
-answers:[
-    "bethesda",
-    "bethesda game studios"
-],
+answers:["bethesda","bethesda game studios"],
 games:"Known for The Elder Scrolls, Fallout and Starfield.",
 clues:[
-    "This studio is particularly associated with enormous first-person RPG worlds.",
-    "It has taken players from Tamriel to the post-nuclear wasteland.",
-    "One of its games introduced players to the Dragonborn.",
-    "It develops The Elder Scrolls and modern mainline Fallout games."
+    "This studio is strongly associated with enormous open-world RPGs.",
+    "Its worlds include Tamriel and a post-nuclear America.",
+    "The Dragonborn stars in one of its most famous games.",
+    "It develops The Elder Scrolls and modern mainline Fallout titles."
 ]
 },
 
 {
 name:"FromSoftware",
-answers:[
-    "fromsoftware",
-    "from software",
-    "fromsoft"
-],
+answers:["fromsoftware","from software","fromsoft"],
 games:"Known for Dark Souls, Bloodborne, Sekiro and Elden Ring.",
 clues:[
-    "This Japanese studio has become famous for demanding action RPGs.",
-    "Bonfires became an iconic feature of one of its major series.",
-    "Its games include Bloodborne and Sekiro.",
+    "This Japanese studio is famous for demanding action RPGs.",
+    "Bonfires became an iconic feature of one of its series.",
+    "Its catalogue includes Bloodborne and Sekiro.",
     "It created Dark Souls and Elden Ring."
 ]
 },
 
 {
 name:"CD Projekt Red",
-answers:[
-    "cd projekt red",
-    "cdpr",
-    "cd projekt"
-],
-games:"Known for The Witcher series and Cyberpunk 2077.",
+answers:["cd projekt red","cdpr","cd projekt"],
+games:"Known for The Witcher and Cyberpunk 2077.",
 clues:[
-    "This European studio specialises heavily in large narrative RPGs.",
-    "One major game is set in Night City.",
-    "Geralt of Rivia stars in its best-known fantasy series.",
+    "This European studio specialises heavily in narrative RPGs.",
+    "One of its major games is set in Night City.",
+    "Geralt of Rivia stars in its fantasy series.",
     "It created The Witcher games and Cyberpunk 2077."
 ]
 },
 
 {
 name:"Insomniac Games",
-answers:[
-    "insomniac",
-    "insomniac games"
-],
+answers:["insomniac","insomniac games"],
 games:"Known for Ratchet & Clank, Resistance and Marvel's Spider-Man.",
 clues:[
-    "This studio has created games featuring a Lombax and his robotic companion.",
-    "It was also responsible for the Resistance series.",
-    "One of its recent franchises lets players swing across New York.",
+    "This developer created games featuring a Lombax and his robotic companion.",
+    "Its history also includes the Resistance series.",
+    "Its modern games let players swing across New York.",
     "It develops Marvel's Spider-Man and Ratchet & Clank."
 ]
 },
 
 {
 name:"Guerrilla Games",
-answers:[
-    "guerrilla",
-    "guerrilla games"
-],
+answers:["guerrilla","guerrilla games"],
 games:"Known for Killzone and Horizon.",
 clues:[
-    "This European studio initially became particularly well known for shooters.",
-    "It later moved into a colourful open world filled with machines.",
-    "Aloy is the protagonist of its biggest modern franchise.",
-    "It created the Killzone and Horizon series."
+    "This European studio initially became known for shooters.",
+    "It later moved into an open world filled with machines.",
+    "Aloy is its most famous modern protagonist.",
+    "It created Killzone and Horizon."
 ]
 },
 
 {
 name:"Rare",
-answers:[
-    "rare",
-    "rare ltd",
-    "rare limited"
-],
+answers:["rare","rare ltd","rare limited"],
 games:"Known for GoldenEye 007, Banjo-Kazooie and Sea of Thieves.",
 clues:[
     "This British studio has worked across several generations of consoles.",
     "Its history includes a bear and bird duo.",
     "It created a famous Nintendo 64 James Bond shooter.",
-    "It is the studio behind Sea of Thieves and Banjo-Kazooie."
+    "It develops Sea of Thieves and created Banjo-Kazooie."
 ]
 },
 
 {
 name:"Valve",
-answers:[
-    "valve",
-    "valve software",
-    "valve corporation"
-],
+answers:["valve","valve software","valve corporation"],
 games:"Known for Half-Life, Portal, Counter-Strike and Team Fortress.",
 clues:[
     "This company has had an enormous influence on PC gaming.",
-    "Its games have included physics puzzles and competitive shooters.",
+    "Its catalogue includes physics puzzles and competitive shooters.",
     "Gordon Freeman is one of its most famous protagonists.",
     "It created Half-Life and Portal."
 ]
@@ -1451,27 +941,22 @@ clues:[
 
 {
 name:"BioWare",
-answers:[
-    "bioware",
-    "bio ware"
-],
-games:"Known for Mass Effect, Dragon Age and Star Wars: Knights of the Old Republic.",
+answers:["bioware","bio ware"],
+games:"Known for Mass Effect, Dragon Age and Knights of the Old Republic.",
 clues:[
-    "This studio is particularly associated with party-based role-playing games.",
+    "This studio is particularly associated with party-based RPGs.",
     "Players have travelled from Ferelden to outer space in its games.",
-    "Commander Shepard stars in one of its most famous series.",
+    "Commander Shepard stars in one of its biggest franchises.",
     "It created Mass Effect and Dragon Age."
 ]
 },
 
 {
 name:"Bungie",
-answers:[
-    "bungie"
-],
+answers:["bungie"],
 games:"Known for Halo and Destiny.",
 clues:[
-    "This studio became particularly influential in console first-person shooters.",
+    "This developer became hugely influential in console shooters.",
     "One of its major franchises features Guardians.",
     "It originally created a series starring Master Chief.",
     "It created Halo and later Destiny."
@@ -1480,14 +965,11 @@ clues:[
 
 {
 name:"Epic Games",
-answers:[
-    "epic",
-    "epic games"
-],
-games:"Known for Fortnite, Unreal Tournament and the Unreal Engine.",
+answers:["epic","epic games"],
+games:"Known for Fortnite, Unreal Tournament and Unreal Engine.",
 clues:[
-    "This company is important both as a game developer and a technology provider.",
-    "A major game engine carries part of its name.",
+    "This company is both a game developer and major technology provider.",
+    "A widely used game engine carries part of its name.",
     "Its biggest game features a Battle Bus.",
     "It develops Fortnite and Unreal Engine."
 ]
@@ -1495,13 +977,11 @@ clues:[
 
 {
 name:"Capcom",
-answers:[
-    "capcom"
-],
+answers:["capcom"],
 games:"Known for Resident Evil, Street Fighter, Monster Hunter and Devil May Cry.",
 clues:[
-    "This Japanese company has major franchises spanning horror, fighting and action games.",
-    "One of its series regularly involves enormous creatures being hunted.",
+    "This Japanese company has major horror, fighting and action franchises.",
+    "One of its series revolves around hunting enormous creatures.",
     "Ryu and Leon Kennedy appear in its franchises.",
     "It is the company behind Resident Evil and Street Fighter."
 ]
@@ -1509,13 +989,11 @@ clues:[
 
 {
 name:"Ubisoft",
-answers:[
-    "ubisoft"
-],
+answers:["ubisoft"],
 games:"Known for Assassin's Creed, Far Cry and Rainbow Six.",
 clues:[
-    "This publisher and developer operates numerous studios around the world.",
-    "Its open-world games have frequently featured viewpoints and large maps.",
+    "This company operates numerous studios around the world.",
+    "Its open worlds have often featured viewpoints and large maps.",
     "The Animus appears in one of its flagship series.",
     "It is the company behind Assassin's Creed and Far Cry."
 ]
@@ -1523,14 +1001,11 @@ clues:[
 
 {
 name:"Sucker Punch Productions",
-answers:[
-    "sucker punch",
-    "sucker punch productions"
-],
+answers:["sucker punch","sucker punch productions"],
 games:"Known for Sly Cooper, Infamous and Ghost of Tsushima.",
 clues:[
-    "This studio has developed several major action-adventure series.",
-    "An earlier franchise starred a raccoon thief.",
+    "This studio has developed several action-adventure franchises.",
+    "An earlier series starred a raccoon thief.",
     "It later created Infamous.",
     "It is the studio behind Ghost of Tsushima."
 ]
@@ -1538,15 +1013,11 @@ clues:[
 
 {
 name:"Santa Monica Studio",
-answers:[
-    "santa monica",
-    "santa monica studio",
-    "sony santa monica"
-],
-games:"Best known for the God of War series.",
+answers:["santa monica","santa monica studio","sony santa monica"],
+games:"Best known for God of War.",
 clues:[
     "This studio is strongly associated with cinematic action games.",
-    "Its most famous series moved from Greek mythology into Norse mythology.",
+    "Its most famous series moved from Greek mythology to Norse mythology.",
     "Atreus appears in its recent games.",
     "It is the studio behind God of War."
 ]
@@ -1554,29 +1025,23 @@ clues:[
 
 {
 name:"Larian Studios",
-answers:[
-    "larian",
-    "larian studios"
-],
+answers:["larian","larian studios"],
 games:"Known for Divinity: Original Sin and Baldur's Gate 3.",
 clues:[
-    "This European developer specialises heavily in role-playing games.",
-    "Its games are known for deep systems and player choice.",
-    "It created the Divinity: Original Sin series.",
+    "This European studio specialises heavily in RPGs.",
+    "Its games are known for deep systems and player freedom.",
+    "It created Divinity: Original Sin.",
     "It developed Baldur's Gate 3."
 ]
 },
 
 {
 name:"Supergiant Games",
-answers:[
-    "supergiant",
-    "supergiant games"
-],
+answers:["supergiant","supergiant games"],
 games:"Known for Bastion, Transistor, Pyre and Hades.",
 clues:[
-    "This independent studio is known for strongly stylised games.",
-    "Its earlier games include Bastion and Transistor.",
+    "This independent studio creates strongly stylised games.",
+    "Its earlier catalogue includes Bastion and Transistor.",
     "Zagreus stars in one of its biggest games.",
     "It created Hades."
 ]
@@ -1584,163 +1049,131 @@ clues:[
 
 {
 name:"Mojang Studios",
-answers:[
-    "mojang",
-    "mojang studios"
-],
+answers:["mojang","mojang studios"],
 games:"Best known for Minecraft.",
 clues:[
-    "This studio created one of the world's most successful sandbox games.",
-    "Its most famous world is made entirely from blocks.",
-    "Creepers originate from its best-known game.",
+    "This studio created one of gaming's most successful sandbox worlds.",
+    "Its most famous game is constructed almost entirely from blocks.",
+    "Creepers originate in its biggest game.",
     "It is the studio behind Minecraft."
 ]
 },
 
 {
 name:"Respawn Entertainment",
-answers:[
-    "respawn",
-    "respawn entertainment"
-],
+answers:["respawn","respawn entertainment"],
 games:"Known for Titanfall, Apex Legends and Star Wars Jedi.",
 clues:[
-    "This studio has developed both first-person shooters and third-person action games.",
+    "This studio was founded by veterans of a hugely successful shooter franchise.",
     "Its history includes enormous pilotable Titans.",
     "Apex Legends is one of its games.",
-    "It created Titanfall and the Star Wars Jedi series."
+    "It created Titanfall and Star Wars Jedi."
 ]
 },
 
 {
 name:"id Software",
-answers:[
-    "id software",
-    "id"
-],
+answers:["id software","id"],
 games:"Known for DOOM, Quake and Wolfenstein.",
 clues:[
-    "This studio helped define the early first-person shooter genre.",
-    "Its history includes demons, space marines and fast movement.",
-    "Quake is one of its most famous franchises.",
+    "This studio helped define the early first-person shooter.",
+    "Its games feature demons, space marines and extremely fast combat.",
+    "Quake is one of its famous franchises.",
     "It created DOOM."
 ]
 },
 
 {
 name:"Remedy Entertainment",
-answers:[
-    "remedy",
-    "remedy entertainment"
-],
+answers:["remedy","remedy entertainment"],
 games:"Known for Max Payne, Alan Wake and Control.",
 clues:[
-    "This Finnish studio is strongly associated with cinematic storytelling.",
-    "One of its games follows the Federal Bureau of Control.",
-    "A fictional writer is the protagonist of another major series.",
+    "This Finnish developer is strongly associated with cinematic storytelling.",
+    "The Federal Bureau of Control appears in one of its worlds.",
+    "A fictional novelist is the protagonist of another major series.",
     "It created Alan Wake and Control."
 ]
 },
 
 {
 name:"Creative Assembly",
-answers:[
-    "creative assembly",
-    "the creative assembly"
-],
+answers:["creative assembly","the creative assembly"],
 games:"Known for Total War and Alien: Isolation.",
 clues:[
-    "This British studio is strongly associated with large-scale strategy games.",
-    "Its flagship series combines turn-based campaigns with real-time battles.",
-    "It also created a celebrated survival-horror game involving a Xenomorph.",
+    "This British studio has a long history with strategy games.",
+    "Massive armies appear throughout its flagship franchise.",
+    "It also created a horror game involving a relentless Xenomorph.",
     "It develops Total War and created Alien: Isolation."
 ]
 },
 
 {
 name:"Playground Games",
-answers:[
-    "playground games",
-    "playground"
-],
-games:"Known for the Forza Horizon series.",
+answers:["playground games","playground"],
+games:"Known for Forza Horizon.",
 clues:[
-    "This British developer specialises heavily in open-world driving games.",
-    "Its games feature large automotive festivals.",
-    "Mexico and Britain have both been major settings in its series.",
+    "This British developer specialises heavily in driving games.",
+    "Its flagship games feature enormous automotive festivals.",
+    "Britain and Mexico have both hosted its racing worlds.",
     "It develops Forza Horizon."
 ]
 },
 
 {
 name:"Turn 10 Studios",
-answers:[
-    "turn 10",
-    "turn 10 studios"
-],
+answers:["turn 10","turn 10 studios"],
 games:"Known for Forza Motorsport.",
 clues:[
-    "This studio specialises heavily in racing games.",
-    "Its series places more emphasis on circuit racing than open-world festivals.",
-    "It shares the wider Forza franchise with another developer.",
+    "This developer specialises in racing games.",
+    "Its series focuses more on circuits than open-world festivals.",
+    "It shares a wider franchise with another Xbox studio.",
     "It develops Forza Motorsport."
 ]
 },
 
 {
 name:"Team Cherry",
-answers:[
-    "team cherry"
-],
-games:"Known for Hollow Knight.",
+answers:["team cherry"],
+games:"Best known for Hollow Knight.",
 clues:[
-    "This independent studio became famous through a hand-drawn metroidvania.",
-    "Its best-known world is the kingdom of Hallownest.",
-    "The Knight is the protagonist of its breakout game.",
+    "This independent studio became famous with a hand-drawn metroidvania.",
+    "Its best-known world is Hallownest.",
+    "The Knight is the protagonist of its breakout title.",
     "It created Hollow Knight."
 ]
 },
 
 {
 name:"ConcernedApe",
-answers:[
-    "concernedape",
-    "concerned ape",
-    "eric barone"
-],
-games:"Known for Stardew Valley.",
+answers:["concernedape","concerned ape","eric barone"],
+games:"Best known for Stardew Valley.",
 clues:[
-    "This name represents an independent developer rather than a large traditional studio.",
-    "Its biggest game begins with the player inheriting a farm.",
-    "Pelican Town features prominently in its best-known title.",
+    "This name represents a largely solo independent developer.",
+    "Its breakout game was inspired by classic farming simulations.",
+    "Pelican Town is central to its most famous title.",
     "It created Stardew Valley."
 ]
 },
 
 {
 name:"Hello Games",
-answers:[
-    "hello games"
-],
-games:"Known for No Man's Sky.",
+answers:["hello games"],
+games:"Best known for No Man's Sky.",
 clues:[
-    "This British studio created a large procedural science-fiction game.",
-    "Its flagship title contains an enormous number of explorable planets.",
-    "Atlas is an important name within its best-known universe.",
+    "This British independent studio created a procedural science-fiction universe.",
+    "Its flagship game has transformed dramatically through years of updates.",
+    "Players can discover and name planets.",
     "It created No Man's Sky."
 ]
 },
 
 {
 name:"Kojima Productions",
-answers:[
-    "kojima productions",
-    "kojima"
-],
+answers:["kojima productions","kojima"],
 games:"Known for Death Stranding.",
 clues:[
     "This Japanese studio is closely associated with a famous game director.",
-    "Its first major independent title focuses heavily on reconnecting a fractured world.",
+    "Its first major independent game focuses on reconnecting a fractured world.",
     "Sam Porter Bridges is one of its protagonists.",
     "It is Hideo Kojima's studio and created Death Stranding."
 ]
@@ -1748,150 +1181,119 @@ clues:[
 
 {
 name:"Obsidian Entertainment",
-answers:[
-    "obsidian",
-    "obsidian entertainment"
-],
+answers:["obsidian","obsidian entertainment"],
 games:"Known for Fallout: New Vegas, Pillars of Eternity and The Outer Worlds.",
 clues:[
-    "This RPG studio has developed games in both established and original universes.",
+    "This RPG developer has worked in both established and original universes.",
     "One of its games takes place in the Halcyon colony.",
-    "It developed a fan-favourite Fallout entry set around Las Vegas.",
-    "It created Fallout: New Vegas and The Outer Worlds."
+    "It created a beloved Fallout game set around Las Vegas.",
+    "It developed Fallout: New Vegas and The Outer Worlds."
 ]
 },
 
 {
 name:"Arkane Studios",
-answers:[
-    "arkane",
-    "arkane studios"
-],
+answers:["arkane","arkane studios"],
 games:"Known for Dishonored, Prey and Deathloop.",
 clues:[
-    "This developer became known for immersive first-person games with flexible systems.",
-    "One of its franchises features supernatural assassins.",
-    "Talos I is the setting of one of its games.",
+    "This developer became known for immersive first-person games.",
+    "One of its series features supernatural assassins.",
+    "Talos I is a setting associated with its catalogue.",
     "It created Dishonored and Prey."
 ]
 },
 
 {
 name:"Gearbox Software",
-answers:[
-    "gearbox",
-    "gearbox software"
-],
-games:"Best known for the Borderlands series.",
+answers:["gearbox","gearbox software"],
+games:"Best known for Borderlands.",
 clues:[
-    "This studio has worked extensively with first-person shooters.",
-    "Its best-known franchise mixes shooting with large quantities of loot.",
-    "Claptrap is closely associated with its biggest series.",
+    "This studio has extensive experience with first-person shooters.",
+    "Its biggest franchise combines shooting with enormous quantities of loot.",
+    "Claptrap is associated with its work.",
     "It created Borderlands."
 ]
 },
 
 {
 name:"Firaxis Games",
-answers:[
-    "firaxis",
-    "firaxis games"
-],
+answers:["firaxis","firaxis games"],
 games:"Known for Civilization and XCOM.",
 clues:[
-    "This studio is particularly associated with strategy games.",
-    "One of its major series asks players to build an empire through history.",
-    "Another features soldiers fighting an alien invasion.",
+    "This studio specialises heavily in strategy.",
+    "Players build empires through history in one of its franchises.",
+    "Another of its series involves fighting an alien invasion.",
     "It develops Civilization and XCOM."
 ]
 },
 
 {
 name:"IO Interactive",
-answers:[
-    "io interactive",
-    "ioi",
-    "io"
-],
+answers:["io interactive","ioi","io"],
 games:"Best known for Hitman.",
 clues:[
-    "This European studio specialises heavily in stealth and assassination gameplay.",
+    "This European studio specialises heavily in stealth and assassination.",
     "Its most famous protagonist is genetically engineered.",
-    "A barcode appears on the back of its best-known character's head.",
-    "It develops the Hitman series and Agent 47."
+    "A barcode appears on the back of his head.",
+    "It develops Hitman and Agent 47."
 ]
 },
 
 {
 name:"NetherRealm Studios",
-answers:[
-    "netherrealm",
-    "netherrealm studios"
-],
+answers:["netherrealm","netherrealm studios"],
 games:"Known for Mortal Kombat and Injustice.",
 clues:[
     "This studio specialises predominantly in fighting games.",
-    "It has created games featuring both superheroes and extremely violent finishing moves.",
-    "Sub-Zero and Scorpion appear in its biggest series.",
+    "Its catalogue includes superheroes and exceptionally violent finishing moves.",
+    "Sub-Zero and Scorpion appear in its biggest franchise.",
     "It develops Mortal Kombat."
 ]
 },
 
 {
 name:"Sega",
-answers:[
-    "sega"
-],
-games:"Known for Sonic the Hedgehog, Yakuza/Like a Dragon and many arcade classics.",
+answers:["sega"],
+games:"Known for Sonic the Hedgehog, Like a Dragon and many arcade classics.",
 clues:[
-    "This Japanese games company was once a major console manufacturer.",
+    "This Japanese company was once a major console manufacturer.",
     "The Dreamcast was one of its consoles.",
-    "A blue hedgehog became its most famous mascot.",
+    "A blue hedgehog became its biggest mascot.",
     "It is the company behind Sonic the Hedgehog."
 ]
 },
 
 {
 name:"Square Enix",
-answers:[
-    "square enix",
-    "squareenix"
-],
+answers:["square enix","squareenix"],
 games:"Known for Final Fantasy, Dragon Quest and Kingdom Hearts.",
 clues:[
-    "This Japanese company is strongly associated with role-playing games.",
-    "Its franchises include both fantasy crystals and Keyblade wielders.",
+    "This Japanese company is strongly associated with RPGs.",
+    "Its franchises include fantasy crystals and Keyblade wielders.",
     "Cloud Strife appears in one of its most famous games.",
-    "It publishes and develops the Final Fantasy series."
+    "It is the company behind Final Fantasy."
 ]
 },
 
 {
 name:"Bandai Namco",
-answers:[
-    "bandai namco",
-    "bandai namco entertainment",
-    "namco"
-],
+answers:["bandai namco","bandai namco entertainment","namco"],
 games:"Associated with Tekken, Pac-Man and numerous anime games.",
 clues:[
-    "This Japanese company has a long history in both arcade and console gaming.",
-    "Its franchises include a famous yellow maze character.",
-    "Tekken is one of its major fighting series.",
+    "This Japanese company has deep roots in arcade gaming.",
+    "A famous yellow maze character is part of its history.",
+    "Tekken is one of its fighting franchises.",
     "It is associated with Pac-Man and Tekken."
 ]
 },
 
 {
 name:"Blizzard Entertainment",
-answers:[
-    "blizzard",
-    "blizzard entertainment"
-],
+answers:["blizzard","blizzard entertainment"],
 games:"Known for Warcraft, Diablo, StarCraft and Overwatch.",
 clues:[
-    "This studio created several hugely influential PC franchises.",
-    "Its games have included real-time strategy, action RPGs and hero shooters.",
+    "This developer created several hugely influential PC franchises.",
+    "Its catalogue spans strategy, action RPGs and hero shooters.",
     "Azeroth is one of its best-known worlds.",
     "It created Warcraft, Diablo and Overwatch."
 ]
@@ -1899,16 +1301,1213 @@ clues:[
 
 {
 name:"Riot Games",
-answers:[
-    "riot",
-    "riot games"
-],
+answers:["riot","riot games"],
 games:"Known for League of Legends and Valorant.",
 clues:[
     "This company became famous through competitive online games.",
     "Runeterra is associated with one of its major universes.",
     "It later launched a tactical first-person shooter.",
     "It created League of Legends and Valorant."
+]
+},
+
+{
+name:"Nintendo EPD",
+answers:["nintendo epd","nintendo entertainment planning and development","nintendo"],
+games:"Associated with Super Mario, The Legend of Zelda and Animal Crossing.",
+clues:[
+    "This Japanese division was formed through a major internal restructuring.",
+    "Its teams work on some of gaming's most famous first-party franchises.",
+    "Mario and Link are closely associated with its games.",
+    "It is Nintendo's main internal development division."
+]
+},
+
+{
+name:"Game Freak",
+answers:["game freak","gamefreak"],
+games:"Best known as the primary developer of Pokémon RPGs.",
+clues:[
+    "This Japanese developer began life from a gaming magazine.",
+    "It has maintained a decades-long relationship with Nintendo platforms.",
+    "Pikachu is part of the franchise with which it is overwhelmingly associated.",
+    "It is the primary developer of Pokémon RPGs."
+]
+},
+
+{
+name:"HAL Laboratory",
+answers:["hal laboratory","hal"],
+games:"Known for Kirby and its work on Super Smash Bros.",
+clues:[
+    "This Japanese developer has worked with Nintendo for decades.",
+    "One of its most famous characters copies enemy abilities.",
+    "Masahiro Sakurai began his career here.",
+    "It is the studio behind Kirby."
+]
+},
+
+{
+name:"Monolith Soft",
+answers:["monolith soft","monolithsoft"],
+games:"Best known for Xenoblade Chronicles.",
+clues:[
+    "This Japanese developer became a Nintendo subsidiary.",
+    "It has assisted on several major Nintendo projects.",
+    "Shulk is a protagonist associated with its biggest franchise.",
+    "It develops Xenoblade Chronicles."
+]
+},
+
+{
+name:"Retro Studios",
+answers:["retro studios","retro"],
+games:"Best known for Metroid Prime and Donkey Kong Country Returns.",
+clues:[
+    "This American studio is part of Nintendo.",
+    "It has worked with both bounty hunters and famous apes.",
+    "Samus Aran stars in its best-known series.",
+    "It created Metroid Prime."
+]
+},
+
+{
+name:"Next Level Games",
+answers:["next level games","next level"],
+games:"Known for Luigi's Mansion 3, Mario Strikers and Punch-Out!!.",
+clues:[
+    "This Canadian studio became a Nintendo subsidiary.",
+    "Its catalogue frequently uses established Nintendo characters.",
+    "It has developed both football and boxing games.",
+    "It developed Luigi's Mansion 3."
+]
+},
+
+{
+name:"Intelligent Systems",
+answers:["intelligent systems"],
+games:"Known for Fire Emblem, Paper Mario and WarioWare.",
+clues:[
+    "This Japanese developer has worked closely with Nintendo for decades.",
+    "Its catalogue spans tactical RPGs and microgames.",
+    "Permanent character death became famous in one of its franchises.",
+    "It develops Fire Emblem."
+]
+},
+
+{
+name:"Ryu Ga Gotoku Studio",
+answers:["ryu ga gotoku studio","rgg studio","rgg"],
+games:"Known for Like a Dragon / Yakuza.",
+clues:[
+    "This Japanese team operates within Sega.",
+    "Its games mix serious crime drama with unusual side activities.",
+    "Kamurocho is strongly associated with its work.",
+    "It develops Like a Dragon / Yakuza."
+]
+},
+
+{
+name:"Atlus",
+answers:["atlus"],
+games:"Known for Persona and Shin Megami Tensei.",
+clues:[
+    "This Japanese company is strongly associated with RPGs.",
+    "Demons and social relationships feature heavily across its games.",
+    "The Phantom Thieves appear in one of its biggest titles.",
+    "It is the company behind Persona."
+]
+},
+
+{
+name:"PlatinumGames",
+answers:["platinumgames","platinum games"],
+games:"Known for Bayonetta, NieR: Automata and Metal Gear Rising.",
+clues:[
+    "This Japanese studio specialises in fast-paced action.",
+    "Its games feature androids, witches and cyborg swordsmen.",
+    "Bayonetta is strongly associated with it.",
+    "It developed Bayonetta and NieR: Automata."
+]
+},
+
+{
+name:"Team Ninja",
+answers:["team ninja","teamninja"],
+games:"Known for Ninja Gaiden, Nioh and Dead or Alive.",
+clues:[
+    "This Japanese team operates within Koei Tecmo.",
+    "Its catalogue spans fighting games and difficult action RPGs.",
+    "Ryu Hayabusa is strongly associated with it.",
+    "It develops Ninja Gaiden and Nioh."
+]
+},
+
+{
+name:"Ninja Theory",
+answers:["ninja theory"],
+games:"Known for Hellblade, Heavenly Sword and Enslaved.",
+clues:[
+    "This British developer specialises in cinematic action games.",
+    "Its work has explored psychosis through a protagonist's perspective.",
+    "Senua is its most recognisable modern character.",
+    "It develops Hellblade."
+]
+},
+
+{
+name:"MachineGames",
+answers:["machinegames","machine games"],
+games:"Known for modern Wolfenstein and Indiana Jones and the Great Circle.",
+clues:[
+    "This Swedish studio was founded by former Starbreeze developers.",
+    "It is strongly associated with first-person action.",
+    "B.J. Blazkowicz stars in several of its games.",
+    "It develops the modern Wolfenstein series."
+]
+},
+
+{
+name:"Avalanche Studios",
+answers:["avalanche studios","avalanche"],
+games:"Known for Just Cause and Mad Max.",
+clues:[
+    "This Swedish developer is known for enormous open worlds.",
+    "Destruction and explosions feature heavily in its work.",
+    "Rico Rodriguez is associated with its biggest franchise.",
+    "It created Just Cause."
+]
+},
+
+{
+name:"Coffee Stain Studios",
+answers:["coffee stain","coffee stain studios"],
+games:"Known for Goat Simulator and Satisfactory.",
+clues:[
+    "This Swedish company became known for unusual game concepts.",
+    "One of its major titles involves enormous automated factories.",
+    "Another made a destructive goat famous.",
+    "It created Goat Simulator and Satisfactory."
+]
+},
+
+{
+name:"Ghost Ship Games",
+answers:["ghost ship games","ghost ship"],
+games:"Best known for Deep Rock Galactic.",
+clues:[
+    "This Danish studio found success with cooperative gameplay.",
+    "Its biggest game mixes mining with first-person combat.",
+    "'Rock and Stone' is closely associated with its community.",
+    "It created Deep Rock Galactic."
+]
+},
+
+{
+name:"11 bit studios",
+answers:["11 bit studios","11bit studios","11 bit"],
+games:"Known for This War of Mine and Frostpunk.",
+clues:[
+    "This Polish company often explores difficult moral decisions.",
+    "Survival is a major theme across its work.",
+    "One game asks players to manage the last city in a frozen world.",
+    "It created This War of Mine and Frostpunk."
+]
+},
+
+{
+name:"Techland",
+answers:["techland"],
+games:"Known for Dying Light and the original Dead Island.",
+clues:[
+    "This Polish developer has extensive first-person game experience.",
+    "Parkour became a defining feature of its biggest modern franchise.",
+    "Its worlds frequently contain infected enemies.",
+    "It develops Dying Light."
+]
+},
+
+{
+name:"Bloober Team",
+answers:["bloober team","bloober"],
+games:"Known for Layers of Fear, The Medium and Silent Hill 2.",
+clues:[
+    "This Polish developer specialises heavily in horror.",
+    "Its catalogue frequently explores psychological themes.",
+    "The Medium is one of its original games.",
+    "It developed the Silent Hill 2 remake."
+]
+},
+
+{
+name:"Warhorse Studios",
+answers:["warhorse","warhorse studios"],
+games:"Known for Kingdom Come: Deliverance.",
+clues:[
+    "This Czech developer creates historically grounded RPGs.",
+    "Its best-known games take place in medieval Bohemia.",
+    "Henry of Skalitz is its most famous protagonist.",
+    "It created Kingdom Come: Deliverance."
+]
+},
+
+{
+name:"Bohemia Interactive",
+answers:["bohemia interactive","bohemia"],
+games:"Known for Arma and DayZ.",
+clues:[
+    "This Czech developer has strong roots in military simulation.",
+    "Its technology contributed to a major survival game.",
+    "Chernarus is associated with its work.",
+    "It develops Arma and DayZ."
+]
+},
+
+{
+name:"Crytek",
+answers:["crytek"],
+games:"Known for Crysis, Hunt: Showdown and CryEngine.",
+clues:[
+    "This developer also created a widely used game engine.",
+    "Its games have frequently pushed graphics technology.",
+    "A nanosuit appears in one of its biggest franchises.",
+    "It created Crysis and CryEngine."
+]
+},
+
+{
+name:"DICE",
+answers:["dice","ea dice","digital illusions creative entertainment"],
+games:"Best known for Battlefield and Mirror's Edge.",
+clues:[
+    "This Swedish studio has a long history with multiplayer shooters.",
+    "Large maps, vehicles and destruction feature heavily in its work.",
+    "It also created a first-person parkour game starring Faith.",
+    "It develops Battlefield."
+]
+},
+
+{
+name:"Criterion Games",
+answers:["criterion","criterion games"],
+games:"Known for Burnout and Need for Speed.",
+clues:[
+    "This British developer became famous for high-speed arcade racing.",
+    "Crashing vehicles became a major attraction in one franchise.",
+    "Paradise City appears in one of its best-known games.",
+    "It created Burnout."
+]
+},
+
+{
+name:"Codemasters",
+answers:["codemasters","code masters"],
+games:"Known for F1, GRID and DiRT.",
+clues:[
+    "This British developer has existed since the 1980s.",
+    "Motorsport forms a major part of its modern catalogue.",
+    "Its franchises include GRID and DiRT.",
+    "It develops the official F1 games."
+]
+},
+
+{
+name:"Frontier Developments",
+answers:["frontier","frontier developments"],
+games:"Known for Elite Dangerous, Planet Coaster and Planet Zoo.",
+clues:[
+    "This British studio's history spans space games and management simulations.",
+    "Players build theme parks and zoos in some of its titles.",
+    "Elite is one of its oldest franchises.",
+    "It develops Elite Dangerous and Planet Coaster."
+]
+},
+
+{
+name:"Jagex",
+answers:["jagex"],
+games:"Best known for RuneScape.",
+clues:[
+    "This British developer found major success through browser gaming.",
+    "Its flagship fantasy world is called Gielinor.",
+    "Its biggest game first launched in 2001.",
+    "It develops RuneScape."
+]
+},
+
+{
+name:"Rebellion Developments",
+answers:["rebellion","rebellion developments"],
+games:"Known for Sniper Elite and Zombie Army.",
+clues:[
+    "This British company works across games and other entertainment media.",
+    "Its catalogue frequently features World War II.",
+    "Karl Fairburne stars in its biggest franchise.",
+    "It develops Sniper Elite."
+]
+},
+
+{
+name:"Sports Interactive",
+answers:["sports interactive","si"],
+games:"Best known for Football Manager.",
+clues:[
+    "This British developer specialises almost entirely in one genre.",
+    "Its games involve scouting, transfers and tactics.",
+    "Players manage athletes rather than directly controlling them.",
+    "It develops Football Manager."
+]
+},
+
+{
+name:"Rocksteady Studios",
+answers:["rocksteady","rocksteady studios"],
+games:"Known for Batman: Arkham.",
+clues:[
+    "This British studio became famous through licensed action games.",
+    "Its combat system heavily influenced later third-person games.",
+    "Arkham Asylum was its major breakthrough.",
+    "It created the Batman: Arkham series."
+]
+},
+
+{
+name:"TT Games",
+answers:["tt games","travellers tales","traveller's tales"],
+games:"Best known for LEGO games.",
+clues:[
+    "This British developer has worked with many major entertainment licences.",
+    "Its games feature superheroes, wizards and galactic adventures.",
+    "Collectible studs are prominent throughout its catalogue.",
+    "It is best known for LEGO video games."
+]
+},
+
+{
+name:"Mediatonic",
+answers:["mediatonic"],
+games:"Best known for Fall Guys.",
+clues:[
+    "This British developer has created games across many genres.",
+    "Its biggest breakout success arrived in 2020.",
+    "Bean-like competitors race through obstacle courses.",
+    "It created Fall Guys."
+]
+},
+
+{
+name:"Media Molecule",
+answers:["media molecule","mediamolecule"],
+games:"Known for LittleBigPlanet, Tearaway and Dreams.",
+clues:[
+    "This British studio's games strongly emphasise creativity.",
+    "Its work allows players to create and share their own content.",
+    "Sackboy originated in one of its games.",
+    "It created LittleBigPlanet and Dreams."
+]
+},
+
+{
+name:"Supermassive Games",
+answers:["supermassive","supermassive games"],
+games:"Known for Until Dawn, The Quarry and The Dark Pictures Anthology.",
+clues:[
+    "This British developer specialises in cinematic interactive horror.",
+    "Player choices determine whether characters survive.",
+    "The Dark Pictures Anthology forms part of its catalogue.",
+    "It created Until Dawn and The Quarry."
+]
+},
+
+{
+name:"Don't Nod",
+answers:["dont nod","don't nod","dontnod","don't nod entertainment"],
+games:"Known for Life is Strange, Vampyr and Jusant.",
+clues:[
+    "This French studio is strongly associated with narrative games.",
+    "Its catalogue often explores supernatural themes and choices.",
+    "Max Caulfield originated in one of its games.",
+    "It created the original Life is Strange."
+]
+},
+
+{
+name:"Quantic Dream",
+answers:["quantic dream"],
+games:"Known for Heavy Rain and Detroit: Become Human.",
+clues:[
+    "This French studio specialises in interactive cinematic storytelling.",
+    "Its games often feature branching narratives.",
+    "Connor, Kara and Markus appear in one of its games.",
+    "It created Detroit: Become Human."
+]
+},
+
+{
+name:"Asobo Studio",
+answers:["asobo","asobo studio"],
+games:"Known for A Plague Tale and Microsoft Flight Simulator.",
+clues:[
+    "This French developer works across narrative adventures and simulation.",
+    "Rats form a memorable threat in one of its franchises.",
+    "Amicia and Hugo are characters in its best-known original series.",
+    "It created A Plague Tale."
+]
+},
+
+{
+name:"Hazelight Studios",
+answers:["hazelight","hazelight studios"],
+games:"Known for A Way Out, It Takes Two and Split Fiction.",
+clues:[
+    "This Swedish studio designs its major games around cooperation.",
+    "Playing with another person is fundamental to its catalogue.",
+    "Cody and May star in one of its games.",
+    "It created It Takes Two."
+]
+},
+
+{
+name:"Moon Studios",
+answers:["moon studios","moon"],
+games:"Known for Ori and the Blind Forest and Ori and the Will of the Wisps.",
+clues:[
+    "This studio operates with an international distributed team.",
+    "Its breakthrough games are visually striking platform adventures.",
+    "Nibel and Niwen are locations associated with its work.",
+    "It created the Ori games."
+]
+},
+
+{
+name:"Housemarque",
+answers:["housemarque"],
+games:"Known for Returnal, Resogun and Nex Machina.",
+clues:[
+    "This Finnish studio has a long history with arcade-inspired games.",
+    "It became part of PlayStation Studios.",
+    "Selene stars in its biggest recent title.",
+    "It created Returnal."
+]
+},
+
+{
+name:"Arrowhead Game Studios",
+answers:["arrowhead","arrowhead game studios"],
+games:"Known for Magicka and Helldivers.",
+clues:[
+    "This Swedish developer has a history of cooperative action.",
+    "Friendly fire contributes heavily to its games' chaos.",
+    "Players spread 'Managed Democracy' in its biggest franchise.",
+    "It develops Helldivers."
+]
+},
+
+{
+name:"People Can Fly",
+answers:["people can fly","pcf"],
+games:"Known for Painkiller, Bulletstorm and Outriders.",
+clues:[
+    "This Polish studio has a long history with action shooters.",
+    "It previously worked on the Gears of War franchise.",
+    "Bulletstorm is one of its best-known originals.",
+    "It created Painkiller, Bulletstorm and Outriders."
+]
+},
+
+{
+name:"Tango Gameworks",
+answers:["tango gameworks","tango"],
+games:"Known for The Evil Within, Ghostwire: Tokyo and Hi-Fi Rush.",
+clues:[
+    "This Japanese studio's catalogue spans horror and rhythm action.",
+    "It was founded by Resident Evil creator Shinji Mikami.",
+    "Chai stars in one of its games.",
+    "It created The Evil Within and Hi-Fi Rush."
+]
+},
+
+{
+name:"Double Fine Productions",
+answers:["double fine","double fine productions"],
+games:"Known for Psychonauts, Brütal Legend and Broken Age.",
+clues:[
+    "This studio is known for humour and unusual worlds.",
+    "Tim Schafer founded the company.",
+    "Razputin Aquato is its best-known protagonist.",
+    "It created Psychonauts."
+]
+},
+
+{
+name:"Innersloth",
+answers:["innersloth","inner sloth"],
+games:"Best known for Among Us.",
+clues:[
+    "This small independent developer found enormous success years after one game launched.",
+    "Its biggest game involves social deduction.",
+    "Crewmates attempt to uncover impostors.",
+    "It created Among Us."
+]
+},
+
+{
+name:"Klei Entertainment",
+answers:["klei","klei entertainment"],
+games:"Known for Don't Starve, Oxygen Not Included and Mark of the Ninja.",
+clues:[
+    "This Canadian developer has a distinctive illustrated visual style.",
+    "Its catalogue spans stealth, survival and colony simulation.",
+    "Wilson appears in one of its games.",
+    "It created Don't Starve."
+]
+},
+
+{
+name:"Subset Games",
+answers:["subset games","subset"],
+games:"Known for FTL and Into the Breach.",
+clues:[
+    "This independent developer specialises in tightly designed strategy games.",
+    "One game puts players in command of a spacecraft.",
+    "Another features mechs defending cities.",
+    "It created FTL and Into the Breach."
+]
+},
+
+{
+name:"Motion Twin",
+answers:["motion twin"],
+games:"Best known for Dead Cells.",
+clues:[
+    "This French developer has operated with a worker-owned structure.",
+    "Its biggest hit combines roguelite and metroidvania elements.",
+    "The Prisoner's Quarters appear in its game.",
+    "It created Dead Cells."
+]
+},
+
+{
+name:"Red Hook Studios",
+answers:["red hook","red hook studios"],
+games:"Best known for Darkest Dungeon.",
+clues:[
+    "This Canadian developer became known for a punishing RPG.",
+    "Stress and psychological afflictions are major mechanics.",
+    "Players send parties of heroes into dangerous expeditions.",
+    "It created Darkest Dungeon."
+]
+},
+
+{
+name:"Unknown Worlds Entertainment",
+answers:["unknown worlds","unknown worlds entertainment"],
+games:"Known for Subnautica and Natural Selection.",
+clues:[
+    "This studio has created games involving alien ecosystems.",
+    "Its biggest modern title takes place on an ocean planet.",
+    "Planet 4546B is associated with its work.",
+    "It created Subnautica."
+]
+},
+
+{
+name:"Re-Logic",
+answers:["re logic","re-logic","relogic"],
+games:"Best known for Terraria.",
+clues:[
+    "This independent studio created a highly successful 2D sandbox.",
+    "Its game combines building, exploration and boss fights.",
+    "The Eye of Cthulhu can appear in its world.",
+    "It created Terraria."
+]
+},
+
+{
+name:"Facepunch Studios",
+answers:["facepunch","facepunch studios"],
+games:"Known for Garry's Mod and Rust.",
+clues:[
+    "This British studio is associated with successful sandbox games.",
+    "One game grew from technology associated with Half-Life 2.",
+    "Another drops players into a hostile survival world.",
+    "It created Garry's Mod and Rust."
+]
+},
+
+{
+name:"Digital Extremes",
+answers:["digital extremes","de"],
+games:"Best known for Warframe.",
+clues:[
+    "This Canadian developer has operated since the 1990s.",
+    "Its biggest modern game is a long-running free-to-play action title.",
+    "The Tenno are central to its universe.",
+    "It develops Warframe."
+]
+},
+
+{
+name:"Grinding Gear Games",
+answers:["grinding gear games","ggg","grinding gear"],
+games:"Best known for Path of Exile.",
+clues:[
+    "This New Zealand studio specialises in action RPGs.",
+    "Its flagship title features an enormous passive skill tree.",
+    "Wraeclast is a location in its biggest game.",
+    "It develops Path of Exile."
+]
+},
+
+{
+name:"Ghost Town Games",
+answers:["ghost town games","ghost town"],
+games:"Best known for Overcooked.",
+clues:[
+    "This British developer is associated with chaotic cooperative gameplay.",
+    "Communication is vital as its levels become increasingly ridiculous.",
+    "Players prepare food in unstable kitchens.",
+    "It created Overcooked."
+]
+},
+
+{
+name:"Poncle",
+answers:["poncle"],
+games:"Best known for Vampire Survivors.",
+clues:[
+    "This developer found major success with a deceptively simple indie game.",
+    "Its breakout title helped popularise automatic-attack survival games.",
+    "Garlic can become a surprisingly effective weapon.",
+    "It created Vampire Survivors."
+]
+},
+
+{
+name:"LocalThunk",
+answers:["localthunk","local thunk"],
+games:"Best known for Balatro.",
+clues:[
+    "This developer became known through a card-based indie hit.",
+    "Poker hands form its scoring foundation.",
+    "Jokers dramatically alter the game's rules.",
+    "It created Balatro."
+]
+},
+
+{
+name:"Mobius Digital",
+answers:["mobius digital","mobius"],
+games:"Best known for Outer Wilds.",
+clues:[
+    "This studio created a game built around knowledge-based progression.",
+    "A repeating cycle is fundamental to its world.",
+    "Players explore a small solar system before its sun explodes.",
+    "It created Outer Wilds."
+]
+},
+
+{
+name:"ZA/UM",
+answers:["zaum","za/um","za um"],
+games:"Best known for Disco Elysium.",
+clues:[
+    "This studio became famous through an unconventional detective RPG.",
+    "Skills effectively speak to the protagonist.",
+    "Revachol is its most famous setting.",
+    "It created Disco Elysium."
+]
+},
+
+{
+name:"Ludeon Studios",
+answers:["ludeon","ludeon studios"],
+games:"Best known for RimWorld.",
+clues:[
+    "This independent developer specialises in colony simulation.",
+    "Its flagship title describes itself as a story generator.",
+    "Colonists can experience raids and mental breaks.",
+    "It created RimWorld."
+]
+},
+
+{
+name:"Extremely OK Games",
+answers:["extremely ok games","extremely ok","maddy makes games"],
+games:"Associated with Celeste.",
+clues:[
+    "This independent team became known for a challenging platformer.",
+    "Its best-known game explores anxiety and perseverance.",
+    "Madeline climbs a mountain in its breakout title.",
+    "It created Celeste."
+]
+},
+
+{
+name:"Mega Crit",
+answers:["mega crit","mega crit games"],
+games:"Best known for Slay the Spire.",
+clues:[
+    "This independent developer became influential in deckbuilding games.",
+    "Its breakout title combines cards with roguelike progression.",
+    "Players climb a dangerous structure floor by floor.",
+    "It created Slay the Spire."
+]
+},
+
+{
+name:"Mossmouth",
+answers:["mossmouth"],
+games:"Best known for Spelunky.",
+clues:[
+    "This studio is strongly associated with roguelike platforming.",
+    "Procedural caves feature heavily in its games.",
+    "Its shopkeepers become dangerous when angered.",
+    "It created Spelunky."
+]
+},
+
+{
+name:"The Behemoth",
+answers:["the behemoth","behemoth"],
+games:"Known for Alien Hominid and Castle Crashers.",
+clues:[
+    "This independent studio creates colourful hand-drawn games.",
+    "Its catalogue includes cooperative medieval chaos.",
+    "Four knights feature prominently in one of its biggest hits.",
+    "It created Castle Crashers."
+]
+},
+
+{
+name:"Yacht Club Games",
+answers:["yacht club games","yacht club"],
+games:"Best known for Shovel Knight.",
+clues:[
+    "This studio built its reputation with retro-inspired games.",
+    "Its breakout character fights with an unusual gardening tool.",
+    "The Order of No Quarter appears in its best-known game.",
+    "It created Shovel Knight."
+]
+},
+
+{
+name:"Playdead",
+answers:["playdead"],
+games:"Known for Limbo and Inside.",
+clues:[
+    "This Danish developer creates atmospheric side-scrolling games.",
+    "Its games use environmental storytelling with little dialogue.",
+    "A monochrome boy avoiding a giant spider appears in one title.",
+    "It created Limbo and Inside."
+]
+},
+
+{
+name:"Iron Gate Studio",
+answers:["iron gate","iron gate studio"],
+games:"Best known for Valheim.",
+clues:[
+    "This Swedish indie studio found success with an early-access survival game.",
+    "Its world draws heavily on Norse mythology.",
+    "Players defeat Forsaken bosses across different biomes.",
+    "It created Valheim."
+]
+},
+
+{
+name:"Landfall Games",
+answers:["landfall","landfall games"],
+games:"Known for Totally Accurate Battle Simulator and Content Warning.",
+clues:[
+    "This Swedish developer is known for chaotic physics.",
+    "Its games frequently embrace comedy and unpredictability.",
+    "Wobbly armies fight in one of its best-known titles.",
+    "It created Totally Accurate Battle Simulator."
+]
+},
+
+{
+name:"Embark Studios",
+answers:["embark","embark studios"],
+games:"Known for The Finals and ARC Raiders.",
+clues:[
+    "This Swedish studio was founded by industry veterans.",
+    "Destructible environments feature heavily in one of its games.",
+    "Contestants compete in an explosive virtual game show.",
+    "It created The Finals."
+]
+},
+
+{
+name:"Pocketpair",
+answers:["pocketpair","pocket pair"],
+games:"Known for Palworld and Craftopia.",
+clues:[
+    "This Japanese studio specialises in survival and crafting games.",
+    "Its biggest success combines survival with creature collection.",
+    "Its creatures are called Pals.",
+    "It created Palworld."
+]
+},
+
+{
+name:"Inflexion Games",
+answers:["inflexion","inflexion games"],
+games:"Known for Nightingale.",
+clues:[
+    "This Canadian studio was founded by developers with RPG experience.",
+    "Its debut title combines survival crafting with fantasy worlds.",
+    "Realm Cards are a central mechanic.",
+    "It created Nightingale."
+]
+},
+
+{
+name:"Mundfish",
+answers:["mundfish"],
+games:"Best known for Atomic Heart.",
+clues:[
+    "This studio became known through an alternate-history action RPG.",
+    "Robots and scientific experiments dominate its world.",
+    "Facility 3826 is central to the game.",
+    "It created Atomic Heart."
+]
+},
+
+{
+name:"Neowiz",
+answers:["neowiz","neowiz games"],
+games:"Associated with Lies of P.",
+clues:[
+    "This South Korean company has worked in publishing and development.",
+    "One of its successes reimagines a classic children's character.",
+    "Krat is the setting of that game.",
+    "It is the company behind Lies of P."
+]
+},
+
+{
+name:"Shift Up",
+answers:["shift up","shiftup"],
+games:"Known for Stellar Blade and Goddess of Victory: Nikke.",
+clues:[
+    "This South Korean developer works across mobile and console games.",
+    "Its console action game takes place on a devastated Earth.",
+    "Eve is the protagonist.",
+    "It developed Stellar Blade."
+]
+},
+
+{
+name:"Pearl Abyss",
+answers:["pearl abyss","pearlabyss"],
+games:"Best known for Black Desert.",
+clues:[
+    "This South Korean developer is associated with online RPGs.",
+    "Its flagship title is known for extensive character customisation.",
+    "The Black Spirit accompanies players.",
+    "It created Black Desert."
+]
+},
+
+{
+name:"Krafton",
+answers:["krafton"],
+games:"Best known as the company behind PUBG: Battlegrounds.",
+clues:[
+    "This South Korean company oversees several development teams.",
+    "It is heavily associated with the rise of battle royale.",
+    "Erangel appears in its most famous franchise.",
+    "It is the company behind PUBG."
+]
+},
+
+{
+name:"Saber Interactive",
+answers:["saber","saber interactive"],
+games:"Known for World War Z, SnowRunner and Space Marine 2.",
+clues:[
+    "This company has worked across many different franchises.",
+    "Its catalogue includes off-road vehicles and huge enemy hordes.",
+    "World War Z is closely associated with it.",
+    "It developed Warhammer 40,000: Space Marine 2."
+]
+},
+
+{
+name:"Paradox Interactive",
+answers:["paradox","paradox interactive"],
+games:"Known for Crusader Kings, Europa Universalis, Hearts of Iron and Stellaris.",
+clues:[
+    "This Swedish company is strongly associated with complex strategy.",
+    "Its games let players rewrite centuries of history.",
+    "Crusader Kings and Stellaris are among its franchises.",
+    "It is the company behind many major grand strategy games."
+]
+},
+
+{
+name:"Relic Entertainment",
+answers:["relic","relic entertainment"],
+games:"Known for Company of Heroes, Homeworld and Dawn of War.",
+clues:[
+    "This Canadian studio has a long history with real-time strategy.",
+    "Its work spans historical warfare and science fiction.",
+    "Company of Heroes is one of its biggest franchises.",
+    "It created Dawn of War and Company of Heroes."
+]
+},
+
+{
+name:"Colossal Order",
+answers:["colossal order","colossal"],
+games:"Best known for Cities: Skylines.",
+clues:[
+    "This Finnish studio specialises heavily in simulation.",
+    "Players manage roads, zoning and public services.",
+    "Traffic can become one of the game's biggest challenges.",
+    "It created Cities: Skylines."
+]
+},
+
+{
+name:"Maxis",
+answers:["maxis"],
+games:"Known for The Sims and SimCity.",
+clues:[
+    "This developer became one of gaming's biggest simulation names.",
+    "Its games let players manage both cities and households.",
+    "Plumbobs are closely associated with its work.",
+    "It created The Sims and SimCity."
+]
+},
+
+{
+name:"Treyarch",
+answers:["treyarch"],
+games:"Best known for Call of Duty: Black Ops.",
+clues:[
+    "This studio has spent much of its modern history on a huge FPS franchise.",
+    "A popular Zombies mode is strongly associated with its games.",
+    "Black Ops is its most famous subseries.",
+    "It develops Call of Duty: Black Ops."
+]
+},
+
+{
+name:"Infinity Ward",
+answers:["infinity ward"],
+games:"Known for Call of Duty and Modern Warfare.",
+clues:[
+    "This studio helped launch one of gaming's largest shooter franchises.",
+    "Captain Price appears in its best-known subseries.",
+    "Modern Warfare is strongly associated with it.",
+    "It created the original Call of Duty."
+]
+},
+
+{
+name:"Sledgehammer Games",
+answers:["sledgehammer","sledgehammer games"],
+games:"Known for Call of Duty: Advanced Warfare and WWII.",
+clues:[
+    "This American studio specialises heavily in shooters.",
+    "It rotates work on a major FPS franchise with other developers.",
+    "Advanced Warfare was one of its major releases.",
+    "It develops Call of Duty games."
+]
+},
+
+{
+name:"Raven Software",
+answers:["raven","raven software"],
+games:"Historically known for Hexen and now major Call of Duty development.",
+clues:[
+    "This American developer has operated since the early 1990s.",
+    "Its early catalogue included fantasy shooters.",
+    "It now works heavily on a massive military shooter series.",
+    "It is a major Call of Duty studio."
+]
+},
+
+{
+name:"Toys for Bob",
+answers:["toys for bob","toysforbob"],
+games:"Known for Skylanders and Crash Bandicoot 4.",
+clues:[
+    "This studio works heavily with colourful character-driven games.",
+    "It helped drive the toys-to-life boom.",
+    "Spyro and Crash have appeared in its games.",
+    "It created Skylanders and Crash Bandicoot 4."
+]
+},
+
+{
+name:"Beenox",
+answers:["beenox"],
+games:"Known for Crash Team Racing Nitro-Fueled and Call of Duty support.",
+clues:[
+    "This Canadian studio has contributed to many major franchises.",
+    "Its work spans racing and first-person shooters.",
+    "Crash Team Racing Nitro-Fueled is closely associated with it.",
+    "It developed Crash Team Racing Nitro-Fueled."
+]
+},
+
+{
+name:"Eidos-Montréal",
+answers:["eidos montreal","eidos montréal","eidos-montréal","eidos"],
+games:"Known for Deus Ex and Marvel's Guardians of the Galaxy.",
+clues:[
+    "This Canadian studio has worked on major action and RPG franchises.",
+    "It revived a cyberpunk series based around human augmentation.",
+    "Adam Jensen is strongly associated with its catalogue.",
+    "It developed Deus Ex: Human Revolution."
+]
+},
+
+{
+name:"Crystal Dynamics",
+answers:["crystal dynamics","crystal"],
+games:"Known for Tomb Raider and Legacy of Kain.",
+clues:[
+    "This American studio has developed action adventures for decades.",
+    "Legacy of Kain forms part of its history.",
+    "It became the long-time home of Lara Croft.",
+    "It is strongly associated with Tomb Raider."
+]
+},
+
+{
+name:"Hangar 13",
+answers:["hangar 13","hangar13"],
+games:"Known for Mafia.",
+clues:[
+    "This studio operates across several locations.",
+    "Its major games explore organised crime across different periods.",
+    "Lost Heaven and New Bordeaux are associated with its work.",
+    "It develops the Mafia series."
+]
+},
+
+{
+name:"Cloud Imperium Games",
+answers:["cloud imperium","cloud imperium games","cig"],
+games:"Known for Star Citizen and Squadron 42.",
+clues:[
+    "This company is building an extremely ambitious science-fiction project.",
+    "Its work includes a persistent multiplayer universe and cinematic campaign.",
+    "Chris Roberts founded the company.",
+    "It develops Star Citizen and Squadron 42."
+]
+},
+
+{
+name:"Owlcat Games",
+answers:["owlcat","owlcat games"],
+games:"Known for Pathfinder RPGs and Warhammer 40,000: Rogue Trader.",
+clues:[
+    "This studio specialises heavily in computer RPGs.",
+    "Its games adapt major tabletop universes.",
+    "Pathfinder is closely associated with its earlier work.",
+    "It created Pathfinder: Wrath of the Righteous and Rogue Trader."
+]
+},
+
+{
+name:"inXile Entertainment",
+answers:["inxile","inxile entertainment","in xile"],
+games:"Known for Wasteland and The Bard's Tale.",
+clues:[
+    "This RPG studio was founded by Brian Fargo.",
+    "Its catalogue includes post-apocalyptic role-playing games.",
+    "One of its franchises predates Fallout.",
+    "It develops Wasteland."
+]
+},
+
+{
+name:"Compulsion Games",
+answers:["compulsion","compulsion games"],
+games:"Known for Contrast, We Happy Few and South of Midnight.",
+clues:[
+    "This Canadian studio creates highly stylised adventures.",
+    "One game features a society dependent on a drug called Joy.",
+    "We Happy Few is one of its most recognisable releases.",
+    "It created We Happy Few and South of Midnight."
+]
+},
+
+{
+name:"Undead Labs",
+answers:["undead labs","undead"],
+games:"Best known for State of Decay.",
+clues:[
+    "This developer specialises heavily in survival.",
+    "Community management matters as much as combat in its series.",
+    "Its world is filled with zombies.",
+    "It develops State of Decay."
+]
+},
+
+{
+name:"Stoic",
+answers:["stoic","stoic studio"],
+games:"Known for The Banner Saga.",
+clues:[
+    "This indie studio was founded by former BioWare developers.",
+    "Its breakout series mixes tactical combat with difficult decisions.",
+    "Its visual style draws inspiration from traditional animation.",
+    "It created The Banner Saga."
+]
+},
+
+{
+name:"Campo Santo",
+answers:["campo santo","camposanto"],
+games:"Best known for Firewatch.",
+clues:[
+    "This indie studio created a narrative adventure in the American wilderness.",
+    "A walkie-talkie provides the protagonist's main human connection.",
+    "Henry and Delilah are central characters.",
+    "It created Firewatch."
+]
+},
+
+{
+name:"Giant Sparrow",
+answers:["giant sparrow"],
+games:"Known for What Remains of Edith Finch and The Unfinished Swan.",
+clues:[
+    "This studio specialises in unusual narrative experiences.",
+    "Its biggest game tells stories about members of one family.",
+    "The Finch family is central to its work.",
+    "It created What Remains of Edith Finch."
+]
+},
+
+{
+name:"Night School Studio",
+answers:["night school","night school studio"],
+games:"Known for Oxenfree and Afterparty.",
+clues:[
+    "This studio is associated with dialogue-driven supernatural adventures.",
+    "A radio plays a major role in its breakout game.",
+    "Edwards Island is one of its settings.",
+    "It created Oxenfree."
+]
+},
+
+{
+name:"Team17",
+answers:["team17","team 17"],
+games:"Known historically for Worms and as a major indie publisher.",
+clues:[
+    "This British company has operated since the early 1990s.",
+    "It now works extensively with independent developers.",
+    "Explosive sheep appear in its most famous original franchise.",
+    "It is the company behind Worms."
 ]
 }
 
@@ -1922,15 +2521,10 @@ GAME STATE
 const STUDIOS_PER_GAME = 10;
 
 let sessionStudios = [];
-
 let currentIndex = 0;
-
 let cluesShown = 1;
-
 let score = 0;
-
 let roundLocked = false;
-
 let roundResults = [];
 
 
@@ -1945,9 +2539,7 @@ function shuffle(array){
     for(let i = copy.length - 1; i > 0; i--){
 
         const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
+            Math.floor(Math.random() * (i + 1));
 
         [copy[i],copy[j]] =
             [copy[j],copy[i]];
@@ -1967,35 +2559,23 @@ function startGame(){
         shuffle(STUDIO_BANK)
         .slice(0,STUDIOS_PER_GAME);
 
-
     currentIndex = 0;
-
     cluesShown = 1;
-
     score = 0;
-
     roundLocked = false;
-
     roundResults = [];
-
 
     document
         .getElementById("startScreen")
-        .style.display =
-        "none";
-
+        .style.display = "none";
 
     document
         .getElementById("resultsScreen")
-        .style.display =
-        "none";
-
+        .style.display = "none";
 
     document
         .getElementById("gameArea")
-        .style.display =
-        "block";
-
+        .style.display = "block";
 
     loadStudio();
 }
@@ -2008,33 +2588,20 @@ LOAD STUDIO
 function loadStudio(){
 
     roundLocked = false;
-
     cluesShown = 1;
-
 
     const studio =
         sessionStudios[currentIndex];
-
-
-    /*
-    Populate all four clue boxes.
-    */
 
     studio.clues.forEach(
         (clue,index) => {
 
             document
-                .getElementById(
-                    "clueText" + index
-                )
-                .textContent =
-                clue;
-
+                .getElementById("clueText" + index)
+                .textContent = clue;
 
             document
-                .getElementById(
-                    "clue" + index
-                )
+                .getElementById("clue" + index)
                 .className =
                 index === 0
                 ? "clue visible"
@@ -2042,81 +2609,57 @@ function loadStudio(){
         }
     );
 
-
     document
         .getElementById("pointsAvailable")
-        .textContent =
-        4;
-
+        .textContent = 4;
 
     document
         .getElementById("progressText")
         .textContent =
         `Studio ${currentIndex + 1} of ${STUDIOS_PER_GAME}`;
 
-
     document
         .getElementById("scoreDisplay")
-        .textContent =
-        score;
-
+        .textContent = score;
 
     document
         .getElementById("progressFill")
         .style.width =
         `${((currentIndex + 1) / STUDIOS_PER_GAME) * 100}%`;
 
-
     const input =
         document.getElementById("answerInput");
 
-
     input.value = "";
-
     input.disabled = false;
-
 
     document
         .querySelector(".guess-btn")
-        .disabled =
-        false;
-
+        .disabled = false;
 
     document
         .getElementById("revealClueButton")
-        .disabled =
-        false;
-
+        .disabled = false;
 
     document
         .getElementById("feedbackMain")
-        .textContent =
-        "";
-
+        .textContent = "";
 
     document
         .getElementById("feedbackMain")
-        .className =
-        "feedback-main";
-
+        .className = "feedback-main";
 
     document
         .getElementById("feedbackDetail")
-        .textContent =
-        "";
-
+        .textContent = "";
 
     document
         .getElementById("studioReveal")
-        .style.display =
-        "none";
-
+        .style.display = "none";
 
     document
         .getElementById("nextButton")
-        .style.display =
-        "none";
-
+        .style.display = "none";
 
     setTimeout(() => {
         input.focus();
@@ -2125,7 +2668,7 @@ function loadStudio(){
 
 
 /* ======================================================
-NORMALISE ANSWER
+NORMALISE
 ====================================================== */
 
 function normalise(text){
@@ -2150,11 +2693,9 @@ function answerMatches(
     const player =
         normalise(playerAnswer);
 
-
     if(!player){
         return false;
     }
-
 
     return acceptedAnswers.some(answer => {
 
@@ -2164,7 +2705,7 @@ function answerMatches(
 
 
 /* ======================================================
-SUBMIT GUESS
+SUBMIT
 ====================================================== */
 
 function submitGuess(){
@@ -2173,25 +2714,18 @@ function submitGuess(){
         return;
     }
 
-
     const input =
-        document.getElementById(
-            "answerInput"
-        );
-
+        document.getElementById("answerInput");
 
     const guess =
         input.value.trim();
-
 
     if(!guess){
         return;
     }
 
-
     const studio =
         sessionStudios[currentIndex];
-
 
     const correct =
         answerMatches(
@@ -2199,15 +2733,12 @@ function submitGuess(){
             studio.answers
         );
 
-
     if(correct){
 
         const points =
             5 - cluesShown;
 
-
         score += points;
-
 
         finishRound(
             true,
@@ -2216,30 +2747,17 @@ function submitGuess(){
 
     }else{
 
-
-        /*
-        Wrong guesses do not instantly end the round.
-
-        Instead another clue is automatically revealed,
-        meaning the maximum points decrease.
-
-        This discourages brute-force guessing.
-        */
-
         document
             .getElementById("feedbackMain")
             .textContent =
             "Not quite — here's another clue.";
-
 
         document
             .getElementById("feedbackMain")
             .className =
             "feedback-main wrong";
 
-
         input.value = "";
-
 
         if(cluesShown < 4){
 
@@ -2257,7 +2775,7 @@ function submitGuess(){
 
 
 /* ======================================================
-ENTER KEY
+ENTER TO SUBMIT
 ====================================================== */
 
 document
@@ -2277,7 +2795,7 @@ document
 
 
 /* ======================================================
-REVEAL NEXT CLUE
+REVEAL CLUE
 ====================================================== */
 
 function revealNextClue(){
@@ -2289,26 +2807,21 @@ function revealNextClue(){
         return;
     }
 
-
     const nextClue =
         document.getElementById(
             "clue" + cluesShown
         );
 
-
     nextClue.classList.add(
         "visible"
     );
 
-
     cluesShown++;
-
 
     document
         .getElementById("pointsAvailable")
         .textContent =
         5 - cluesShown;
-
 
     if(cluesShown >= 4){
 
@@ -2331,34 +2844,23 @@ function finishRound(
 
     roundLocked = true;
 
-
     const studio =
         sessionStudios[currentIndex];
 
-
     document
         .getElementById("answerInput")
-        .disabled =
-        true;
-
+        .disabled = true;
 
     document
         .querySelector(".guess-btn")
-        .disabled =
-        true;
-
+        .disabled = true;
 
     document
         .getElementById("revealClueButton")
-        .disabled =
-        true;
-
+        .disabled = true;
 
     const feedback =
-        document.getElementById(
-            "feedbackMain"
-        );
-
+        document.getElementById("feedbackMain");
 
     if(correct){
 
@@ -2377,45 +2879,35 @@ function finishRound(
             "feedback-main wrong";
     }
 
-
     document
         .getElementById("scoreDisplay")
-        .textContent =
-        score;
-
+        .textContent = score;
 
     document
         .getElementById("revealName")
         .textContent =
         studio.name;
 
-
     document
         .getElementById("revealGames")
         .textContent =
         studio.games;
-
 
     document
         .getElementById("studioReveal")
         .style.display =
         "block";
 
-
     document
         .getElementById("nextButton")
         .style.display =
         "block";
 
-
     roundResults.push({
 
         studio:studio.name,
-
         correct:correct,
-
         points:points,
-
         clues:cluesShown
 
     });
@@ -2429,7 +2921,6 @@ NEXT
 function nextStudio(){
 
     currentIndex++;
-
 
     if(
         currentIndex >=
@@ -2446,7 +2937,7 @@ function nextStudio(){
 
 
 /* ======================================================
-FINISH GAME
+GAME COMPLETE
 ====================================================== */
 
 function finishGame(){
@@ -2456,18 +2947,15 @@ function finishGame(){
         .style.display =
         "none";
 
-
     document
         .getElementById("resultsScreen")
         .style.display =
         "block";
 
-
     document
         .getElementById("finalScore")
         .textContent =
         score;
-
 
     buildReview();
 }
@@ -2484,63 +2972,50 @@ function buildReview(){
             "reviewList"
         );
 
-
     list.innerHTML = "";
-
 
     roundResults.forEach(
         (result,index) => {
-
 
             const item =
                 document.createElement(
                     "div"
                 );
 
-
             item.className =
                 "review-item";
-
 
             const studio =
                 document.createElement(
                     "div"
                 );
 
-
             studio.className =
                 "review-studio";
 
-
             studio.textContent =
                 `${index + 1}. ${result.studio}`;
-
 
             const points =
                 document.createElement(
                     "div"
                 );
 
-
             points.className =
                 "review-points";
-
 
             points.textContent =
                 result.correct
                 ? `${result.points} point${result.points === 1 ? "" : "s"} earned`
                 : "Not guessed";
 
-
             item.appendChild(
                 studio
             );
 
-
             item.appendChild(
                 points
             );
-
 
             list.appendChild(
                 item
@@ -2548,12 +3023,10 @@ function buildReview(){
         }
     );
 
-
     document
         .getElementById("review")
         .style.display =
         "none";
-
 
     document
         .getElementById("reviewButton")
@@ -2573,23 +3046,19 @@ function toggleReview(){
             "review"
         );
 
-
     const button =
         document.getElementById(
             "reviewButton"
         );
 
-
     const hidden =
         review.style.display === "none" ||
         review.style.display === "";
-
 
     if(hidden){
 
         review.style.display =
             "block";
-
 
         button.textContent =
             "Hide Studios";
@@ -2598,7 +3067,6 @@ function toggleReview(){
 
         review.style.display =
             "none";
-
 
         button.textContent =
             "Review Studios";
@@ -2616,7 +3084,6 @@ function playAgain(){
 }
 
 </script>
-
 
 </body>
 
