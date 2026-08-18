@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WHICH CAME FIRST?</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --grey:#dedbd7;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    background:white;
+    min-height:68px;
+    padding:12px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+
+    text-decoration:none;
+
+    padding:11px 17px;
+
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================
+START SCREEN
+========================= */
+
+.start-screen{
+    max-width:900px;
+
+    margin:55px auto;
+
+    padding:0 20px;
+
+    text-align:center;
+}
+
+.game-title{
+    line-height:.9;
+
+    margin-bottom:25px;
+}
+
+.title-top{
+    display:block;
+
+    color:var(--primary);
+
+    font-size:clamp(50px,8vw,88px);
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:clamp(70px,11vw,125px);
+
+    font-weight:900;
+
+    letter-spacing:-5px;
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.1);
+}
+
+.intro{
+    max-width:610px;
+
+    margin:0 auto 30px;
+
+    color:var(--muted);
+
+    line-height:1.5;
+}
+
+
+/* =========================
+DIFFICULTY
+========================= */
+
+.difficulty-heading{
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    margin-bottom:12px;
+}
+
+.difficulty-row{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.difficulty{
+    background:white;
+
+    border:2px solid var(--primary);
+
+    border-radius:12px;
+
+    min-width:120px;
+
+    padding:10px 16px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.difficulty:hover{
+    transform:translateY(-2px);
+}
+
+.difficulty.active{
+    background:var(--primary);
+
+    color:white;
+}
+
+.diff-name{
+    font-weight:900;
+}
+
+.diff-info{
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.difficulty.active .diff-info{
+    max-height:50px;
+
+    opacity:.85;
+
+    margin-top:5px;
+}
+
+.start-btn{
+    margin-top:30px;
+
+    padding:18px 52px;
+
+    background:var(--accent);
+
+    border:0;
+
+    border-radius:14px;
+
+    color:#222;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #9cb500;
+}
+
+
+/* =========================
+GAME
+========================= */
+
+.game-area{
+    display:none;
+
+    max-width:1050px;
+
+    margin:35px auto;
+
+    padding:0 20px 60px;
+}
+
+.game-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+
+/* =========================
+HUD
+========================= */
+
+.hud{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.round{
+    color:var(--muted);
+
+    font-weight:800;
+
+    font-size:14px;
+}
+
+.hud-stats{
+    display:flex;
+
+    gap:8px;
+}
+
+.stat-pill{
+    background:#f1efec;
+
+    border-radius:20px;
+
+    padding:8px 13px;
+
+    color:var(--primary);
+
+    font-size:13px;
+
+    font-weight:900;
+}
+
+.streak-pill{
+    background:var(--primary);
+
+    color:white;
+}
+
+
+/* =========================
+PROGRESS
+========================= */
+
+.progress-track{
+    height:9px;
+
+    width:100%;
+
+    background:#e5e2de;
+
+    border-radius:20px;
+
+    margin:18px 0 28px;
+
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+
+    background:var(--accent);
+
+    width:10%;
+
+    border-radius:20px;
+
+    transition:.25s;
+}
+
+
+/* =========================
+QUESTION
+========================= */
+
+.question-heading{
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:clamp(25px,4vw,36px);
+
+    font-weight:900;
+
+    margin:10px 0 28px;
+}
+
+
+/* =========================
+GAME CHOICES
+========================= */
+
+.comparison{
+    display:grid;
+
+    grid-template-columns:1fr auto 1fr;
+
+    gap:18px;
+
+    align-items:stretch;
+}
+
+.game-choice{
+    min-height:230px;
+
+    background:#f4f2ef;
+
+    border:3px solid transparent;
+
+    border-radius:18px;
+
+    padding:26px 20px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    transition:.2s;
+}
+
+.game-choice:hover:not(.locked){
+    border-color:var(--primary);
+
+    transform:translateY(-4px);
+}
+
+.game-choice.correct{
+    background:#edf7ed;
+
+    border-color:var(--green);
+}
+
+.game-choice.wrong{
+    background:#faeeee;
+
+    border-color:var(--red);
+}
+
+.game-choice.locked{
+    cursor:default;
+}
+
+.game-icon{
+    font-size:50px;
+
+    margin-bottom:15px;
+}
+
+.game-name{
+    color:var(--primary);
+
+    font-size:clamp(21px,3vw,30px);
+
+    font-weight:900;
+}
+
+.release-year{
+    display:none;
+
+    margin-top:14px;
+
+    font-size:28px;
+
+    font-weight:900;
+}
+
+.correct .release-year{
+    color:var(--green);
+}
+
+.wrong .release-year{
+    color:var(--red);
+}
+
+.year-visible .release-year{
+    display:block;
+}
+
+.vs{
+    align-self:center;
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:16px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+FEEDBACK
+========================= */
+
+.feedback{
+    min-height:70px;
+
+    margin-top:22px;
+
+    text-align:center;
+}
+
+.feedback-main{
+    font-size:22px;
+
+    font-weight:900;
+}
+
+.feedback-main.correct{
+    color:var(--green);
+}
+
+.feedback-main.wrong{
+    color:var(--red);
+}
+
+.feedback-detail{
+    color:var(--muted);
+
+    margin-top:5px;
+}
+
+.next-btn{
+    display:none;
+
+    margin:18px auto 0;
+
+    background:var(--accent);
+
+    color:#222;
+
+    border:0;
+
+    border-radius:11px;
+
+    padding:13px 28px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+RESULTS
+========================= */
+
+.results-screen{
+    display:none;
+
+    max-width:850px;
+
+    margin:50px auto;
+
+    padding:0 20px 70px;
+
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:38px 25px;
+}
+
+.results-title{
+    margin:0;
+
+    color:var(--primary);
+
+    font-size:clamp(44px,8vw,75px);
+
+    font-weight:900;
+}
+
+.score-label{
+    margin-top:22px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.final-score{
+    color:var(--primary);
+
+    font-size:70px;
+
+    font-weight:900;
+}
+
+.best-streak{
+    margin-bottom:24px;
+
+    color:var(--muted);
+}
+
+.best-streak strong{
+    color:var(--primary);
+}
+
+.results-actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.result-btn{
+    border:0;
+
+    border-radius:11px;
+
+    padding:14px 21px;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.play-again{
+    background:var(--accent);
+}
+
+.review-btn{
+    background:var(--primary);
+
+    color:white;
+}
+
+
+/* =========================
+ROUND REVIEW
+========================= */
+
+.review{
+    display:none;
+
+    max-width:650px;
+
+    margin:30px auto 0;
+
+    text-align:left;
+}
+
+.review h2{
+    text-align:center;
+
+    color:var(--primary);
+}
+
+.review-row{
+    background:#f3f1ee;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin-bottom:9px;
+}
+
+.review-games{
+    font-weight:900;
+
+    color:var(--primary);
+}
+
+.review-years{
+    color:var(--muted);
+
+    margin-top:5px;
+}
+
+.review-result{
+    margin-top:6px;
+
+    font-size:12px;
+
+    font-weight:900;
+}
+
+.review-result.correct{
+    color:var(--green);
+}
+
+.review-result.wrong{
+    color:var(--red);
+}
+
+
+/* =========================
+MORE GAMES
+========================= */
+
+.more-games{
+    border-top:1px solid var(--border);
+
+    margin-top:38px;
+
+    padding-top:28px;
+}
+
+.more-games h2{
+    color:var(--primary);
+}
+
+.more-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+}
+
+.more-card{
+    background:#f3f1ee;
+
+    border-radius:12px;
+
+    padding:18px 12px;
+
+    text-decoration:none;
+}
+
+.more-card-icon{
+    font-size:30px;
+}
+
+.more-card strong{
+    display:block;
+
+    color:var(--primary);
+
+    margin-top:7px;
+}
+
+.more-card small{
+    color:var(--muted);
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+
+        padding:9px 10px;
+    }
+
+    .game-card{
+        padding:18px 14px;
+    }
+
+    .comparison{
+        grid-template-columns:1fr;
+    }
+
+    .vs{
+        width:42px;
+
+        height:42px;
+
+        justify-self:center;
+    }
+
+    .game-choice{
+        min-height:170px;
+
+        padding:20px 15px;
+    }
+
+    .game-icon{
+        font-size:40px;
+    }
+
+    .hud{
+        align-items:flex-start;
+    }
+
+    .hud-stats{
+        flex-direction:column;
+    }
+
+    .more-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+    <img
+        src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+        alt="Games Jobs Direct">
+
+</a>
+
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+    Return to Game Hub
+
+</a>
+
+</header>
+
+
+
+<!-- START -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+
+<div class="game-title">
+
+    <span class="title-top">
+        WHICH CAME
+    </span>
+
+    <span class="title-bottom">
+        FIRST?
+    </span>
+
+</div>
+
+
+<p class="intro">
+
+    Two games from roughly the same era.
+    Your job is simple: pick the one that released first.
+
+    The closer the release years, the harder the challenge.
+
+</p>
+
+
+<div class="difficulty-heading">
+    SELECT DIFFICULTY
+</div>
+
+
+<div class="difficulty-row">
+
+
+<button
+    class="difficulty active"
+    onclick="selectDifficulty('easy',this)">
+
+    <div class="diff-name">
+        Easy
+    </div>
+
+    <div class="diff-info">
+        Usually 3–4 years apart
+    </div>
+
+</button>
+
+
+<button
+    class="difficulty"
+    onclick="selectDifficulty('normal',this)">
+
+    <div class="diff-name">
+        Normal
+    </div>
+
+    <div class="diff-info">
+        Usually 2–3 years apart
+    </div>
+
+</button>
+
+
+<button
+    class="difficulty"
+    onclick="selectDifficulty('hard',this)">
+
+    <div class="diff-name">
+        Hard
+    </div>
+
+    <div class="diff-info">
+        Just 1 year apart
+    </div>
+
+</button>
+
+
+</div>
+
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
+    START GAME
+
+</button>
+
+
+</section>
+
+
+
+<!-- GAME -->
+
+<section
+    class="game-area"
+    id="gameArea">
+
+
+<div class="game-card">
+
+
+<div class="hud">
+
+
+<div
+    class="round"
+    id="roundText">
+
+    Round 1 of 10
+
+</div>
+
+
+<div class="hud-stats">
+
+    <div class="stat-pill">
+        Score:
+        <span id="scoreDisplay">0</span>
+    </div>
+
+    <div class="stat-pill streak-pill">
+        🔥
+        <span id="streakDisplay">0</span>
+    </div>
+
+</div>
+
+
+</div>
+
+
+<div class="progress-track">
+
+<div
+    class="progress-fill"
+    id="progressFill">
+</div>
+
+</div>
+
+
+<div class="question-heading">
+    Which game released first?
+</div>
+
+
+<div class="comparison">
+
+
+<div
+    class="game-choice"
+    id="leftChoice"
+    onclick="chooseGame('left')">
+
+    <div
+        class="game-icon"
+        id="leftIcon">
+    </div>
+
+    <div
+        class="game-name"
+        id="leftName">
+    </div>
+
+    <div
+        class="release-year"
+        id="leftYear">
+    </div>
+
+</div>
+
+
+<div class="vs">
+    VS
+</div>
+
+
+<div
+    class="game-choice"
+    id="rightChoice"
+    onclick="chooseGame('right')">
+
+    <div
+        class="game-icon"
+        id="rightIcon">
+    </div>
+
+    <div
+        class="game-name"
+        id="rightName">
+    </div>
+
+    <div
+        class="release-year"
+        id="rightYear">
+    </div>
+
+</div>
+
+
+</div>
+
+
+<div class="feedback">
+
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
+
+
+<button
+    class="next-btn"
+    id="nextButton"
+    onclick="nextRound()">
+
+    Next Matchup →
+
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- RESULTS -->
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+
+<div class="results-card">
+
+
+<h1 class="results-title">
+    GAME COMPLETE
+</h1>
+
+
+<div class="score-label">
+    YOUR SCORE
+</div>
+
+
+<div
+    class="final-score"
+    id="finalScore">
+
+    0/10
+
+</div>
+
+
+<div class="best-streak">
+
+    Best streak:
+    <strong id="bestStreakDisplay">
+        0
+    </strong>
+    🔥
+
+</div>
+
+
+<div class="results-actions">
+
+
+<button
+    class="result-btn play-again"
+    onclick="playAgain()">
+
+    Play Again
+
+</button>
+
+
+<button
+    class="result-btn review-btn"
+    id="reviewButton"
+    onclick="toggleReview()">
+
+    Review Matchups
+
+</button>
+
+
+</div>
+
+
+
+<div
+    class="review"
+    id="review">
+
+
+<h2>
+    Matchup Review
+</h2>
+
+
+<div id="reviewList"></div>
+
+
+</div>
+
+
+
+<div class="more-games">
+
+
+<h2>
+    Try Another Game
+</h2>
+
+
+<div class="more-grid">
+
+
+<a
+    class="more-card"
+    href="guess-the-game.html">
+
+    <div class="more-card-icon">
+        🎮
+    </div>
+
+    <strong>
+        Guess The Game
+    </strong>
+
+    <small>
+        Play Now
+    </small>
+
+</a>
+
+
+<a
+    class="more-card"
+    href="video-game-trivia.html">
+
+    <div class="more-card-icon">
+        🧠
+    </div>
+
+    <strong>
+        Video Game Trivia
+    </strong>
+
+    <small>
+        Play Now
+    </small>
+
+</a>
+
+
+<div class="more-card">
+
+    <div class="more-card-icon">
+        🧩
+    </div>
+
+    <strong>
+        Gaming Connections
+    </strong>
+
+    <small>
+        Coming Soon
+    </small>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<script>
+
+
+/* =======================================================
+GAME LIBRARY
+
+Important:
+The game does NOT choose any two random games.
+
+The pairing system below specifically searches for games
+whose release years are close enough for the selected
+difficulty.
+======================================================= */
+
+const GAME_LIBRARY = [
+
+{name:"Super Mario Bros.",year:1985,icon:"🍄"},
+{name:"The Legend of Zelda",year:1986,icon:"🗡️"},
+{name:"Metroid",year:1986,icon:"🚀"},
+{name:"Mega Man",year:1987,icon:"🤖"},
+{name:"Final Fantasy",year:1987,icon:"⚔️"},
+{name:"Super Mario Bros. 3",year:1988,icon:"🍄"},
+
+{name:"Sonic the Hedgehog",year:1991,icon:"💨"},
+{name:"Street Fighter II",year:1991,icon:"🥊"},
+{name:"Mortal Kombat",year:1992,icon:"🐉"},
+{name:"DOOM",year:1993,icon:"👹"},
+{name:"Donkey Kong Country",year:1994,icon:"🍌"},
+{name:"Warcraft: Orcs & Humans",year:1994,icon:"⚔️"},
+{name:"Chrono Trigger",year:1995,icon:"⏳"},
+{name:"Resident Evil",year:1996,icon:"🧟"},
+{name:"Super Mario 64",year:1996,icon:"⭐"},
+{name:"Tomb Raider",year:1996,icon:"🏺"},
+{name:"Final Fantasy VII",year:1997,icon:"☄️"},
+{name:"Fallout",year:1997,icon:"☢️"},
+{name:"Half-Life",year:1998,icon:"🔬"},
+{name:"Metal Gear Solid",year:1998,icon:"📦"},
+{name:"Pokémon Red & Blue",year:1998,icon:"⚡"},
+{name:"Silent Hill",year:1999,icon:"🌫️"},
+
+{name:"The Sims",year:2000,icon:"🏠"},
+{name:"Diablo II",year:2000,icon:"😈"},
+{name:"Halo: Combat Evolved",year:2001,icon:"🪐"},
+{name:"Grand Theft Auto III",year:2001,icon:"🚗"},
+{name:"The Elder Scrolls III: Morrowind",year:2002,icon:"🧙"},
+{name:"Kingdom Hearts",year:2002,icon:"🔑"},
+{name:"Call of Duty",year:2003,icon:"🪖"},
+{name:"Star Wars: Knights of the Old Republic",year:2003,icon:"🌌"},
+{name:"Half-Life 2",year:2004,icon:"🔬"},
+{name:"Grand Theft Auto: San Andreas",year:2004,icon:"🚲"},
+{name:"World of Warcraft",year:2004,icon:"⚔️"},
+{name:"God of War",year:2005,icon:"🪓"},
+{name:"Resident Evil 4",year:2005,icon:"🧟"},
+{name:"Gears of War",year:2006,icon:"⚙️"},
+{name:"The Elder Scrolls IV: Oblivion",year:2006,icon:"🏰"},
+{name:"BioShock",year:2007,icon:"🌊"},
+{name:"Portal",year:2007,icon:"🌀"},
+{name:"Assassin's Creed",year:2007,icon:"🥷"},
+{name:"Fallout 3",year:2008,icon:"☢️"},
+{name:"Dead Space",year:2008,icon:"👽"},
+{name:"Left 4 Dead",year:2008,icon:"🧟"},
+{name:"Batman: Arkham Asylum",year:2009,icon:"🦇"},
+{name:"Minecraft",year:2011,icon:"⛏️"},
+{name:"Dark Souls",year:2011,icon:"🔥"},
+{name:"The Elder Scrolls V: Skyrim",year:2011,icon:"🐉"},
+
+{name:"Borderlands 2",year:2012,icon:"🔫"},
+{name:"Dishonored",year:2012,icon:"🎭"},
+{name:"The Walking Dead",year:2012,icon:"🧟"},
+{name:"The Last of Us",year:2013,icon:"🍄"},
+{name:"Grand Theft Auto V",year:2013,icon:"🚗"},
+{name:"BioShock Infinite",year:2013,icon:"☁️"},
+{name:"Dark Souls II",year:2014,icon:"🔥"},
+{name:"Alien: Isolation",year:2014,icon:"👽"},
+{name:"Destiny",year:2014,icon:"🌌"},
+{name:"The Witcher 3: Wild Hunt",year:2015,icon:"🐺"},
+{name:"Bloodborne",year:2015,icon:"🌙"},
+{name:"Fallout 4",year:2015,icon:"☢️"},
+{name:"Overwatch",year:2016,icon:"🦸"},
+{name:"DOOM",year:2016,icon:"👹"},
+{name:"Stardew Valley",year:2016,icon:"🌾"},
+{name:"The Legend of Zelda: Breath of the Wild",year:2017,icon:"🗡️"},
+{name:"Horizon Zero Dawn",year:2017,icon:"🏹"},
+{name:"Cuphead",year:2017,icon:"☕"},
+{name:"Fortnite",year:2017,icon:"🚌"},
+{name:"God of War",year:2018,icon:"🪓"},
+{name:"Red Dead Redemption 2",year:2018,icon:"🤠"},
+{name:"Spider-Man",year:2018,icon:"🕷️"},
+{name:"Sekiro: Shadows Die Twice",year:2019,icon:"🥷"},
+{name:"Death Stranding",year:2019,icon:"📦"},
+{name:"Control",year:2019,icon:"🔻"},
+{name:"Hades",year:2020,icon:"🔥"},
+{name:"The Last of Us Part II",year:2020,icon:"🌿"},
+{name:"Cyberpunk 2077",year:2020,icon:"🌃"},
+{name:"Animal Crossing: New Horizons",year:2020,icon:"🏝️"},
+{name:"Resident Evil Village",year:2021,icon:"🏰"},
+{name:"Halo Infinite",year:2021,icon:"🪐"},
+{name:"Forza Horizon 5",year:2021,icon:"🏎️"},
+{name:"Elden Ring",year:2022,icon:"💍"},
+{name:"God of War Ragnarök",year:2022,icon:"❄️"},
+{name:"Stray",year:2022,icon:"🐈"},
+{name:"Hogwarts Legacy",year:2023,icon:"🪄"},
+{name:"Baldur's Gate 3",year:2023,icon:"🎲"},
+{name:"Alan Wake 2",year:2023,icon:"🔦"},
+{name:"Helldivers 2",year:2024,icon:"🪖"},
+{name:"Dragon's Dogma 2",year:2024,icon:"🐉"}
+
+];
+
+
+/* =======================================================
+STATE
+======================================================= */
+
+const ROUNDS_PER_GAME = 10;
+
+let difficulty = "easy";
+
+let matchups = [];
+
+let roundIndex = 0;
+
+let score = 0;
+
+let streak = 0;
+
+let bestStreak = 0;
+
+let locked = false;
+
+let roundResults = [];
+
+
+/* =======================================================
+DIFFICULTY
+======================================================= */
+
+function selectDifficulty(level,button){
+
+    difficulty = level;
+
+    document
+        .querySelectorAll(".difficulty")
+        .forEach(item => item.classList.remove("active"));
+
+    button.classList.add("active");
+}
+
+
+/* =======================================================
+SHUFFLE
+======================================================= */
+
+function shuffle(array){
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--){
+
+        const j =
+            Math.floor(Math.random() * (i + 1));
+
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+
+/* =======================================================
+VALID YEAR GAP
+
+Easy:
+2–4 years apart
+
+Normal:
+1–3 years apart
+
+Hard:
+exactly 1 year apart
+
+We never create same-year matchups.
+======================================================= */
+
+function validGap(yearA,yearB){
+
+    const gap =
+        Math.abs(yearA - yearB);
+
+    if(gap === 0){
+        return false;
+    }
+
+    if(difficulty === "easy"){
+        return gap >= 2 && gap <= 4;
+    }
+
+    if(difficulty === "normal"){
+        return gap >= 1 && gap <= 3;
+    }
+
+    return gap === 1;
+}
+
+
+/* =======================================================
+BUILD MATCHUPS
+======================================================= */
+
+function createMatchups(){
+
+    const games =
+        shuffle(GAME_LIBRARY);
+
+    const pairs = [];
+
+    const usage = {};
+
+    let attempts = 0;
+
+
+    while(
+        pairs.length < ROUNDS_PER_GAME &&
+        attempts < 5000
+    ){
+
+        attempts++;
+
+
+        const gameA =
+            games[
+                Math.floor(
+                    Math.random() * games.length
+                )
+            ];
+
+
+        const candidates =
+            games.filter(game => {
+
+                if(game === gameA){
+                    return false;
+                }
+
+                if(!validGap(gameA.year,game.year)){
+                    return false;
+                }
+
+                /*
+                Try to avoid the same game appearing
+                constantly in one session.
+                */
+
+                if((usage[game.name] || 0) >= 1){
+                    return false;
+                }
+
+                return true;
+            });
+
+
+        if(
+            candidates.length === 0 ||
+            (usage[gameA.name] || 0) >= 1
+        ){
+            continue;
+        }
+
+
+        const gameB =
+            candidates[
+                Math.floor(
+                    Math.random() * candidates.length
+                )
+            ];
+
+
+        /*
+        Randomise left/right position.
+        */
+
+        const pair =
+            Math.random() < .5
+            ? {left:gameA,right:gameB}
+            : {left:gameB,right:gameA};
+
+
+        pairs.push(pair);
+
+
+        usage[gameA.name] =
+            (usage[gameA.name] || 0) + 1;
+
+        usage[gameB.name] =
+            (usage[gameB.name] || 0) + 1;
+    }
+
+
+    return pairs;
+}
+
+
+/* =======================================================
+START
+======================================================= */
+
+function startGame(){
+
+    matchups =
+        createMatchups();
+
+
+    /*
+    Safety fallback.
+
+    With the current library this should normally
+    produce all 10 pairs.
+    */
+
+    if(matchups.length < ROUNDS_PER_GAME){
+
+        alert(
+            "Not enough matching games were found. Please try starting again."
+        );
+
+        return;
+    }
+
+
+    roundIndex = 0;
+
+    score = 0;
+
+    streak = 0;
+
+    bestStreak = 0;
+
+    roundResults = [];
+
+    locked = false;
+
+
+    document
+        .getElementById("startScreen")
+        .style.display = "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display = "none";
+
+
+    document
+        .getElementById("gameArea")
+        .style.display = "block";
+
+
+    loadRound();
+}
+
+
+/* =======================================================
+LOAD ROUND
+======================================================= */
+
+function loadRound(){
+
+    locked = false;
+
+
+    const matchup =
+        matchups[roundIndex];
+
+
+    const left =
+        document.getElementById("leftChoice");
+
+    const right =
+        document.getElementById("rightChoice");
+
+
+    left.className =
+        "game-choice";
+
+    right.className =
+        "game-choice";
+
+
+    document
+        .getElementById("leftIcon")
+        .textContent =
+        matchup.left.icon;
+
+
+    document
+        .getElementById("leftName")
+        .textContent =
+        matchup.left.name;
+
+
+    document
+        .getElementById("leftYear")
+        .textContent =
+        matchup.left.year;
+
+
+    document
+        .getElementById("rightIcon")
+        .textContent =
+        matchup.right.icon;
+
+
+    document
+        .getElementById("rightName")
+        .textContent =
+        matchup.right.name;
+
+
+    document
+        .getElementById("rightYear")
+        .textContent =
+        matchup.right.year;
+
+
+    document
+        .getElementById("roundText")
+        .textContent =
+        `Round ${roundIndex + 1} of ${ROUNDS_PER_GAME}`;
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        score;
+
+
+    document
+        .getElementById("streakDisplay")
+        .textContent =
+        streak;
+
+
+    document
+        .getElementById("progressFill")
+        .style.width =
+        `${((roundIndex + 1) / ROUNDS_PER_GAME) * 100}%`;
+
+
+    document
+        .getElementById("feedbackMain")
+        .textContent = "";
+
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main";
+
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent = "";
+
+
+    document
+        .getElementById("nextButton")
+        .style.display =
+        "none";
+}
+
+
+/* =======================================================
+CHOOSE GAME
+======================================================= */
+
+function chooseGame(side){
+
+    if(locked){
+        return;
+    }
+
+
+    locked = true;
+
+
+    const matchup =
+        matchups[roundIndex];
+
+
+    const chosen =
+        side === "left"
+        ? matchup.left
+        : matchup.right;
+
+
+    const other =
+        side === "left"
+        ? matchup.right
+        : matchup.left;
+
+
+    const correct =
+        chosen.year < other.year;
+
+
+    const olderGame =
+        matchup.left.year < matchup.right.year
+        ? matchup.left
+        : matchup.right;
+
+
+    const left =
+        document.getElementById("leftChoice");
+
+    const right =
+        document.getElementById("rightChoice");
+
+
+    /*
+    Reveal years on both cards.
+    */
+
+    left.classList.add("year-visible","locked");
+
+    right.classList.add("year-visible","locked");
+
+
+    /*
+    Colour the older game green.
+    */
+
+    if(matchup.left === olderGame){
+
+        left.classList.add("correct");
+
+    }else{
+
+        right.classList.add("correct");
+    }
+
+
+    /*
+    If player chose incorrectly,
+    colour their selected card red.
+    */
+
+    if(!correct){
+
+        if(side === "left"){
+
+            left.classList.add("wrong");
+
+        }else{
+
+            right.classList.add("wrong");
+        }
+    }
+
+
+    const feedback =
+        document.getElementById("feedbackMain");
+
+
+    if(correct){
+
+        score++;
+
+        streak++;
+
+        bestStreak =
+            Math.max(bestStreak,streak);
+
+
+        feedback.textContent =
+            "Correct!";
+
+        feedback.classList.add(
+            "correct"
+        );
+
+    }else{
+
+        streak = 0;
+
+
+        feedback.textContent =
+            "Not quite!";
+
+        feedback.classList.add(
+            "wrong"
+        );
+    }
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        score;
+
+
+    document
+        .getElementById("streakDisplay")
+        .textContent =
+        streak;
+
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        `${olderGame.name} released first — ${olderGame.year}.`;
+
+
+    roundResults.push({
+
+        left:matchup.left,
+
+        right:matchup.right,
+
+        chosen:chosen,
+
+        correct:correct
+
+    });
+
+
+    document
+        .getElementById("nextButton")
+        .style.display =
+        "block";
+}
+
+
+/* =======================================================
+NEXT
+======================================================= */
+
+function nextRound(){
+
+    roundIndex++;
+
+
+    if(roundIndex >= ROUNDS_PER_GAME){
+
+        finishGame();
+
+    }else{
+
+        loadRound();
+    }
+}
+
+
+/* =======================================================
+RESULTS
+======================================================= */
+
+function finishGame(){
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        `${score}/${ROUNDS_PER_GAME}`;
+
+
+    document
+        .getElementById("bestStreakDisplay")
+        .textContent =
+        bestStreak;
+
+
+    buildReview();
+}
+
+
+/* =======================================================
+REVIEW
+======================================================= */
+
+function buildReview(){
+
+    const list =
+        document.getElementById("reviewList");
+
+
+    list.innerHTML = "";
+
+
+    roundResults.forEach((result,index) => {
+
+        const row =
+            document.createElement("div");
+
+
+        row.className =
+            "review-row";
+
+
+        const games =
+            document.createElement("div");
+
+
+        games.className =
+            "review-games";
+
+
+        games.textContent =
+            `${index + 1}. ${result.left.name} vs ${result.right.name}`;
+
+
+        const years =
+            document.createElement("div");
+
+
+        years.className =
+            "review-years";
+
+
+        years.textContent =
+            `${result.left.year} • ${result.right.year}`;
+
+
+        const status =
+            document.createElement("div");
+
+
+        status.className =
+            result.correct
+            ? "review-result correct"
+            : "review-result wrong";
+
+
+        status.textContent =
+            result.correct
+            ? "✓ Correct"
+            : "✕ Incorrect";
+
+
+        row.appendChild(games);
+
+        row.appendChild(years);
+
+        row.appendChild(status);
+
+
+        list.appendChild(row);
+    });
+
+
+    document
+        .getElementById("review")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("reviewButton")
+        .textContent =
+        "Review Matchups";
+}
+
+
+/* =======================================================
+TOGGLE REVIEW
+======================================================= */
+
+function toggleReview(){
+
+    const review =
+        document.getElementById("review");
+
+
+    const button =
+        document.getElementById("reviewButton");
+
+
+    const hidden =
+        review.style.display === "none" ||
+        review.style.display === "";
+
+
+    if(hidden){
+
+        review.style.display =
+            "block";
+
+
+        button.textContent =
+            "Hide Matchups";
+
+    }else{
+
+        review.style.display =
+            "none";
+
+
+        button.textContent =
+            "Review Matchups";
+    }
+}
+
+
+/* =======================================================
+PLAY AGAIN
+======================================================= */
+
+function playAgain(){
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "none";
+
+
+    startGame();
+}
+
+
+</script>
+
+
+</body>
+
+</html>
