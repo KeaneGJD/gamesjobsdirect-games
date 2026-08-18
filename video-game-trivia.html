@@ -1158,675 +1158,1135 @@ We can keep adding hundreds of questions here later.
 
 const QUESTION_BANK = [
 
+/* =========================
+CHARACTERS
+========================= */
+
 {
 category:"Characters",
 question:"What is the name of Mario's brother?",
-answers:[
-    "Luigi",
-    "Wario",
-    "Toad",
-    "Yoshi"
-],
+answers:["Luigi","Wario","Toad","Yoshi"],
 correct:0
-},
-
-{
-category:"Nintendo",
-question:"Which Pokémon is number 025 in the original Pokédex?",
-answers:[
-    "Charmander",
-    "Pikachu",
-    "Squirtle",
-    "Meowth"
-],
-correct:1
-},
-
-{
-category:"Gaming History",
-question:"Which game features the falling shapes known as tetrominoes?",
-answers:[
-    "Pong",
-    "Tetris",
-    "Breakout",
-    "Pac-Man"
-],
-correct:1
 },
 
 {
 category:"Characters",
 question:"Who is the protagonist of The Legend of Zelda series?",
-answers:[
-    "Zelda",
-    "Ganondorf",
-    "Link",
-    "Epona"
-],
+answers:["Zelda","Ganondorf","Link","Epona"],
 correct:2
 },
 
 {
-category:"PlayStation",
+category:"Characters",
 question:"Which character is the main protagonist of God of War?",
-answers:[
-    "Kratos",
-    "Atreus",
-    "Ares",
-    "Thor"
-],
+answers:["Kratos","Atreus","Ares","Thor"],
 correct:0
 },
 
 {
-category:"Xbox",
+category:"Characters",
 question:"What is the name of Halo's iconic supersoldier protagonist?",
-answers:[
-    "Commander Shepard",
-    "Marcus Fenix",
-    "Master Chief",
-    "Captain Price"
-],
+answers:["Commander Shepard","Marcus Fenix","Master Chief","Captain Price"],
 correct:2
 },
 
 {
-category:"Open World",
-question:"Which fictional city is the main setting of Grand Theft Auto V?",
-answers:[
-    "Vice City",
-    "Liberty City",
-    "Los Santos",
-    "San Fierro"
-],
-correct:2
-},
-
-{
-category:"RPG",
-question:"In The Elder Scrolls V: Skyrim, what title is given to the player character?",
-answers:[
-    "The Witcher",
-    "The Dragonborn",
-    "The Grey Warden",
-    "The Tarnished"
-],
-correct:1
-},
-
-{
-category:"Minecraft",
-question:"Which creature is famous for silently approaching players before exploding?",
-answers:[
-    "Skeleton",
-    "Zombie",
-    "Enderman",
-    "Creeper"
-],
-correct:3
-},
-
-{
-category:"Indie Games",
-question:"Which game sees the player inherit their grandfather's farm?",
-answers:[
-    "Terraria",
-    "Stardew Valley",
-    "Animal Crossing",
-    "Slime Rancher"
-],
-correct:1
-},
-
-{
-category:"Horror",
-question:"Which company is central to the events of Resident Evil?",
-answers:[
-    "Abstergo",
-    "Umbrella Corporation",
-    "Vault-Tec",
-    "Arasaka"
-],
-correct:1
-},
-
-{
-category:"RPG",
+category:"Characters",
 question:"What is the name of the protagonist of The Witcher series?",
-answers:[
-    "Geralt of Rivia",
-    "Arthur Morgan",
-    "Ezio Auditore",
-    "Joel Miller"
-],
+answers:["Geralt of Rivia","Arthur Morgan","Ezio Auditore","Joel Miller"],
 correct:0
 },
 
 {
-category:"Post-Apocalypse",
+category:"Characters",
 question:"Who accompanies Joel across much of The Last of Us?",
-answers:[
-    "Abby",
-    "Tess",
-    "Ellie",
-    "Marlene"
-],
+answers:["Abby","Tess","Ellie","Marlene"],
 correct:2
 },
 
 {
-category:"Rockstar Games",
-question:"Which Red Dead Redemption 2 character leads the Van der Linde gang?",
-answers:[
-    "John Marston",
-    "Dutch van der Linde",
-    "Arthur Morgan",
-    "Micah Bell"
-],
+category:"Characters",
+question:"Who is the main playable protagonist of Red Dead Redemption 2?",
+answers:["John Marston","Arthur Morgan","Dutch van der Linde","Micah Bell"],
 correct:1
 },
 
 {
-category:"Racing",
-question:"Which racing franchise includes the Horizon spin-off series?",
-answers:[
-    "Gran Turismo",
-    "Forza",
-    "Need for Speed",
-    "Burnout"
-],
+category:"Characters",
+question:"Which Final Fantasy VII character carries the Buster Sword?",
+answers:["Sephiroth","Cloud Strife","Barret Wallace","Cid Highwind"],
 correct:1
 },
 
 {
-category:"Valve",
-question:"Which game introduced players to the Aperture Science Handheld Portal Device?",
-answers:[
-    "Half-Life",
-    "Portal",
-    "Team Fortress 2",
-    "Left 4 Dead"
-],
-correct:1
-},
-
-{
-category:"Survival",
-question:"Subnautica primarily takes place in what kind of environment?",
-answers:[
-    "Desert",
-    "Frozen tundra",
-    "Ocean",
-    "Space station"
-],
-correct:2
-},
-
-{
-category:"Indie Games",
-question:"Which game follows a knight exploring the ruined kingdom of Hallownest?",
-answers:[
-    "Dead Cells",
-    "Hollow Knight",
-    "Celeste",
-    "Hades"
-],
-correct:1
-},
-
-{
-category:"Indie Games",
-question:"In Celeste, what is Madeline attempting to do?",
-answers:[
-    "Escape a dungeon",
-    "Climb a mountain",
-    "Cross an ocean",
-    "Defeat a dragon"
-],
-correct:1
-},
-
-{
-category:"Battle Royale",
-question:"Which game famously begins matches with players jumping from a Battle Bus?",
-answers:[
-    "PUBG",
-    "Apex Legends",
-    "Fortnite",
-    "Warzone"
-],
-correct:2
-},
-
-{
-category:"Multiplayer",
-question:"In Among Us, what role secretly works against the Crewmates?",
-answers:[
-    "Guardian",
-    "Impostor",
-    "Commander",
-    "Saboteur"
-],
-correct:1
-},
-
-{
-category:"FromSoftware",
-question:"Which game takes place in the Lands Between?",
-answers:[
-    "Dark Souls",
-    "Bloodborne",
-    "Sekiro",
-    "Elden Ring"
-],
-correct:3
-},
-
-{
-category:"Cyberpunk",
-question:"Cyberpunk 2077 is primarily set in which city?",
-answers:[
-    "Night City",
-    "Liberty City",
-    "Rapture",
-    "Midgar"
-],
+category:"Characters",
+question:"Which bounty hunter is the protagonist of the Metroid series?",
+answers:["Samus Aran","Lara Croft","Bayonetta","Jill Valentine"],
 correct:0
 },
 
 {
-category:"Sci-Fi",
-question:"Who commands the Normandy in the Mass Effect series?",
-answers:[
-    "Commander Shepard",
-    "Master Chief",
-    "Samus Aran",
-    "Isaac Clarke"
-],
+category:"Characters",
+question:"Which Tomb Raider character is an archaeologist and adventurer?",
+answers:["Aloy","Lara Croft","Jill Valentine","Faith Connors"],
+correct:1
+},
+
+{
+category:"Characters",
+question:"Which character is most closely associated with the Metal Gear Solid series?",
+answers:["Sam Fisher","Agent 47","Solid Snake","Adam Jensen"],
+correct:2
+},
+
+{
+category:"Characters",
+question:"Which franchise stars Agent 47?",
+answers:["Splinter Cell","Hitman","Metal Gear","Watch Dogs"],
+correct:1
+},
+
+{
+category:"Characters",
+question:"Which game features Aloy as its protagonist?",
+answers:["Forspoken","Horizon Zero Dawn","Returnal","Kena: Bridge of Spirits"],
+correct:1
+},
+
+{
+category:"Characters",
+question:"Which character is famous for collecting bananas?",
+answers:["Sonic","Crash Bandicoot","Donkey Kong","Kirby"],
+correct:2
+},
+
+{
+category:"Characters",
+question:"What type of animal is Sonic?",
+answers:["Fox","Hedgehog","Echidna","Rabbit"],
+correct:1
+},
+
+{
+category:"Characters",
+question:"What type of creature is Yoshi?",
+answers:["Dinosaur","Turtle","Frog","Dragon"],
 correct:0
 },
 
 {
-category:"Horror",
-question:"Which game involves investigating haunted locations using equipment such as EMF readers?",
-answers:[
-    "Outlast",
-    "Phasmophobia",
-    "Dead Space",
-    "Amnesia"
-],
+category:"Characters",
+question:"Which character is the pink, round hero known for copying enemy abilities?",
+answers:["Kirby","Jigglypuff","Toad","Ditto"],
+correct:0
+},
+
+{
+category:"Characters",
+question:"Who is Nathan Drake's mentor and longtime friend in Uncharted?",
+answers:["Victor Sullivan","Sam Drake","Rafe Adler","Harry Flynn"],
+correct:0
+},
+
+{
+category:"Characters",
+question:"Which Street Fighter character is famous for using the Hadouken?",
+answers:["Ryu","Guile","Blanka","Zangief"],
+correct:0
+},
+
+{
+category:"Characters",
+question:"Which fighting series features Scorpion and Sub-Zero?",
+answers:["Tekken","Street Fighter","Mortal Kombat","Soulcalibur"],
+correct:2
+},
+
+
+/* =========================
+NINTENDO
+========================= */
+
+{
+category:"Nintendo",
+question:"Which Pokémon is number 025 in the original Pokédex?",
+answers:["Charmander","Pikachu","Squirtle","Meowth"],
 correct:1
 },
 
 {
 category:"Nintendo",
 question:"Which company created the Animal Crossing series?",
-answers:[
-    "Sony",
-    "Nintendo",
-    "Sega",
-    "Capcom"
-],
-correct:1
-},
-
-{
-category:"Arcade",
-question:"What colour is Pac-Man?",
-answers:[
-    "Blue",
-    "Red",
-    "Yellow",
-    "Green"
-],
-correct:2
-},
-
-{
-category:"Platformers",
-question:"Which character is famous for collecting bananas?",
-answers:[
-    "Sonic",
-    "Crash Bandicoot",
-    "Donkey Kong",
-    "Kirby"
-],
-correct:2
-},
-
-{
-category:"Sega",
-question:"Which animal is Sonic?",
-answers:[
-    "Fox",
-    "Hedgehog",
-    "Echidna",
-    "Rabbit"
-],
+answers:["Sony","Nintendo","Sega","Capcom"],
 correct:1
 },
 
 {
 category:"Nintendo",
-question:"What type of creature is Yoshi?",
-answers:[
-    "Dragon",
-    "Dinosaur",
-    "Turtle",
-    "Frog"
-],
+question:"Which character is the princess of the Mushroom Kingdom?",
+answers:["Rosalina","Daisy","Peach","Pauline"],
+correct:2
+},
+
+{
+category:"Nintendo",
+question:"Which Mario Kart item temporarily makes the player invincible?",
+answers:["Mushroom","Star","Banana","Green Shell"],
+correct:1
+},
+
+{
+category:"Nintendo",
+question:"What is the name of Link's horse in many Zelda games?",
+answers:["Epona","Agro","Roach","Torrent"],
+correct:0
+},
+
+{
+category:"Nintendo",
+question:"Which Nintendo series features the planet Zebes?",
+answers:["Metroid","Star Fox","Kirby","F-Zero"],
+correct:0
+},
+
+{
+category:"Nintendo",
+question:"Which Pokémon type is Pikachu?",
+answers:["Fire","Electric","Normal","Grass"],
+correct:1
+},
+
+{
+category:"Nintendo",
+question:"Which Mario enemy hides inside a green pipe?",
+answers:["Goomba","Boo","Piranha Plant","Koopa Troopa"],
+correct:2
+},
+
+{
+category:"Nintendo",
+question:"Who is Mario's main recurring antagonist?",
+answers:["Bowser","Ganondorf","King Dedede","Ridley"],
+correct:0
+},
+
+{
+category:"Nintendo",
+question:"Which Nintendo franchise features the Inkling characters?",
+answers:["Splatoon","Pikmin","Animal Crossing","F-Zero"],
+correct:0
+},
+
+
+/* =========================
+PLAYSTATION
+========================= */
+
+{
+category:"PlayStation",
+question:"Which Naughty Dog series stars Nathan Drake?",
+answers:["The Last of Us","Uncharted","Jak and Daxter","Crash Bandicoot"],
 correct:1
 },
 
 {
 category:"PlayStation",
-question:"Which Naughty Dog series stars Nathan Drake?",
-answers:[
-    "The Last of Us",
-    "Uncharted",
-    "Jak and Daxter",
-    "Crash Bandicoot"
-],
+question:"Which studio created Ghost of Tsushima?",
+answers:["Naughty Dog","Insomniac Games","Sucker Punch Productions","Guerrilla Games"],
+correct:2
+},
+
+{
+category:"PlayStation",
+question:"Which series features the Lombax named Ratchet?",
+answers:["Ratchet & Clank","Jak and Daxter","Sly Cooper","LittleBigPlanet"],
+correct:0
+},
+
+{
+category:"PlayStation",
+question:"Which game features Sackboy?",
+answers:["Astro Bot","LittleBigPlanet","Knack","Dreams"],
+correct:1
+},
+
+{
+category:"PlayStation",
+question:"Which studio developed Horizon Zero Dawn?",
+answers:["Guerrilla Games","Santa Monica Studio","Housemarque","Bend Studio"],
+correct:0
+},
+
+{
+category:"PlayStation",
+question:"Which game features the robotic protagonist Astro?",
+answers:["Astro Bot","Returnal","Gravity Rush","The Last Guardian"],
+correct:0
+},
+
+{
+category:"PlayStation",
+question:"Which PlayStation series follows Kratos?",
+answers:["God of War","Killzone","Infamous","Resistance"],
+correct:0
+},
+
+{
+category:"PlayStation",
+question:"Which developer created Marvel's Spider-Man for PlayStation?",
+answers:["Insomniac Games","Naughty Dog","Sucker Punch","Bluepoint Games"],
+correct:0
+},
+
+
+/* =========================
+XBOX
+========================= */
+
+{
+category:"Xbox",
+question:"Which Xbox franchise features Marcus Fenix?",
+answers:["Halo","Gears of War","Forza","Fable"],
+correct:1
+},
+
+{
+category:"Xbox",
+question:"Which racing franchise includes the Horizon spin-off series?",
+answers:["Gran Turismo","Forza","Need for Speed","Burnout"],
+correct:1
+},
+
+{
+category:"Xbox",
+question:"Which studio originally created Halo?",
+answers:["Bungie","Rare","Turn 10","Bethesda"],
+correct:0
+},
+
+{
+category:"Xbox",
+question:"Which series is set in the fantasy land of Albion?",
+answers:["Fable","The Elder Scrolls","Dragon Age","Avowed"],
+correct:0
+},
+
+{
+category:"Xbox",
+question:"Which Xbox franchise features pirate crews exploring a shared world?",
+answers:["Sea of Thieves","Grounded","State of Decay","Crackdown"],
+correct:0
+},
+
+{
+category:"Xbox",
+question:"Which studio develops the Forza Motorsport series?",
+answers:["Turn 10 Studios","Playground Games","Rare","The Coalition"],
+correct:0
+},
+
+{
+category:"Xbox",
+question:"Which studio develops the Forza Horizon series?",
+answers:["Playground Games","Turn 10 Studios","Rare","343 Industries"],
+correct:0
+},
+
+
+/* =========================
+GAMING HISTORY
+========================= */
+
+{
+category:"Gaming History",
+question:"Which game features the falling shapes known as tetrominoes?",
+answers:["Pong","Tetris","Breakout","Pac-Man"],
 correct:1
 },
 
 {
 category:"Gaming History",
 question:"Which game is commonly associated with the phrase 'The cake is a lie'?",
-answers:[
-    "Portal",
-    "BioShock",
-    "Half-Life 2",
-    "Fallout"
-],
+answers:["Portal","BioShock","Half-Life 2","Fallout"],
 correct:0
 },
 
 {
-category:"BioShock",
-question:"Where does the original BioShock primarily take place?",
-answers:[
-    "Columbia",
-    "Rapture",
-    "Night City",
-    "Midgar"
-],
-correct:1
+category:"Gaming History",
+question:"Which maze game features Blinky, Pinky, Inky and Clyde?",
+answers:["Pac-Man","Q*bert","Dig Dug","Frogger"],
+correct:0
 },
 
 {
-category:"Fallout",
-question:"Which company appears throughout the Fallout universe as the creator of the Vaults?",
-answers:[
-    "Umbrella",
-    "Arasaka",
-    "Vault-Tec",
-    "Aperture Science"
-],
+category:"Gaming History",
+question:"What colour is Pac-Man?",
+answers:["Blue","Red","Yellow","Green"],
 correct:2
 },
 
 {
-category:"Assassin's Creed",
-question:"Which Assassin's Creed protagonist is an Italian Renaissance assassin?",
-answers:[
-    "Altaïr Ibn-La'Ahad",
-    "Ezio Auditore",
-    "Edward Kenway",
-    "Bayek"
-],
-correct:1
-},
-
-{
-category:"Japanese RPG",
-question:"Which Final Fantasy VII character carries the enormous Buster Sword?",
-answers:[
-    "Sephiroth",
-    "Cloud Strife",
-    "Barret Wallace",
-    "Zack Fair"
-],
-correct:1
-},
-
-{
-category:"Nintendo",
-question:"Which Metroid character is a bounty hunter?",
-answers:[
-    "Samus Aran",
-    "Princess Zelda",
-    "Bayonetta",
-    "Jill Valentine"
-],
+category:"Gaming History",
+question:"Which early arcade game simulates table tennis?",
+answers:["Pong","Asteroids","Space Invaders","Galaga"],
 correct:0
 },
 
 {
-category:"Fighting Games",
-question:"Which fighting series features Scorpion and Sub-Zero?",
-answers:[
-    "Tekken",
-    "Street Fighter",
-    "Mortal Kombat",
-    "Soulcalibur"
-],
-correct:2
+category:"Gaming History",
+question:"Which company created the original Sonic the Hedgehog?",
+answers:["Nintendo","Sega","Capcom","Namco"],
+correct:1
 },
 
 {
-category:"Fighting Games",
-question:"Which Street Fighter character is famous for the Hadouken?",
-answers:[
-    "Ryu",
-    "Guile",
-    "Blanka",
-    "Zangief"
-],
+category:"Gaming History",
+question:"Which game popularised the term 'Battle Royale' among mainstream gaming audiences in the late 2010s?",
+answers:["Fortnite","Quake","StarCraft","Portal"],
 correct:0
 },
 
 {
-category:"Survival Horror",
-question:"Which survival-horror game is set aboard the USG Ishimura?",
-answers:[
-    "Alien: Isolation",
-    "Dead Space",
-    "Resident Evil 4",
-    "The Callisto Protocol"
-],
-correct:1
-},
-
-{
-category:"Strategy",
-question:"Which franchise is famous for the phrase 'One more turn' and building civilisations across history?",
-answers:[
-    "Civilization",
-    "StarCraft",
-    "Warcraft",
-    "Command & Conquer"
-],
+category:"Gaming History",
+question:"Which franchise began with a 1996 game starring Lara Croft?",
+answers:["Tomb Raider","Uncharted","Prince of Persia","Syphon Filter"],
 correct:0
 },
 
 {
-category:"Simulation",
-question:"Which game series lets players create people, build homes and manage their everyday lives?",
-answers:[
-    "SimCity",
-    "The Sims",
-    "Cities: Skylines",
-    "Planet Coaster"
-],
-correct:1
-},
-
-{
-category:"PC Gaming",
-question:"Which game focuses on constructing increasingly automated factories on an alien planet?",
-answers:[
-    "Factorio",
-    "RimWorld",
-    "Terraria",
-    "Rust"
-],
+category:"Gaming History",
+question:"Which survival-horror franchise began in 1996 with a mansion incident?",
+answers:["Resident Evil","Silent Hill","Dead Space","Fatal Frame"],
 correct:0
 },
 
 {
-category:"Survival",
-question:"Which game features increasingly dangerous zombie hordes every seven days?",
-answers:[
-    "DayZ",
-    "7 Days to Die",
-    "Project Zomboid",
-    "Dying Light"
-],
-correct:1
-},
-
-{
-category:"Valve",
-question:"Which co-op shooter features Survivors battling hordes of Infected?",
-answers:[
-    "Counter-Strike",
-    "Left 4 Dead",
-    "Half-Life",
-    "Portal"
-],
-correct:1
-},
-
-{
-category:"Platformers",
-question:"Which game features Cuphead and Mugman?",
-answers:[
-    "Cuphead",
-    "Hollow Knight",
-    "Shovel Knight",
-    "Bendy and the Ink Machine"
-],
+category:"Gaming History",
+question:"Which iconic FPS series began with a 1993 game from id Software?",
+answers:["DOOM","Quake","Unreal","Duke Nukem"],
 correct:0
 },
 
-{
-category:"Adventure",
-question:"In Stray, what animal does the player control?",
-answers:[
-    "Dog",
-    "Fox",
-    "Cat",
-    "Rabbit"
-],
-correct:2
-},
+
+/* =========================
+RPG
+========================= */
 
 {
-category:"Batman",
-question:"Which villain takes control of Arkham Asylum during Batman: Arkham Asylum?",
-answers:[
-    "Bane",
-    "The Joker",
-    "Two-Face",
-    "The Riddler"
-],
+category:"RPG",
+question:"In Skyrim, what title is given to the player character?",
+answers:["The Witcher","The Dragonborn","The Grey Warden","The Tarnished"],
 correct:1
 },
 
 {
-category:"Stealth",
-question:"Which character is most closely associated with the Metal Gear Solid series?",
-answers:[
-    "Sam Fisher",
-    "Agent 47",
-    "Solid Snake",
-    "Adam Jensen"
-],
-correct:2
-},
-
-{
-category:"Adventure",
-question:"Which Tomb Raider character is an archaeologist and adventurer?",
-answers:[
-    "Aloy",
-    "Lara Croft",
-    "Jill Valentine",
-    "Faith Connors"
-],
-correct:1
-},
-
-{
-category:"Nintendo",
-question:"Which Kirby ability is most famous?",
-answers:[
-    "Flying a plane",
-    "Copying enemy abilities",
-    "Freezing time",
-    "Turning invisible"
-],
-correct:1
-},
-
-{
-category:"Horror",
-question:"Which game features animatronic characters such as Freddy Fazbear?",
-answers:[
-    "Five Nights at Freddy's",
-    "Poppy Playtime",
-    "Outlast",
-    "Until Dawn"
-],
-correct:0
-},
-
-{
-category:"Action",
-question:"Which franchise stars Agent 47?",
-answers:[
-    "Splinter Cell",
-    "Hitman",
-    "Metal Gear",
-    "Watch Dogs"
-],
-correct:1
-},
-
-{
-category:"PlayStation",
-question:"Which game features Aloy as its protagonist?",
-answers:[
-    "Forspoken",
-    "Horizon Zero Dawn",
-    "Returnal",
-    "Kena: Bridge of Spirits"
-],
-correct:1
-},
-
-{
-category:"Action",
-question:"Which game series is famous for the phrase 'Rip and tear'?",
-answers:[
-    "DOOM",
-    "Quake",
-    "Wolfenstein",
-    "Duke Nukem"
-],
-correct:0
+category:"RPG",
+question:"Which game takes place in the Lands Between?",
+answers:["Dark Souls","Bloodborne","Sekiro","Elden Ring"],
+correct:3
 },
 
 {
 category:"RPG",
 question:"Which franchise uses Vault Boy as a mascot?",
-answers:[
-    "Fallout",
-    "Borderlands",
-    "BioShock",
-    "The Outer Worlds"
-],
+answers:["Fallout","Borderlands","BioShock","The Outer Worlds"],
+correct:0
+},
+
+{
+category:"RPG",
+question:"Which company created the Vaults in the Fallout universe?",
+answers:["Umbrella","Arasaka","Vault-Tec","Aperture Science"],
+correct:2
+},
+
+{
+category:"RPG",
+question:"Which Dragon Age organisation is central to Dragon Age: Origins?",
+answers:["Grey Wardens","Templars","Spectres","Blades"],
+correct:0
+},
+
+{
+category:"RPG",
+question:"Which Mass Effect protagonist commands the Normandy?",
+answers:["Commander Shepard","Master Chief","Samus Aran","Isaac Clarke"],
+correct:0
+},
+
+{
+category:"RPG",
+question:"Cyberpunk 2077 is primarily set in which city?",
+answers:["Night City","Liberty City","Rapture","Midgar"],
+correct:0
+},
+
+{
+category:"RPG",
+question:"Which companion is Geralt searching for in much of The Witcher 3?",
+answers:["Yennefer","Triss","Ciri","Dandelion"],
+correct:2
+},
+
+{
+category:"RPG",
+question:"Which Bethesda RPG series includes the provinces of Skyrim and Morrowind?",
+answers:["Fallout","The Elder Scrolls","Dishonored","Starfield"],
+correct:1
+},
+
+{
+category:"RPG",
+question:"Which game stars a protagonist known as the Tarnished?",
+answers:["Elden Ring","Dark Souls III","Dragon's Dogma","Bloodborne"],
+correct:0
+},
+
+
+/* =========================
+HORROR
+========================= */
+
+{
+category:"Horror",
+question:"Which company is central to the events of Resident Evil?",
+answers:["Abstergo","Umbrella Corporation","Vault-Tec","Arasaka"],
+correct:1
+},
+
+{
+category:"Horror",
+question:"Which game involves investigating haunted locations using EMF readers?",
+answers:["Outlast","Phasmophobia","Dead Space","Amnesia"],
+correct:1
+},
+
+{
+category:"Horror",
+question:"Which survival-horror game is set aboard the USG Ishimura?",
+answers:["Alien: Isolation","Dead Space","Resident Evil 4","The Callisto Protocol"],
+correct:1
+},
+
+{
+category:"Horror",
+question:"Which game features animatronics such as Freddy Fazbear?",
+answers:["Five Nights at Freddy's","Poppy Playtime","Outlast","Until Dawn"],
+correct:0
+},
+
+{
+category:"Horror",
+question:"Which horror series features Pyramid Head?",
+answers:["Silent Hill","Resident Evil","Fatal Frame","Dead Space"],
+correct:0
+},
+
+{
+category:"Horror",
+question:"Which game features the Xenomorph as an intelligent stalking enemy?",
+answers:["Alien: Isolation","Dead Space","SOMA","Outlast"],
+correct:0
+},
+
+{
+category:"Horror",
+question:"Which game follows journalist Miles Upshur exploring Mount Massive Asylum?",
+answers:["Outlast","Amnesia","SOMA","Layers of Fear"],
+correct:0
+},
+
+
+/* =========================
+INDIE
+========================= */
+
+{
+category:"Indie Games",
+question:"Which game sees the player inherit their grandfather's farm?",
+answers:["Terraria","Stardew Valley","Animal Crossing","Slime Rancher"],
+correct:1
+},
+
+{
+category:"Indie Games",
+question:"Which game follows a knight exploring Hallownest?",
+answers:["Dead Cells","Hollow Knight","Celeste","Hades"],
+correct:1
+},
+
+{
+category:"Indie Games",
+question:"In Celeste, what is Madeline attempting to do?",
+answers:["Escape a dungeon","Climb a mountain","Cross an ocean","Defeat a dragon"],
+correct:1
+},
+
+{
+category:"Indie Games",
+question:"Which game features Cuphead and Mugman?",
+answers:["Cuphead","Hollow Knight","Shovel Knight","Bendy and the Ink Machine"],
+correct:0
+},
+
+{
+category:"Indie Games",
+question:"Which game lets players manage a cult of woodland followers?",
+answers:["Cult of the Lamb","Hades","Don't Starve","Moonlighter"],
+correct:0
+},
+
+{
+category:"Indie Games",
+question:"Which roguelike follows Zagreus attempting to escape the Underworld?",
+answers:["Hades","Dead Cells","Bastion","Transistor"],
+correct:0
+},
+
+{
+category:"Indie Games",
+question:"Which game features a goose causing havoc in a peaceful village?",
+answers:["Untitled Goose Game","Goat Simulator","Animal Well","Donut County"],
+correct:0
+},
+
+{
+category:"Indie Games",
+question:"Which game involves running a shop by day and exploring dungeons by night?",
+answers:["Moonlighter","Terraria","Dave the Diver","Hades"],
+correct:0
+},
+
+
+/* =========================
+OPEN WORLD
+========================= */
+
+{
+category:"Open World",
+question:"Which fictional city is the main setting of Grand Theft Auto V?",
+answers:["Vice City","Liberty City","Los Santos","San Fierro"],
+correct:2
+},
+
+{
+category:"Open World",
+question:"Which Red Dead Redemption 2 character leads the Van der Linde gang?",
+answers:["John Marston","Dutch van der Linde","Arthur Morgan","Micah Bell"],
+correct:1
+},
+
+{
+category:"Open World",
+question:"Which game stars a cat exploring a futuristic city inhabited by robots?",
+answers:["Stray","Little Kitty, Big City","Ghostwire: Tokyo","Inside"],
+correct:0
+},
+
+{
+category:"Open World",
+question:"Which series often features towers or viewpoints used to reveal parts of the map?",
+answers:["Assassin's Creed","DOOM","Street Fighter","Portal"],
+correct:0
+},
+
+{
+category:"Open World",
+question:"Which game features the fictional Hope County, Montana?",
+answers:["Far Cry 5","Red Dead Redemption 2","Days Gone","Just Cause 3"],
+correct:0
+},
+
+{
+category:"Open World",
+question:"Which Nintendo game introduced the open-world version of Hyrule seen before Tears of the Kingdom?",
+answers:["Breath of the Wild","Skyward Sword","Twilight Princess","Wind Waker"],
+correct:0
+},
+
+
+/* =========================
+SHOOTERS
+========================= */
+
+{
+category:"Shooters",
+question:"Which game begins matches with players jumping from a Battle Bus?",
+answers:["PUBG","Apex Legends","Fortnite","Warzone"],
+correct:2
+},
+
+{
+category:"Shooters",
+question:"Which game series is associated with the phrase 'Rip and tear'?",
+answers:["DOOM","Quake","Wolfenstein","Duke Nukem"],
+correct:0
+},
+
+{
+category:"Shooters",
+question:"Which co-op shooter features Survivors battling hordes of Infected?",
+answers:["Counter-Strike","Left 4 Dead","Half-Life","Portal"],
+correct:1
+},
+
+{
+category:"Shooters",
+question:"Which tactical shooter is centred around bomb sites A and B?",
+answers:["Counter-Strike","DOOM","Borderlands","Destiny"],
+correct:0
+},
+
+{
+category:"Shooters",
+question:"Which franchise features the Covenant?",
+answers:["Halo","Destiny","Mass Effect","Gears of War"],
+correct:0
+},
+
+{
+category:"Shooters",
+question:"Which game series features Vault Hunters?",
+answers:["Borderlands","Fallout","Destiny","Warframe"],
+correct:0
+},
+
+{
+category:"Shooters",
+question:"Which multiplayer game features heroes such as Tracer and Reinhardt?",
+answers:["Overwatch","Valorant","Apex Legends","Rainbow Six Siege"],
+correct:0
+},
+
+
+/* =========================
+SURVIVAL
+========================= */
+
+{
+category:"Survival",
+question:"Subnautica primarily takes place in what kind of environment?",
+answers:["Desert","Frozen tundra","Ocean","Space station"],
+correct:2
+},
+
+{
+category:"Survival",
+question:"Which creature in Minecraft silently approaches before exploding?",
+answers:["Skeleton","Zombie","Enderman","Creeper"],
+correct:3
+},
+
+{
+category:"Survival",
+question:"Which game features increasingly dangerous zombie hordes every seven days?",
+answers:["DayZ","7 Days to Die","Project Zomboid","Dying Light"],
+correct:1
+},
+
+{
+category:"Survival",
+question:"Which survival game strands the player on an island after a plane crash?",
+answers:["The Forest","Rust","Raft","ARK"],
+correct:0
+},
+
+{
+category:"Survival",
+question:"Which survival game takes place largely aboard a raft on an endless ocean?",
+answers:["Raft","Subnautica","Stranded Deep","The Forest"],
+correct:0
+},
+
+{
+category:"Survival",
+question:"Which game lets players tame dinosaurs while surviving on mysterious ARKs?",
+answers:["ARK: Survival Evolved","Rust","Conan Exiles","Green Hell"],
+correct:0
+},
+
+
+/* =========================
+SIMULATION & STRATEGY
+========================= */
+
+{
+category:"Simulation",
+question:"Which series lets players create people, build homes and manage their lives?",
+answers:["SimCity","The Sims","Cities: Skylines","Planet Coaster"],
+correct:1
+},
+
+{
+category:"Simulation",
+question:"Which game involves driving trucks and delivering cargo across Europe?",
+answers:["Euro Truck Simulator 2","SnowRunner","BeamNG.drive","Farming Simulator"],
+correct:0
+},
+
+{
+category:"Simulation",
+question:"Which game revolves around running and expanding a theme park?",
+answers:["Planet Coaster","Cities: Skylines","The Sims","Two Point Hospital"],
+correct:0
+},
+
+{
+category:"Strategy",
+question:"Which franchise is strongly associated with the phrase 'one more turn'?",
+answers:["Civilization","StarCraft","Warcraft","Command & Conquer"],
+correct:0
+},
+
+{
+category:"Strategy",
+question:"Which game focuses on constructing increasingly automated factories on an alien planet?",
+answers:["Factorio","RimWorld","Terraria","Rust"],
+correct:0
+},
+
+{
+category:"Strategy",
+question:"Which Blizzard strategy series features Terran, Protoss and Zerg?",
+answers:["StarCraft","Warcraft","Diablo","Overwatch"],
+correct:0
+},
+
+{
+category:"Strategy",
+question:"Which strategy series features historical factions and large real-time battles?",
+answers:["Total War","Civilization","XCOM","Frostpunk"],
+correct:0
+},
+
+
+/* =========================
+STUDIOS & DEVELOPERS
+========================= */
+
+{
+category:"Studios",
+question:"Which studio created The Last of Us?",
+answers:["Naughty Dog","Insomniac Games","Guerrilla Games","Sucker Punch"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which developer created Elden Ring?",
+answers:["FromSoftware","Capcom","Square Enix","PlatinumGames"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio develops the Grand Theft Auto series?",
+answers:["Rockstar Games","Ubisoft","Bethesda","CD Projekt Red"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio created The Witcher 3?",
+answers:["CD Projekt Red","BioWare","Bethesda","Larian Studios"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio created Minecraft?",
+answers:["Mojang Studios","Valve","Rare","Epic Games"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio created Portal?",
+answers:["Valve","Bungie","id Software","Arkane"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio is best known for the Dark Souls series?",
+answers:["FromSoftware","Team Ninja","Capcom","Atlus"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio developed Baldur's Gate 3?",
+answers:["Larian Studios","BioWare","Obsidian Entertainment","Bethesda"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which developer created Stardew Valley?",
+answers:["ConcernedApe","Supergiant Games","Team Cherry","Motion Twin"],
+correct:0
+},
+
+{
+category:"Studios",
+question:"Which studio created Hades?",
+answers:["Supergiant Games","Team Cherry","Devolver Digital","Klei Entertainment"],
+correct:0
+},
+
+
+/* =========================
+GAME WORLDS
+========================= */
+
+{
+category:"Game Worlds",
+question:"Where does the original BioShock primarily take place?",
+answers:["Columbia","Rapture","Night City","Midgar"],
+correct:1
+},
+
+{
+category:"Game Worlds",
+question:"Which city is home to Batman in the Arkham games?",
+answers:["Metropolis","Gotham City","Central City","Star City"],
+correct:1
+},
+
+{
+category:"Game Worlds",
+question:"Which fantasy kingdom appears throughout the Zelda series?",
+answers:["Hyrule","Albion","Ferelden","Tamriel"],
+correct:0
+},
+
+{
+category:"Game Worlds",
+question:"Which city is the primary setting of Cyberpunk 2077?",
+answers:["Night City","Los Santos","Liberty City","Rapture"],
+correct:0
+},
+
+{
+category:"Game Worlds",
+question:"Which ruined underground kingdom is explored in Hollow Knight?",
+answers:["Hallownest","Hyrule","Lordran","Boletaria"],
+correct:0
+},
+
+{
+category:"Game Worlds",
+question:"Which city is featured heavily in Final Fantasy VII?",
+answers:["Midgar","Balamb","Zanarkand","Insomnia"],
+correct:0
+},
+
+
+/* =========================
+GAMEPLAY
+========================= */
+
+{
+category:"Gameplay",
+question:"What device allows players to create linked portals in Portal?",
+answers:["Portal Gun","Gravity Gun","BFG","Plasma Cutter"],
+correct:0
+},
+
+{
+category:"Gameplay",
+question:"In Among Us, which hidden role works against the Crewmates?",
+answers:["Guardian","Impostor","Commander","Saboteur"],
+correct:1
+},
+
+{
+category:"Gameplay",
+question:"Which Kirby ability is most famous?",
+answers:["Copying enemy abilities","Turning invisible","Freezing time","Building portals"],
+correct:0
+},
+
+{
+category:"Gameplay",
+question:"What is the primary objective in Tetris?",
+answers:["Complete horizontal lines","Match colours","Reach the exit","Defeat enemies"],
+correct:0
+},
+
+{
+category:"Gameplay",
+question:"What resource is commonly used to craft torches in Minecraft?",
+answers:["Coal","Diamond","Redstone","Emerald"],
+correct:0
+},
+
+{
+category:"Gameplay",
+question:"Which mechanic is central to Dying Light?",
+answers:["Parkour","Turn-based combat","Card battles","Space flight"],
+correct:0
+},
+
+
+/* =========================
+ASSASSIN'S CREED
+========================= */
+
+{
+category:"Assassin's Creed",
+question:"Which Assassin's Creed protagonist is an Italian Renaissance assassin?",
+answers:["Altaïr Ibn-La'Ahad","Ezio Auditore","Edward Kenway","Bayek"],
+correct:1
+},
+
+{
+category:"Assassin's Creed",
+question:"Which Assassin's Creed game prominently features pirates and naval combat?",
+answers:["Black Flag","Unity","Origins","Syndicate"],
+correct:0
+},
+
+{
+category:"Assassin's Creed",
+question:"Which organisation opposes the Assassins?",
+answers:["Templars","Grey Wardens","Brotherhood of Steel","Spectres"],
+correct:0
+},
+
+
+/* =========================
+SONIC & SEGA
+========================= */
+
+{
+category:"Sega",
+question:"Which character is Sonic's two-tailed fox companion?",
+answers:["Tails","Knuckles","Shadow","Vector"],
+correct:0
+},
+
+{
+category:"Sega",
+question:"What type of animal is Knuckles?",
+answers:["Echidna","Fox","Hedgehog","Chameleon"],
+correct:0
+},
+
+{
+category:"Sega",
+question:"Who is Sonic's main recurring villain?",
+answers:["Dr. Eggman","Bowser","Dr. Wily","Ganondorf"],
+correct:0
+},
+
+
+/* =========================
+MISC
+========================= */
+
+{
+category:"Gaming",
+question:"Which game features the Aperture Science Handheld Portal Device?",
+answers:["Portal","Half-Life","BioShock","Prey"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game has players spread 'Managed Democracy' across hostile planets?",
+answers:["Helldivers 2","Destiny 2","Warframe","Starfield"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game features an intentionally destructive goat as its protagonist?",
+answers:["Goat Simulator","Untitled Goose Game","Animal Crossing","Stray"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game lets players explore a procedurally generated universe containing countless planets?",
+answers:["No Man's Sky","Starfield","Elite Dangerous","Outer Wilds"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which Batman villain takes control of Arkham Asylum in Batman: Arkham Asylum?",
+answers:["Bane","The Joker","Two-Face","The Riddler"],
+correct:1
+},
+
+{
+category:"Gaming",
+question:"Which game series features the phrase 'Finish Him!'?",
+answers:["Mortal Kombat","Street Fighter","Tekken","Killer Instinct"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which franchise features a Brotherhood of Steel faction?",
+answers:["Fallout","Mass Effect","Halo","Borderlands"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game follows a courier shot in the head near the beginning of the story?",
+answers:["Fallout: New Vegas","Cyberpunk 2077","Death Stranding","The Outer Worlds"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game stars Gordon Freeman?",
+answers:["Half-Life","DOOM","Portal","BioShock"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which horror game centres around avoiding a family at the Baker estate?",
+answers:["Resident Evil 7","Outlast","Amnesia","Until Dawn"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which series features the Mushroom Kingdom?",
+answers:["Super Mario","The Legend of Zelda","Kirby","Animal Crossing"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which franchise includes the fictional corporation Abstergo Industries?",
+answers:["Assassin's Creed","Resident Evil","Deus Ex","Watch Dogs"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game centres around climbing Mount Celeste?",
+answers:["Celeste","Journey","Hollow Knight","Gris"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which game features a crowbar-wielding physicist?",
+answers:["Half-Life","BioShock","DOOM","Dead Space"],
+correct:0
+},
+
+{
+category:"Gaming",
+question:"Which franchise includes Vault 101?",
+answers:["Fallout","Borderlands","BioShock","Metro"],
 correct:0
 }
 
