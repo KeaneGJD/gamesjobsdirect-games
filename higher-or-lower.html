@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,7 +21,9 @@
     --red:#d9534f;
 }
 
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -29,16 +32,26 @@ body{
     color:var(--text);
 }
 
-/* HEADER */
+
+/* =========================
+HEADER
+========================= */
 
 header{
     background:white;
     min-height:68px;
     padding:12px 22px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     border-bottom:1px solid var(--border);
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
 }
 
 .logo-link img{
@@ -49,69 +62,107 @@ header{
 .hub-btn{
     background:var(--primary);
     color:white;
+
     text-decoration:none;
+
     padding:11px 17px;
+
     border-radius:10px;
+
     font-size:14px;
     font-weight:800;
 }
 
-/* START */
+.hub-btn:hover{
+    opacity:.92;
+}
+
+
+/* =========================
+START
+========================= */
 
 .start-screen{
     max-width:900px;
+
     margin:55px auto;
+
     padding:0 20px;
+
     text-align:center;
 }
 
 .game-title{
     line-height:.88;
+
     margin-bottom:25px;
 }
 
 .title-top{
     display:block;
+
     color:var(--primary);
+
     font-size:clamp(52px,8vw,90px);
+
     font-weight:900;
+
     letter-spacing:-3px;
 }
 
 .title-bottom{
     display:block;
+
     color:var(--accent);
+
     font-size:clamp(70px,11vw,125px);
+
     font-weight:900;
+
     letter-spacing:-5px;
-    text-shadow:0 4px 0 #9cb500,0 8px 12px rgba(0,0,0,.1);
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.1);
 }
 
 .subtitle{
     color:var(--primary);
+
     font-size:18px;
+
     font-weight:900;
+
     margin-top:13px;
 }
 
 .intro{
     max-width:620px;
+
     margin:15px auto 25px;
+
     color:var(--muted);
+
     line-height:1.55;
 }
 
 .rules{
     max-width:560px;
+
     margin:0 auto 28px;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:10px;
 }
 
 .rule{
     background:white;
+
     border-radius:12px;
+
     padding:14px 8px;
 }
 
@@ -121,61 +172,99 @@ header{
 
 .rule strong{
     display:block;
+
     color:var(--primary);
+
     margin-top:5px;
+
     font-size:13px;
 }
 
 .start-btn{
     background:var(--accent);
+
     color:#222;
+
     border:0;
+
     border-radius:14px;
+
     padding:18px 50px;
+
     font-size:21px;
+
     font-weight:900;
+
     cursor:pointer;
+
     box-shadow:0 4px 0 #9cb500;
 }
 
-/* GAME */
+.start-btn:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+GAME
+========================= */
 
 .game-area{
     display:none;
+
     max-width:1050px;
+
     margin:35px auto;
+
     padding:0 20px 60px;
 }
 
 .game-shell{
     background:white;
+
     border:1px solid var(--border);
+
     border-radius:20px;
+
     padding:28px;
+
     box-shadow:0 8px 20px rgba(0,0,0,.05);
 }
 
-/* HUD */
+
+/* =========================
+HUD
+========================= */
 
 .hud{
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     flex-wrap:wrap;
+
     margin-bottom:25px;
 }
 
 .stat{
     background:#f1efec;
+
     color:var(--primary);
+
     padding:9px 15px;
+
     border-radius:20px;
+
     font-size:13px;
+
     font-weight:900;
 }
 
 .streak-stat{
     background:var(--primary);
+
     color:white;
 }
 
@@ -183,53 +272,77 @@ header{
     letter-spacing:2px;
 }
 
-/* QUESTION */
+
+/* =========================
+QUESTION
+========================= */
 
 .question{
     text-align:center;
+
     color:var(--primary);
+
     font-size:25px;
+
     font-weight:900;
+
     margin-bottom:25px;
 }
 
-/* COMPARISON */
+
+/* =========================
+COMPARISON
+========================= */
 
 .comparison{
     display:grid;
+
     grid-template-columns:1fr 80px 1fr;
+
     align-items:stretch;
 }
 
 .game-card{
     min-height:330px;
+
     border-radius:18px;
+
     padding:30px 22px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
+
     text-align:center;
 }
 
 .known-card{
     background:var(--primary);
+
     color:white;
 }
 
 .challenge-card{
     background:#f4f2ef;
+
     border:2px solid var(--border);
 }
 
 .game-icon{
     font-size:58px;
+
     margin-bottom:15px;
 }
 
 .game-name{
     font-size:clamp(23px,3vw,34px);
+
     font-weight:900;
+
     line-height:1.1;
 }
 
@@ -243,23 +356,33 @@ header{
 
 .platform{
     margin-top:8px;
+
     font-size:12px;
+
     font-weight:800;
+
     opacity:.7;
 }
 
 .score-label{
     margin-top:23px;
+
     font-size:11px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
 .meta-score{
     margin-top:3px;
+
     color:var(--accent);
+
     font-size:65px;
+
     line-height:1;
+
     font-weight:900;
 }
 
@@ -269,36 +392,60 @@ header{
 
 .vs{
     align-self:center;
+
     justify-self:center;
+
     width:56px;
+
     height:56px;
+
     border-radius:50%;
+
     background:var(--accent);
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     font-weight:900;
+
     color:#222;
+
     z-index:2;
 }
 
-/* BUTTONS */
+
+/* =========================
+CHOICES
+========================= */
 
 .choice-buttons{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:10px;
+
     width:100%;
+
     margin-top:24px;
 }
 
 .choice-btn{
     border:0;
+
     border-radius:11px;
+
     padding:14px 8px;
+
     color:white;
+
     font-size:14px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
@@ -310,21 +457,32 @@ header{
     background:var(--red);
 }
 
+.choice-btn:hover:not(:disabled){
+    transform:translateY(-2px);
+}
+
 .choice-btn:disabled{
     opacity:.5;
+
     cursor:default;
 }
 
-/* FEEDBACK */
+
+/* =========================
+FEEDBACK
+========================= */
 
 .feedback{
     min-height:100px;
+
     text-align:center;
+
     margin-top:22px;
 }
 
 .feedback-main{
     font-size:26px;
+
     font-weight:900;
 }
 
@@ -338,62 +496,92 @@ header{
 
 .feedback-detail{
     color:var(--muted);
+
     margin-top:6px;
 }
 
 .continue-btn{
     display:none;
+
     margin:17px auto 0;
+
     background:var(--accent);
+
     color:#222;
+
     border:0;
+
     border-radius:11px;
+
     padding:13px 28px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
-/* GAME OVER */
+
+/* =========================
+GAME OVER
+========================= */
 
 .results-screen{
     display:none;
+
     max-width:850px;
+
     margin:50px auto;
+
     padding:0 20px 70px;
+
     text-align:center;
 }
 
 .results-card{
     background:white;
+
     border:1px solid var(--border);
+
     border-radius:20px;
+
     padding:40px 25px;
 }
 
 .results-title{
     margin:0;
+
     color:var(--primary);
+
     font-size:clamp(55px,10vw,90px);
+
     font-weight:900;
+
     line-height:.95;
 }
 
 .final-label{
     margin-top:25px;
+
     color:var(--muted);
+
     font-size:12px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
 .final-score{
     color:var(--primary);
+
     font-size:80px;
+
     font-weight:900;
 }
 
 .best-score{
     color:var(--muted);
+
     margin-bottom:25px;
 }
 
@@ -403,17 +591,25 @@ header{
 
 .result-buttons{
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     flex-wrap:wrap;
 }
 
 .result-btn{
     border:0;
+
     border-radius:11px;
+
     padding:14px 23px;
+
     font-size:15px;
+
     font-weight:900;
+
     cursor:pointer;
 }
 
@@ -423,11 +619,16 @@ header{
 
 .return-hub{
     background:var(--primary);
+
     color:white;
+
     text-decoration:none;
 }
 
-/* MOBILE */
+
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:650px){
 
@@ -441,6 +642,7 @@ header{
 
     .hub-btn{
         font-size:11px;
+
         padding:9px 10px;
     }
 
@@ -454,11 +656,13 @@ header{
 
     .comparison{
         grid-template-columns:1fr;
+
         gap:10px;
     }
 
     .vs{
         width:44px;
+
         height:44px;
     }
 
@@ -473,28 +677,46 @@ header{
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
 
-<a class="logo-link" href="https://www.gamesjobsdirect.com/">
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
 <img
-src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
-alt="Games Jobs Direct">
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
 </a>
 
-<a class="hub-btn" href="index.html">
+
+<a
+    class="hub-btn"
+    href="index.html">
+
 Return to Game Hub
+
 </a>
 
 </header>
 
 
-<!-- START SCREEN -->
 
-<section class="start-screen" id="startScreen">
+<!-- START -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
 
 <div class="game-title">
 
@@ -508,91 +730,174 @@ LOWER?
 
 </div>
 
+
 <div class="subtitle">
 METACRITIC EDITION
 </div>
 
+
 <p class="intro">
-One game's Metascore is revealed. Decide whether the next
-game scored higher or lower. Keep going, build your streak
-and try to beat your best score.
+
+One game's Metascore is revealed.
+
+Decide whether the next game scored higher or lower.
+Protect your three lives, build your streak and try
+to beat your best score.
+
 </p>
+
 
 <div class="rules">
 
-<div class="rule">
-<div class="rule-icon">❤️</div>
-<strong>3 Lives</strong>
-</div>
 
 <div class="rule">
-<div class="rule-icon">🔥</div>
-<strong>Build Your Streak</strong>
+
+<div class="rule-icon">
+❤️
 </div>
+
+<strong>
+3 Lives
+</strong>
+
+</div>
+
 
 <div class="rule">
-<div class="rule-icon">🏆</div>
-<strong>Beat Your Best</strong>
+
+<div class="rule-icon">
+🔥
 </div>
+
+<strong>
+Build Your Streak
+</strong>
 
 </div>
 
-<button class="start-btn" onclick="startGame()">
+
+<div class="rule">
+
+<div class="rule-icon">
+🏆
+</div>
+
+<strong>
+Beat Your Best
+</strong>
+
+</div>
+
+
+</div>
+
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
 START GAME
+
 </button>
+
 
 </section>
 
 
+
 <!-- GAME -->
 
-<section class="game-area" id="gameArea">
+<section
+    class="game-area"
+    id="gameArea">
+
 
 <div class="game-shell">
 
+
 <div class="hud">
 
+
 <div class="stat streak-stat">
+
 🔥 STREAK:
-<span id="streakDisplay">0</span>
+<span id="streakDisplay">
+0
+</span>
+
 </div>
+
 
 <div class="stat">
+
 🏆 BEST:
-<span id="bestDisplay">0</span>
+<span id="bestDisplay">
+0
+</span>
+
 </div>
 
-<div class="stat lives-stat" id="livesDisplay">
+
+<div
+    class="stat lives-stat"
+    id="livesDisplay">
+
 ❤️❤️❤️
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <div class="question">
+
 Did this game score higher or lower?
+
 </div>
+
 
 
 <div class="comparison">
 
-<!-- KNOWN GAME -->
+
+<!-- KNOWN -->
 
 <div class="game-card known-card">
 
-<div class="game-icon" id="knownIcon"></div>
 
-<div class="game-name" id="knownName"></div>
+<div
+    class="game-icon"
+    id="knownIcon">
+</div>
 
-<div class="platform" id="knownPlatform"></div>
+
+<div
+    class="game-name"
+    id="knownName">
+</div>
+
+
+<div
+    class="platform"
+    id="knownPlatform">
+</div>
+
 
 <div class="score-label">
 METASCORE
 </div>
 
-<div class="meta-score" id="knownScore"></div>
+
+<div
+    class="meta-score"
+    id="knownScore">
+</div>
+
 
 </div>
+
 
 
 <div class="vs">
@@ -600,122 +905,195 @@ VS
 </div>
 
 
+
 <!-- CHALLENGER -->
 
 <div class="game-card challenge-card">
 
-<div class="game-icon" id="challengeIcon"></div>
 
-<div class="game-name" id="challengeName"></div>
+<div
+    class="game-icon"
+    id="challengeIcon">
+</div>
 
-<div class="platform" id="challengePlatform"></div>
+
+<div
+    class="game-name"
+    id="challengeName">
+</div>
+
+
+<div
+    class="platform"
+    id="challengePlatform">
+</div>
+
 
 <div class="score-label">
 METASCORE
 </div>
 
-<div class="meta-score hidden-score" id="challengeScore">
+
+<div
+    class="meta-score hidden-score"
+    id="challengeScore">
+
 ?
+
 </div>
+
 
 <div class="choice-buttons">
 
+
 <button
-class="choice-btn higher"
-id="higherButton"
-onclick="makeGuess('higher')">
+    class="choice-btn higher"
+    id="higherButton"
+    onclick="makeGuess('higher')">
+
 ↑ HIGHER
+
 </button>
+
 
 <button
-class="choice-btn lower"
-id="lowerButton"
-onclick="makeGuess('lower')">
+    class="choice-btn lower"
+    id="lowerButton"
+    onclick="makeGuess('lower')">
+
 ↓ LOWER
+
 </button>
 
-</div>
 
 </div>
 
+
 </div>
+
+
+</div>
+
 
 
 <div class="feedback">
 
-<div class="feedback-main" id="feedbackMain"></div>
 
-<div class="feedback-detail" id="feedbackDetail"></div>
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
+
 
 <button
-class="continue-btn"
-id="continueButton"
-onclick="nextRound()">
+    class="continue-btn"
+    id="continueButton"
+    onclick="nextRound()">
+
 Continue →
+
 </button>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
 
 
+
 <!-- GAME OVER -->
 
-<section class="results-screen" id="resultsScreen">
+<section
+    class="results-screen"
+    id="resultsScreen">
+
 
 <div class="results-card">
 
+
 <h1 class="results-title">
+
 GAME<br>OVER
+
 </h1>
+
 
 <div class="final-label">
 FINAL STREAK
 </div>
 
-<div class="final-score" id="finalScore">
+
+<div
+    class="final-score"
+    id="finalScore">
+
 0
+
 </div>
 
+
 <div class="best-score">
+
 Best score:
-<strong id="finalBest">0</strong>
+
+<strong id="finalBest">
+0
+</strong>
+
 🏆
+
 </div>
+
 
 <div class="result-buttons">
 
+
 <button
-class="result-btn play-again"
-onclick="playAgain()">
+    class="result-btn play-again"
+    onclick="playAgain()">
+
 Play Again
+
 </button>
 
+
 <a
-class="result-btn return-hub"
-href="index.html">
+    class="result-btn return-hub"
+    href="index.html">
+
 Game Hub
+
 </a>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
 
 
+
 <script>
 
-/* =====================================================
-METACRITIC GAME BANK
+/* =======================================================
+GAME BANK
 
-Each entry uses a specific platform Metascore.
-
-This makes the comparison consistent because games
-can have different scores on different platforms.
-===================================================== */
+The platform is deliberately stored alongside the score,
+because Metacritic scores can differ between platforms.
+======================================================= */
 
 const GAME_BANK = [
 
@@ -843,73 +1221,215 @@ const GAME_BANK = [
 
 {name:"Rocket League",score:86,platform:"PC",icon:"⚽"},
 {name:"Fall Guys",score:80,platform:"PC",icon:"👑"},
-{name:"Among Us",score:85,platform:"Nintendo Switch",icon:"🚀"}
+{name:"Among Us",score:85,platform:"Nintendo Switch",icon:"🚀"},
+
+{name:"Dragon Age: Origins",score:91,platform:"PC",icon:"🐉"},
+{name:"Mass Effect",score:91,platform:"Xbox 360",icon:"🚀"},
+{name:"Mass Effect 3",score:93,platform:"Xbox 360",icon:"🚀"},
+
+{name:"Dishonored",score:91,platform:"PC",icon:"🎭"},
+{name:"Prey",score:82,platform:"PC",icon:"👽"},
+{name:"Death's Door",score:85,platform:"PC",icon:"🚪"},
+
+{name:"Ori and the Blind Forest",score:88,platform:"Xbox One",icon:"🌲"},
+{name:"Ori and the Will of the Wisps",score:90,platform:"Nintendo Switch",icon:"🌲"},
+
+{name:"Monster Hunter: World",score:90,platform:"PlayStation 4",icon:"🐉"},
+{name:"Monster Hunter Rise",score:88,platform:"Nintendo Switch",icon:"🐉"},
+
+{name:"Metal Gear Solid V: The Phantom Pain",score:93,platform:"PlayStation 4",icon:"📦"},
+{name:"NieR: Automata",score:88,platform:"PlayStation 4",icon:"🤖"},
+
+{name:"Final Fantasy VII Remake",score:87,platform:"PlayStation 4",icon:"☄️"},
+{name:"Final Fantasy XVI",score:87,platform:"PlayStation 5",icon:"🔥"},
+
+{name:"Sea of Thieves",score:69,platform:"Xbox One",icon:"🏴‍☠️"},
+{name:"Grounded",score:82,platform:"PC",icon:"🐜"},
+
+{name:"Psychonauts 2",score:89,platform:"Xbox One",icon:"🧠"},
+{name:"Hi-Fi Rush",score:87,platform:"Xbox Series X",icon:"🎸"},
+
+{name:"Outer Wilds",score:85,platform:"PC",icon:"🪐"},
+{name:"The Outer Worlds",score:82,platform:"PC",icon:"🚀"},
+
+{name:"Slay the Spire",score:89,platform:"PC",icon:"🃏"},
+{name:"Dead Cells",score:89,platform:"PC",icon:"⚔️"},
+
+{name:"Returnal",score:86,platform:"PlayStation 5",icon:"👽"},
+{name:"Ratchet & Clank: Rift Apart",score:88,platform:"PlayStation 5",icon:"🔧"},
+
+{name:"Tunic",score:85,platform:"Xbox Series X",icon:"🦊"},
+{name:"Cult of the Lamb",score:82,platform:"PC",icon:"🐑"},
+
+{name:"Dave the Diver",score:90,platform:"PC",icon:"🤿"},
+{name:"Vampire Survivors",score:87,platform:"PC",icon:"🧛"},
+
+{name:"Sifu",score:81,platform:"PlayStation 5",icon:"🥋"},
+{name:"Kena: Bridge of Spirits",score:81,platform:"PlayStation 5",icon:"🌿"},
+
+{name:"Days Gone",score:71,platform:"PlayStation 4",icon:"🏍️"},
+{name:"Mad Max",score:69,platform:"PlayStation 4",icon:"🚗"},
+
+{name:"Watch Dogs 2",score:82,platform:"PlayStation 4",icon:"📱"},
+{name:"Sleeping Dogs",score:80,platform:"Xbox 360",icon:"🐉"},
+
+{name:"Dying Light",score:74,platform:"PC",icon:"🧟"},
+{name:"Dying Light 2",score:77,platform:"PC",icon:"🧟"},
+
+{name:"The Evil Within",score:75,platform:"PC",icon:"🧠"},
+{name:"Until Dawn",score:79,platform:"PlayStation 4",icon:"🏔️"},
+
+{name:"Wolfenstein: The New Order",score:81,platform:"PC",icon:"🔫"},
+{name:"Wolfenstein II: The New Colossus",score:86,platform:"PC",icon:"🔫"},
+
+{name:"The Stanley Parable",score:88,platform:"PC",icon:"🚪"},
+{name:"Firewatch",score:81,platform:"PC",icon:"🔥"},
+
+{name:"Journey",score:92,platform:"PlayStation 3",icon:"🏜️"},
+{name:"GRIS",score:84,platform:"PC",icon:"🎨"}
 
 ];
 
 
-/* =====================================================
+/* =======================================================
 GAME STATE
-===================================================== */
+======================================================= */
 
 let currentGame = null;
+
 let challenger = null;
 
 let streak = 0;
-let lives = 3;
 
-let bestScore =
-    Number(localStorage.getItem("gjdHigherLowerBest")) || 0;
+let lives = 3;
 
 let locked = false;
 
-let recentlyUsed = [];
+
+/*
+Best score stays on the player's device/browser.
+*/
+
+let bestScore =
+    Number(
+        localStorage.getItem(
+            "gjdHigherLowerBest"
+        )
+    ) || 0;
 
 
-/* =====================================================
+/*
+This Set remembers EVERY title that has appeared
+during the current run.
+
+A title therefore cannot casually reappear a few
+rounds later.
+*/
+
+let usedGames = new Set();
+
+
+/* =======================================================
 START
-===================================================== */
+======================================================= */
 
 function startGame(){
 
     streak = 0;
+
     lives = 3;
+
     locked = false;
-    recentlyUsed = [];
 
-    currentGame = randomGame();
+    usedGames = new Set();
 
-    challenger = findChallenger(currentGame);
 
-    document.getElementById("startScreen").style.display="none";
-    document.getElementById("resultsScreen").style.display="none";
-    document.getElementById("gameArea").style.display="block";
+    /*
+    Choose the first game.
+    */
+
+    currentGame =
+        pickInitialGame();
+
+
+    markUsed(currentGame);
+
+
+    challenger =
+        findChallenger(currentGame);
+
+
+    markUsed(challenger);
+
+
+    document
+        .getElementById("startScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "block";
+
 
     renderRound();
 }
 
 
-/* =====================================================
-RANDOM GAME
-===================================================== */
+/* =======================================================
+INITIAL GAME
+======================================================= */
 
-function randomGame(){
+function pickInitialGame(){
 
     return GAME_BANK[
-        Math.floor(Math.random()*GAME_BANK.length)
+        Math.floor(
+            Math.random() * GAME_BANK.length
+        )
     ];
 }
 
 
-/* =====================================================
-CHALLENGER SELECTION
+/* =======================================================
+MARK GAME AS USED
+======================================================= */
 
-We deliberately favour games with reasonably close scores.
+function markUsed(game){
 
-This prevents too many laughably obvious comparisons.
-===================================================== */
+    if(game){
+
+        usedGames.add(
+            game.name
+        );
+    }
+}
+
+
+/* =======================================================
+FIND CHALLENGER
+======================================================= */
 
 function findChallenger(baseGame){
+
+
+    /*
+    FIRST CHOICE:
+
+    Unused games,
+    different score,
+    reasonably close Metascore.
+
+    2–10 points generally creates an interesting
+    Higher/Lower comparison.
+    */
 
     let candidates =
         GAME_BANK.filter(game => {
@@ -918,95 +1438,224 @@ function findChallenger(baseGame){
                 return false;
             }
 
+            if(usedGames.has(game.name)){
+                return false;
+            }
+
             if(game.score === baseGame.score){
                 return false;
             }
 
-            if(recentlyUsed.includes(game.name)){
-                return false;
-            }
 
             const gap =
-                Math.abs(game.score-baseGame.score);
+                Math.abs(
+                    game.score - baseGame.score
+                );
 
-            return gap >= 2 && gap <= 10;
+
+            return gap >= 2 &&
+                   gap <= 10;
         });
 
 
     /*
-    If the restrictions somehow leave no choices,
-    loosen the recent-use rule.
+    SECOND CHOICE:
+
+    Still unused, but loosen score difference.
+
+    This is preferable to repeating a title.
+    */
+
+    if(candidates.length === 0){
+
+        candidates =
+            GAME_BANK.filter(game => {
+
+                return (
+                    game.name !== baseGame.name &&
+                    !usedGames.has(game.name) &&
+                    game.score !== baseGame.score
+                );
+            });
+    }
+
+
+    /*
+    THIRD CHOICE:
+
+    We've genuinely exhausted the useful unused
+    library.
+
+    Reset the used history, but preserve the current
+    title so it cannot immediately face itself/repeat.
+
+    With this library, a normal player should have to
+    survive for a VERY long time before this happens.
+    */
+
+    if(candidates.length === 0){
+
+        usedGames =
+            new Set([
+                baseGame.name
+            ]);
+
+
+        candidates =
+            GAME_BANK.filter(game => {
+
+                if(game.name === baseGame.name){
+                    return false;
+                }
+
+                if(game.score === baseGame.score){
+                    return false;
+                }
+
+
+                const gap =
+                    Math.abs(
+                        game.score - baseGame.score
+                    );
+
+
+                return gap >= 2 &&
+                       gap <= 10;
+            });
+    }
+
+
+    /*
+    Final emergency fallback.
     */
 
     if(candidates.length === 0){
 
         candidates =
             GAME_BANK.filter(game =>
+
                 game.name !== baseGame.name &&
                 game.score !== baseGame.score
             );
     }
 
 
+    /*
+    Random candidate.
+
+    Because used games have already been removed,
+    we're choosing from fresh titles.
+    */
+
     return candidates[
-        Math.floor(Math.random()*candidates.length)
+        Math.floor(
+            Math.random() *
+            candidates.length
+        )
     ];
 }
 
 
-/* =====================================================
+/* =======================================================
 DISPLAY ROUND
-===================================================== */
+======================================================= */
 
 function renderRound(){
 
     locked = false;
 
-    document.getElementById("knownIcon").textContent =
+
+    document
+        .getElementById("knownIcon")
+        .textContent =
         currentGame.icon;
 
-    document.getElementById("knownName").textContent =
+
+    document
+        .getElementById("knownName")
+        .textContent =
         currentGame.name;
 
-    document.getElementById("knownPlatform").textContent =
+
+    document
+        .getElementById("knownPlatform")
+        .textContent =
         currentGame.platform;
 
-    document.getElementById("knownScore").textContent =
+
+    document
+        .getElementById("knownScore")
+        .textContent =
         currentGame.score;
 
 
-    document.getElementById("challengeIcon").textContent =
+    document
+        .getElementById("challengeIcon")
+        .textContent =
         challenger.icon;
 
-    document.getElementById("challengeName").textContent =
+
+    document
+        .getElementById("challengeName")
+        .textContent =
         challenger.name;
 
-    document.getElementById("challengePlatform").textContent =
+
+    document
+        .getElementById("challengePlatform")
+        .textContent =
         challenger.platform;
 
-    document.getElementById("challengeScore").textContent =
+
+    document
+        .getElementById("challengeScore")
+        .textContent =
         "?";
 
 
-    document.getElementById("higherButton").disabled=false;
-    document.getElementById("lowerButton").disabled=false;
+    document
+        .getElementById("higherButton")
+        .disabled =
+        false;
 
 
-    document.getElementById("feedbackMain").textContent="";
-    document.getElementById("feedbackMain").className="feedback-main";
+    document
+        .getElementById("lowerButton")
+        .disabled =
+        false;
 
-    document.getElementById("feedbackDetail").textContent="";
 
-    document.getElementById("continueButton").style.display="none";
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        "";
+
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main";
+
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        "";
+
+
+    document
+        .getElementById("continueButton")
+        .style.display =
+        "none";
 
 
     updateHUD();
 }
 
 
-/* =====================================================
-GUESS
-===================================================== */
+/* =======================================================
+MAKE GUESS
+======================================================= */
 
 function makeGuess(choice){
 
@@ -1014,11 +1663,14 @@ function makeGuess(choice){
         return;
     }
 
-    locked=true;
+
+    locked = true;
 
 
     const actual =
-        challenger.score > currentGame.score
+        challenger.score >
+        currentGame.score
+
         ? "higher"
         : "lower";
 
@@ -1027,46 +1679,86 @@ function makeGuess(choice){
         choice === actual;
 
 
-    document.getElementById("challengeScore").textContent =
+    /*
+    Reveal challenger score.
+    */
+
+    document
+        .getElementById("challengeScore")
+        .textContent =
         challenger.score;
 
 
-    document.getElementById("higherButton").disabled=true;
-    document.getElementById("lowerButton").disabled=true;
+    document
+        .getElementById("higherButton")
+        .disabled =
+        true;
+
+
+    document
+        .getElementById("lowerButton")
+        .disabled =
+        true;
 
 
     const feedback =
-        document.getElementById("feedbackMain");
+        document.getElementById(
+            "feedbackMain"
+        );
 
 
     if(correct){
 
         streak++;
 
-        feedback.textContent="Correct!";
-        feedback.classList.add("correct");
 
+        feedback.textContent =
+            "Correct!";
+
+
+        feedback.classList.add(
+            "correct"
+        );
+
+
+        /*
+        Save new personal best.
+        */
 
         if(streak > bestScore){
 
-            bestScore=streak;
+            bestScore =
+                streak;
+
 
             localStorage.setItem(
+
                 "gjdHigherLowerBest",
+
                 bestScore
             );
         }
 
     }else{
 
+
         lives--;
 
-        feedback.textContent="Wrong!";
-        feedback.classList.add("wrong");
+
+        feedback.textContent =
+            "Wrong!";
+
+
+        feedback.classList.add(
+            "wrong"
+        );
     }
 
 
-    document.getElementById("feedbackDetail").textContent =
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+
         `${challenger.name} has a Metascore of ${challenger.score}.`;
 
 
@@ -1075,123 +1767,155 @@ function makeGuess(choice){
 
     if(lives <= 0){
 
-        document.getElementById("continueButton").textContent =
+        document
+            .getElementById("continueButton")
+            .textContent =
             "See Results →";
 
     }else{
 
-        document.getElementById("continueButton").textContent =
+        document
+            .getElementById("continueButton")
+            .textContent =
             "Continue →";
     }
 
 
-    document.getElementById("continueButton").style.display =
+    document
+        .getElementById("continueButton")
+        .style.display =
         "block";
 }
 
 
-/* =====================================================
+/* =======================================================
 NEXT ROUND
 
-The challenger now becomes the known game.
-
-This creates the continuous Higher/Lower chain.
-===================================================== */
+The challenger becomes the new known game.
+======================================================= */
 
 function nextRound(){
 
     if(lives <= 0){
 
         gameOver();
+
         return;
     }
 
 
-    recentlyUsed.push(currentGame.name);
-
-    recentlyUsed.push(challenger.name);
-
-
     /*
-    Only remember the last 12 games so the pool
-    eventually becomes reusable during long runs.
+    Challenger becomes the next reference game.
     */
-
-    recentlyUsed =
-        [...new Set(recentlyUsed)].slice(-12);
-
 
     currentGame =
         challenger;
 
 
+    /*
+    Find a FRESH challenger.
+    */
+
     challenger =
-        findChallenger(currentGame);
+        findChallenger(
+            currentGame
+        );
+
+
+    /*
+    Immediately retire it from the available pool.
+    */
+
+    markUsed(
+        challenger
+    );
 
 
     renderRound();
 }
 
 
-/* =====================================================
+/* =======================================================
 HUD
-===================================================== */
+======================================================= */
 
 function updateHUD(){
 
-    document.getElementById("streakDisplay").textContent =
+    document
+        .getElementById("streakDisplay")
+        .textContent =
         streak;
 
-    document.getElementById("bestDisplay").textContent =
+
+    document
+        .getElementById("bestDisplay")
+        .textContent =
         bestScore;
 
 
-    let hearts="";
+    let hearts = "";
 
-    for(let i=0;i<3;i++){
+
+    for(let i = 0; i < 3; i++){
 
         hearts +=
+
             i < lives
             ? "❤️"
             : "🖤";
     }
 
 
-    document.getElementById("livesDisplay").textContent =
+    document
+        .getElementById("livesDisplay")
+        .textContent =
         hearts;
 }
 
 
-/* =====================================================
+/* =======================================================
 GAME OVER
-===================================================== */
+======================================================= */
 
 function gameOver(){
 
-    document.getElementById("gameArea").style.display="none";
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "none";
 
-    document.getElementById("resultsScreen").style.display="block";
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "block";
 
 
-    document.getElementById("finalScore").textContent =
+    document
+        .getElementById("finalScore")
+        .textContent =
         streak;
 
 
-    document.getElementById("finalBest").textContent =
+    document
+        .getElementById("finalBest")
+        .textContent =
         bestScore;
 }
 
 
-/* =====================================================
+/* =======================================================
 PLAY AGAIN
-===================================================== */
+======================================================= */
 
 function playAgain(){
 
     startGame();
 }
 
+
 </script>
 
 </body>
+
 </html>
