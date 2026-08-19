@@ -32,19 +32,15 @@ body{
 }
 
 
-/* =========================
-HEADER
-========================= */
+/* HEADER */
 
 header{
     background:white;
     min-height:68px;
     padding:12px 24px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     border-bottom:1px solid var(--border);
 }
 
@@ -61,15 +57,10 @@ header{
 .main-site-btn{
     background:var(--primary);
     color:white;
-
     text-decoration:none;
-
     font-weight:700;
-
     padding:11px 18px;
-
     border-radius:10px;
-
     transition:.2s;
 }
 
@@ -78,43 +69,29 @@ header{
 }
 
 
-/* =========================
-INTRO HERO
-========================= */
+/* INTRO HERO */
 
 .hero{
     max-width:1180px;
-
     margin:48px auto 28px;
-
     padding:0 24px;
-
     text-align:center;
 }
 
 .hero-eyebrow{
     display:inline-block;
-
     color:var(--primary);
-
     font-weight:900;
-
     font-size:13px;
-
     letter-spacing:1.5px;
-
     margin-bottom:12px;
 }
 
 .hero h1{
     margin:0;
-
     color:var(--primary);
-
     font-size:clamp(42px,7vw,76px);
-
     line-height:.95;
-
     font-weight:900;
 }
 
@@ -124,126 +101,85 @@ INTRO HERO
 
 .hero p{
     max-width:650px;
-
     margin:18px auto 0;
-
     color:var(--muted);
-
     font-size:17px;
-
     line-height:1.5;
 }
 
 
-/* =========================
-SHARED FEATURED CARD
-========================= */
+/* FEATURED CARDS */
 
 .featured-section{
     max-width:1180px;
-
     margin:0 auto;
-
     padding:0 24px 36px;
 }
 
 .section-title{
     color:var(--primary);
-
     font-size:26px;
-
     margin:0 0 18px;
 }
 
 .featured-card{
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:20px;
-
     padding:28px 30px;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     gap:25px;
-
     box-shadow:0 6px 18px rgba(0,0,0,.05);
 }
 
 .featured-left{
     display:flex;
-
     align-items:center;
-
     gap:20px;
 }
 
 .featured-icon{
     width:86px;
     height:86px;
-
     flex:0 0 86px;
-
     background:var(--soft);
-
     border-radius:17px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     font-size:43px;
 }
 
 .featured-label{
     color:var(--primary);
-
     font-size:11px;
-
     font-weight:900;
-
     letter-spacing:1px;
-
     text-transform:uppercase;
 }
 
 .featured-card h2{
     color:var(--primary);
-
     margin:5px 0 6px;
-
     font-size:28px;
 }
 
 .featured-card p{
     color:var(--muted);
-
     margin:0;
-
     line-height:1.45;
 }
 
 .featured-btn{
     flex:0 0 auto;
-
     background:var(--primary);
-
     color:white;
-
     text-decoration:none;
-
     padding:13px 20px;
-
     border-radius:11px;
-
     font-weight:900;
-
     transition:.2s;
 }
 
@@ -253,222 +189,153 @@ SHARED FEATURED CARD
 
 .daily-feature-btn{
     background:var(--accent);
-
     color:#222;
 }
 
 
-/* =========================
-GAME GRID
-========================= */
+/* GAME GRID */
 
 .games-section{
     max-width:1180px;
-
     margin:0 auto;
-
     padding:0 24px 55px;
 }
 
 .games-grid{
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:20px;
 }
 
 .game-card{
     background:white;
-
     border-radius:18px;
-
     overflow:hidden;
-
     border:1px solid var(--border);
-
     transition:.2s;
-
     display:flex;
-
     flex-direction:column;
-
     position:relative;
 }
 
 .game-card:hover{
     transform:translateY(-5px);
-
     box-shadow:0 10px 24px rgba(0,0,0,.08);
 }
 
 .game-visual{
     min-height:155px;
-
     background:#f4f2ef;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     font-size:52px;
-
     text-align:center;
 }
 
 .game-content{
     padding:22px;
-
     display:flex;
-
     flex-direction:column;
-
     flex:1;
 }
 
 .game-tag{
     color:var(--primary);
-
     font-size:12px;
-
     font-weight:900;
-
     text-transform:uppercase;
-
     letter-spacing:1px;
 }
 
 .game-card h3{
     font-size:23px;
-
     margin:8px 0;
-
     color:var(--primary);
 }
 
 .game-card p{
     color:var(--muted);
-
     line-height:1.45;
-
     margin:0 0 20px;
-
     flex:1;
 }
 
 .card-btn{
     display:block;
-
     background:var(--primary);
-
     color:white;
-
     padding:12px;
-
     border-radius:10px;
-
     font-weight:800;
-
     text-align:center;
-
     text-decoration:none;
 }
 
 .card-btn.disabled{
     background:#ddd;
-
     color:#777;
-
     cursor:default;
 }
 
 .coming-soon::after{
     content:"COMING SOON";
-
     position:absolute;
-
     top:12px;
     right:12px;
-
     background:var(--accent);
-
     color:#222;
-
     padding:6px 9px;
-
     font-size:10px;
-
     font-weight:900;
-
     border-radius:20px;
 }
 
 
-/* =========================
-INFO
-========================= */
+/* INFO */
 
 .info-section{
     background:white;
-
     padding:50px 24px;
 }
 
 .info-inner{
     max-width:1000px;
-
     margin:auto;
-
     text-align:center;
 }
 
 .info-inner h2{
     color:var(--primary);
-
     font-size:30px;
-
     margin-top:0;
 }
 
 .info-inner p{
     color:var(--muted);
-
     max-width:680px;
-
     margin:0 auto;
-
     line-height:1.6;
 }
 
 
-/* =========================
-FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     text-align:center;
-
     padding:28px 20px;
-
     color:#777;
-
     font-size:13px;
 }
 
 footer a{
     color:var(--primary);
-
     text-decoration:none;
-
     font-weight:bold;
 }
 
 
-/* =========================
-RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media(max-width:850px){
 
@@ -478,13 +345,11 @@ RESPONSIVE
 
     .featured-card{
         align-items:flex-start;
-
         flex-direction:column;
     }
 
     .featured-btn{
         width:100%;
-
         text-align:center;
     }
 }
@@ -501,7 +366,6 @@ RESPONSIVE
 
     .main-site-btn{
         padding:9px 11px;
-
         font-size:12px;
     }
 
@@ -520,9 +384,7 @@ RESPONSIVE
     .featured-icon{
         width:65px;
         height:65px;
-
         flex-basis:65px;
-
         font-size:32px;
     }
 
@@ -535,7 +397,6 @@ RESPONSIVE
 </style>
 
 </head>
-
 
 <body>
 
@@ -552,7 +413,6 @@ RESPONSIVE
 
 </a>
 
-
 <a
     class="main-site-btn"
     href="https://www.gamesjobsdirect.com/">
@@ -563,11 +423,6 @@ Visit Games Jobs Direct
 
 </header>
 
-
-
-<!-- =========================
-INTRO
-========================= -->
 
 <section class="hero">
 
@@ -587,11 +442,6 @@ daily challenges and quick browser games.
 
 </section>
 
-
-
-<!-- =========================
-GJD DAILY
-========================= -->
 
 <section class="featured-section">
 
@@ -638,11 +488,6 @@ Play Today's Challenge →
 </section>
 
 
-
-<!-- =========================
-FEATURED GAME
-========================= -->
-
 <section class="featured-section">
 
 <h2 class="section-title">
@@ -654,7 +499,7 @@ Featured Game
 <div class="featured-left">
 
 <div class="featured-icon">
-🧩
+🖼️
 </div>
 
 <div>
@@ -664,11 +509,11 @@ Featured This Week
 </div>
 
 <h2>
-Gaming Connections
+Pixel Reveal
 </h2>
 
 <p>
-Sort 16 gaming terms into four hidden groups and find every connection before you run out of mistakes.
+Identify five games from heavily pixelated cover art. Guess early for the biggest score, or reveal more when you're stuck.
 </p>
 
 </div>
@@ -677,7 +522,7 @@ Sort 16 gaming terms into four hidden groups and find every connection before yo
 
 <a
     class="featured-btn"
-    href="gaming-connections.html">
+    href="pixel-reveal.html">
 
 Play Now →
 
@@ -688,11 +533,6 @@ Play Now →
 </section>
 
 
-
-<!-- =========================
-ALL GAMES
-========================= -->
-
 <section class="games-section">
 
 <h2 class="section-title">
@@ -701,8 +541,6 @@ All Games
 
 <div class="games-grid">
 
-
-<!-- GUESS THE GAME -->
 
 <div class="game-card">
 
@@ -737,9 +575,6 @@ Play Now
 </div>
 
 
-
-<!-- VIDEO GAME TRIVIA -->
-
 <div class="game-card">
 
 <div class="game-visual">
@@ -772,9 +607,6 @@ Play Now
 
 </div>
 
-
-
-<!-- WHICH CAME FIRST -->
 
 <div class="game-card">
 
@@ -809,9 +641,6 @@ Play Now
 </div>
 
 
-
-<!-- HIGHER OR LOWER -->
-
 <div class="game-card">
 
 <div class="game-visual">
@@ -844,9 +673,6 @@ Play Now
 
 </div>
 
-
-
-<!-- GUESS THE STUDIO -->
 
 <div class="game-card">
 
@@ -881,9 +707,6 @@ Play Now
 </div>
 
 
-
-<!-- GAMING CONNECTIONS -->
-
 <div class="game-card">
 
 <div class="game-visual">
@@ -917,10 +740,7 @@ Play Now
 </div>
 
 
-
-<!-- PIXEL REVEAL -->
-
-<div class="game-card coming-soon">
+<div class="game-card">
 
 <div class="game-visual">
 🖼️ 🔍 🎮
@@ -937,20 +757,21 @@ Pixel Reveal
 </h3>
 
 <p>
-Identify a game from an obscured image before too much of the picture is revealed.
+Identify five games from increasingly clear cover art. Guess early to score up to 1,000 points per image.
 </p>
 
-<span class="card-btn disabled">
-Coming Soon
-</span>
+<a
+    class="card-btn"
+    href="pixel-reveal.html">
+
+Play Now
+
+</a>
 
 </div>
 
 </div>
 
-
-
-<!-- BOSS BATTLE -->
 
 <div class="game-card coming-soon">
 
@@ -986,7 +807,6 @@ Coming Soon
 </section>
 
 
-
 <section class="info-section">
 
 <div class="info-inner">
@@ -1004,7 +824,6 @@ fresh challenges and a new GJD Daily every day.
 </div>
 
 </section>
-
 
 
 <footer>
