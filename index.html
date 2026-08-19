@@ -136,177 +136,7 @@ INTRO HERO
 
 
 /* =========================
-GJD DAILY
-========================= */
-
-.daily-section{
-    max-width:1180px;
-
-    margin:0 auto;
-
-    padding:15px 24px 38px;
-}
-
-.daily-card{
-    position:relative;
-
-    overflow:hidden;
-
-    background:var(--primary);
-
-    color:white;
-
-    border-radius:24px;
-
-    padding:42px;
-
-    display:grid;
-
-    grid-template-columns:1.4fr .8fr;
-
-    gap:35px;
-
-    align-items:center;
-
-    box-shadow:0 10px 28px rgba(0,0,0,.10);
-}
-
-.daily-card::after{
-    content:"";
-
-    position:absolute;
-
-    width:320px;
-    height:320px;
-
-    border-radius:50%;
-
-    background:rgba(190,220,0,.13);
-
-    right:-110px;
-    top:-110px;
-}
-
-.daily-main{
-    position:relative;
-    z-index:1;
-}
-
-.daily-badge{
-    display:inline-block;
-
-    background:var(--accent);
-
-    color:#222;
-
-    padding:7px 11px;
-
-    border-radius:20px;
-
-    font-size:11px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-    margin-bottom:15px;
-}
-
-.daily-title{
-    margin:0;
-
-    font-size:clamp(48px,7vw,78px);
-
-    line-height:.9;
-
-    font-weight:900;
-}
-
-.daily-title span{
-    color:var(--accent);
-}
-
-.daily-copy{
-    max-width:580px;
-
-    margin:16px 0 0;
-
-    line-height:1.55;
-
-    opacity:.9;
-}
-
-.daily-meta{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:9px;
-
-    margin-top:20px;
-}
-
-.daily-pill{
-    background:rgba(255,255,255,.12);
-
-    border-radius:20px;
-
-    padding:8px 12px;
-
-    font-size:12px;
-
-    font-weight:800;
-}
-
-.daily-play{
-    display:inline-block;
-
-    margin-top:24px;
-
-    padding:15px 28px;
-
-    background:var(--accent);
-
-    color:#222;
-
-    font-weight:900;
-
-    text-decoration:none;
-
-    border-radius:12px;
-
-    transition:.2s;
-}
-
-.daily-play:hover{
-    transform:translateY(-2px);
-}
-
-.daily-side{
-    position:relative;
-
-    z-index:1;
-
-    text-align:center;
-}
-
-.daily-icons{
-    font-size:58px;
-
-    line-height:1.4;
-}
-
-.daily-side-text{
-    margin-top:12px;
-
-    font-size:13px;
-
-    opacity:.8;
-}
-
-
-/* =========================
-FEATURED GAME
+SHARED FEATURED CARD
 ========================= */
 
 .featured-section{
@@ -314,7 +144,7 @@ FEATURED GAME
 
     margin:0 auto;
 
-    padding:0 24px 42px;
+    padding:0 24px 36px;
 }
 
 .section-title{
@@ -364,6 +194,7 @@ FEATURED GAME
     border-radius:17px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -412,6 +243,18 @@ FEATURED GAME
     border-radius:11px;
 
     font-weight:900;
+
+    transition:.2s;
+}
+
+.featured-btn:hover{
+    transform:translateY(-2px);
+}
+
+.daily-feature-btn{
+    background:var(--accent);
+
+    color:#222;
 }
 
 
@@ -629,14 +472,6 @@ RESPONSIVE
 
 @media(max-width:850px){
 
-    .daily-card{
-        grid-template-columns:1fr;
-    }
-
-    .daily-side{
-        order:-1;
-    }
-
     .games-grid{
         grid-template-columns:repeat(2,1fr);
     }
@@ -676,20 +511,6 @@ RESPONSIVE
 
     .hero p{
         font-size:16px;
-    }
-
-    .daily-card{
-        padding:28px 22px;
-    }
-
-    .daily-icons{
-        font-size:44px;
-    }
-
-    .daily-play{
-        width:100%;
-
-        text-align:center;
     }
 
     .featured-left{
@@ -772,76 +593,45 @@ daily challenges and quick browser games.
 GJD DAILY
 ========================= -->
 
-<section class="daily-section">
+<section class="featured-section">
 
-<div class="daily-card">
-
-<div class="daily-main">
-
-<span class="daily-badge">
-⭐ NEW CHALLENGE EVERY DAY
-</span>
-
-<h2 class="daily-title">
-
-GJD <span>DAILY</span>
-
+<h2 class="section-title">
+Daily Challenge
 </h2>
 
-<p class="daily-copy">
+<div class="featured-card">
 
-Four gaming challenges. One daily score.
+<div class="featured-left">
 
-Everyone gets the same challenge, so test your knowledge,
-build your streak and come back tomorrow for another.
+<div class="featured-icon">
+⭐
+</div>
 
+<div>
+
+<div class="featured-label">
+New Challenge Every Day
+</div>
+
+<h2>
+GJD Daily
+</h2>
+
+<p>
+Four gaming challenges. One daily score. Test your knowledge, build your streak and come back tomorrow for a fresh challenge.
 </p>
 
-<div class="daily-meta">
-
-<span class="daily-pill">
-🎮 4 Challenges
-</span>
-
-<span class="daily-pill">
-🔥 Daily Streaks
-</span>
-
-<span class="daily-pill">
-🏆 One Attempt
-</span>
+</div>
 
 </div>
 
 <a
-    class="daily-play"
+    class="featured-btn daily-feature-btn"
     href="gjd-daily.html">
 
 Play Today's Challenge →
 
 </a>
-
-</div>
-
-
-<div class="daily-side">
-
-<div class="daily-icons">
-
-🎮 🧠<br>
-📅 🏢
-
-</div>
-
-<div class="daily-side-text">
-
-Guess the Game • Trivia<br>
-Which Came First • Guess the Studio
-
-</div>
-
-</div>
-
 
 </div>
 
