@@ -1,0 +1,3518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gaming Crossword | Games Jobs Direct</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --soft:#f3f1ee;
+    --green:#49a84f;
+    --red:#d9534f;
+    --active:#eee8f5;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+button{
+    font:inherit;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    min-height:68px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    padding:12px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+    padding:11px 17px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:800;
+}
+
+/* =========================
+START
+========================= */
+
+.start-screen{
+    max-width:900px;
+    margin:55px auto;
+    padding:0 20px;
+    text-align:center;
+}
+
+.game-title{
+    line-height:.9;
+    margin-bottom:24px;
+}
+
+.title-top{
+    display:block;
+    color:var(--primary);
+    font-size:clamp(48px,8vw,84px);
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+    color:var(--accent);
+    font-size:clamp(58px,10vw,105px);
+    font-weight:900;
+    letter-spacing:-4px;
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.1);
+}
+
+.intro{
+    max-width:650px;
+    margin:16px auto 28px;
+    color:var(--muted);
+    line-height:1.55;
+}
+
+.rules{
+    max-width:760px;
+    margin:0 auto 30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.rule{
+    background:white;
+    border-radius:13px;
+    padding:18px 12px;
+}
+
+.rule-icon{
+    font-size:28px;
+}
+
+.rule strong{
+    display:block;
+    color:var(--primary);
+    margin:7px 0 4px;
+}
+
+.rule small{
+    color:var(--muted);
+    line-height:1.4;
+}
+
+.start-btn{
+    background:var(--accent);
+    color:#222;
+    border:0;
+    border-radius:14px;
+    padding:18px 52px;
+    font-size:21px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 4px 0 #9cb500;
+}
+
+/* =========================
+GAME
+========================= */
+
+.game-screen{
+    display:none;
+    max-width:1200px;
+    margin:32px auto;
+    padding:0 20px 70px;
+}
+
+.game-top{
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.game-top-left h1{
+    margin:0;
+    color:var(--primary);
+    font-size:30px;
+}
+
+.game-subtitle{
+    color:var(--muted);
+    margin-top:5px;
+    font-size:14px;
+}
+
+.progress-pill{
+    background:var(--primary);
+    color:white;
+    border-radius:30px;
+    padding:10px 16px;
+    font-size:13px;
+    font-weight:900;
+}
+
+.crossword-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);
+    gap:22px;
+    align-items:start;
+}
+
+/* =========================
+GRID CARD
+========================= */
+
+.grid-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 7px 20px rgba(0,0,0,.05);
+}
+
+.grid-wrap{
+    width:100%;
+    overflow:auto;
+    display:flex;
+    justify-content:center;
+}
+
+.crossword-grid{
+    display:grid;
+    gap:2px;
+    background:#333;
+    border:2px solid #333;
+    width:min(100%,700px);
+    aspect-ratio:1 / 1;
+}
+
+.cell{
+    position:relative;
+    background:white;
+    min-width:0;
+    min-height:0;
+    cursor:pointer;
+}
+
+.cell.block{
+    background:#333;
+    cursor:default;
+}
+
+.cell.active-word{
+    background:var(--active);
+}
+
+.cell.selected{
+    background:var(--accent);
+}
+
+.cell.correct-cell{
+    background:#e8f6e9;
+}
+
+.cell.wrong-cell{
+    background:#fde9e8;
+}
+
+.cell-number{
+    position:absolute;
+    top:2px;
+    left:3px;
+    font-size:clamp(7px,1.1vw,10px);
+    color:#555;
+    font-weight:800;
+    line-height:1;
+}
+
+.cell-letter{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding-top:5px;
+    color:var(--primary);
+    font-size:clamp(13px,2.8vw,25px);
+    font-weight:900;
+    text-transform:uppercase;
+    user-select:none;
+}
+
+/* =========================
+CONTROLS
+========================= */
+
+.controls{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+}
+
+.control-btn{
+    border:0;
+    border-radius:10px;
+    padding:12px 10px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.check-btn{
+    background:var(--accent);
+    color:#222;
+}
+
+.reveal-btn{
+    background:var(--primary);
+    color:white;
+}
+
+.clear-btn{
+    background:#ddd9d4;
+    color:#444;
+}
+
+.status-message{
+    min-height:50px;
+    margin-top:14px;
+    text-align:center;
+    font-weight:800;
+    color:var(--primary);
+}
+
+/* =========================
+CLUES
+========================= */
+
+.clue-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 7px 20px rgba(0,0,0,.05);
+    max-height:720px;
+    overflow:auto;
+}
+
+.clue-section + .clue-section{
+    margin-top:26px;
+}
+
+.clue-heading{
+    margin:0 0 10px;
+    color:var(--primary);
+    font-size:22px;
+}
+
+.clue-list{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.clue{
+    border:0;
+    width:100%;
+    text-align:left;
+    padding:11px 12px;
+    background:var(--soft);
+    border-radius:9px;
+    cursor:pointer;
+    color:#333;
+    line-height:1.35;
+}
+
+.clue:hover{
+    background:#ebe7ef;
+}
+
+.clue.active{
+    background:var(--primary);
+    color:white;
+}
+
+.clue.solved{
+    border-left:5px solid var(--green);
+}
+
+.clue-number{
+    font-weight:900;
+    margin-right:5px;
+}
+
+/* =========================
+RESULTS
+========================= */
+
+.results-screen{
+    display:none;
+    max-width:800px;
+    margin:55px auto;
+    padding:0 20px 70px;
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px 25px;
+    box-shadow:0 7px 20px rgba(0,0,0,.05);
+}
+
+.result-title{
+    margin:0;
+    color:var(--primary);
+    font-size:clamp(48px,8vw,74px);
+    font-weight:900;
+    line-height:.95;
+}
+
+.result-sub{
+    color:var(--muted);
+    margin:14px auto 25px;
+    max-width:520px;
+}
+
+.result-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    max-width:620px;
+    margin:25px auto;
+}
+
+.result-stat{
+    background:var(--soft);
+    border-radius:12px;
+    padding:17px 10px;
+}
+
+.result-value{
+    color:var(--primary);
+    font-size:28px;
+    font-weight:900;
+}
+
+.result-label{
+    margin-top:4px;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.result-actions{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.result-btn{
+    border:0;
+    border-radius:11px;
+    padding:14px 21px;
+    font-weight:900;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.play-again{
+    background:var(--accent);
+    color:#222;
+}
+
+.return-hub{
+    background:var(--primary);
+    color:white;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .crossword-layout{
+        grid-template-columns:1fr;
+    }
+
+    .clue-card{
+        max-height:none;
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+        padding:9px 10px;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .grid-card{
+        padding:10px;
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .result-stats{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+<img
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
+</a>
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</header>
+
+
+<!-- =========================
+START
+========================= -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+<div class="game-title">
+
+<span class="title-top">
+GAMING
+</span>
+
+<span class="title-bottom">
+CROSSWORD
+</span>
+
+</div>
+
+<p class="intro">
+
+Fill the grid using clues from across gaming.
+
+Expect characters, franchises, studios, consoles, terminology
+and gaming history — with a different crossword each time you play.
+
+</p>
+
+<div class="rules">
+
+<div class="rule">
+
+<div class="rule-icon">
+⌨️
+</div>
+
+<strong>
+Type Your Answers
+</strong>
+
+<small>
+Click a square and use your keyboard to fill the grid.
+</small>
+
+</div>
+
+<div class="rule">
+
+<div class="rule-icon">
+🧩
+</div>
+
+<strong>
+Across + Down
+</strong>
+
+<small>
+Click clues to jump directly to their answer.
+</small>
+
+</div>
+
+<div class="rule">
+
+<div class="rule-icon">
+💡
+</div>
+
+<strong>
+Need Help?
+</strong>
+
+<small>
+Reveal a letter or reveal the current word.
+</small>
+
+</div>
+
+</div>
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
+START CROSSWORD
+
+</button>
+
+</section>
+
+
+<!-- =========================
+GAME
+========================= -->
+
+<section
+    class="game-screen"
+    id="gameScreen">
+
+<div class="game-top">
+
+<div class="game-top-left">
+
+<h1 id="puzzleTitle">
+Gaming Crossword
+</h1>
+
+<div
+    class="game-subtitle"
+    id="puzzleSubtitle">
+</div>
+
+</div>
+
+<div
+    class="progress-pill"
+    id="progressPill">
+
+0 / 0 words solved
+
+</div>
+
+</div>
+
+
+<div class="crossword-layout">
+
+<div class="grid-card">
+
+<div class="grid-wrap">
+
+<div
+    class="crossword-grid"
+    id="crosswordGrid">
+</div>
+
+</div>
+
+
+<div class="controls">
+
+<button
+    class="control-btn check-btn"
+    onclick="checkPuzzle()">
+
+Check Puzzle
+
+</button>
+
+<button
+    class="control-btn reveal-btn"
+    onclick="revealLetter()">
+
+Reveal Letter
+
+</button>
+
+<button
+    class="control-btn reveal-btn"
+    onclick="revealWord()">
+
+Reveal Word
+
+</button>
+
+</div>
+
+<button
+    class="control-btn clear-btn"
+    onclick="clearWrongLetters()"
+    style="width:100%;margin-top:9px;">
+
+Clear Incorrect Letters
+
+</button>
+
+<div
+    class="status-message"
+    id="statusMessage">
+</div>
+
+</div>
+
+
+<div class="clue-card">
+
+<div class="clue-section">
+
+<h2 class="clue-heading">
+Across
+</h2>
+
+<div
+    class="clue-list"
+    id="acrossClues">
+</div>
+
+</div>
+
+
+<div class="clue-section">
+
+<h2 class="clue-heading">
+Down
+</h2>
+
+<div
+    class="clue-list"
+    id="downClues">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+RESULTS
+========================= -->
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+<div class="results-card">
+
+<h1 class="result-title">
+CROSSWORD<br>COMPLETE
+</h1>
+
+<p class="result-sub">
+
+You filled the grid and completed the gaming crossword.
+
+</p>
+
+<div class="result-stats">
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultWords">
+
+0
+
+</div>
+
+<div class="result-label">
+Words
+</div>
+
+</div>
+
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultChecks">
+
+0
+
+</div>
+
+<div class="result-label">
+Checks Used
+</div>
+
+</div>
+
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultReveals">
+
+0
+
+</div>
+
+<div class="result-label">
+Reveals Used
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result-actions">
+
+<button
+    class="result-btn play-again"
+    onclick="startGame()">
+
+Play Another Crossword
+
+</button>
+
+<a
+    class="result-btn return-hub"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* ======================================================
+PUZZLE BANK
+
+The game automatically turns each answer bank into
+an intersecting crossword.
+
+Avoid spaces and punctuation in "answer".
+====================================================== */
+
+const PUZZLES = [
+
+{
+id:"heroes",
+title:"Heroes & Characters",
+subtitle:"Gaming heroes, companions and familiar faces.",
+
+words:[
+
+{
+answer:"KRATOS",
+clue:"God of War's famously angry Spartan."
+},
+
+{
+answer:"CORTANA",
+clue:"Master Chief's longtime AI companion."
+},
+
+{
+answer:"GERALT",
+clue:"Monster slayer known as the White Wolf."
+},
+
+{
+answer:"SAMUS",
+clue:"Bounty hunter underneath Metroid's Power Suit."
+},
+
+{
+answer:"SONIC",
+clue:"Blue SEGA speedster."
+},
+
+{
+answer:"ARTHUR",
+clue:"First name of Red Dead Redemption 2's Morgan."
+},
+
+{
+answer:"LARA",
+clue:"First name of Tomb Raider's famous archaeologist."
+},
+
+{
+answer:"ATREUS",
+clue:"Kratos' son."
+},
+
+{
+answer:"CLOUD",
+clue:"Buster Sword-wielding Final Fantasy VII hero."
+},
+
+{
+answer:"EZIO",
+clue:"Renaissance-era Assassin Auditore."
+},
+
+{
+answer:"ZELDA",
+clue:"Princess whose name titles Nintendo's famous fantasy series."
+},
+
+{
+answer:"MARIO",
+clue:"Nintendo plumber and Mushroom Kingdom hero."
+}
+
+]
+
+},
+
+
+{
+id:"worlds",
+title:"Gaming Worlds",
+subtitle:"Places, kingdoms and locations from famous games.",
+
+words:[
+
+{
+answer:"RAPTURE",
+clue:"Underwater city from BioShock."
+},
+
+{
+answer:"MIDGAR",
+clue:"Major city from Final Fantasy VII."
+},
+
+{
+answer:"SKYRIM",
+clue:"Northern province of Tamriel."
+},
+
+{
+answer:"YHARNAM",
+clue:"Gothic city where Bloodborne takes place."
+},
+
+{
+answer:"HYRULE",
+clue:"Kingdom frequently saved by Link."
+},
+
+{
+answer:"RIVIA",
+clue:"Geralt is famously 'of' this place."
+},
+
+{
+answer:"RACCOON",
+clue:"Resident Evil city that suffered a catastrophic outbreak."
+},
+
+{
+answer:"NIGHTCITY",
+clue:"Cyberpunk 2077's sprawling metropolis."
+},
+
+{
+answer:"TSUSHIMA",
+clue:"Japanese island defended by Jin Sakai."
+},
+
+{
+answer:"COLUMBIA",
+clue:"Floating city from BioShock Infinite."
+},
+
+{
+answer:"DUNWALL",
+clue:"Plague-ridden city from Dishonored."
+},
+
+{
+answer:"REVACHOL",
+clue:"City where Disco Elysium takes place."
+}
+
+]
+
+},
+
+
+{
+id:"studios",
+title:"Game Developers",
+subtitle:"How well do you know the studios behind the games?",
+
+words:[
+
+{
+answer:"CAPCOM",
+clue:"Japanese studio behind Resident Evil and Monster Hunter."
+},
+
+{
+answer:"BIOWARE",
+clue:"Developer associated with Mass Effect and Dragon Age."
+},
+
+{
+answer:"LARIAN",
+clue:"Studio behind Baldur's Gate 3."
+},
+
+{
+answer:"BUNGIE",
+clue:"Original developer of Halo."
+},
+
+{
+answer:"MOJANG",
+clue:"Creator of Minecraft."
+},
+
+{
+answer:"REMEDY",
+clue:"Finnish studio behind Alan Wake and Control."
+},
+
+{
+answer:"ROCKSTAR",
+clue:"Company behind Grand Theft Auto and Red Dead Redemption."
+},
+
+{
+answer:"NAUGHTYDOG",
+clue:"Studio behind Uncharted and The Last of Us."
+},
+
+{
+answer:"ARKANE",
+clue:"Studio known for Dishonored and Prey."
+},
+
+{
+answer:"SUPERCELL",
+clue:"Mobile studio behind Clash of Clans."
+},
+
+{
+answer:"FROM",
+clue:"Shortened name often used for the developer of Dark Souls."
+},
+
+{
+answer:"VALVE",
+clue:"Half-Life and Portal developer."
+}
+
+]
+
+},
+
+
+{
+id:"gamingterms",
+title:"Gaming Terms",
+subtitle:"Mechanics, genres and language every gamer has heard.",
+
+words:[
+
+{
+answer:"RESPAWN",
+clue:"Return to the game after being defeated."
+},
+
+{
+answer:"NERF",
+clue:"To deliberately make something weaker in a balance update."
+},
+
+{
+answer:"BUFF",
+clue:"A change that makes a character or ability stronger."
+},
+
+{
+answer:"LOOT",
+clue:"Items and rewards collected from enemies or chests."
+},
+
+{
+answer:"BOSS",
+clue:"Powerful enemy commonly encountered at the end of a level."
+},
+
+{
+answer:"QUEST",
+clue:"Objective or mission given to a player."
+},
+
+{
+answer:"STEALTH",
+clue:"Gameplay focused on avoiding detection."
+},
+
+{
+answer:"SANDBOX",
+clue:"Open-ended game structure allowing player experimentation."
+},
+
+{
+answer:"SPEEDRUN",
+clue:"Attempt to finish a game as quickly as possible."
+},
+
+{
+answer:"CRAFTING",
+clue:"Creating equipment or items from gathered resources."
+},
+
+{
+answer:"CHECKPOINT",
+clue:"Place where progress may be saved automatically."
+},
+
+{
+answer:"COOLDOWN",
+clue:"Waiting period before an ability can be used again."
+}
+
+]
+
+},
+
+
+{
+id:"classics",
+title:"Gaming History",
+subtitle:"Consoles, classics and landmarks from gaming history.",
+
+words:[
+
+{
+answer:"ATARI",
+clue:"Company behind the famous 2600 console."
+},
+
+{
+answer:"TETRIS",
+clue:"Falling-block puzzle game created by Alexey Pajitnov."
+},
+
+{
+answer:"PACMAN",
+clue:"Yellow arcade hero chased by ghosts."
+},
+
+{
+answer:"DOOM",
+clue:"1993 shooter famous for popularising the FPS genre."
+},
+
+{
+answer:"PONG",
+clue:"One of the earliest commercially successful video games."
+},
+
+{
+answer:"DREAMCAST",
+clue:"SEGA's final home console."
+},
+
+{
+answer:"GAMEBOY",
+clue:"Nintendo handheld launched in 1989."
+},
+
+{
+answer:"PLAYSTATION",
+clue:"Sony console brand first launched in the 1990s."
+},
+
+{
+answer:"GENESIS",
+clue:"North American name for SEGA's Mega Drive."
+},
+
+{
+answer:"ARCADE",
+clue:"Venue traditionally filled with coin-operated video games."
+},
+
+{
+answer:"NINTENDO",
+clue:"Company behind Mario, Zelda and Metroid."
+},
+
+{
+answer:"SEGA",
+clue:"Company whose mascot is Sonic."
+}
+
+]
+
+}
+
+];
+
+
+/* ======================================================
+SETTINGS
+====================================================== */
+
+const GRID_SIZE =
+    15;
+
+const MIN_WORDS =
+    8;
+
+const LAST_PUZZLE_KEY =
+    "gjdCrosswordLastPuzzle";
+
+
+/* ======================================================
+STATE
+====================================================== */
+
+let activePuzzle =
+    null;
+
+let placedWords =
+    [];
+
+let grid =
+    [];
+
+let selectedCell =
+    null;
+
+let activeWord =
+    null;
+
+let currentDirection =
+    "across";
+
+let checkCount =
+    0;
+
+let revealCount =
+    0;
+
+
+/* ======================================================
+UTILITIES
+====================================================== */
+
+function shuffle(array){
+
+    const copy =
+        [...array];
+
+    for(
+        let i =
+            copy.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+        [
+            copy[i],
+            copy[j]
+        ] =
+        [
+            copy[j],
+            copy[i]
+        ];
+    }
+
+    return copy;
+}
+
+
+function choosePuzzle(){
+
+    const last =
+        localStorage.getItem(
+            LAST_PUZZLE_KEY
+        );
+
+
+    let available =
+        PUZZLES.filter(
+            puzzle =>
+                puzzle.id !== last
+        );
+
+
+    if(
+        available.length === 0
+    ){
+
+        available =
+            [...PUZZLES];
+    }
+
+
+    const puzzle =
+        available[
+            Math.floor(
+                Math.random() *
+                available.length
+            )
+        ];
+
+
+    localStorage.setItem(
+        LAST_PUZZLE_KEY,
+        puzzle.id
+    );
+
+
+    return puzzle;
+}
+
+
+/* ======================================================
+EMPTY GRID
+====================================================== */
+
+function makeEmptyGrid(){
+
+    return Array.from(
+        {
+            length:
+                GRID_SIZE
+        },
+        () =>
+            Array.from(
+                {
+                    length:
+                        GRID_SIZE
+                },
+                () =>
+                    null
+            )
+    );
+}
+
+
+/* ======================================================
+PLACEMENT VALIDATION
+====================================================== */
+
+function canPlaceWord(
+    word,
+    row,
+    col,
+    direction
+){
+
+    const length =
+        word.length;
+
+
+    if(
+        direction === "across"
+    ){
+
+        if(
+            col < 0 ||
+            col + length >
+            GRID_SIZE ||
+            row < 0 ||
+            row >= GRID_SIZE
+        ){
+            return false;
+        }
+
+    }else{
+
+        if(
+            row < 0 ||
+            row + length >
+            GRID_SIZE ||
+            col < 0 ||
+            col >= GRID_SIZE
+        ){
+            return false;
+        }
+    }
+
+
+    let intersectionCount =
+        0;
+
+
+    for(
+        let i = 0;
+        i < length;
+        i++
+    ){
+
+        const r =
+            direction === "across"
+            ? row
+            : row + i;
+
+
+        const c =
+            direction === "across"
+            ? col + i
+            : col;
+
+
+        const existing =
+            grid[r][c];
+
+
+        if(
+            existing &&
+            existing.letter !==
+            word[i]
+        ){
+
+            return false;
+        }
+
+
+        if(existing){
+
+            intersectionCount++;
+
+        }else{
+
+            /*
+            Prevent words running directly alongside each
+            other unless this square is an intersection.
+            */
+
+            if(
+                direction === "across"
+            ){
+
+                if(
+                    r > 0 &&
+                    grid[r - 1][c]
+                ){
+                    return false;
+                }
+
+                if(
+                    r <
+                    GRID_SIZE - 1 &&
+                    grid[r + 1][c]
+                ){
+                    return false;
+                }
+
+            }else{
+
+                if(
+                    c > 0 &&
+                    grid[r][c - 1]
+                ){
+                    return false;
+                }
+
+                if(
+                    c <
+                    GRID_SIZE - 1 &&
+                    grid[r][c + 1]
+                ){
+                    return false;
+                }
+            }
+        }
+    }
+
+
+    /*
+    Prevent words touching at beginning/end.
+    */
+
+    if(
+        direction === "across"
+    ){
+
+        if(
+            col > 0 &&
+            grid[row][col - 1]
+        ){
+            return false;
+        }
+
+        if(
+            col + length <
+            GRID_SIZE &&
+            grid[row][col + length]
+        ){
+            return false;
+        }
+
+    }else{
+
+        if(
+            row > 0 &&
+            grid[row - 1][col]
+        ){
+            return false;
+        }
+
+        if(
+            row + length <
+            GRID_SIZE &&
+            grid[row + length][col]
+        ){
+            return false;
+        }
+    }
+
+
+    return (
+        placedWords.length === 0 ||
+        intersectionCount > 0
+    );
+}
+
+
+/* ======================================================
+PLACE WORD
+====================================================== */
+
+function placeWord(
+    wordData,
+    row,
+    col,
+    direction
+){
+
+    const answer =
+        wordData.answer;
+
+
+    const placed = {
+
+        ...wordData,
+
+        row:
+            row,
+
+        col:
+            col,
+
+        direction:
+            direction,
+
+        number:
+            null,
+
+        cells:
+            []
+
+    };
+
+
+    for(
+        let i = 0;
+        i < answer.length;
+        i++
+    ){
+
+        const r =
+            direction === "across"
+            ? row
+            : row + i;
+
+
+        const c =
+            direction === "across"
+            ? col + i
+            : col;
+
+
+        if(
+            !grid[r][c]
+        ){
+
+            grid[r][c] = {
+
+                letter:
+                    answer[i],
+
+                user:
+                    "",
+
+                words:
+                    []
+
+            };
+        }
+
+
+        grid[r][c]
+            .words
+            .push(
+                placed
+            );
+
+
+        placed.cells.push(
+            {
+                row:r,
+                col:c
+            }
+        );
+    }
+
+
+    placedWords.push(
+        placed
+    );
+}
+
+
+/* ======================================================
+FIND INTERSECTION
+====================================================== */
+
+function tryPlaceWord(wordData){
+
+    const word =
+        wordData.answer;
+
+
+    const possibilities =
+        [];
+
+
+    placedWords.forEach(
+        existingWord => {
+
+
+            existingWord.cells.forEach(
+                (cell,indexExisting) => {
+
+
+                    const existingLetter =
+                        existingWord
+                            .answer[
+                                indexExisting
+                            ];
+
+
+                    for(
+                        let i = 0;
+                        i < word.length;
+                        i++
+                    ){
+
+                        if(
+                            word[i] !==
+                            existingLetter
+                        ){
+                            continue;
+                        }
+
+
+                        const direction =
+                            existingWord
+                                .direction ===
+                                "across"
+                            ? "down"
+                            : "across";
+
+
+                        const row =
+                            direction ===
+                            "across"
+                            ? cell.row
+                            : cell.row - i;
+
+
+                        const col =
+                            direction ===
+                            "across"
+                            ? cell.col - i
+                            : cell.col;
+
+
+                        if(
+                            canPlaceWord(
+                                word,
+                                row,
+                                col,
+                                direction
+                            )
+                        ){
+
+                            possibilities.push(
+                                {
+                                    row,
+                                    col,
+                                    direction
+                                }
+                            );
+                        }
+                    }
+                }
+            );
+        }
+    );
+
+
+    if(
+        possibilities.length === 0
+    ){
+
+        return false;
+    }
+
+
+    const choice =
+        possibilities[
+            Math.floor(
+                Math.random() *
+                possibilities.length
+            )
+        ];
+
+
+    placeWord(
+        wordData,
+        choice.row,
+        choice.col,
+        choice.direction
+    );
+
+
+    return true;
+}
+
+
+/* ======================================================
+BUILD CROSSWORD
+
+Several attempts are made. The attempt that places the
+most words wins.
+====================================================== */
+
+function buildCrossword(
+    puzzle
+){
+
+    let bestGrid =
+        null;
+
+    let bestWords =
+        [];
+
+
+    for(
+        let attempt = 0;
+        attempt < 80;
+        attempt++
+    ){
+
+        grid =
+            makeEmptyGrid();
+
+        placedWords =
+            [];
+
+
+        const words =
+            shuffle(
+                [...puzzle.words]
+            )
+            .sort(
+                (a,b) =>
+                    b.answer.length -
+                    a.answer.length
+            );
+
+
+        /*
+        First word placed in the centre.
+        */
+
+        const first =
+            words.shift();
+
+
+        const startRow =
+            Math.floor(
+                GRID_SIZE / 2
+            );
+
+
+        const startCol =
+            Math.floor(
+                (GRID_SIZE -
+                first.answer.length)
+                / 2
+            );
+
+
+        placeWord(
+            first,
+            startRow,
+            startCol,
+            "across"
+        );
+
+
+        /*
+        Try repeatedly because adding one word can make
+        another previously impossible word placeable.
+        */
+
+        let remaining =
+            [...words];
+
+
+        let changed =
+            true;
+
+
+        while(changed){
+
+            changed =
+                false;
+
+
+            remaining =
+                remaining.filter(
+                    wordData => {
+
+
+                        const placed =
+                            tryPlaceWord(
+                                wordData
+                            );
+
+
+                        if(placed){
+
+                            changed =
+                                true;
+
+                            return false;
+                        }
+
+
+                        return true;
+                    }
+                );
+        }
+
+
+        if(
+            placedWords.length >
+            bestWords.length
+        ){
+
+            bestGrid =
+                JSON.parse(
+                    JSON.stringify(
+                        grid,
+                        (
+                            key,
+                            value
+                        ) => {
+
+                            /*
+                            Remove circular word references.
+                            */
+
+                            if(
+                                key ===
+                                "words"
+                            ){
+
+                                return [];
+                            }
+
+                            return value;
+                        }
+                    )
+                );
+
+
+            /*
+            Rebuild later — only need count to compare.
+            */
+
+            bestWords =
+                [...placedWords];
+        }
+
+
+        if(
+            placedWords.length >=
+            puzzle.words.length - 1
+        ){
+
+            break;
+        }
+    }
+
+
+    /*
+    Run once more until at least MIN_WORDS.
+    In normal use the supplied banks comfortably achieve it.
+    */
+
+    if(
+        placedWords.length <
+        MIN_WORDS
+    ){
+
+        grid =
+            makeEmptyGrid();
+
+        placedWords =
+            [];
+
+
+        const fallback =
+            [...puzzle.words]
+            .sort(
+                (a,b) =>
+                    b.answer.length -
+                    a.answer.length
+            );
+
+
+        const first =
+            fallback.shift();
+
+
+        placeWord(
+            first,
+            7,
+            Math.max(
+                0,
+                Math.floor(
+                    (
+                        GRID_SIZE -
+                        first.answer.length
+                    ) / 2
+                )
+            ),
+            "across"
+        );
+
+
+        fallback.forEach(
+            word =>
+                tryPlaceWord(
+                    word
+                )
+        );
+    }
+
+
+    assignNumbers();
+}
+
+
+/* ======================================================
+NUMBER WORDS
+====================================================== */
+
+function assignNumbers(){
+
+    const starts =
+        new Map();
+
+
+    placedWords.forEach(
+        word => {
+
+            const key =
+                `${word.row},${word.col}`;
+
+
+            if(
+                !starts.has(key)
+            ){
+
+                starts.set(
+                    key,
+                    []
+                );
+            }
+
+
+            starts
+                .get(key)
+                .push(
+                    word
+                );
+        }
+    );
+
+
+    const orderedStarts =
+        [...starts.entries()]
+        .map(
+            ([key,words]) => {
+
+                const [
+                    row,
+                    col
+                ] =
+                key
+                .split(",")
+                .map(Number);
+
+
+                return {
+                    row,
+                    col,
+                    words
+                };
+            }
+        )
+        .sort(
+            (a,b) =>
+                a.row - b.row ||
+                a.col - b.col
+        );
+
+
+    let number =
+        1;
+
+
+    orderedStarts.forEach(
+        start => {
+
+            start.words.forEach(
+                word => {
+
+                    word.number =
+                        number;
+                }
+            );
+
+
+            number++;
+        }
+    );
+}
+
+
+/* ======================================================
+START GAME
+====================================================== */
+
+function startGame(){
+
+    activePuzzle =
+        choosePuzzle();
+
+
+    checkCount =
+        0;
+
+    revealCount =
+        0;
+
+    selectedCell =
+        null;
+
+    activeWord =
+        null;
+
+
+    buildCrossword(
+        activePuzzle
+    );
+
+
+    document
+        .getElementById(
+            "startScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultsScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "gameScreen"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "puzzleTitle"
+        )
+        .textContent =
+        activePuzzle.title;
+
+
+    document
+        .getElementById(
+            "puzzleSubtitle"
+        )
+        .textContent =
+        activePuzzle.subtitle;
+
+
+    document
+        .getElementById(
+            "statusMessage"
+        )
+        .textContent =
+        "";
+
+
+    renderGrid();
+
+    renderClues();
+
+    updateProgress();
+}
+
+
+/* ======================================================
+GRID BOUNDS
+
+Only display the part of the 15x15 grid that actually
+contains crossword cells.
+====================================================== */
+
+function getBounds(){
+
+    let minRow =
+        GRID_SIZE;
+
+    let maxRow =
+        0;
+
+    let minCol =
+        GRID_SIZE;
+
+    let maxCol =
+        0;
+
+
+    for(
+        let r = 0;
+        r < GRID_SIZE;
+        r++
+    ){
+
+        for(
+            let c = 0;
+            c < GRID_SIZE;
+            c++
+        ){
+
+            if(
+                grid[r][c]
+            ){
+
+                minRow =
+                    Math.min(
+                        minRow,
+                        r
+                    );
+
+                maxRow =
+                    Math.max(
+                        maxRow,
+                        r
+                    );
+
+                minCol =
+                    Math.min(
+                        minCol,
+                        c
+                    );
+
+                maxCol =
+                    Math.max(
+                        maxCol,
+                        c
+                    );
+            }
+        }
+    }
+
+
+    return {
+
+        minRow,
+        maxRow,
+        minCol,
+        maxCol
+
+    };
+}
+
+
+/* ======================================================
+RENDER GRID
+====================================================== */
+
+function renderGrid(){
+
+    const container =
+        document
+        .getElementById(
+            "crosswordGrid"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    const bounds =
+        getBounds();
+
+
+    const rows =
+        bounds.maxRow -
+        bounds.minRow +
+        1;
+
+
+    const cols =
+        bounds.maxCol -
+        bounds.minCol +
+        1;
+
+
+    container.style
+        .gridTemplateColumns =
+        `repeat(${cols},1fr)`;
+
+
+    container.style
+        .gridTemplateRows =
+        `repeat(${rows},1fr)`;
+
+
+    /*
+    Keep cells square based on actual board shape.
+    */
+
+    container.style
+        .aspectRatio =
+        `${cols} / ${rows}`;
+
+
+    for(
+        let r =
+            bounds.minRow;
+        r <=
+            bounds.maxRow;
+        r++
+    ){
+
+        for(
+            let c =
+                bounds.minCol;
+            c <=
+                bounds.maxCol;
+            c++
+        ){
+
+            const cell =
+                document.createElement(
+                    "div"
+                );
+
+
+            const data =
+                grid[r][c];
+
+
+            if(!data){
+
+                cell.className =
+                    "cell block";
+
+
+                container
+                    .appendChild(
+                        cell
+                    );
+
+
+                continue;
+            }
+
+
+            cell.className =
+                "cell";
+
+
+            cell.dataset.row =
+                r;
+
+            cell.dataset.col =
+                c;
+
+
+            const startingWords =
+                placedWords.filter(
+                    word =>
+                        word.row === r &&
+                        word.col === c
+                );
+
+
+            if(
+                startingWords.length
+            ){
+
+                const number =
+                    startingWords[0]
+                        .number;
+
+
+                const num =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                num.className =
+                    "cell-number";
+
+
+                num.textContent =
+                    number;
+
+
+                cell.appendChild(
+                    num
+                );
+            }
+
+
+            const letter =
+                document.createElement(
+                    "span"
+                );
+
+
+            letter.className =
+                "cell-letter";
+
+
+            letter.textContent =
+                data.user;
+
+
+            cell.appendChild(
+                letter
+            );
+
+
+            cell.onclick =
+                () =>
+                    selectCell(
+                        r,
+                        c
+                    );
+
+
+            container.appendChild(
+                cell
+            );
+        }
+    }
+
+
+    updateHighlights();
+}
+
+
+/* ======================================================
+CLUES
+====================================================== */
+
+function renderClues(){
+
+    const across =
+        document
+        .getElementById(
+            "acrossClues"
+        );
+
+
+    const down =
+        document
+        .getElementById(
+            "downClues"
+        );
+
+
+    across.innerHTML =
+        "";
+
+    down.innerHTML =
+        "";
+
+
+    placedWords
+        .sort(
+            (a,b) =>
+                a.number -
+                b.number
+        )
+        .forEach(
+            word => {
+
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                button.className =
+                    "clue";
+
+
+                button.dataset.number =
+                    word.number;
+
+                button.dataset.direction =
+                    word.direction;
+
+
+                button.innerHTML =
+                    `<span class="clue-number">${word.number}.</span>${word.clue}`;
+
+
+                button.onclick =
+                    () =>
+                        selectWord(
+                            word
+                        );
+
+
+                if(
+                    word.direction ===
+                    "across"
+                ){
+
+                    across.appendChild(
+                        button
+                    );
+
+                }else{
+
+                    down.appendChild(
+                        button
+                    );
+                }
+            }
+        );
+}
+
+
+/* ======================================================
+SELECT CELL
+====================================================== */
+
+function selectCell(
+    row,
+    col
+){
+
+    const data =
+        grid[row][col];
+
+
+    if(!data){
+        return;
+    }
+
+
+    selectedCell =
+        {
+            row,
+            col
+        };
+
+
+    const words =
+        placedWords.filter(
+            word =>
+                word.cells.some(
+                    cell =>
+                        cell.row === row &&
+                        cell.col === col
+                )
+        );
+
+
+    if(
+        words.length === 1
+    ){
+
+        activeWord =
+            words[0];
+
+        currentDirection =
+            activeWord.direction;
+
+    }else if(
+        words.length > 1
+    ){
+
+        /*
+        Clicking an intersection toggles Across / Down.
+        */
+
+        const other =
+            words.find(
+                word =>
+                    word.direction !==
+                    currentDirection
+            );
+
+
+        activeWord =
+            other ||
+            words[0];
+
+
+        currentDirection =
+            activeWord.direction;
+    }
+
+
+    updateHighlights();
+}
+
+
+/* ======================================================
+SELECT WORD FROM CLUE
+====================================================== */
+
+function selectWord(word){
+
+    activeWord =
+        word;
+
+    currentDirection =
+        word.direction;
+
+
+    const firstEmpty =
+        word.cells.find(
+            cell =>
+                !grid[
+                    cell.row
+                ][
+                    cell.col
+                ].user
+        );
+
+
+    selectedCell =
+        firstEmpty ||
+        word.cells[0];
+
+
+    updateHighlights();
+}
+
+
+/* ======================================================
+HIGHLIGHTS
+====================================================== */
+
+function updateHighlights(){
+
+    document
+        .querySelectorAll(
+            ".cell"
+        )
+        .forEach(
+            cell => {
+
+                cell.classList.remove(
+                    "selected",
+                    "active-word"
+                );
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".clue"
+        )
+        .forEach(
+            clue =>
+                clue.classList.remove(
+                    "active"
+                )
+        );
+
+
+    if(activeWord){
+
+        activeWord.cells.forEach(
+            coordinate => {
+
+
+                const cell =
+                    document.querySelector(
+                        `.cell[data-row="${coordinate.row}"][data-col="${coordinate.col}"]`
+                    );
+
+
+                if(cell){
+
+                    cell.classList.add(
+                        "active-word"
+                    );
+                }
+            }
+        );
+
+
+        const clue =
+            document.querySelector(
+                `.clue[data-number="${activeWord.number}"][data-direction="${activeWord.direction}"]`
+            );
+
+
+        if(clue){
+
+            clue.classList.add(
+                "active"
+            );
+        }
+    }
+
+
+    if(selectedCell){
+
+        const cell =
+            document.querySelector(
+                `.cell[data-row="${selectedCell.row}"][data-col="${selectedCell.col}"]`
+            );
+
+
+        if(cell){
+
+            cell.classList.add(
+                "selected"
+            );
+        }
+    }
+
+
+    updateSolvedClues();
+}
+
+
+/* ======================================================
+KEYBOARD
+====================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            document
+                .getElementById(
+                    "gameScreen"
+                )
+                .style.display !==
+                "block"
+        ){
+            return;
+        }
+
+
+        if(!selectedCell){
+            return;
+        }
+
+
+        if(
+            /^[a-zA-Z]$/
+            .test(
+                event.key
+            )
+        ){
+
+            event.preventDefault();
+
+            enterLetter(
+                event.key
+                    .toUpperCase()
+            );
+
+            return;
+        }
+
+
+        if(
+            event.key ===
+            "Backspace"
+        ){
+
+            event.preventDefault();
+
+            deleteLetter();
+
+            return;
+        }
+
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ){
+
+            moveCell(
+                0,
+                1
+            );
+
+        }else if(
+            event.key ===
+            "ArrowLeft"
+        ){
+
+            moveCell(
+                0,
+                -1
+            );
+
+        }else if(
+            event.key ===
+            "ArrowDown"
+        ){
+
+            moveCell(
+                1,
+                0
+            );
+
+        }else if(
+            event.key ===
+            "ArrowUp"
+        ){
+
+            moveCell(
+                -1,
+                0
+            );
+
+        }else if(
+            event.key ===
+            "Tab"
+        ){
+
+            event.preventDefault();
+
+            cycleWord(
+                event.shiftKey
+                ? -1
+                : 1
+            );
+        }
+    }
+);
+
+
+/* ======================================================
+ENTER LETTER
+====================================================== */
+
+function enterLetter(letter){
+
+    const data =
+        grid[
+            selectedCell.row
+        ][
+            selectedCell.col
+        ];
+
+
+    data.user =
+        letter;
+
+
+    removeCellValidation(
+        selectedCell.row,
+        selectedCell.col
+    );
+
+
+    moveAlongWord(
+        1
+    );
+
+
+    renderGrid();
+
+    updateProgress();
+
+    checkForCompletion();
+}
+
+
+/* ======================================================
+DELETE LETTER
+====================================================== */
+
+function deleteLetter(){
+
+    const data =
+        grid[
+            selectedCell.row
+        ][
+            selectedCell.col
+        ];
+
+
+    if(data.user){
+
+        data.user =
+            "";
+
+    }else{
+
+        moveAlongWord(
+            -1
+        );
+
+
+        grid[
+            selectedCell.row
+        ][
+            selectedCell.col
+        ].user =
+            "";
+    }
+
+
+    renderGrid();
+
+    updateProgress();
+}
+
+
+/* ======================================================
+MOVE ALONG WORD
+====================================================== */
+
+function moveAlongWord(step){
+
+    if(!activeWord){
+        return;
+    }
+
+
+    const index =
+        activeWord.cells.findIndex(
+            cell =>
+                cell.row ===
+                selectedCell.row &&
+                cell.col ===
+                selectedCell.col
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const nextIndex =
+        index + step;
+
+
+    if(
+        nextIndex >= 0 &&
+        nextIndex <
+        activeWord.cells.length
+    ){
+
+        selectedCell =
+            activeWord.cells[
+                nextIndex
+            ];
+    }
+}
+
+
+/* ======================================================
+ARROW MOVEMENT
+====================================================== */
+
+function moveCell(
+    rowDelta,
+    colDelta
+){
+
+    const row =
+        selectedCell.row +
+        rowDelta;
+
+
+    const col =
+        selectedCell.col +
+        colDelta;
+
+
+    if(
+        row < 0 ||
+        col < 0 ||
+        row >= GRID_SIZE ||
+        col >= GRID_SIZE ||
+        !grid[row][col]
+    ){
+
+        return;
+    }
+
+
+    selectCell(
+        row,
+        col
+    );
+}
+
+
+/* ======================================================
+TAB WORD MOVEMENT
+====================================================== */
+
+function cycleWord(direction){
+
+    const sorted =
+        [...placedWords]
+        .sort(
+            (a,b) =>
+                a.number -
+                b.number ||
+                (
+                    a.direction ===
+                    "across"
+                    ? -1
+                    : 1
+                )
+        );
+
+
+    let index =
+        sorted.indexOf(
+            activeWord
+        );
+
+
+    if(index === -1){
+
+        index = 0;
+
+    }else{
+
+        index =
+            (
+                index +
+                direction +
+                sorted.length
+            ) %
+            sorted.length;
+    }
+
+
+    selectWord(
+        sorted[index]
+    );
+}
+
+
+/* ======================================================
+WORD SOLVED
+====================================================== */
+
+function isWordSolved(word){
+
+    return word.cells.every(
+        (
+            cell,
+            index
+        ) =>
+            grid[
+                cell.row
+            ][
+                cell.col
+            ].user ===
+            word.answer[index]
+    );
+}
+
+
+/* ======================================================
+SOLVED CLUES
+====================================================== */
+
+function updateSolvedClues(){
+
+    placedWords.forEach(
+        word => {
+
+
+            const clue =
+                document.querySelector(
+                    `.clue[data-number="${word.number}"][data-direction="${word.direction}"]`
+                );
+
+
+            if(!clue){
+                return;
+            }
+
+
+            clue.classList.toggle(
+                "solved",
+                isWordSolved(
+                    word
+                )
+            );
+        }
+    );
+}
+
+
+/* ======================================================
+PROGRESS
+====================================================== */
+
+function updateProgress(){
+
+    const solved =
+        placedWords.filter(
+            isWordSolved
+        ).length;
+
+
+    document
+        .getElementById(
+            "progressPill"
+        )
+        .textContent =
+        `${solved} / ${placedWords.length} words solved`;
+
+
+    updateSolvedClues();
+}
+
+
+/* ======================================================
+CHECK PUZZLE
+====================================================== */
+
+function checkPuzzle(){
+
+    checkCount++;
+
+
+    let wrong =
+        0;
+
+    let correct =
+        0;
+
+
+    for(
+        let r = 0;
+        r < GRID_SIZE;
+        r++
+    ){
+
+        for(
+            let c = 0;
+            c < GRID_SIZE;
+            c++
+        ){
+
+            const data =
+                grid[r][c];
+
+
+            if(
+                !data ||
+                !data.user
+            ){
+                continue;
+            }
+
+
+            const cell =
+                document.querySelector(
+                    `.cell[data-row="${r}"][data-col="${c}"]`
+                );
+
+
+            if(
+                data.user ===
+                data.letter
+            ){
+
+                correct++;
+
+                if(cell){
+
+                    cell.classList.add(
+                        "correct-cell"
+                    );
+
+                    cell.classList.remove(
+                        "wrong-cell"
+                    );
+                }
+
+            }else{
+
+                wrong++;
+
+                if(cell){
+
+                    cell.classList.add(
+                        "wrong-cell"
+                    );
+
+                    cell.classList.remove(
+                        "correct-cell"
+                    );
+                }
+            }
+        }
+    }
+
+
+    const message =
+        document
+        .getElementById(
+            "statusMessage"
+        );
+
+
+    if(
+        wrong === 0 &&
+        correct > 0
+    ){
+
+        message.textContent =
+            "Everything you've entered so far is correct!";
+
+    }else if(
+        wrong > 0
+    ){
+
+        message.textContent =
+            `${wrong} incorrect letter${wrong === 1 ? "" : "s"} highlighted.`;
+
+    }else{
+
+        message.textContent =
+            "Fill in some letters first.";
+    }
+
+
+    checkForCompletion();
+}
+
+
+/* ======================================================
+REMOVE VALIDATION STYLE
+====================================================== */
+
+function removeCellValidation(
+    row,
+    col
+){
+
+    const cell =
+        document.querySelector(
+            `.cell[data-row="${row}"][data-col="${col}"]`
+        );
+
+
+    if(cell){
+
+        cell.classList.remove(
+            "correct-cell",
+            "wrong-cell"
+        );
+    }
+}
+
+
+/* ======================================================
+REVEAL LETTER
+====================================================== */
+
+function revealLetter(){
+
+    if(!selectedCell){
+
+        document
+            .getElementById(
+                "statusMessage"
+            )
+            .textContent =
+            "Select a square first.";
+
+        return;
+    }
+
+
+    revealCount++;
+
+
+    const data =
+        grid[
+            selectedCell.row
+        ][
+            selectedCell.col
+        ];
+
+
+    data.user =
+        data.letter;
+
+
+    document
+        .getElementById(
+            "statusMessage"
+        )
+        .textContent =
+        "Letter revealed.";
+
+
+    moveAlongWord(
+        1
+    );
+
+
+    renderGrid();
+
+    updateProgress();
+
+    checkForCompletion();
+}
+
+
+/* ======================================================
+REVEAL WORD
+====================================================== */
+
+function revealWord(){
+
+    if(!activeWord){
+
+        document
+            .getElementById(
+                "statusMessage"
+            )
+            .textContent =
+            "Select a clue or word first.";
+
+        return;
+    }
+
+
+    revealCount++;
+
+
+    activeWord.cells.forEach(
+        (
+            cell,
+            index
+        ) => {
+
+            grid[
+                cell.row
+            ][
+                cell.col
+            ].user =
+                activeWord.answer[
+                    index
+                ];
+        }
+    );
+
+
+    document
+        .getElementById(
+            "statusMessage"
+        )
+        .textContent =
+        `${activeWord.number} ${activeWord.direction} revealed.`;
+
+
+    renderGrid();
+
+    updateProgress();
+
+    checkForCompletion();
+}
+
+
+/* ======================================================
+CLEAR WRONG LETTERS
+====================================================== */
+
+function clearWrongLetters(){
+
+    let removed =
+        0;
+
+
+    for(
+        let r = 0;
+        r < GRID_SIZE;
+        r++
+    ){
+
+        for(
+            let c = 0;
+            c < GRID_SIZE;
+            c++
+        ){
+
+            const data =
+                grid[r][c];
+
+
+            if(
+                !data ||
+                !data.user
+            ){
+                continue;
+            }
+
+
+            if(
+                data.user !==
+                data.letter
+            ){
+
+                data.user =
+                    "";
+
+                removed++;
+            }
+        }
+    }
+
+
+    document
+        .getElementById(
+            "statusMessage"
+        )
+        .textContent =
+        removed
+        ? `${removed} incorrect letter${removed === 1 ? "" : "s"} cleared.`
+        : "No incorrect letters to clear.";
+
+
+    renderGrid();
+
+    updateProgress();
+}
+
+
+/* ======================================================
+COMPLETE
+====================================================== */
+
+function checkForCompletion(){
+
+    const complete =
+        placedWords.every(
+            isWordSolved
+        );
+
+
+    if(!complete){
+        return;
+    }
+
+
+    setTimeout(
+        finishGame,
+        350
+    );
+}
+
+
+/* ======================================================
+FINISH GAME
+====================================================== */
+
+function finishGame(){
+
+    document
+        .getElementById(
+            "gameScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultsScreen"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "resultWords"
+        )
+        .textContent =
+        placedWords.length;
+
+
+    document
+        .getElementById(
+            "resultChecks"
+        )
+        .textContent =
+        checkCount;
+
+
+    document
+        .getElementById(
+            "resultReveals"
+        )
+        .textContent =
+        revealCount;
+}
+
+</script>
+
+</body>
+</html>
