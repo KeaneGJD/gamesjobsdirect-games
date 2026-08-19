@@ -31,7 +31,6 @@ body{
     color:var(--text);
 }
 
-
 /* HEADER */
 
 header{
@@ -68,8 +67,7 @@ header{
     transform:translateY(-2px);
 }
 
-
-/* INTRO HERO */
+/* HERO */
 
 .hero{
     max-width:1180px;
@@ -106,7 +104,6 @@ header{
     font-size:17px;
     line-height:1.5;
 }
-
 
 /* FEATURED CARDS */
 
@@ -192,7 +189,6 @@ header{
     color:#222;
 }
 
-
 /* GAME GRID */
 
 .games-section{
@@ -272,26 +268,6 @@ header{
     text-decoration:none;
 }
 
-.card-btn.disabled{
-    background:#ddd;
-    color:#777;
-    cursor:default;
-}
-
-.coming-soon::after{
-    content:"COMING SOON";
-    position:absolute;
-    top:12px;
-    right:12px;
-    background:var(--accent);
-    color:#222;
-    padding:6px 9px;
-    font-size:10px;
-    font-weight:900;
-    border-radius:20px;
-}
-
-
 /* INFO */
 
 .info-section{
@@ -318,7 +294,6 @@ header{
     line-height:1.6;
 }
 
-
 /* FOOTER */
 
 footer{
@@ -333,7 +308,6 @@ footer a{
     text-decoration:none;
     font-weight:bold;
 }
-
 
 /* RESPONSIVE */
 
@@ -399,7 +373,6 @@ footer a{
 </head>
 
 <body>
-
 
 <header>
 
@@ -499,7 +472,7 @@ Featured Game
 <div class="featured-left">
 
 <div class="featured-icon">
-🖼️
+👾
 </div>
 
 <div>
@@ -509,11 +482,11 @@ Featured This Week
 </div>
 
 <h2>
-Pixel Reveal
+Boss Battle
 </h2>
 
 <p>
-Identify five games from heavily pixelated cover art. Guess early for the biggest score, or reveal more when you're stuck.
+Take on the Arcade Boss in a hard gaming trivia fight. Build your attack, protect your hearts and defeat the boss before it defeats you.
 </p>
 
 </div>
@@ -522,9 +495,9 @@ Identify five games from heavily pixelated cover art. Guess early for the bigges
 
 <a
     class="featured-btn"
-    href="pixel-reveal.html">
+    href="boss-battle.html">
 
-Play Now →
+Fight The Boss →
 
 </a>
 
@@ -773,7 +746,7 @@ Play Now
 </div>
 
 
-<div class="game-card coming-soon">
+<div class="game-card">
 
 <div class="game-visual">
 👾 ⚔️ 🧠
@@ -782,7 +755,7 @@ Play Now
 <div class="game-content">
 
 <div class="game-tag">
-Arcade Challenge
+Hard Arcade Challenge
 </div>
 
 <h3>
@@ -790,12 +763,16 @@ Boss Battle
 </h3>
 
 <p>
-Answer gaming questions, deal damage and defeat the boss before your own health runs out.
+Face difficult gaming trivia, charge your attacks and defeat the boss before your three hearts are gone.
 </p>
 
-<span class="card-btn disabled">
-Coming Soon
-</span>
+<a
+    class="card-btn"
+    href="boss-battle.html">
+
+Fight Now
+
+</a>
 
 </div>
 
@@ -835,7 +812,6 @@ Browse Games Industry Jobs
 </a>
 
 </footer>
-
 
 </body>
 </html>
