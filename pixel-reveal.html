@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pixel Reveal | Games Jobs Direct</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --soft:#f3f1ee;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+button,
+input{
+    font:inherit;
+}
+
+/* HEADER */
+
+header{
+    min-height:68px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    padding:12px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+    padding:11px 17px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:800;
+}
+
+/* START */
+
+.start-screen{
+    max-width:900px;
+    margin:55px auto;
+    padding:0 20px;
+    text-align:center;
+}
+
+.game-title{
+    line-height:.86;
+    margin-bottom:25px;
+}
+
+.title-top{
+    display:block;
+    color:var(--primary);
+    font-size:clamp(52px,8vw,90px);
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+    color:var(--accent);
+    font-size:clamp(70px,11vw,125px);
+    font-weight:900;
+    letter-spacing:-5px;
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.1);
+}
+
+.intro{
+    max-width:640px;
+    margin:15px auto 28px;
+    color:var(--muted);
+    line-height:1.55;
+}
+
+.rules{
+    max-width:720px;
+    margin:0 auto 30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.rule{
+    background:white;
+    border-radius:13px;
+    padding:18px 12px;
+}
+
+.rule-icon{
+    font-size:28px;
+}
+
+.rule strong{
+    display:block;
+    color:var(--primary);
+    margin:7px 0 4px;
+}
+
+.rule small{
+    color:var(--muted);
+    line-height:1.4;
+}
+
+.start-btn{
+    background:var(--accent);
+    color:#222;
+    border:0;
+    border-radius:14px;
+    padding:18px 52px;
+    font-size:21px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 4px 0 #9cb500;
+}
+
+/* GAME */
+
+.game-area{
+    display:none;
+    max-width:980px;
+    margin:35px auto;
+    padding:0 20px 60px;
+}
+
+.game-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:26px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+/* HUD */
+
+.hud{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.progress-text{
+    color:var(--primary);
+    font-weight:900;
+}
+
+.score-pill{
+    background:var(--primary);
+    color:white;
+    border-radius:20px;
+    padding:9px 15px;
+    font-size:13px;
+    font-weight:900;
+}
+
+.points-pill{
+    background:var(--accent);
+    color:#222;
+    border-radius:20px;
+    padding:9px 15px;
+    font-size:13px;
+    font-weight:900;
+}
+
+/* PROGRESS */
+
+.progress-track{
+    height:9px;
+    background:#e6e3df;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:24px;
+}
+
+.progress-fill{
+    height:100%;
+    width:20%;
+    background:var(--accent);
+    transition:.25s;
+}
+
+/* IMAGE */
+
+.image-shell{
+    width:100%;
+    max-width:850px;
+    margin:0 auto;
+    aspect-ratio:16 / 9;
+    background:#111;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+}
+
+.pixel-canvas{
+    width:100%;
+    height:100%;
+    display:block;
+    image-rendering:pixelated;
+}
+
+.reveal-stage{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:rgba(0,0,0,.7);
+    color:white;
+    border-radius:20px;
+    padding:7px 11px;
+    font-size:11px;
+    font-weight:900;
+}
+
+/* GUESS AREA */
+
+.guess-area{
+    max-width:680px;
+    margin:22px auto 0;
+    text-align:center;
+}
+
+.guess-title{
+    color:var(--primary);
+    font-size:24px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.answer-input{
+    width:100%;
+    padding:15px;
+    border:2px solid var(--border);
+    border-radius:11px;
+    text-align:center;
+    outline:none;
+}
+
+.answer-input:focus{
+    border-color:var(--primary);
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:10px;
+    padding:14px;
+    border:0;
+    border-radius:11px;
+    background:var(--accent);
+    color:#222;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.action-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
+}
+
+.reveal-btn{
+    padding:13px;
+    border:0;
+    border-radius:11px;
+    background:var(--primary);
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.skip-btn{
+    padding:13px;
+    border:0;
+    border-radius:11px;
+    background:#ddd9d4;
+    color:#444;
+    font-weight:900;
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:.45;
+    cursor:default;
+}
+
+/* GUESSES */
+
+.guesses-left{
+    margin-top:13px;
+    color:var(--muted);
+    font-size:13px;
+    font-weight:800;
+}
+
+/* FEEDBACK */
+
+.feedback{
+    min-height:80px;
+    margin-top:18px;
+    text-align:center;
+}
+
+.feedback-main{
+    font-size:24px;
+    font-weight:900;
+}
+
+.correct{
+    color:var(--green);
+}
+
+.wrong{
+    color:var(--red);
+}
+
+.feedback-detail{
+    margin-top:5px;
+    color:var(--muted);
+}
+
+.next-btn{
+    display:none;
+    margin:16px auto 0;
+    padding:13px 28px;
+    border:0;
+    border-radius:11px;
+    background:var(--accent);
+    color:#222;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* RESULTS */
+
+.results-screen{
+    display:none;
+    max-width:850px;
+    margin:50px auto;
+    padding:0 20px 70px;
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px 25px;
+}
+
+.results-title{
+    margin:0;
+    color:var(--primary);
+    font-size:clamp(48px,9vw,80px);
+    line-height:.95;
+    font-weight:900;
+}
+
+.final-score{
+    color:var(--primary);
+    font-size:80px;
+    font-weight:900;
+    margin-top:20px;
+}
+
+.final-score-label{
+    color:var(--muted);
+    font-size:13px;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.results-stats{
+    max-width:600px;
+    margin:28px auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.result-stat{
+    background:var(--soft);
+    border-radius:12px;
+    padding:16px 10px;
+}
+
+.result-value{
+    color:var(--primary);
+    font-size:27px;
+    font-weight:900;
+}
+
+.result-name{
+    color:var(--muted);
+    font-size:11px;
+    font-weight:900;
+    text-transform:uppercase;
+    margin-top:4px;
+}
+
+.result-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.result-btn{
+    border:0;
+    border-radius:11px;
+    padding:14px 22px;
+    font-weight:900;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.play-again{
+    background:var(--accent);
+    color:#222;
+}
+
+.return-hub{
+    background:var(--primary);
+    color:white;
+}
+
+/* REVIEW */
+
+.review-section{
+    margin-top:34px;
+    text-align:left;
+}
+
+.review-section h2{
+    text-align:center;
+    color:var(--primary);
+}
+
+.review-item{
+    background:var(--soft);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:9px;
+}
+
+.review-item strong{
+    color:var(--primary);
+}
+
+.review-item span{
+    color:var(--muted);
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+        padding:9px 10px;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .game-card{
+        padding:18px 13px;
+    }
+
+    .action-row{
+        grid-template-columns:1fr;
+    }
+
+    .results-stats{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+<img
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
+</a>
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</header>
+
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+<div class="game-title">
+
+<span class="title-top">
+PIXEL
+</span>
+
+<span class="title-bottom">
+REVEAL
+</span>
+
+</div>
+
+<p class="intro">
+
+Identify five games from increasingly clear screenshots.
+
+Guess early for the most points, reveal more when you're stuck,
+and see how high you can score.
+
+</p>
+
+<div class="rules">
+
+<div class="rule">
+<div class="rule-icon">🖼️</div>
+<strong>5 Games</strong>
+<small>A random selection every playthrough.</small>
+</div>
+
+<div class="rule">
+<div class="rule-icon">🔍</div>
+<strong>Reveal More</strong>
+<small>Each reveal makes the screenshot clearer.</small>
+</div>
+
+<div class="rule">
+<div class="rule-icon">🏆</div>
+<strong>Guess Early</strong>
+<small>Earlier guesses are worth more points.</small>
+</div>
+
+</div>
+
+<button
+    class="start-btn"
+    onclick="startGame()">
+
+START GAME
+
+</button>
+
+</section>
+
+
+<section
+    class="game-area"
+    id="gameArea">
+
+<div class="game-card">
+
+<div class="hud">
+
+<div
+    class="progress-text"
+    id="progressText">
+
+Game 1 of 5
+
+</div>
+
+<div
+    class="points-pill"
+    id="pointsDisplay">
+
+Worth 1000 pts
+
+</div>
+
+<div class="score-pill">
+
+SCORE:
+<span id="scoreDisplay">0</span>
+
+</div>
+
+</div>
+
+<div class="progress-track">
+
+<div
+    class="progress-fill"
+    id="progressFill">
+</div>
+
+</div>
+
+<div class="image-shell">
+
+<canvas
+    class="pixel-canvas"
+    id="pixelCanvas">
+</canvas>
+
+<div
+    class="reveal-stage"
+    id="revealStage">
+
+Reveal 1 of 5
+
+</div>
+
+</div>
+
+<div class="guess-area">
+
+<div class="guess-title">
+Which game is this?
+</div>
+
+<input
+    class="answer-input"
+    id="answerInput"
+    type="text"
+    autocomplete="off"
+    placeholder="Type your guess...">
+
+<button
+    class="submit-btn"
+    id="submitButton"
+    onclick="submitGuess()">
+
+Submit Guess
+
+</button>
+
+<div class="action-row">
+
+<button
+    class="reveal-btn"
+    id="revealButton"
+    onclick="revealMore()">
+
+Reveal More
+
+</button>
+
+<button
+    class="skip-btn"
+    id="skipButton"
+    onclick="skipGame()">
+
+Skip This Game
+
+</button>
+
+</div>
+
+<div
+    class="guesses-left"
+    id="guessesLeft">
+
+3 guesses remaining
+
+</div>
+
+</div>
+
+<div class="feedback">
+
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
+
+<button
+    class="next-btn"
+    id="nextButton"
+    onclick="nextGame()">
+
+Next Game →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+<div class="results-card">
+
+<h1 class="results-title">
+PIXEL REVEAL<br>COMPLETE
+</h1>
+
+<div
+    class="final-score"
+    id="finalScore">
+
+0
+
+</div>
+
+<div class="final-score-label">
+Total Points
+</div>
+
+<div class="results-stats">
+
+<div class="result-stat">
+<div
+    class="result-value"
+    id="correctCount">0</div>
+<div class="result-name">Games Guessed</div>
+</div>
+
+<div class="result-stat">
+<div
+    class="result-value"
+    id="bestGuess">0</div>
+<div class="result-name">Best Guess</div>
+</div>
+
+<div class="result-stat">
+<div
+    class="result-value"
+    id="revealCount">0</div>
+<div class="result-name">Extra Reveals</div>
+</div>
+
+</div>
+
+<div class="result-actions">
+
+<button
+    class="result-btn play-again"
+    onclick="playAgain()">
+
+Play Again
+
+</button>
+
+<a
+    class="result-btn return-hub"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</div>
+
+<div class="review-section">
+
+<h2>
+Your Games
+</h2>
+
+<div id="reviewList"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* ======================================================
+GAME BANK
+====================================================== */
+
+const GAME_BANK = [
+
+{
+image:"assets/pixel-reveal/1.png",
+answer:"Horizon Zero Dawn",
+accepted:["horizon zero dawn","horizon"]
+},
+
+{
+image:"assets/pixel-reveal/2.png",
+answer:"Marvel's Spider-Man",
+accepted:["marvels spider man","marvel's spider-man","spider man","spiderman","marvels spiderman"]
+},
+
+{
+image:"assets/pixel-reveal/3.png",
+answer:"Cyberpunk 2077",
+accepted:["cyberpunk 2077","cyberpunk"]
+},
+
+{
+image:"assets/pixel-reveal/4.png",
+answer:"Grand Theft Auto V",
+accepted:["grand theft auto v","grand theft auto 5","gta v","gta 5","gta"]
+},
+
+{
+image:"assets/pixel-reveal/5.png",
+answer:"Red Dead Redemption 2",
+accepted:["red dead redemption 2","rdr2","red dead 2"]
+},
+
+{
+image:"assets/pixel-reveal/6.png",
+answer:"The Witcher 3: Wild Hunt",
+accepted:["the witcher 3 wild hunt","the witcher 3","witcher 3","witcher 3 wild hunt"]
+},
+
+{
+image:"assets/pixel-reveal/7.png",
+answer:"Elden Ring",
+accepted:["elden ring"]
+},
+
+{
+image:"assets/pixel-reveal/8.png",
+answer:"Days Gone",
+accepted:["days gone"]
+},
+
+{
+image:"assets/pixel-reveal/9.png",
+answer:"Ghost of Tsushima",
+accepted:["ghost of tsushima"]
+},
+
+{
+image:"assets/pixel-reveal/10.png",
+answer:"The Last of Us Part I",
+accepted:["the last of us part i","the last of us part 1","the last of us","last of us","last of us part 1"]
+},
+
+{
+image:"assets/pixel-reveal/11.png",
+answer:"Uncharted: Legacy of Thieves Collection",
+accepted:["uncharted legacy of thieves collection","uncharted legacy of thieves","uncharted"]
+},
+
+{
+image:"assets/pixel-reveal/12.png",
+answer:"Tomb Raider",
+accepted:["tomb raider"]
+},
+
+{
+image:"assets/pixel-reveal/13.png",
+answer:"Rise of the Tomb Raider",
+accepted:["rise of the tomb raider","rise tomb raider"]
+},
+
+{
+image:"assets/pixel-reveal/14.png",
+answer:"Shadow of the Tomb Raider",
+accepted:["shadow of the tomb raider","shadow tomb raider"]
+},
+
+{
+image:"assets/pixel-reveal/15.png",
+answer:"Death Stranding Director's Cut",
+accepted:["death stranding directors cut","death stranding director's cut","death stranding"]
+},
+
+{
+image:"assets/pixel-reveal/16.png",
+answer:"Metal Gear Solid V: The Phantom Pain",
+accepted:["metal gear solid v the phantom pain","metal gear solid 5 the phantom pain","metal gear solid v","metal gear solid 5","mgsv","mgs5"]
+},
+
+{
+image:"assets/pixel-reveal/17.png",
+answer:"Control",
+accepted:["control"]
+},
+
+{
+image:"assets/pixel-reveal/18.png",
+answer:"Alan Wake",
+accepted:["alan wake"]
+},
+
+{
+image:"assets/pixel-reveal/19.png",
+answer:"God of War",
+accepted:["god of war"]
+},
+
+{
+image:"assets/pixel-reveal/20.png",
+answer:"Hitman: World of Assassination",
+accepted:["hitman world of assassination","hitman","world of assassination"]
+},
+
+{
+image:"assets/pixel-reveal/21.png",
+answer:"Hades",
+accepted:["hades"]
+},
+
+{
+image:"assets/pixel-reveal/22.png",
+answer:"Monster Hunter Rise",
+accepted:["monster hunter rise","mh rise"]
+},
+
+{
+image:"assets/pixel-reveal/23.png",
+answer:"Monster Hunter: World",
+accepted:["monster hunter world","mh world"]
+},
+
+{
+image:"assets/pixel-reveal/24.png",
+answer:"Nioh 2",
+accepted:["nioh 2","nioh two"]
+},
+
+{
+image:"assets/pixel-reveal/25.png",
+answer:"Lies of P",
+accepted:["lies of p"]
+},
+
+{
+image:"assets/pixel-reveal/26.png",
+answer:"Sekiro: Shadows Die Twice",
+accepted:["sekiro shadows die twice","sekiro"]
+},
+
+{
+image:"assets/pixel-reveal/27.png",
+answer:"Dark Souls III",
+accepted:["dark souls iii","dark souls 3","darksouls 3"]
+},
+
+{
+image:"assets/pixel-reveal/28.png",
+answer:"Dark Souls Remastered",
+accepted:["dark souls remastered","dark souls"]
+},
+
+{
+image:"assets/pixel-reveal/29.png",
+answer:"Disco Elysium",
+accepted:["disco elysium"]
+},
+
+{
+image:"assets/pixel-reveal/30.png",
+answer:"Divinity: Original Sin 2",
+accepted:["divinity original sin 2","divinity original sin ii","divinity 2"]
+},
+
+{
+image:"assets/pixel-reveal/31.png",
+answer:"Mass Effect Legendary Edition",
+accepted:["mass effect legendary edition","mass effect"]
+},
+
+{
+image:"assets/pixel-reveal/32.png",
+answer:"Fallout: New Vegas",
+accepted:["fallout new vegas","new vegas","fallout nv"]
+},
+
+{
+image:"assets/pixel-reveal/33.png",
+answer:"Baldur's Gate 3",
+accepted:["baldurs gate 3","baldur's gate 3","baldurs gate iii","baldur's gate iii","bg3"]
+},
+
+{
+image:"assets/pixel-reveal/34.png",
+answer:"The Elder Scrolls V: Skyrim",
+accepted:["the elder scrolls v skyrim","the elder scrolls 5 skyrim","skyrim"]
+},
+
+{
+image:"assets/pixel-reveal/35.png",
+answer:"Resident Evil 2",
+accepted:["resident evil 2","resident evil two","re2"]
+},
+
+{
+image:"assets/pixel-reveal/36.png",
+answer:"Resident Evil 4",
+accepted:["resident evil 4","resident evil four","re4"]
+},
+
+{
+image:"assets/pixel-reveal/37.png",
+answer:"Resident Evil 7: Biohazard",
+accepted:["resident evil 7 biohazard","resident evil 7","re7","biohazard"]
+},
+
+{
+image:"assets/pixel-reveal/38.png",
+answer:"Alien: Isolation",
+accepted:["alien isolation"]
+},
+
+{
+image:"assets/pixel-reveal/39.png",
+answer:"Dead Space",
+accepted:["dead space"]
+},
+
+{
+image:"assets/pixel-reveal/40.png",
+answer:"Amnesia: The Dark Descent",
+accepted:["amnesia the dark descent","amnesia dark descent","amnesia"]
+},
+
+{
+image:"assets/pixel-reveal/41.png",
+answer:"SOMA",
+accepted:["soma"]
+},
+
+{
+image:"assets/pixel-reveal/42.png",
+answer:"Outlast",
+accepted:["outlast"]
+},
+
+{
+image:"assets/pixel-reveal/43.png",
+answer:"Phasmophobia",
+accepted:["phasmophobia","phasmo"]
+},
+
+{
+image:"assets/pixel-reveal/44.png",
+answer:"Little Nightmares",
+accepted:["little nightmares"]
+}
+
+];
+
+
+/* ======================================================
+GAME SETTINGS
+====================================================== */
+
+const GAMES_PER_RUN = 5;
+
+const REVEAL_STAGES = [
+    {width:18, points:1000},
+    {width:32, points:750},
+    {width:60, points:500},
+    {width:120, points:250},
+    {width:null, points:100}
+];
+
+const MAX_GUESSES = 3;
+
+
+/* ======================================================
+STATE
+====================================================== */
+
+let sessionGames = [];
+let currentIndex = 0;
+let totalScore = 0;
+let correctCount = 0;
+let bestGuess = 0;
+let extraRevealCount = 0;
+
+let revealIndex = 0;
+let guessesRemaining = MAX_GUESSES;
+let roundLocked = false;
+
+let currentImage = new Image();
+let reviewResults = [];
+
+
+/* ======================================================
+SHUFFLE
+====================================================== */
+
+function shuffle(array){
+
+    const copy = [...array];
+
+    for(let i = copy.length - 1; i > 0; i--){
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
+    }
+
+    return copy;
+}
+
+
+/* ======================================================
+NORMALISE ANSWERS
+====================================================== */
+
+function normalise(text){
+
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[’']/g,"")
+        .replace(/[:.,!?-]/g," ")
+        .replace(/\s+/g," ");
+}
+
+
+function answerMatches(
+    playerAnswer,
+    acceptedAnswers
+){
+
+    const player =
+        normalise(playerAnswer);
+
+    return acceptedAnswers.some(
+        answer =>
+        normalise(answer) === player
+    );
+}
+
+
+/* ======================================================
+START
+====================================================== */
+
+function startGame(){
+
+    sessionGames =
+        shuffle(GAME_BANK)
+        .slice(0,GAMES_PER_RUN);
+
+    currentIndex = 0;
+    totalScore = 0;
+    correctCount = 0;
+    bestGuess = 0;
+    extraRevealCount = 0;
+    reviewResults = [];
+
+    document
+        .getElementById("startScreen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "block";
+
+    loadGame();
+}
+
+
+/* ======================================================
+LOAD ROUND
+====================================================== */
+
+function loadGame(){
+
+    revealIndex = 0;
+    guessesRemaining = MAX_GUESSES;
+    roundLocked = false;
+
+    const game =
+        sessionGames[currentIndex];
+
+    document
+        .getElementById("progressText")
+        .textContent =
+        `Game ${currentIndex + 1} of ${GAMES_PER_RUN}`;
+
+    document
+        .getElementById("progressFill")
+        .style.width =
+        `${((currentIndex + 1) / GAMES_PER_RUN) * 100}%`;
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        totalScore;
+
+    document
+        .getElementById("answerInput")
+        .value =
+        "";
+
+    document
+        .getElementById("answerInput")
+        .disabled =
+        false;
+
+    document
+        .getElementById("submitButton")
+        .disabled =
+        false;
+
+    document
+        .getElementById("revealButton")
+        .disabled =
+        false;
+
+    document
+        .getElementById("skipButton")
+        .disabled =
+        false;
+
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        "";
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main";
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        "";
+
+    document
+        .getElementById("nextButton")
+        .style.display =
+        "none";
+
+    updateRoundUI();
+
+    currentImage = new Image();
+
+    currentImage.onload = () => {
+        drawPixelatedImage();
+    };
+
+    currentImage.src =
+        game.image;
+}
+
+
+/* ======================================================
+DRAW PIXELATED IMAGE
+====================================================== */
+
+function drawPixelatedImage(){
+
+    const canvas =
+        document.getElementById(
+            "pixelCanvas"
+        );
+
+    const context =
+        canvas.getContext("2d");
+
+    const displayWidth = 1200;
+    const displayHeight = 675;
+
+    canvas.width =
+        displayWidth;
+
+    canvas.height =
+        displayHeight;
+
+    const stage =
+        REVEAL_STAGES[revealIndex];
+
+    context.clearRect(
+        0,
+        0,
+        displayWidth,
+        displayHeight
+    );
+
+
+    /*
+    FINAL STAGE:
+    draw the original image at full resolution.
+    */
+
+    if(stage.width === null){
+
+        context.imageSmoothingEnabled = true;
+
+        context.drawImage(
+            currentImage,
+            0,
+            0,
+            displayWidth,
+            displayHeight
+        );
+
+        return;
+    }
+
+
+    /*
+    Pixel effect:
+
+    First draw the screenshot onto a tiny hidden canvas,
+    then scale that tiny image up to full screen with
+    smoothing disabled.
+    */
+
+    const smallCanvas =
+        document.createElement(
+            "canvas"
+        );
+
+    const smallContext =
+        smallCanvas.getContext(
+            "2d"
+        );
+
+    const smallWidth =
+        stage.width;
+
+    const smallHeight =
+        Math.round(
+            smallWidth *
+            9 / 16
+        );
+
+    smallCanvas.width =
+        smallWidth;
+
+    smallCanvas.height =
+        smallHeight;
+
+    smallContext.drawImage(
+        currentImage,
+        0,
+        0,
+        smallWidth,
+        smallHeight
+    );
+
+    context.imageSmoothingEnabled =
+        false;
+
+    context.drawImage(
+        smallCanvas,
+        0,
+        0,
+        smallWidth,
+        smallHeight,
+        0,
+        0,
+        displayWidth,
+        displayHeight
+    );
+}
+
+
+/* ======================================================
+ROUND UI
+====================================================== */
+
+function updateRoundUI(){
+
+    const stage =
+        REVEAL_STAGES[
+            revealIndex
+        ];
+
+    document
+        .getElementById("pointsDisplay")
+        .textContent =
+        `Worth ${stage.points} pts`;
+
+    document
+        .getElementById("revealStage")
+        .textContent =
+        `Reveal ${revealIndex + 1} of ${REVEAL_STAGES.length}`;
+
+    document
+        .getElementById("guessesLeft")
+        .textContent =
+        `${guessesRemaining} guess${guessesRemaining === 1 ? "" : "es"} remaining`;
+
+    document
+        .getElementById("revealButton")
+        .textContent =
+        revealIndex >=
+        REVEAL_STAGES.length - 2
+        ? "Reveal Full Image"
+        : "Reveal More";
+
+    if(
+        revealIndex >=
+        REVEAL_STAGES.length - 1
+    ){
+
+        document
+            .getElementById("revealButton")
+            .disabled =
+            true;
+    }
+}
+
+
+/* ======================================================
+REVEAL MORE
+====================================================== */
+
+function revealMore(){
+
+    if(
+        roundLocked ||
+        revealIndex >=
+        REVEAL_STAGES.length - 1
+    ){
+        return;
+    }
+
+    revealIndex++;
+
+    extraRevealCount++;
+
+    updateRoundUI();
+
+    drawPixelatedImage();
+}
+
+
+/* ======================================================
+SUBMIT GUESS
+====================================================== */
+
+function submitGuess(){
+
+    if(roundLocked){
+        return;
+    }
+
+    const input =
+        document.getElementById(
+            "answerInput"
+        );
+
+    const guess =
+        input.value.trim();
+
+    if(!guess){
+        return;
+    }
+
+    const game =
+        sessionGames[currentIndex];
+
+    const correct =
+        answerMatches(
+            guess,
+            game.accepted
+        );
+
+    if(correct){
+
+        finishRoundCorrect();
+
+    }else{
+
+        guessesRemaining--;
+
+        document
+            .getElementById("feedbackMain")
+            .textContent =
+            "Not quite!";
+
+        document
+            .getElementById("feedbackMain")
+            .className =
+            "feedback-main wrong";
+
+        if(
+            guessesRemaining > 0
+        ){
+
+            document
+                .getElementById("feedbackDetail")
+                .textContent =
+                "Try again or reveal more of the image.";
+
+            input.value = "";
+
+            updateRoundUI();
+
+        }else{
+
+            finishRoundWrong();
+        }
+    }
+}
+
+
+/* ======================================================
+ENTER KEY
+====================================================== */
+
+document
+    .getElementById("answerInput")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                event.preventDefault();
+
+                submitGuess();
+            }
+        }
+    );
+
+
+/* ======================================================
+CORRECT
+====================================================== */
+
+function finishRoundCorrect(){
+
+    roundLocked = true;
+
+    const game =
+        sessionGames[currentIndex];
+
+    const points =
+        REVEAL_STAGES[
+            revealIndex
+        ].points;
+
+    totalScore +=
+        points;
+
+    correctCount++;
+
+    bestGuess =
+        Math.max(
+            bestGuess,
+            points
+        );
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        totalScore;
+
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        `Correct! +${points} points`;
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main correct";
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        game.answer;
+
+    revealFinalImage();
+
+    lockRound();
+
+    reviewResults.push({
+
+        answer:game.answer,
+        correct:true,
+        points:points
+
+    });
+
+    showNextButton();
+}
+
+
+/* ======================================================
+WRONG
+====================================================== */
+
+function finishRoundWrong(){
+
+    roundLocked = true;
+
+    const game =
+        sessionGames[currentIndex];
+
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        "Out of guesses!";
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main wrong";
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        `Answer: ${game.answer}`;
+
+    revealFinalImage();
+
+    lockRound();
+
+    reviewResults.push({
+
+        answer:game.answer,
+        correct:false,
+        points:0
+
+    });
+
+    showNextButton();
+}
+
+
+/* ======================================================
+SKIP
+====================================================== */
+
+function skipGame(){
+
+    if(roundLocked){
+        return;
+    }
+
+    roundLocked = true;
+
+    const game =
+        sessionGames[currentIndex];
+
+    document
+        .getElementById("feedbackMain")
+        .textContent =
+        "Skipped";
+
+    document
+        .getElementById("feedbackMain")
+        .className =
+        "feedback-main wrong";
+
+    document
+        .getElementById("feedbackDetail")
+        .textContent =
+        `Answer: ${game.answer}`;
+
+    revealFinalImage();
+
+    lockRound();
+
+    reviewResults.push({
+
+        answer:game.answer,
+        correct:false,
+        points:0
+
+    });
+
+    showNextButton();
+}
+
+
+/* ======================================================
+FULL IMAGE
+====================================================== */
+
+function revealFinalImage(){
+
+    revealIndex =
+        REVEAL_STAGES.length - 1;
+
+    updateRoundUI();
+
+    drawPixelatedImage();
+}
+
+
+/* ======================================================
+LOCK ROUND
+====================================================== */
+
+function lockRound(){
+
+    document
+        .getElementById("answerInput")
+        .disabled =
+        true;
+
+    document
+        .getElementById("submitButton")
+        .disabled =
+        true;
+
+    document
+        .getElementById("revealButton")
+        .disabled =
+        true;
+
+    document
+        .getElementById("skipButton")
+        .disabled =
+        true;
+}
+
+
+/* ======================================================
+NEXT BUTTON
+====================================================== */
+
+function showNextButton(){
+
+    const button =
+        document.getElementById(
+            "nextButton"
+        );
+
+    button.style.display =
+        "block";
+
+    button.textContent =
+        currentIndex ===
+        GAMES_PER_RUN - 1
+        ? "See Results →"
+        : "Next Game →";
+}
+
+
+/* ======================================================
+NEXT GAME
+====================================================== */
+
+function nextGame(){
+
+    currentIndex++;
+
+    if(
+        currentIndex >=
+        GAMES_PER_RUN
+    ){
+
+        finishGame();
+
+    }else{
+
+        loadGame();
+    }
+}
+
+
+/* ======================================================
+FINISH
+====================================================== */
+
+function finishGame(){
+
+    document
+        .getElementById("gameArea")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("resultsScreen")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        totalScore;
+
+    document
+        .getElementById("correctCount")
+        .textContent =
+        `${correctCount}/5`;
+
+    document
+        .getElementById("bestGuess")
+        .textContent =
+        `${bestGuess}`;
+
+    document
+        .getElementById("revealCount")
+        .textContent =
+        extraRevealCount;
+
+    buildReview();
+}
+
+
+/* ======================================================
+REVIEW
+====================================================== */
+
+function buildReview(){
+
+    const list =
+        document.getElementById(
+            "reviewList"
+        );
+
+    list.innerHTML = "";
+
+    reviewResults.forEach(
+        (result,index) => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "review-item";
+
+            item.innerHTML =
+                `
+                <strong>
+                    ${index + 1}. ${result.answer}
+                </strong>
+                <br>
+                <span>
+                    ${result.correct
+                        ? `${result.points} points`
+                        : "Not guessed"}
+                </span>
+                `;
+
+            list.appendChild(
+                item
+            );
+        }
+    );
+}
+
+
+/* ======================================================
+PLAY AGAIN
+====================================================== */
+
+function playAgain(){
+
+    startGame();
+}
+
+</script>
+
+</body>
+</html>
