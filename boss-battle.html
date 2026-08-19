@@ -119,9 +119,7 @@ START
 
 .intro{
     max-width:650px;
-
     margin:15px auto 28px;
-
     color:var(--muted);
     line-height:1.55;
 }
@@ -146,7 +144,6 @@ START
 
 .rules{
     max-width:760px;
-
     margin:0 auto 30px;
 
     display:grid;
@@ -234,7 +231,7 @@ BOSS
 
     color:var(--primary);
 
-    font-size:14px;
+    font-size:15px;
     font-weight:900;
 
     letter-spacing:1px;
@@ -511,7 +508,6 @@ PLAYER HUD
 
 .charge{
     display:flex;
-
     justify-content:center;
 
     gap:7px;
@@ -536,15 +532,6 @@ PLAYER HUD
     background:var(--red);
 }
 
-.question-count{
-    margin-top:7px;
-
-    color:var(--primary);
-
-    font-size:23px;
-    font-weight:900;
-}
-
 
 /* =========================
 QUESTION
@@ -552,7 +539,6 @@ QUESTION
 
 .question-section{
     max-width:760px;
-
     margin:0 auto;
 }
 
@@ -763,10 +749,23 @@ RESULTS
     font-weight:900;
 }
 
+.result-boss-name{
+    margin-top:12px;
+
+    color:var(--primary);
+
+    font-size:14px;
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
 .result-boss-line{
     max-width:600px;
 
-    margin:16px auto 25px;
+    margin:12px auto 25px;
 
     padding:14px;
 
@@ -926,9 +925,7 @@ Return to Game Hub
 
 
 
-<!-- =========================
-START
-========================= -->
+<!-- START -->
 
 <section
     class="start-screen"
@@ -952,12 +949,12 @@ BATTLE
 
 <p class="intro">
 
-This boss won't go down easily.
+A random boss is waiting.
 
 Answer two difficult gaming questions correctly to land a hit.
 Get two wrong and you'll take damage instead.
 
-Defeat the boss before you lose all three hearts.
+Defeat your opponent before you lose all three hearts.
 
 </p>
 
@@ -979,6 +976,7 @@ Build your attack charge and damage the boss.
 
 </div>
 
+
 <div class="rule">
 
 <div class="rule-icon">
@@ -995,6 +993,7 @@ Every two mistakes costs you one heart.
 
 </div>
 
+
 <div class="rule">
 
 <div class="rule-icon">
@@ -1002,11 +1001,11 @@ Every two mistakes costs you one heart.
 </div>
 
 <strong>
-8 Correct To Win
+Random Boss
 </strong>
 
 <small>
-Push the boss through four damage stages.
+Different villains can appear each time you battle.
 </small>
 
 </div>
@@ -1025,9 +1024,7 @@ START BATTLE
 
 
 
-<!-- =========================
-BATTLE
-========================= -->
+<!-- BATTLE -->
 
 <section
     class="game-area"
@@ -1038,8 +1035,12 @@ BATTLE
     id="battleCard">
 
 
-<div class="boss-name">
+<div
+    class="boss-name"
+    id="bossName">
+
 THE ARCADE BOSS
+
 </div>
 
 
@@ -1076,7 +1077,7 @@ BOSS HP
 <img
     class="boss-image"
     id="bossImage"
-    src="assets/boss-battle/1.png"
+    src=""
     alt="Boss">
 
 <div
@@ -1092,16 +1093,13 @@ HIT!
 
 <div class="boss-talk">
 
-<strong>
-THE BOSS
+<strong id="bossTalkName">
+THE ARCADE BOSS
 </strong>
 
 <div
     class="boss-line"
     id="bossLine">
-
-Another challenger? This shouldn't take long.
-
 </div>
 
 </div>
@@ -1181,7 +1179,9 @@ Danger
 <div class="question-label">
 
 Question
-<span id="questionNumber">1</span>
+<span id="questionNumber">
+1
+</span>
 
 </div>
 
@@ -1190,10 +1190,12 @@ Question
     id="questionText">
 </div>
 
+
 <div
     class="answers"
     id="answers">
 </div>
+
 
 <button
     class="submit-btn"
@@ -1239,9 +1241,7 @@ NEXT QUESTION
 
 
 
-<!-- =========================
-RESULTS
-========================= -->
+<!-- RESULTS -->
 
 <section
     class="results-screen"
@@ -1252,7 +1252,7 @@ RESULTS
 <img
     class="result-boss-image"
     id="resultBossImage"
-    src="assets/boss-battle/5.png"
+    src=""
     alt="Boss result">
 
 <h1
@@ -1264,11 +1264,13 @@ BOSS DEFEATED
 </h1>
 
 <div
+    class="result-boss-name"
+    id="resultBossName">
+</div>
+
+<div
     class="result-boss-line"
     id="resultBossLine">
-
-I demand a rematch.
-
 </div>
 
 
@@ -1350,7 +1352,7 @@ Best Streak
     class="result-btn rematch"
     onclick="startBattle()">
 
-Rematch
+Fight Another Boss
 
 </button>
 
@@ -1373,34 +1375,208 @@ Return to Game Hub
 <script>
 
 /* ======================================================
-BOSS VISUAL STATES
+BOSS ROSTER
+
+IMPORTANT:
+
+The FIRST boss is selected completely randomly.
+
+Once a battle has happened, the next battle avoids
+immediately selecting the same boss again.
 ====================================================== */
 
-const BOSS_STAGES = [
+const BOSSES = [
 
 {
-health:100,
-image:"assets/boss-battle/1.png"
+
+id:"arcade-boss",
+
+name:"The Arcade Boss",
+
+images:[
+    "assets/boss-battle/1.png",
+    "assets/boss-battle/2.png",
+    "assets/boss-battle/3.png",
+    "assets/boss-battle/4.png",
+    "assets/boss-battle/5.png"
+],
+
+talk:{
+
+start:[
+    "Another challenger? This shouldn't take long.",
+    "I've deleted save files tougher than you.",
+    "Hope you didn't skip the tutorial.",
+    "Eight correct answers? You'll be lucky to get two.",
+    "Oh good. Another player who thinks they're an expert."
+],
+
+correct:[
+    "Lucky guess. Do it again.",
+    "Hmm. You actually knew that one.",
+    "Don't get confident.",
+    "One correct answer doesn't make you a speedrunner.",
+    "Fine. I'll give you that one."
+],
+
+wrong:[
+    "Is that seriously your answer?",
+    "I've seen NPCs make better decisions.",
+    "That answer belongs in the bargain bin.",
+    "Keep guessing like that. You're doing my job for me.",
+    "Were you playing with the monitor turned off?",
+    "Maybe gaming just isn't your thing."
+],
+
+bossHit:[
+    "HEY! That actually hurt!",
+    "Okay... maybe I underestimated you.",
+    "You'll pay for that.",
+    "Cheap shot!",
+    "Right. Now I'm annoyed."
+],
+
+bossLow:[
+    "This was not supposed to happen.",
+    "Stop answering things correctly!",
+    "You're really starting to annoy me.",
+    "We can still talk about this.",
+    "Surely you've got something better to do?"
+],
+
+playerHit:[
+    "There we go. Now we're getting somewhere.",
+    "That's one heart gone.",
+    "Your health bar is looking a little nervous.",
+    "You might want to start worrying.",
+    "I barely even had to try."
+],
+
+lastHeart:[
+    "One heart left. No pressure.",
+    "Next hit could be your last.",
+    "I can already see the Game Over screen.",
+    "Careful. You're running out of continues."
+],
+
+victory:[
+    "I demand a recount.",
+    "You got lucky.",
+    "Fine. You win. This time.",
+    "Tell nobody about this.",
+    "I was clearly suffering from input lag."
+],
+
+defeat:[
+    "Come back when you've finished the tutorial.",
+    "GAME OVER. Just as predicted.",
+    "Better luck after a few more side quests.",
+    "Should I lower the difficulty for you?",
+    "I told you this wouldn't take long."
+]
+
+}
+
 },
 
-{
-health:75,
-image:"assets/boss-battle/2.png"
-},
+
+/* =========================
+THE GLITCH KING
+========================= */
 
 {
-health:50,
-image:"assets/boss-battle/3.png"
-},
 
-{
-health:35,
-image:"assets/boss-battle/4.png"
-},
+id:"glitch-king",
 
-{
-health:0,
-image:"assets/boss-battle/5.png"
+name:"The Glitch King",
+
+images:[
+    "assets/boss-battle/glitch-king/1.png",
+    "assets/boss-battle/glitch-king/2.png",
+    "assets/boss-battle/glitch-king/3.png",
+    "assets/boss-battle/glitch-king/4.png",
+    "assets/boss-battle/glitch-king/5.png"
+],
+
+talk:{
+
+start:[
+    "CHALLENGER_DETECTED // initiating humiliation.exe",
+    "Welcome, player. Your defeat has already been calculated.",
+    "SYSTEM ONLINE. PLAYER SURVIVAL PROBABILITY: embarrassing.",
+    "I have analysed your gaming history. It was... disappointing.",
+    "BEGINNING BATTLE_SEQUENCE. Please remain still while I delete your confidence."
+],
+
+correct:[
+    "ERROR: Correct answer detected.",
+    "That response was not in my prediction model.",
+    "Knowledge level unexpectedly above zero.",
+    "CORRECT_INPUT received. Recalculating...",
+    "Anomaly detected. You actually knew that.",
+    "Processing... irritation increasing."
+],
+
+wrong:[
+    "INCORRECT_INPUT. As expected.",
+    "ERROR belongs to you, not me.",
+    "Your answer has been moved to the recycle bin.",
+    "PLAYER_KNOWLEDGE.exe has stopped responding.",
+    "Processing answer... processing... laughable.",
+    "I recommend installing additional intelligence."
+],
+
+bossHit:[
+    "ERROR! DAMAGE_EVENT was not authorised!",
+    "SYSTEM WARNING // integrity compromised.",
+    "Stop corrupting my health bar!",
+    "UNEXPECTED DAMAGE. Recalculating superiority.",
+    "That hit violated several system protocols."
+],
+
+bossLow:[
+    "WARNING // WARNING // CORE INTEGRITY FALLING.",
+    "SYSTEM FAILURE probability increasing...",
+    "STOP. ANSWERING. CORRECTLY.",
+    "HP_CRITICAL // this is statistically impossible.",
+    "Do not press anything. Especially the correct answer.",
+    "I may have... miscalculated."
+],
+
+playerHit:[
+    "PLAYER_HP reduced successfully.",
+    "Damage confirmed. System satisfaction increased.",
+    "Your health data is degrading nicely.",
+    "PLAYER_DEFENCE.exe appears outdated.",
+    "Excellent. Balance has been restored."
+],
+
+lastHeart:[
+    "CRITICAL WARNING // PLAYER has one life remaining.",
+    "One heart detected. Preparing deletion.",
+    "Your continued existence is now statistically unlikely.",
+    "FINAL_LIFE.exe running...",
+    "One more error and your session terminates."
+],
+
+victory:[
+    "SYSTEM FAILURE... blame the developers.",
+    "FATAL ERROR // winner variable incorrectly assigned.",
+    "NO. NO. NO. REBOOTING...",
+    "CORE_DUMP initiated. Tell nobody.",
+    "Victory detected... clearly a software bug."
+],
+
+defeat:[
+    "PLAYER_PROCESS terminated successfully.",
+    "GAME_OVER.exe completed without errors.",
+    "Your save file has been placed in the recycle bin.",
+    "SYSTEM STATUS: victorious.",
+    "Thank you for participating in your own deletion."
+]
+
+}
+
 }
 
 ];
@@ -1431,7 +1607,7 @@ correct:"Revachol"
 },
 
 {
-q:"Which game introduced the character Raiden as its main playable protagonist for much of the story?",
+q:"Which game introduced Raiden as its main playable protagonist for much of the story?",
 a:["Metal Gear Solid","Metal Gear Solid 2","Metal Gear Solid 3","Metal Gear Rising"],
 correct:"Metal Gear Solid 2"
 },
@@ -1479,7 +1655,7 @@ correct:"Yharnam"
 },
 
 {
-q:"Which studio developed Return of the Obra Dinn?",
+q:"Who developed Return of the Obra Dinn?",
 a:["Subset Games","Lucas Pope","Mobius Digital","Jonathan Blow"],
 correct:"Lucas Pope"
 },
@@ -1545,7 +1721,7 @@ correct:"BioShock"
 },
 
 {
-q:"In Halo lore, what is the designation of Master Chief?",
+q:"In Halo lore, what is Master Chief's designation?",
 a:["John-117","Noble Six","Jerome-092","Jameson-043"],
 correct:"John-117"
 },
@@ -1564,12 +1740,12 @@ correct:"Braid"
 
 {
 q:"In Fallout: New Vegas, which faction is led by Caesar?",
-a:["NCR","The Legion","Brotherhood of Steel","Followers of the Apocalypse"],
-correct:"The Legion"
+a:["NCR","Caesar's Legion","Brotherhood of Steel","Followers of the Apocalypse"],
+correct:"Caesar's Legion"
 },
 
 {
-q:"Which developer created Papers, Please?",
+q:"Who developed Papers, Please?",
 a:["Lucas Pope","Toby Fox","Edmund McMillen","Derek Yu"],
 correct:"Lucas Pope"
 },
@@ -1611,13 +1787,7 @@ correct:"Remedy Entertainment"
 },
 
 {
-q:"In Resident Evil 4, what is the first name of the merchant-like character who repeatedly helps Leon?",
-a:["Luis","There is no given name","Ramón","Bitores"],
-correct:"There is no given name"
-},
-
-{
-q:"Which title was FromSoftware's first game released for the PlayStation 4?",
+q:"Which FromSoftware title launched exclusively on PlayStation 4 in 2015?",
 a:["Bloodborne","Dark Souls II","Dark Souls III","Sekiro"],
 correct:"Bloodborne"
 },
@@ -1665,7 +1835,7 @@ correct:"Retro Studios"
 },
 
 {
-q:"In Cyberpunk 2077, what is the name of the operating system that allows V to perform quickhacks?",
+q:"In Cyberpunk 2077, which operating system is used for performing quickhacks?",
 a:["Cyberdeck","Sandevistan","Berserk","Kiroshi"],
 correct:"Cyberdeck"
 },
@@ -1689,13 +1859,13 @@ correct:"Monolith Productions"
 },
 
 {
-q:"In Portal 2, what is Wheatley's official role when Chell first encounters him?",
+q:"In Portal 2, what was Wheatley designed to be?",
 a:["Security Core","Intelligence Dampening Sphere","Morality Core","Adventure Core"],
 correct:"Intelligence Dampening Sphere"
 },
 
 {
-q:"Which game introduced the fictional drug called Plasmids?",
+q:"Which game introduced Plasmids as a major gameplay mechanic?",
 a:["BioShock","Prey","Deus Ex","Dishonored"],
 correct:"BioShock"
 },
@@ -1707,25 +1877,25 @@ correct:"Warhorse Studios"
 },
 
 {
-q:"Which game features the detective Harry Du Bois?",
+q:"Which game features detective Harry Du Bois?",
 a:["Disco Elysium","Heavy Rain","L.A. Noire","The Wolf Among Us"],
 correct:"Disco Elysium"
 },
 
 {
 q:"In The Elder Scrolls IV: Oblivion, which Daedric Prince is the central antagonist?",
-a:["Mehrunes Dagon","Molag Bal","Sheogorath","Mehrunes Razor"],
+a:["Mehrunes Dagon","Molag Bal","Sheogorath","Azura"],
 correct:"Mehrunes Dagon"
 },
 
 {
-q:"Which developer created the original Amnesia: The Dark Descent?",
+q:"Which developer created Amnesia: The Dark Descent?",
 a:["Frictional Games","Red Barrels","Bloober Team","Supermassive Games"],
 correct:"Frictional Games"
 },
 
 {
-q:"Which game takes place in the city of Columbia?",
+q:"Which game takes place in the floating city of Columbia?",
 a:["BioShock 2","BioShock Infinite","Dishonored 2","Prey"],
 correct:"BioShock Infinite"
 },
@@ -1737,37 +1907,37 @@ correct:"Volition"
 },
 
 {
-q:"Which game features a protagonist named Razputin Aquato?",
+q:"Which game features Razputin Aquato?",
 a:["Psychonauts","Broken Age","Costume Quest","Grim Fandango"],
 correct:"Psychonauts"
 },
 
 {
 q:"Which developer created the original Dying Light?",
-a:["Techland","Dead Island Studios","People Can Fly","Flying Wild Hog"],
+a:["Techland","Deep Silver","People Can Fly","Flying Wild Hog"],
 correct:"Techland"
 },
 
 {
-q:"In Final Fantasy VII, what is the name of Cloud's enormous sword?",
+q:"In Final Fantasy VII, what is Cloud's iconic starting weapon?",
 a:["Gunblade","Masamune","Buster Sword","Ultima Weapon"],
 correct:"Buster Sword"
 },
 
 {
-q:"Which game features the fictional continent of Tamriel?",
+q:"Which series takes place across the continent of Tamriel?",
 a:["Dragon Age","The Elder Scrolls","The Witcher","Dragon's Dogma"],
 correct:"The Elder Scrolls"
 },
 
 {
-q:"Which studio developed the first Ori game?",
+q:"Which studio developed Ori and the Blind Forest?",
 a:["Moon Studios","Playdead","Team Cherry","Thunder Lotus"],
 correct:"Moon Studios"
 },
 
 {
-q:"In Control, what is the name of the building occupied by the Federal Bureau of Control?",
+q:"In Control, what is the headquarters of the Federal Bureau of Control called?",
 a:["The Oldest House","The Threshold","The Foundation","The Panopticon"],
 correct:"The Oldest House"
 },
@@ -1779,13 +1949,13 @@ correct:"Ludeon Studios"
 },
 
 {
-q:"Which game features a spacecraft called the Normandy?",
+q:"Which series features the spacecraft Normandy?",
 a:["Halo","Mass Effect","Dead Space","Starfield"],
 correct:"Mass Effect"
 },
 
 {
-q:"Which developer created The Stanley Parable?",
+q:"Which studio originally developed The Stanley Parable?",
 a:["Galactic Cafe","Campo Santo","Giant Sparrow","Tomorrow Corporation"],
 correct:"Galactic Cafe"
 },
@@ -1797,7 +1967,7 @@ correct:"Wolf"
 },
 
 {
-q:"Which game features the fictional corporation Aperture Science?",
+q:"Which series features Aperture Science?",
 a:["Portal","Half-Life","The Talos Principle","The Stanley Parable"],
 correct:"Portal"
 },
@@ -1809,7 +1979,7 @@ correct:"Gearbox Software"
 },
 
 {
-q:"Which game takes place on the planet 4546B?",
+q:"Which game takes place on planet 4546B?",
 a:["No Man's Sky","Subnautica","The Outer Worlds","Outer Wilds"],
 correct:"Subnautica"
 },
@@ -1822,12 +1992,12 @@ correct:"Tarsier Studios"
 
 {
 q:"In Half-Life, what is Gordon Freeman's profession?",
-a:["Security officer","Theoretical physicist","Engineer","Marine"],
-correct:"Theoretical physicist"
+a:["Security Officer","Theoretical Physicist","Engineer","Marine"],
+correct:"Theoretical Physicist"
 },
 
 {
-q:"Which title introduced Ezio Auditore as a protagonist?",
+q:"Which title introduced Ezio Auditore as its protagonist?",
 a:["Assassin's Creed","Assassin's Creed II","Brotherhood","Revelations"],
 correct:"Assassin's Creed II"
 }
@@ -1836,87 +2006,10 @@ correct:"Assassin's Creed II"
 
 
 /* ======================================================
-BOSS DIALOGUE
-====================================================== */
-
-const TALK = {
-
-start:[
-    "Another challenger? This shouldn't take long.",
-    "I've deleted save files tougher than you.",
-    "Hope you didn't skip the tutorial.",
-    "Eight correct answers? You'll be lucky to get two."
-],
-
-correct:[
-    "Lucky guess. Do it again.",
-    "Hmm. You actually knew that one.",
-    "Don't get confident.",
-    "One correct answer doesn't make you a speedrunner.",
-    "Fine. I'll give you that one."
-],
-
-wrong:[
-    "Is that seriously your answer?",
-    "I've seen NPCs make better decisions.",
-    "That answer belongs in the bargain bin.",
-    "Keep guessing like that. You're doing my job for me.",
-    "Were you playing with the monitor turned off?"
-],
-
-bossHit:[
-    "HEY! That actually hurt!",
-    "Okay... maybe I underestimated you.",
-    "You'll pay for that.",
-    "Cheap shot!",
-    "Right. Now I'm annoyed."
-],
-
-bossLow:[
-    "This was not supposed to happen.",
-    "Stop answering things correctly!",
-    "You're really starting to annoy me.",
-    "We can still talk about this.",
-    "Surely you've got something better to do?"
-],
-
-playerHit:[
-    "There we go. Now we're getting somewhere.",
-    "That's one heart gone.",
-    "Your health bar is looking a little nervous.",
-    "You might want to start worrying.",
-    "I barely even had to try."
-],
-
-lastHeart:[
-    "One heart left. No pressure.",
-    "Next hit could be your last.",
-    "I can already see the Game Over screen.",
-    "Careful. You're running out of continues."
-],
-
-victory:[
-    "I demand a recount.",
-    "You got lucky. Seventy questions and you got THOSE ones?",
-    "Fine. You win. This time.",
-    "Tell nobody about this.",
-    "I was clearly suffering from input lag."
-],
-
-defeat:[
-    "Come back when you've finished the tutorial.",
-    "GAME OVER. Just as predicted.",
-    "Better luck after a few more side quests.",
-    "Should I lower the difficulty for you?",
-    "I told you this wouldn't take long."
-]
-
-};
-
-
-/* ======================================================
 STATE
 ====================================================== */
+
+let currentBoss = null;
 
 let questionDeck = [];
 
@@ -1957,8 +2050,7 @@ function shuffle(array){
         [...array];
 
     for(
-        let i =
-            copy.length - 1;
+        let i = copy.length - 1;
         i > 0;
         i--
     ){
@@ -1983,17 +2075,85 @@ function shuffle(array){
 }
 
 
-function randomLine(category){
+function randomItem(array){
 
-    const lines =
-        TALK[category];
-
-    return lines[
+    return array[
         Math.floor(
             Math.random() *
-            lines.length
+            array.length
         )
     ];
+}
+
+
+/* ======================================================
+CHOOSE BOSS
+
+FIRST FIGHT:
+Random from ALL bosses.
+
+REMATCH:
+Random from everyone EXCEPT the boss just fought.
+
+As more bosses are added later this will continue
+working automatically.
+====================================================== */
+
+function chooseBoss(){
+
+    let availableBosses;
+
+
+    if(
+        currentBoss === null
+    ){
+
+        availableBosses =
+            [...BOSSES];
+
+    }else{
+
+        availableBosses =
+            BOSSES.filter(
+                boss =>
+                    boss.id !==
+                    currentBoss.id
+            );
+    }
+
+
+    /*
+    Safety fallback.
+    */
+
+    if(
+        availableBosses.length === 0
+    ){
+
+        availableBosses =
+            [...BOSSES];
+    }
+
+
+    currentBoss =
+        randomItem(
+            availableBosses
+        );
+}
+
+
+/* ======================================================
+BOSS DIALOGUE
+====================================================== */
+
+function randomBossLine(category){
+
+    return randomItem(
+        currentBoss
+            .talk[
+                category
+            ]
+    );
 }
 
 
@@ -2009,15 +2169,23 @@ function setBossLine(line){
 
 
 /* ======================================================
-START
+START BATTLE
 ====================================================== */
 
 function startBattle(){
+
+    /*
+    Pick the villain BEFORE resetting the fight.
+    */
+
+    chooseBoss();
+
 
     questionDeck =
         shuffle(
             QUESTION_BANK
         );
+
 
     currentQuestion = null;
 
@@ -2078,8 +2246,26 @@ function startBattle(){
         "battle-card";
 
 
+    document
+        .getElementById(
+            "bossName"
+        )
+        .textContent =
+        currentBoss.name;
+
+
+    document
+        .getElementById(
+            "bossTalkName"
+        )
+        .textContent =
+        currentBoss.name;
+
+
     setBossLine(
-        randomLine("start")
+        randomBossLine(
+            "start"
+        )
     );
 
 
@@ -2117,13 +2303,9 @@ function loadQuestion(){
         questionDeck.pop();
 
 
-    selectedAnswer =
-        null;
+    selectedAnswer = null;
 
-
-    questionLocked =
-        false;
-
+    questionLocked = false;
 
     questionNumber++;
 
@@ -2235,10 +2417,10 @@ function renderAnswers(){
 
             button.onclick =
                 () =>
-                selectAnswer(
-                    button,
-                    answer
-                );
+                    selectAnswer(
+                        button,
+                        answer
+                    );
 
 
             container.appendChild(
@@ -2294,7 +2476,7 @@ function selectAnswer(
 
 
 /* ======================================================
-ENTER KEY
+ENTER
 ====================================================== */
 
 document.addEventListener(
@@ -2302,7 +2484,8 @@ document.addEventListener(
     function(event){
 
         if(
-            event.key === "Enter" &&
+            event.key ===
+            "Enter" &&
             !questionLocked &&
             selectedAnswer !== null &&
             document
@@ -2460,7 +2643,7 @@ function processCorrect(){
     }else{
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "correct"
             )
         );
@@ -2523,7 +2706,7 @@ function processWrong(){
     }else{
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "wrong"
             )
         );
@@ -2534,7 +2717,7 @@ function processWrong(){
 
 
 /* ======================================================
-BOSS DAMAGE
+DAMAGE BOSS
 ====================================================== */
 
 function damageBoss(){
@@ -2570,8 +2753,7 @@ function damageBoss(){
 
 
     damage.textContent =
-        bossStage >=
-        BOSS_STAGES.length - 1
+        bossStage >= 4
         ? "FINAL HIT!"
         : "HIT!";
 
@@ -2590,29 +2772,30 @@ function damageBoss(){
 
 
     setTimeout(
-        () => {
-
-            updateBoss();
-
-        },
+        updateBoss,
         260
     );
 
 
     if(
-        bossStage >=
-        BOSS_STAGES.length - 1
+        bossStage >= 4
     ){
 
         setBossLine(
-            "Wait... we can talk about this."
+            randomBossLine(
+                "bossLow"
+            )
         );
 
 
         setTimeout(
-            () => endBattle(true),
+            () =>
+                endBattle(
+                    true
+                ),
             950
         );
+
 
         return;
     }
@@ -2623,7 +2806,7 @@ function damageBoss(){
     ){
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "bossLow"
             )
         );
@@ -2631,7 +2814,7 @@ function damageBoss(){
     }else{
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "bossHit"
             )
         );
@@ -2646,7 +2829,7 @@ function damageBoss(){
 
 
 /* ======================================================
-PLAYER DAMAGE
+DAMAGE PLAYER
 ====================================================== */
 
 function damagePlayer(){
@@ -2682,16 +2865,20 @@ function damagePlayer(){
     ){
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "defeat"
             )
         );
 
 
         setTimeout(
-            () => endBattle(false),
+            () =>
+                endBattle(
+                    false
+                ),
             900
         );
+
 
         return;
     }
@@ -2702,7 +2889,7 @@ function damagePlayer(){
     ){
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "lastHeart"
             )
         );
@@ -2710,7 +2897,7 @@ function damagePlayer(){
     }else{
 
         setBossLine(
-            randomLine(
+            randomBossLine(
                 "playerHit"
             )
         );
@@ -2725,18 +2912,20 @@ function damagePlayer(){
 
 
 /* ======================================================
-BOSS UI
+UPDATE BOSS
 ====================================================== */
 
 function updateBoss(){
 
+    const healthStages =
+        [100,75,50,35,0];
+
+
     const stage =
-        BOSS_STAGES[
-            Math.min(
-                bossStage,
-                BOSS_STAGES.length - 1
-            )
-        ];
+        Math.min(
+            bossStage,
+            4
+        );
 
 
     document
@@ -2744,7 +2933,10 @@ function updateBoss(){
             "bossImage"
         )
         .src =
-        stage.image;
+        currentBoss
+            .images[
+                stage
+            ];
 
 
     document
@@ -2752,7 +2944,10 @@ function updateBoss(){
             "bossHealth"
         )
         .style.width =
-        stage.health + "%";
+        healthStages[
+            stage
+        ] +
+        "%";
 
 
     document
@@ -2760,7 +2955,10 @@ function updateBoss(){
             "bossHealthText"
         )
         .textContent =
-        stage.health + "%";
+        healthStages[
+            stage
+        ] +
+        "%";
 }
 
 
@@ -2868,7 +3066,7 @@ function nextQuestion(){
 
 
 /* ======================================================
-END BATTLE
+END
 ====================================================== */
 
 function endBattle(victory){
@@ -2930,6 +3128,14 @@ function endBattle(victory){
         bestStreak;
 
 
+    document
+        .getElementById(
+            "resultBossName"
+        )
+        .textContent =
+        currentBoss.name;
+
+
     if(victory){
 
         document
@@ -2945,7 +3151,10 @@ function endBattle(victory){
                 "resultBossImage"
             )
             .src =
-            "assets/boss-battle/5.png";
+            currentBoss
+                .images[
+                    4
+                ];
 
 
         document
@@ -2953,7 +3162,7 @@ function endBattle(victory){
                 "resultBossLine"
             )
             .textContent =
-            randomLine(
+            randomBossLine(
                 "victory"
             );
 
@@ -2967,21 +3176,18 @@ function endBattle(victory){
             "YOU WERE DEFEATED";
 
 
-        const stage =
-            BOSS_STAGES[
-                Math.min(
-                    bossStage,
-                    3
-                )
-            ];
-
-
         document
             .getElementById(
                 "resultBossImage"
             )
             .src =
-            stage.image;
+            currentBoss
+                .images[
+                    Math.min(
+                        bossStage,
+                        3
+                    )
+                ];
 
 
         document
@@ -2989,7 +3195,7 @@ function endBattle(victory){
                 "resultBossLine"
             )
             .textContent =
-            randomLine(
+            randomBossLine(
                 "defeat"
             );
     }
