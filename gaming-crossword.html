@@ -38,9 +38,7 @@ button{
     font:inherit;
 }
 
-/* =========================
-HEADER
-========================= */
+/* HEADER */
 
 header{
     min-height:68px;
@@ -72,9 +70,7 @@ header{
     font-weight:800;
 }
 
-/* =========================
-START
-========================= */
+/* START */
 
 .start-screen{
     max-width:900px;
@@ -108,7 +104,7 @@ START
 }
 
 .intro{
-    max-width:650px;
+    max-width:680px;
     margin:16px auto 28px;
     color:var(--muted);
     line-height:1.55;
@@ -155,9 +151,7 @@ START
     box-shadow:0 4px 0 #9cb500;
 }
 
-/* =========================
-GAME
-========================= */
+/* GAME */
 
 .game-screen{
     display:none;
@@ -203,9 +197,7 @@ GAME
     align-items:start;
 }
 
-/* =========================
-GRID CARD
-========================= */
+/* GRID */
 
 .grid-card{
     background:white;
@@ -228,7 +220,6 @@ GRID CARD
     background:#333;
     border:2px solid #333;
     width:min(100%,700px);
-    aspect-ratio:1 / 1;
 }
 
 .cell{
@@ -284,9 +275,7 @@ GRID CARD
     user-select:none;
 }
 
-/* =========================
-CONTROLS
-========================= */
+/* CONTROLS */
 
 .controls{
     margin-top:16px;
@@ -326,9 +315,7 @@ CONTROLS
     color:var(--primary);
 }
 
-/* =========================
-CLUES
-========================= */
+/* CLUES */
 
 .clue-card{
     background:white;
@@ -386,9 +373,7 @@ CLUES
     margin-right:5px;
 }
 
-/* =========================
-RESULTS
-========================= */
+/* RESULTS */
 
 .results-screen{
     display:none;
@@ -474,10 +459,6 @@ RESULTS
     color:white;
 }
 
-/* =========================
-MOBILE
-========================= */
-
 @media(max-width:850px){
 
     .crossword-layout{
@@ -552,10 +533,6 @@ Return to Game Hub
 </header>
 
 
-<!-- =========================
-START
-========================= -->
-
 <section
     class="start-screen"
     id="startScreen">
@@ -574,10 +551,10 @@ CROSSWORD
 
 <p class="intro">
 
-Fill the grid using clues from across gaming.
+Fill a freshly generated crossword using clues from across gaming.
 
-Expect characters, franchises, studios, consoles, terminology
-and gaming history — with a different crossword each time you play.
+Characters, studios, locations, consoles, items, terminology and gaming
+history are all mixed together — with a huge rotating answer pool behind every puzzle.
 
 </p>
 
@@ -602,15 +579,15 @@ Click a square and use your keyboard to fill the grid.
 <div class="rule">
 
 <div class="rule-icon">
-🧩
+🎮
 </div>
 
 <strong>
-Across + Down
+Fresh Every Time
 </strong>
 
 <small>
-Click clues to jump directly to their answer.
+Each crossword pulls a new mixture from a large gaming word bank.
 </small>
 
 </div>
@@ -626,7 +603,7 @@ Need Help?
 </strong>
 
 <small>
-Reveal a letter or reveal the current word.
+Check your letters or reveal a letter or whole word.
 </small>
 
 </div>
@@ -644,10 +621,6 @@ START CROSSWORD
 </section>
 
 
-<!-- =========================
-GAME
-========================= -->
-
 <section
     class="game-screen"
     id="gameScreen">
@@ -656,13 +629,12 @@ GAME
 
 <div class="game-top-left">
 
-<h1 id="puzzleTitle">
+<h1>
 Gaming Crossword
 </h1>
 
-<div
-    class="game-subtitle"
-    id="puzzleSubtitle">
+<div class="game-subtitle">
+A random mix from across gaming.
 </div>
 
 </div>
@@ -773,10 +745,6 @@ Down
 </section>
 
 
-<!-- =========================
-RESULTS
-========================= -->
-
 <section
     class="results-screen"
     id="resultsScreen">
@@ -788,9 +756,7 @@ CROSSWORD<br>COMPLETE
 </h1>
 
 <p class="result-sub">
-
-You filled the grid and completed the gaming crossword.
-
+You filled the grid. A fresh selection of gaming answers is ready whenever you want another one.
 </p>
 
 <div class="result-stats">
@@ -876,374 +842,334 @@ Return to Game Hub
 <script>
 
 /* ======================================================
-PUZZLE BANK
+MASTER WORD BANK
 
-The game automatically turns each answer bank into
-an intersecting crossword.
+Answers must contain letters only.
 
-Avoid spaces and punctuation in "answer".
+Spaces / apostrophes / punctuation are removed from
+multi-word answers.
+
+The category is used to make each crossword varied.
 ====================================================== */
 
-const PUZZLES = [
-
-{
-id:"heroes",
-title:"Heroes & Characters",
-subtitle:"Gaming heroes, companions and familiar faces.",
-
-words:[
-
-{
-answer:"KRATOS",
-clue:"God of War's famously angry Spartan."
-},
-
-{
-answer:"CORTANA",
-clue:"Master Chief's longtime AI companion."
-},
-
-{
-answer:"GERALT",
-clue:"Monster slayer known as the White Wolf."
-},
-
-{
-answer:"SAMUS",
-clue:"Bounty hunter underneath Metroid's Power Suit."
-},
-
-{
-answer:"SONIC",
-clue:"Blue SEGA speedster."
-},
-
-{
-answer:"ARTHUR",
-clue:"First name of Red Dead Redemption 2's Morgan."
-},
-
-{
-answer:"LARA",
-clue:"First name of Tomb Raider's famous archaeologist."
-},
-
-{
-answer:"ATREUS",
-clue:"Kratos' son."
-},
-
-{
-answer:"CLOUD",
-clue:"Buster Sword-wielding Final Fantasy VII hero."
-},
-
-{
-answer:"EZIO",
-clue:"Renaissance-era Assassin Auditore."
-},
-
-{
-answer:"ZELDA",
-clue:"Princess whose name titles Nintendo's famous fantasy series."
-},
-
-{
-answer:"MARIO",
-clue:"Nintendo plumber and Mushroom Kingdom hero."
-}
-
-]
-
-},
-
-
-{
-id:"worlds",
-title:"Gaming Worlds",
-subtitle:"Places, kingdoms and locations from famous games.",
-
-words:[
-
-{
-answer:"RAPTURE",
-clue:"Underwater city from BioShock."
-},
-
-{
-answer:"MIDGAR",
-clue:"Major city from Final Fantasy VII."
-},
-
-{
-answer:"SKYRIM",
-clue:"Northern province of Tamriel."
-},
-
-{
-answer:"YHARNAM",
-clue:"Gothic city where Bloodborne takes place."
-},
-
-{
-answer:"HYRULE",
-clue:"Kingdom frequently saved by Link."
-},
-
-{
-answer:"RIVIA",
-clue:"Geralt is famously 'of' this place."
-},
-
-{
-answer:"RACCOON",
-clue:"Resident Evil city that suffered a catastrophic outbreak."
-},
-
-{
-answer:"NIGHTCITY",
-clue:"Cyberpunk 2077's sprawling metropolis."
-},
-
-{
-answer:"TSUSHIMA",
-clue:"Japanese island defended by Jin Sakai."
-},
-
-{
-answer:"COLUMBIA",
-clue:"Floating city from BioShock Infinite."
-},
-
-{
-answer:"DUNWALL",
-clue:"Plague-ridden city from Dishonored."
-},
-
-{
-answer:"REVACHOL",
-clue:"City where Disco Elysium takes place."
-}
-
-]
-
-},
-
-
-{
-id:"studios",
-title:"Game Developers",
-subtitle:"How well do you know the studios behind the games?",
-
-words:[
-
-{
-answer:"CAPCOM",
-clue:"Japanese studio behind Resident Evil and Monster Hunter."
-},
-
-{
-answer:"BIOWARE",
-clue:"Developer associated with Mass Effect and Dragon Age."
-},
-
-{
-answer:"LARIAN",
-clue:"Studio behind Baldur's Gate 3."
-},
-
-{
-answer:"BUNGIE",
-clue:"Original developer of Halo."
-},
-
-{
-answer:"MOJANG",
-clue:"Creator of Minecraft."
-},
-
-{
-answer:"REMEDY",
-clue:"Finnish studio behind Alan Wake and Control."
-},
-
-{
-answer:"ROCKSTAR",
-clue:"Company behind Grand Theft Auto and Red Dead Redemption."
-},
-
-{
-answer:"NAUGHTYDOG",
-clue:"Studio behind Uncharted and The Last of Us."
-},
-
-{
-answer:"ARKANE",
-clue:"Studio known for Dishonored and Prey."
-},
-
-{
-answer:"SUPERCELL",
-clue:"Mobile studio behind Clash of Clans."
-},
-
-{
-answer:"FROM",
-clue:"Shortened name often used for the developer of Dark Souls."
-},
-
-{
-answer:"VALVE",
-clue:"Half-Life and Portal developer."
-}
-
-]
-
-},
-
-
-{
-id:"gamingterms",
-title:"Gaming Terms",
-subtitle:"Mechanics, genres and language every gamer has heard.",
-
-words:[
-
-{
-answer:"RESPAWN",
-clue:"Return to the game after being defeated."
-},
-
-{
-answer:"NERF",
-clue:"To deliberately make something weaker in a balance update."
-},
-
-{
-answer:"BUFF",
-clue:"A change that makes a character or ability stronger."
-},
-
-{
-answer:"LOOT",
-clue:"Items and rewards collected from enemies or chests."
-},
-
-{
-answer:"BOSS",
-clue:"Powerful enemy commonly encountered at the end of a level."
-},
-
-{
-answer:"QUEST",
-clue:"Objective or mission given to a player."
-},
-
-{
-answer:"STEALTH",
-clue:"Gameplay focused on avoiding detection."
-},
-
-{
-answer:"SANDBOX",
-clue:"Open-ended game structure allowing player experimentation."
-},
-
-{
-answer:"SPEEDRUN",
-clue:"Attempt to finish a game as quickly as possible."
-},
-
-{
-answer:"CRAFTING",
-clue:"Creating equipment or items from gathered resources."
-},
-
-{
-answer:"CHECKPOINT",
-clue:"Place where progress may be saved automatically."
-},
-
-{
-answer:"COOLDOWN",
-clue:"Waiting period before an ability can be used again."
-}
-
-]
-
-},
-
-
-{
-id:"classics",
-title:"Gaming History",
-subtitle:"Consoles, classics and landmarks from gaming history.",
-
-words:[
-
-{
-answer:"ATARI",
-clue:"Company behind the famous 2600 console."
-},
-
-{
-answer:"TETRIS",
-clue:"Falling-block puzzle game created by Alexey Pajitnov."
-},
-
-{
-answer:"PACMAN",
-clue:"Yellow arcade hero chased by ghosts."
-},
-
-{
-answer:"DOOM",
-clue:"1993 shooter famous for popularising the FPS genre."
-},
-
-{
-answer:"PONG",
-clue:"One of the earliest commercially successful video games."
-},
-
-{
-answer:"DREAMCAST",
-clue:"SEGA's final home console."
-},
-
-{
-answer:"GAMEBOY",
-clue:"Nintendo handheld launched in 1989."
-},
-
-{
-answer:"PLAYSTATION",
-clue:"Sony console brand first launched in the 1990s."
-},
-
-{
-answer:"GENESIS",
-clue:"North American name for SEGA's Mega Drive."
-},
-
-{
-answer:"ARCADE",
-clue:"Venue traditionally filled with coin-operated video games."
-},
-
-{
-answer:"NINTENDO",
-clue:"Company behind Mario, Zelda and Metroid."
-},
-
-{
-answer:"SEGA",
-clue:"Company whose mascot is Sonic."
-}
-
-]
-
-}
+const WORD_BANK = [
+
+/* =========================
+CHARACTERS
+========================= */
+
+{answer:"KRATOS",clue:"God of War's Spartan protagonist.",category:"character"},
+{answer:"ATREUS",clue:"Kratos' son.",category:"character"},
+{answer:"GERALT",clue:"The Witcher's White Wolf.",category:"character"},
+{answer:"CIRI",clue:"Geralt's powerful ward in The Witcher.",category:"character"},
+{answer:"YENNEFER",clue:"Sorceress closely connected to Geralt.",category:"character"},
+{answer:"TRISS",clue:"Red-haired sorceress from The Witcher.",category:"character"},
+{answer:"CORTANA",clue:"Master Chief's famous AI companion.",category:"character"},
+{answer:"ARBITER",clue:"Elite warrior playable in Halo 2.",category:"character"},
+{answer:"SAMUS",clue:"Bounty hunter underneath Metroid's Power Suit.",category:"character"},
+{answer:"MARIO",clue:"Nintendo's famous plumber.",category:"character"},
+{answer:"LUIGI",clue:"Mario's green-clad brother.",category:"character"},
+{answer:"PEACH",clue:"Princess of the Mushroom Kingdom.",category:"character"},
+{answer:"BOWSER",clue:"King of the Koopas.",category:"character"},
+{answer:"SONIC",clue:"SEGA's blue speedster.",category:"character"},
+{answer:"TAILS",clue:"Sonic's two-tailed fox friend.",category:"character"},
+{answer:"KNUCKLES",clue:"Red echidna from the Sonic series.",category:"character"},
+{answer:"LINK",clue:"Hero of Hyrule.",category:"character"},
+{answer:"ZELDA",clue:"Princess whose name titles Nintendo's fantasy series.",category:"character"},
+{answer:"GANONDORF",clue:"Recurring villain of The Legend of Zelda.",category:"character"},
+{answer:"LARA",clue:"First name of Tomb Raider's archaeologist.",category:"character"},
+{answer:"EZIO",clue:"Renaissance Assassin Auditore.",category:"character"},
+{answer:"ALTAIR",clue:"Protagonist of the original Assassin's Creed.",category:"character"},
+{answer:"ARTHUR",clue:"First name of Red Dead Redemption 2's Morgan.",category:"character"},
+{answer:"DUTCH",clue:"Leader of the Van der Linde gang.",category:"character"},
+{answer:"JOHN",clue:"First name of Red Dead Redemption's Marston.",category:"character"},
+{answer:"CLOUD",clue:"Buster Sword-wielding Final Fantasy VII hero.",category:"character"},
+{answer:"TIFA",clue:"Martial artist from Final Fantasy VII.",category:"character"},
+{answer:"AERITH",clue:"Flower seller from Final Fantasy VII.",category:"character"},
+{answer:"SEPHIROTH",clue:"Silver-haired Final Fantasy VII antagonist.",category:"character"},
+{answer:"BARRET",clue:"Final Fantasy VII character with a gun-arm.",category:"character"},
+{answer:"LEON",clue:"Resident Evil protagonist with surname Kennedy.",category:"character"},
+{answer:"JILL",clue:"Resident Evil's 'Master of Unlocking'.",category:"character"},
+{answer:"CLAIRE",clue:"Chris Redfield's sister.",category:"character"},
+{answer:"NEMESIS",clue:"Relentless Resident Evil 3 bioweapon.",category:"character"},
+{answer:"WESKER",clue:"Long-running Resident Evil antagonist.",category:"character"},
+{answer:"ADA",clue:"Mysterious Resident Evil spy with surname Wong.",category:"character"},
+{answer:"ISAAC",clue:"First name of Dead Space engineer Clarke.",category:"character"},
+{answer:"ALYX",clue:"Resistance fighter who accompanies Gordon Freeman.",category:"character"},
+{answer:"GORDON",clue:"First name of Half-Life protagonist Freeman.",category:"character"},
+{answer:"GLADOS",clue:"Portal's murderous AI.",category:"character"},
+{answer:"WHEATLEY",clue:"Talkative personality core from Portal 2.",category:"character"},
+{answer:"SHEPARD",clue:"Commander of the Normandy in Mass Effect.",category:"character"},
+{answer:"GARRUS",clue:"Turian squadmate and former C-Sec officer.",category:"character"},
+{answer:"LIARA",clue:"Asari archaeologist from Mass Effect.",category:"character"},
+{answer:"WREX",clue:"Krogan squadmate from Mass Effect.",category:"character"},
+{answer:"MORDIN",clue:"Salarian scientist from Mass Effect.",category:"character"},
+{answer:"ASTARION",clue:"Vampire spawn companion in Baldur's Gate 3.",category:"character"},
+{answer:"SHADOWHEART",clue:"Shar-worshipping Baldur's Gate 3 companion.",category:"character"},
+{answer:"KARLACH",clue:"Tiefling barbarian companion in Baldur's Gate 3.",category:"character"},
+{answer:"GALE",clue:"Wizard companion in Baldur's Gate 3.",category:"character"},
+{answer:"WYLL",clue:"The Blade of Frontiers in Baldur's Gate 3.",category:"character"},
+{answer:"MALENIA",clue:"Elden Ring's Blade of Miquella.",category:"character"},
+{answer:"RADAHN",clue:"Elden Ring's Starscourge.",category:"character"},
+{answer:"RANNI",clue:"Four-armed witch from Elden Ring.",category:"character"},
+{answer:"SOLAIRE",clue:"Dark Souls knight associated with praising the sun.",category:"character"},
+{answer:"PATCHES",clue:"Recurring FromSoftware trickster.",category:"character"},
+{answer:"SEKIRO",clue:"Nickname commonly used for Wolf's game.",category:"character"},
+{answer:"JIN",clue:"First name of Ghost of Tsushima's Sakai.",category:"character"},
+{answer:"ELLIE",clue:"Central character of The Last of Us.",category:"character"},
+{answer:"JOEL",clue:"Playable survivor from The Last of Us.",category:"character"},
+{answer:"ABBY",clue:"Major playable character in The Last of Us Part II.",category:"character"},
+{answer:"SACKBOY",clue:"Knitted hero of LittleBigPlanet.",category:"character"},
+{answer:"CRASH",clue:"Orange bandicoot created by Naughty Dog.",category:"character"},
+{answer:"SPYRO",clue:"Purple dragon and PlayStation-era mascot.",category:"character"},
+
+/* =========================
+LOCATIONS
+========================= */
+
+{answer:"RAPTURE",clue:"Underwater city from BioShock.",category:"location"},
+{answer:"COLUMBIA",clue:"Floating city from BioShock Infinite.",category:"location"},
+{answer:"MIDGAR",clue:"Major city from Final Fantasy VII.",category:"location"},
+{answer:"HYRULE",clue:"Kingdom frequently saved by Link.",category:"location"},
+{answer:"SKYRIM",clue:"Northern province of Tamriel.",category:"location"},
+{answer:"TAMRIEL",clue:"Continent where The Elder Scrolls takes place.",category:"location"},
+{answer:"WHITERUN",clue:"Skyrim city containing Dragonsreach.",category:"location"},
+{answer:"RIFTEN",clue:"Skyrim city associated with the Thieves Guild.",category:"location"},
+{answer:"SOLITUDE",clue:"Capital city of Skyrim.",category:"location"},
+{answer:"YHARNAM",clue:"Gothic city from Bloodborne.",category:"location"},
+{answer:"BOLETARIA",clue:"Kingdom from Demon's Souls.",category:"location"},
+{answer:"MAJULA",clue:"Seaside hub from Dark Souls II.",category:"location"},
+{answer:"LORDRAN",clue:"Kingdom where the original Dark Souls takes place.",category:"location"},
+{answer:"LOTHRIC",clue:"Kingdom central to Dark Souls III.",category:"location"},
+{answer:"TSUSHIMA",clue:"Japanese island defended by Jin Sakai.",category:"location"},
+{answer:"DUNWALL",clue:"Plague-ridden city from Dishonored.",category:"location"},
+{answer:"KARNACA",clue:"Coastal city central to Dishonored 2.",category:"location"},
+{answer:"REVACHOL",clue:"City where Disco Elysium takes place.",category:"location"},
+{answer:"HALLownest".toUpperCase(),clue:"Ruined kingdom explored in Hollow Knight.",category:"location"},
+{answer:"NIGHTCITY",clue:"Cyberpunk 2077's metropolis.",category:"location"},
+{answer:"RACCOON",clue:"Resident Evil city destroyed after an outbreak.",category:"location"},
+{answer:"RAVENHOLM",clue:"Infamous zombie-infested town in Half-Life 2.",category:"location"},
+{answer:"BLACKMESA",clue:"Research facility from Half-Life.",category:"location"},
+{answer:"TALOSI",clue:"Space station explored in Prey.",category:"location"},
+{answer:"ISHIMURA",clue:"Mining ship from Dead Space.",category:"location"},
+{answer:"SEVASTOPOL",clue:"Space station from Alien: Isolation.",category:"location"},
+{answer:"BRIGHTFALLS",clue:"Washington town from Alan Wake.",category:"location"},
+{answer:"SKELLIGE",clue:"Island archipelago from The Witcher 3.",category:"location"},
+{answer:"NOVIGRAD",clue:"Major free city in The Witcher 3.",category:"location"},
+{answer:"VELEN",clue:"War-torn region in The Witcher 3.",category:"location"},
+{answer:"KAERMORHEN",clue:"Witcher fortress and home of the School of the Wolf.",category:"location"},
+{answer:"MOJAVE",clue:"Wasteland explored in Fallout: New Vegas.",category:"location"},
+{answer:"MEGATON",clue:"Fallout 3 settlement built around an unexploded bomb.",category:"location"},
+{answer:"DIAMONDCITY",clue:"Fallout 4 settlement built inside a baseball stadium.",category:"location"},
+{answer:"CITADEL",clue:"Massive space station central to Mass Effect.",category:"location"},
+{answer:"FERELDEN",clue:"Kingdom where much of Dragon Age: Origins takes place.",category:"location"},
+{answer:"THEDAS",clue:"Continent of the Dragon Age series.",category:"location"},
+{answer:"FAERUN",clue:"Dungeons & Dragons world used by Baldur's Gate 3.",category:"location"},
+{answer:"CITY17",clue:"Primary city setting of Half-Life 2.",category:"location"},
+
+/* =========================
+STUDIOS
+========================= */
+
+{answer:"CAPCOM",clue:"Studio behind Resident Evil and Monster Hunter.",category:"studio"},
+{answer:"BIOWARE",clue:"Developer known for Mass Effect and Dragon Age.",category:"studio"},
+{answer:"LARIAN",clue:"Belgian studio behind Baldur's Gate 3.",category:"studio"},
+{answer:"BUNGIE",clue:"Original developer of Halo.",category:"studio"},
+{answer:"MOJANG",clue:"Studio that created Minecraft.",category:"studio"},
+{answer:"REMEDY",clue:"Finnish studio behind Alan Wake and Control.",category:"studio"},
+{answer:"ROCKSTAR",clue:"Company behind GTA and Red Dead Redemption.",category:"studio"},
+{answer:"NAUGHTYDOG",clue:"Developer behind Uncharted and The Last of Us.",category:"studio"},
+{answer:"ARKANE",clue:"Developer known for Dishonored and Prey.",category:"studio"},
+{answer:"VALVE",clue:"Developer of Half-Life, Portal and Steam.",category:"studio"},
+{answer:"FROM",clue:"Shortened name commonly used for FromSoftware.",category:"studio"},
+{answer:"SUPERCELL",clue:"Mobile developer behind Clash of Clans.",category:"studio"},
+{answer:"INSOMNIAC",clue:"Developer behind Spider-Man and Ratchet & Clank.",category:"studio"},
+{answer:"OBSIDIAN",clue:"Studio behind Fallout: New Vegas.",category:"studio"},
+{answer:"BETHESDA",clue:"Developer associated with Skyrim and Fallout 4.",category:"studio"},
+{answer:"GUERRILLA",clue:"Developer behind Horizon Zero Dawn.",category:"studio"},
+{answer:"SUCKERPUNCH",clue:"Developer behind Ghost of Tsushima.",category:"studio"},
+{answer:"KOJIMA",clue:"Surname of the creator behind Metal Gear and Death Stranding.",category:"studio"},
+{answer:"NINTENDO",clue:"Company behind Mario, Zelda and Metroid.",category:"studio"},
+{answer:"SEGA",clue:"Company whose mascot is Sonic.",category:"studio"},
+{answer:"UBISOFT",clue:"Publisher and developer behind Assassin's Creed.",category:"studio"},
+{answer:"BLIZZARD",clue:"Company behind Warcraft and Diablo.",category:"studio"},
+{answer:"RIOT",clue:"Developer behind League of Legends and Valorant.",category:"studio"},
+{answer:"EPIC",clue:"Company behind Fortnite and Unreal Engine.",category:"studio"},
+{answer:"TELLTALE",clue:"Studio famous for episodic narrative games.",category:"studio"},
+{answer:"TEAMCHERRY",clue:"Australian developer behind Hollow Knight.",category:"studio"},
+{answer:"PLAYDEAD",clue:"Developer behind Limbo and Inside.",category:"studio"},
+{answer:"SUPERMASSIVE",clue:"Developer behind Until Dawn and The Quarry.",category:"studio"},
+{answer:"RESPAWN",clue:"Developer behind Titanfall and Apex Legends.",category:"studio"},
+{answer:"HAZELIGHT",clue:"Developer behind It Takes Two.",category:"studio"},
+{answer:"FRICTIONAL",clue:"Studio behind Amnesia and SOMA.",category:"studio"},
+{answer:"IOINTERACTIVE",clue:"Studio behind Hitman.",category:"studio"},
+{answer:"TECHLAND",clue:"Polish studio behind Dying Light.",category:"studio"},
+{answer:"DOUBLEFINE",clue:"Developer behind Psychonauts.",category:"studio"},
+{answer:"SUPERCELL",clue:"Finnish mobile studio behind Brawl Stars.",category:"studio"},
+
+/* =========================
+GAMING TERMS
+========================= */
+
+{answer:"RESPAWN",clue:"Return to play after being defeated.",category:"term"},
+{answer:"NERF",clue:"Balance change that makes something weaker.",category:"term"},
+{answer:"BUFF",clue:"Change that makes an ability or character stronger.",category:"term"},
+{answer:"LOOT",clue:"Rewards collected from enemies or chests.",category:"term"},
+{answer:"BOSS",clue:"Powerful enemy often found at the end of an area.",category:"term"},
+{answer:"QUEST",clue:"Mission or objective given to a player.",category:"term"},
+{answer:"STEALTH",clue:"Gameplay focused on avoiding detection.",category:"term"},
+{answer:"SANDBOX",clue:"Open-ended game structure encouraging experimentation.",category:"term"},
+{answer:"SPEEDRUN",clue:"Attempt to finish a game as quickly as possible.",category:"term"},
+{answer:"CRAFTING",clue:"Creating items from gathered materials.",category:"term"},
+{answer:"CHECKPOINT",clue:"Point where progress may automatically save.",category:"term"},
+{answer:"COOLDOWN",clue:"Waiting period before an ability can be reused.",category:"term"},
+{answer:"DLC",clue:"Common abbreviation for downloadable content.",category:"term"},
+{answer:"PATCH",clue:"Software update used to fix or change a game.",category:"term"},
+{answer:"MOD",clue:"Player-created modification to a game.",category:"term"},
+{answer:"NPC",clue:"Common abbreviation for a non-player character.",category:"term"},
+{answer:"HUD",clue:"On-screen display showing information like health.",category:"term"},
+{answer:"XP",clue:"Common abbreviation for experience points.",category:"term"},
+{answer:"LEVEL",clue:"Can refer to an area or a character's progression rank.",category:"term"},
+{answer:"COMBO",clue:"Chain of attacks or actions performed together.",category:"term"},
+{answer:"CRITICAL",clue:"Type of hit that often deals increased damage.",category:"term"},
+{answer:"AGGRO",clue:"Term describing an enemy's attention toward a player.",category:"term"},
+{answer:"TANK",clue:"Role designed to absorb large amounts of damage.",category:"term"},
+{answer:"HEALER",clue:"Role focused on restoring allies' health.",category:"term"},
+{answer:"DPS",clue:"Common abbreviation for damage per second.",category:"term"},
+{answer:"PERMADEATH",clue:"Mechanic where a character's death is permanent.",category:"term"},
+{answer:"ROGUELIKE",clue:"Genre known for procedural runs and harsh death penalties.",category:"term"},
+{answer:"METROIDVANIA",clue:"Genre built around exploration and ability-gated progression.",category:"term"},
+{answer:"QUICKSAVE",clue:"Manual instant save command found in many PC games.",category:"term"},
+{answer:"LOADOUT",clue:"Equipment and abilities selected before play.",category:"term"},
+{answer:"MATCHMAKING",clue:"System used to pair players for multiplayer matches.",category:"term"},
+{answer:"CAMPING",clue:"Staying in one position for tactical advantage.",category:"term"},
+{answer:"GRIND",clue:"Repeatedly performing actions to gain progress or resources.",category:"term"},
+{answer:"FARMING",clue:"Repeatedly collecting a particular resource or reward.",category:"term"},
+{answer:"EASTERGG",clue:"Hidden joke, secret or reference placed by developers.",category:"term"},
+{answer:"HITBOX",clue:"Invisible area used to determine whether attacks connect.",category:"term"},
+{answer:"SKILLTREE",clue:"Branching system for unlocking character abilities.",category:"term"},
+{answer:"FASTTRAVEL",clue:"System used to quickly move between discovered locations.",category:"term"},
+
+/* =========================
+HARDWARE / PLATFORMS
+========================= */
+
+{answer:"ATARI",clue:"Company behind the 2600 console.",category:"hardware"},
+{answer:"GAMEBOY",clue:"Nintendo handheld launched in 1989.",category:"hardware"},
+{answer:"DREAMCAST",clue:"SEGA's final home console.",category:"hardware"},
+{answer:"PLAYSTATION",clue:"Sony's console brand.",category:"hardware"},
+{answer:"XBOX",clue:"Microsoft's console brand.",category:"hardware"},
+{answer:"GAMECUBE",clue:"Nintendo console launched between the N64 and Wii.",category:"hardware"},
+{answer:"SWITCH",clue:"Nintendo's hybrid home and handheld console.",category:"hardware"},
+{answer:"WII",clue:"Nintendo console famous for motion controls.",category:"hardware"},
+{answer:"VITA",clue:"Sony handheld successor to the PSP.",category:"hardware"},
+{answer:"PSP",clue:"Sony's first major handheld gaming system.",category:"hardware"},
+{answer:"GENESIS",clue:"North American name for the SEGA Mega Drive.",category:"hardware"},
+{answer:"MEGADRIVE",clue:"SEGA console known as Genesis in North America.",category:"hardware"},
+{answer:"SATURN",clue:"SEGA console released before the Dreamcast.",category:"hardware"},
+{answer:"N64",clue:"Common shortened name for Nintendo's 64-bit console.",category:"hardware"},
+{answer:"SNES",clue:"Common abbreviation for the Super Nintendo.",category:"hardware"},
+{answer:"NES",clue:"Nintendo home console that helped revive the US game market.",category:"hardware"},
+{answer:"STEAMDECK",clue:"Valve's handheld gaming PC.",category:"hardware"},
+{answer:"DUALSENSE",clue:"Controller introduced with PlayStation 5.",category:"hardware"},
+{answer:"KINECT",clue:"Microsoft motion-sensing Xbox accessory.",category:"hardware"},
+
+/* =========================
+GAMES / FRANCHISES
+========================= */
+
+{answer:"TETRIS",clue:"Falling-block puzzle classic created by Alexey Pajitnov.",category:"game"},
+{answer:"PACMAN",clue:"Arcade game featuring a yellow maze character.",category:"game"},
+{answer:"DOOM",clue:"1993 shooter that helped popularise the FPS.",category:"game"},
+{answer:"PONG",clue:"Early commercially successful video game based on table tennis.",category:"game"},
+{answer:"HALO",clue:"Xbox sci-fi series starring Master Chief.",category:"game"},
+{answer:"METROID",clue:"Nintendo sci-fi series starring Samus.",category:"game"},
+{answer:"FALLOUT",clue:"Post-apocalyptic RPG franchise featuring Vault-Tec.",category:"game"},
+{answer:"BIOSHOCK",clue:"Series featuring Rapture and Columbia.",category:"game"},
+{answer:"DISHONORED",clue:"Arkane series starring Corvo Attano.",category:"game"},
+{answer:"MINECRAFT",clue:"Block-building sandbox created by Mojang.",category:"game"},
+{answer:"FORTNITE",clue:"Epic Games battle royale phenomenon.",category:"game"},
+{answer:"OVERWATCH",clue:"Blizzard hero shooter franchise.",category:"game"},
+{answer:"DIABLO",clue:"Blizzard action-RPG franchise.",category:"game"},
+{answer:"WARCRAFT",clue:"Fantasy franchise featuring Azeroth.",category:"game"},
+{answer:"STARCRAFT",clue:"Blizzard sci-fi strategy franchise.",category:"game"},
+{answer:"TOMBRAIDER",clue:"Adventure franchise starring Lara Croft.",category:"game"},
+{answer:"UNCHARTED",clue:"Naughty Dog adventure series starring Nathan Drake.",category:"game"},
+{answer:"PORTAL",clue:"Valve puzzle series involving linked gateways.",category:"game"},
+{answer:"HALFLIFE",clue:"Valve shooter series starring Gordon Freeman.",category:"game"},
+{answer:"HITMAN",clue:"Stealth franchise starring Agent 47.",category:"game"},
+{answer:"PERSONA",clue:"Atlus RPG series spun off from Shin Megami Tensei.",category:"game"},
+{answer:"TEKKEN",clue:"Bandai Namco fighting series featuring the Mishima family.",category:"game"},
+{answer:"STREETFIGHTER",clue:"Capcom fighting franchise featuring Ryu and Chun-Li.",category:"game"},
+{answer:"MORTALKOMBAT",clue:"Fighting series famous for Fatalities.",category:"game"},
+{answer:"DARKSOULS",clue:"FromSoftware action-RPG series known for bonfires.",category:"game"},
+{answer:"BLOODBORNE",clue:"FromSoftware Gothic action RPG set in Yharnam.",category:"game"},
+{answer:"ELDENRING",clue:"FromSoftware RPG set in the Lands Between.",category:"game"},
+{answer:"HADES",clue:"Supergiant roguelike starring Zagreus.",category:"game"},
+{answer:"CELESTE",clue:"Platformer about climbing a mountain.",category:"game"},
+{answer:"UNDERTALE",clue:"RPG created by Toby Fox.",category:"game"},
+{answer:"STARDEW",clue:"First word of ConcernedApe's farming RPG.",category:"game"},
+{answer:"TERRARIA",clue:"2D sandbox adventure sometimes compared to Minecraft.",category:"game"},
+{answer:"SUBNAUTICA",clue:"Underwater survival game set on planet 4546B.",category:"game"},
+{answer:"PHASMOPHOBIA",clue:"Co-op ghost hunting game.",category:"game"},
+{answer:"OUTLAST",clue:"Horror series whose first game visits Mount Massive Asylum.",category:"game"},
+{answer:"AMNESIA",clue:"Frictional horror franchise including The Dark Descent.",category:"game"},
+{answer:"CONTROL",clue:"Remedy game starring Jesse Faden.",category:"game"},
+{answer:"ALANWAKE",clue:"Remedy series about a writer facing supernatural darkness.",category:"game"},
+{answer:"DEATHLOOP",clue:"Arkane time-loop shooter set on Blackreef.",category:"game"},
+{answer:"VALORANT",clue:"Riot Games tactical hero shooter.",category:"game"},
+{answer:"LEAGUE",clue:"First word in Riot's famous MOBA title.",category:"game"},
+
+/* =========================
+ITEMS / WEAPONS / OBJECTS
+========================= */
+
+{answer:"MASTERSWORD",clue:"Legendary blade wielded by Link.",category:"item"},
+{answer:"BUSTERSWORD",clue:"Cloud's huge starting weapon in Final Fantasy VII.",category:"item"},
+{answer:"MASAMUNE",clue:"Sephiroth's extremely long sword.",category:"item"},
+{answer:"PLASMID",clue:"BioShock upgrade that grants extraordinary abilities.",category:"item"},
+{answer:"VIGOR",clue:"BioShock Infinite's equivalent of a Plasmid.",category:"item"},
+{answer:"STIMPACK",clue:"Common Fallout healing item.",category:"item"},
+{answer:"PIPBOY",clue:"Wrist-mounted computer used in Fallout.",category:"item"},
+{answer:"POKEBALL",clue:"Device used to catch Pokémon.",category:"item"},
+{answer:"PORTALGUN",clue:"Aperture Science device used by Chell.",category:"item"},
+{answer:"GRAVITYGUN",clue:"Half-Life 2 weapon used to manipulate physics objects.",category:"item"},
+{answer:"ENERGYSWORD",clue:"Iconic Covenant melee weapon from Halo.",category:"item"},
+{answer:"NEEDLER",clue:"Halo weapon that fires pink crystalline projectiles.",category:"item"},
+{answer:"LANCER",clue:"Gears of War rifle famous for its chainsaw bayonet.",category:"item"},
+{answer:"KEYBLADE",clue:"Weapon wielded by Sora in Kingdom Hearts.",category:"item"},
+{answer:"OMNITOOL",clue:"Multifunction device used throughout Mass Effect.",category:"item"},
+{answer:"ESTUS",clue:"Healing flask used in Dark Souls.",category:"item"},
+{answer:"BONFIRE",clue:"Dark Souls checkpoint where players rest.",category:"item"},
+{answer:"RUNE",clue:"Currency and experience resource in Elden Ring.",category:"item"},
+{answer:"RUPEE",clue:"Common currency in The Legend of Zelda.",category:"item"},
+{answer:"MUSHROOM",clue:"Mario power-up that commonly makes him larger.",category:"item"},
+{answer:"RING",clue:"Sonic collectible lost when taking damage.",category:"item"},
+{answer:"CHAOS",clue:"First word of the powerful emeralds in Sonic.",category:"item"},
+{answer:"MARKER",clue:"Mysterious alien object central to Dead Space.",category:"item"},
+{answer:"CYBERDECK",clue:"Cyberpunk hardware used to perform quickhacks.",category:"item"},
+{answer:"SANDVISTAN",clue:"Cyberpunk operating system associated with slowing perceived time.",category:"item"},
+
+/* =========================
+GAMING HISTORY
+========================= */
+
+{answer:"ARCADE",clue:"Venue traditionally filled with coin-operated games.",category:"history"},
+{answer:"CARTRIDGE",clue:"Physical game format used by many older consoles.",category:"history"},
+{answer:"JOYSTICK",clue:"Classic directional controller common in arcade gaming.",category:"history"},
+{answer:"PIXEL",clue:"Smallest individual unit in a raster image.",category:"history"},
+{answer:"SPRITE",clue:"2D image used to represent an object or character.",category:"history"},
+{answer:"POLYGON",clue:"Geometric shape commonly used to construct 3D models.",category:"history"},
+{answer:"LAN",clue:"Local network once commonly used for multiplayer parties.",category:"history"},
+{answer:"SHAREWARE",clue:"Distribution model used by games like DOOM.",category:"history"},
+{answer:"DEMO",clue:"Limited playable sample of a game.",category:"history"},
+{answer:"MANUAL",clue:"Booklet once commonly included inside physical game boxes.",category:"history"},
+{answer:"MEMORYCARD",clue:"Removable device used to store console saves.",category:"history"},
+{answer:"RUMBLE",clue:"Controller vibration feedback feature.",category:"history"},
+{answer:"MOTION",clue:"Type of control heavily promoted by the Nintendo Wii.",category:"history"},
+{answer:"ACHIEVEMENT",clue:"Unlockable reward for completing a specific challenge.",category:"history"},
+{answer:"TROPHY",clue:"PlayStation's term for an achievement.",category:"history"},
+{answer:"HIGHSCORE",clue:"Best numerical result achieved in an arcade-style game.",category:"history"}
 
 ];
 
@@ -1253,21 +1179,30 @@ SETTINGS
 ====================================================== */
 
 const GRID_SIZE =
-    15;
+    17;
 
-const MIN_WORDS =
-    8;
+const TARGET_WORDS =
+    11;
 
-const LAST_PUZZLE_KEY =
-    "gjdCrosswordLastPuzzle";
+const SELECTION_POOL =
+    26;
+
+const MIN_ACCEPTABLE_WORDS =
+    9;
+
+const ANSWER_HISTORY_KEY =
+    "gjdCrosswordAnswerHistory";
+
+const ANSWER_HISTORY_LIMIT =
+    70;
 
 
 /* ======================================================
 STATE
 ====================================================== */
 
-let activePuzzle =
-    null;
+let selectedWords =
+    [];
 
 let placedWords =
     [];
@@ -1327,46 +1262,193 @@ function shuffle(array){
 }
 
 
-function choosePuzzle(){
+/* ======================================================
+RECENT ANSWER MEMORY
+====================================================== */
 
-    const last =
-        localStorage.getItem(
-            LAST_PUZZLE_KEY
-        );
+function getAnswerHistory(){
+
+    try{
+
+        const data =
+            JSON.parse(
+                localStorage.getItem(
+                    ANSWER_HISTORY_KEY
+                )
+            );
 
 
-    let available =
-        PUZZLES.filter(
-            puzzle =>
-                puzzle.id !== last
-        );
+        return Array.isArray(data)
+            ? data
+            : [];
 
+    }catch(error){
 
-    if(
-        available.length === 0
-    ){
-
-        available =
-            [...PUZZLES];
+        return [];
     }
+}
 
 
-    const puzzle =
-        available[
-            Math.floor(
-                Math.random() *
-                available.length
-            )
-        ];
+function saveAnswersToHistory(
+    answers
+){
+
+    let history =
+        getAnswerHistory();
 
 
-    localStorage.setItem(
-        LAST_PUZZLE_KEY,
-        puzzle.id
+    answers.forEach(
+        answer => {
+
+
+            history =
+                history.filter(
+                    existing =>
+                        existing !==
+                        answer
+                );
+
+
+            history.push(
+                answer
+            );
+        }
     );
 
 
-    return puzzle;
+    history =
+        history.slice(
+            -ANSWER_HISTORY_LIMIT
+        );
+
+
+    localStorage.setItem(
+        ANSWER_HISTORY_KEY,
+        JSON.stringify(
+            history
+        )
+    );
+}
+
+
+/* ======================================================
+SELECT A VARIED WORD POOL
+====================================================== */
+
+function chooseFreshWordPool(){
+
+    const history =
+        getAnswerHistory();
+
+
+    let available =
+        WORD_BANK.filter(
+            item =>
+                !history.includes(
+                    item.answer
+                )
+        );
+
+
+    /*
+    There should normally be loads available.
+
+    If history eventually gets too restrictive,
+    gradually allow older words back in.
+    */
+
+    if(
+        available.length <
+        SELECTION_POOL
+    ){
+
+        available =
+            [...WORD_BANK];
+    }
+
+
+    const categories =
+        [
+            "character",
+            "location",
+            "studio",
+            "term",
+            "hardware",
+            "game",
+            "item",
+            "history"
+        ];
+
+
+    const chosen =
+        [];
+
+
+    /*
+    First guarantee a broad category mixture.
+    */
+
+    categories.forEach(
+        category => {
+
+
+            const options =
+                shuffle(
+                    available.filter(
+                        item =>
+                            item.category ===
+                            category &&
+                            !chosen.some(
+                                used =>
+                                    used.answer ===
+                                    item.answer
+                            )
+                    )
+                );
+
+
+            if(options.length){
+
+                chosen.push(
+                    options[0]
+                );
+            }
+        }
+    );
+
+
+    /*
+    Fill remaining candidate slots randomly.
+    */
+
+    const remaining =
+        shuffle(
+            available.filter(
+                item =>
+                    !chosen.some(
+                        used =>
+                            used.answer ===
+                            item.answer
+                    )
+            )
+        );
+
+
+    while(
+        chosen.length <
+            SELECTION_POOL &&
+        remaining.length
+    ){
+
+        chosen.push(
+            remaining.pop()
+        );
+    }
+
+
+    return shuffle(
+        chosen
+    );
 }
 
 
@@ -1395,7 +1477,7 @@ function makeEmptyGrid(){
 
 
 /* ======================================================
-PLACEMENT VALIDATION
+VALIDATE WORD PLACEMENT
 ====================================================== */
 
 function canPlaceWord(
@@ -1410,34 +1492,37 @@ function canPlaceWord(
 
 
     if(
-        direction === "across"
+        direction ===
+        "across"
     ){
 
         if(
+            row < 0 ||
+            row >= GRID_SIZE ||
             col < 0 ||
             col + length >
-            GRID_SIZE ||
-            row < 0 ||
-            row >= GRID_SIZE
+            GRID_SIZE
         ){
+
             return false;
         }
 
     }else{
 
         if(
+            col < 0 ||
+            col >= GRID_SIZE ||
             row < 0 ||
             row + length >
-            GRID_SIZE ||
-            col < 0 ||
-            col >= GRID_SIZE
+            GRID_SIZE
         ){
+
             return false;
         }
     }
 
 
-    let intersectionCount =
+    let intersections =
         0;
 
 
@@ -1448,13 +1533,15 @@ function canPlaceWord(
     ){
 
         const r =
-            direction === "across"
+            direction ===
+            "across"
             ? row
             : row + i;
 
 
         const c =
-            direction === "across"
+            direction ===
+            "across"
             ? col + i
             : col;
 
@@ -1475,31 +1562,30 @@ function canPlaceWord(
 
         if(existing){
 
-            intersectionCount++;
+            intersections++;
 
         }else{
 
-            /*
-            Prevent words running directly alongside each
-            other unless this square is an intersection.
-            */
-
             if(
-                direction === "across"
+                direction ===
+                "across"
             ){
 
                 if(
                     r > 0 &&
                     grid[r - 1][c]
                 ){
+
                     return false;
                 }
+
 
                 if(
                     r <
                     GRID_SIZE - 1 &&
                     grid[r + 1][c]
                 ){
+
                     return false;
                 }
 
@@ -1509,14 +1595,17 @@ function canPlaceWord(
                     c > 0 &&
                     grid[r][c - 1]
                 ){
+
                     return false;
                 }
+
 
                 if(
                     c <
                     GRID_SIZE - 1 &&
                     grid[r][c + 1]
                 ){
+
                     return false;
                 }
             }
@@ -1524,26 +1613,26 @@ function canPlaceWord(
     }
 
 
-    /*
-    Prevent words touching at beginning/end.
-    */
-
     if(
-        direction === "across"
+        direction ===
+        "across"
     ){
 
         if(
             col > 0 &&
             grid[row][col - 1]
         ){
+
             return false;
         }
+
 
         if(
             col + length <
             GRID_SIZE &&
             grid[row][col + length]
         ){
+
             return false;
         }
 
@@ -1553,14 +1642,17 @@ function canPlaceWord(
             row > 0 &&
             grid[row - 1][col]
         ){
+
             return false;
         }
+
 
         if(
             row + length <
             GRID_SIZE &&
             grid[row + length][col]
         ){
+
             return false;
         }
     }
@@ -1568,7 +1660,7 @@ function canPlaceWord(
 
     return (
         placedWords.length === 0 ||
-        intersectionCount > 0
+        intersections > 0
     );
 }
 
@@ -1617,13 +1709,15 @@ function placeWord(
     ){
 
         const r =
-            direction === "across"
+            direction ===
+            "across"
             ? row
             : row + i;
 
 
         const c =
-            direction === "across"
+            direction ===
+            "across"
             ? col + i
             : col;
 
@@ -1638,20 +1732,10 @@ function placeWord(
                     answer[i],
 
                 user:
-                    "",
-
-                words:
-                    []
+                    ""
 
             };
         }
-
-
-        grid[r][c]
-            .words
-            .push(
-                placed
-            );
 
 
         placed.cells.push(
@@ -1670,10 +1754,12 @@ function placeWord(
 
 
 /* ======================================================
-FIND INTERSECTION
+TRY TO INTERSECT WORD
 ====================================================== */
 
-function tryPlaceWord(wordData){
+function tryPlaceWord(
+    wordData
+){
 
     const word =
         wordData.answer;
@@ -1688,13 +1774,16 @@ function tryPlaceWord(wordData){
 
 
             existingWord.cells.forEach(
-                (cell,indexExisting) => {
+                (
+                    cell,
+                    existingIndex
+                ) => {
 
 
                     const existingLetter =
                         existingWord
                             .answer[
-                                indexExisting
+                                existingIndex
                             ];
 
 
@@ -1708,6 +1797,7 @@ function tryPlaceWord(wordData){
                             word[i] !==
                             existingLetter
                         ){
+
                             continue;
                         }
 
@@ -1788,84 +1878,92 @@ function tryPlaceWord(wordData){
 
 
 /* ======================================================
-BUILD CROSSWORD
+GENERATE CROSSWORD
 
-Several attempts are made. The attempt that places the
-most words wins.
+We try many different random combinations and keep the
+one that manages to place the most answers.
 ====================================================== */
 
-function buildCrossword(
-    puzzle
-){
+function generateCrossword(){
 
-    let bestGrid =
+    let bestSnapshot =
         null;
 
-    let bestWords =
-        [];
+    let bestCount =
+        0;
 
 
     for(
         let attempt = 0;
-        attempt < 80;
+        attempt < 120;
         attempt++
     ){
 
+        const pool =
+            chooseFreshWordPool();
+
+
         grid =
             makeEmptyGrid();
+
 
         placedWords =
             [];
 
 
-        const words =
-            shuffle(
-                [...puzzle.words]
-            )
+        /*
+        Longer words first generally produce better boards,
+        with a little randomness between runs.
+        */
+
+        const candidates =
+            pool
+            .slice()
             .sort(
                 (a,b) =>
-                    b.answer.length -
-                    a.answer.length
+                    (
+                        b.answer.length +
+                        Math.random() * 4
+                    ) -
+                    (
+                        a.answer.length +
+                        Math.random() * 4
+                    )
             );
 
 
-        /*
-        First word placed in the centre.
-        */
-
         const first =
-            words.shift();
+            candidates.shift();
 
 
-        const startRow =
+        const firstRow =
             Math.floor(
                 GRID_SIZE / 2
             );
 
 
-        const startCol =
-            Math.floor(
-                (GRID_SIZE -
-                first.answer.length)
-                / 2
+        const firstCol =
+            Math.max(
+                0,
+                Math.floor(
+                    (
+                        GRID_SIZE -
+                        first.answer.length
+                    ) / 2
+                )
             );
 
 
         placeWord(
             first,
-            startRow,
-            startCol,
+            firstRow,
+            firstCol,
             "across"
         );
 
 
-        /*
-        Try repeatedly because adding one word can make
-        another previously impossible word placeable.
-        */
-
         let remaining =
-            [...words];
+            [...candidates];
 
 
         let changed =
@@ -1880,12 +1978,21 @@ function buildCrossword(
 
             remaining =
                 remaining.filter(
-                    wordData => {
+                    word => {
+
+
+                        if(
+                            placedWords.length >=
+                            TARGET_WORDS
+                        ){
+
+                            return true;
+                        }
 
 
                         const placed =
                             tryPlaceWord(
-                                wordData
+                                word
                             );
 
 
@@ -1906,48 +2013,51 @@ function buildCrossword(
 
         if(
             placedWords.length >
-            bestWords.length
+            bestCount
         ){
 
-            bestGrid =
-                JSON.parse(
-                    JSON.stringify(
-                        grid,
-                        (
-                            key,
-                            value
-                        ) => {
+            bestCount =
+                placedWords.length;
 
-                            /*
-                            Remove circular word references.
-                            */
 
-                            if(
-                                key ===
-                                "words"
-                            ){
+            bestSnapshot = {
 
-                                return [];
-                            }
+                grid:
+                    grid.map(
+                        row =>
+                            row.map(
+                                cell =>
+                                    cell
+                                    ? {
+                                        letter:
+                                            cell.letter,
 
-                            return value;
-                        }
+                                        user:
+                                            ""
+                                    }
+                                    : null
+                            )
+                    ),
+
+                words:
+                    placedWords.map(
+                        word => ({
+                            ...word,
+                            cells:
+                                word.cells.map(
+                                    cell => ({
+                                        ...cell
+                                    })
+                                )
+                        })
                     )
-                );
-
-
-            /*
-            Rebuild later — only need count to compare.
-            */
-
-            bestWords =
-                [...placedWords];
+            };
         }
 
 
         if(
-            placedWords.length >=
-            puzzle.words.length - 1
+            bestCount >=
+            TARGET_WORDS
         ){
 
             break;
@@ -1956,66 +2066,54 @@ function buildCrossword(
 
 
     /*
-    Run once more until at least MIN_WORDS.
-    In normal use the supplied banks comfortably achieve it.
+    Restore best board found.
+    */
+
+    grid =
+        bestSnapshot.grid;
+
+
+    placedWords =
+        bestSnapshot.words;
+
+
+    /*
+    Don't let a massive lucky generation make an
+    unnecessarily long crossword.
     */
 
     if(
-        placedWords.length <
-        MIN_WORDS
+        placedWords.length >
+        TARGET_WORDS
     ){
 
-        grid =
-            makeEmptyGrid();
-
         placedWords =
-            [];
-
-
-        const fallback =
-            [...puzzle.words]
-            .sort(
-                (a,b) =>
-                    b.answer.length -
-                    a.answer.length
-            );
-
-
-        const first =
-            fallback.shift();
-
-
-        placeWord(
-            first,
-            7,
-            Math.max(
+            placedWords.slice(
                 0,
-                Math.floor(
-                    (
-                        GRID_SIZE -
-                        first.answer.length
-                    ) / 2
-                )
-            ),
-            "across"
-        );
-
-
-        fallback.forEach(
-            word =>
-                tryPlaceWord(
-                    word
-                )
-        );
+                TARGET_WORDS
+            );
     }
 
 
     assignNumbers();
+
+
+    /*
+    Save the words actually appearing so upcoming
+    games avoid them.
+    */
+
+    saveAnswersToHistory(
+        placedWords.map(
+            word =>
+                word.answer
+        )
+    );
 }
 
 
 /* ======================================================
-NUMBER WORDS
+NUMBER CLUES
 ====================================================== */
 
 function assignNumbers(){
@@ -2027,12 +2125,15 @@ function assignNumbers(){
     placedWords.forEach(
         word => {
 
+
             const key =
                 `${word.row},${word.col}`;
 
 
             if(
-                !starts.has(key)
+                !starts.has(
+                    key
+                )
             ){
 
                 starts.set(
@@ -2051,10 +2152,11 @@ function assignNumbers(){
     );
 
 
-    const orderedStarts =
+    const ordered =
         [...starts.entries()]
         .map(
             ([key,words]) => {
+
 
                 const [
                     row,
@@ -2083,8 +2185,9 @@ function assignNumbers(){
         1;
 
 
-    orderedStarts.forEach(
+    ordered.forEach(
         start => {
+
 
             start.words.forEach(
                 word => {
@@ -2107,10 +2210,6 @@ START GAME
 
 function startGame(){
 
-    activePuzzle =
-        choosePuzzle();
-
-
     checkCount =
         0;
 
@@ -2124,9 +2223,7 @@ function startGame(){
         null;
 
 
-    buildCrossword(
-        activePuzzle
-    );
+    generateCrossword();
 
 
     document
@@ -2155,22 +2252,6 @@ function startGame(){
 
     document
         .getElementById(
-            "puzzleTitle"
-        )
-        .textContent =
-        activePuzzle.title;
-
-
-    document
-        .getElementById(
-            "puzzleSubtitle"
-        )
-        .textContent =
-        activePuzzle.subtitle;
-
-
-    document
-        .getElementById(
             "statusMessage"
         )
         .textContent =
@@ -2182,14 +2263,32 @@ function startGame(){
     renderClues();
 
     updateProgress();
+
+
+    /*
+    Automatically select first clue.
+    */
+
+    const first =
+        [...placedWords]
+        .sort(
+            (a,b) =>
+                a.number -
+                b.number
+        )[0];
+
+
+    if(first){
+
+        selectWord(
+            first
+        );
+    }
 }
 
 
 /* ======================================================
-GRID BOUNDS
-
-Only display the part of the 15x15 grid that actually
-contains crossword cells.
+GET VISIBLE GRID BOUNDS
 ====================================================== */
 
 function getBounds(){
@@ -2305,10 +2404,6 @@ function renderGrid(){
         `repeat(${rows},1fr)`;
 
 
-    /*
-    Keep cells square based on actual board shape.
-    */
-
     container.style
         .aspectRatio =
         `${cols} / ${rows}`;
@@ -2330,7 +2425,7 @@ function renderGrid(){
             c++
         ){
 
-            const cell =
+            const element =
                 document.createElement(
                     "div"
                 );
@@ -2342,28 +2437,27 @@ function renderGrid(){
 
             if(!data){
 
-                cell.className =
+                element.className =
                     "cell block";
 
 
-                container
-                    .appendChild(
-                        cell
-                    );
+                container.appendChild(
+                    element
+                );
 
 
                 continue;
             }
 
 
-            cell.className =
+            element.className =
                 "cell";
 
 
-            cell.dataset.row =
+            element.dataset.row =
                 r;
 
-            cell.dataset.col =
+            element.dataset.col =
                 c;
 
 
@@ -2380,26 +2474,22 @@ function renderGrid(){
             ){
 
                 const number =
-                    startingWords[0]
-                        .number;
-
-
-                const num =
                     document.createElement(
                         "span"
                     );
 
 
-                num.className =
+                number.className =
                     "cell-number";
 
 
-                num.textContent =
-                    number;
+                number.textContent =
+                    startingWords[0]
+                        .number;
 
 
-                cell.appendChild(
-                    num
+                element.appendChild(
+                    number
                 );
             }
 
@@ -2418,12 +2508,12 @@ function renderGrid(){
                 data.user;
 
 
-            cell.appendChild(
+            element.appendChild(
                 letter
             );
 
 
-            cell.onclick =
+            element.onclick =
                 () =>
                     selectCell(
                         r,
@@ -2432,7 +2522,7 @@ function renderGrid(){
 
 
             container.appendChild(
-                cell
+                element
             );
         }
     }
@@ -2443,7 +2533,7 @@ function renderGrid(){
 
 
 /* ======================================================
-CLUES
+RENDER CLUES
 ====================================================== */
 
 function renderClues(){
@@ -2469,7 +2559,7 @@ function renderClues(){
         "";
 
 
-    placedWords
+    [...placedWords]
         .sort(
             (a,b) =>
                 a.number -
@@ -2491,6 +2581,7 @@ function renderClues(){
 
                 button.dataset.number =
                     word.number;
+
 
                 button.dataset.direction =
                     word.direction;
@@ -2545,11 +2636,10 @@ function selectCell(
     }
 
 
-    selectedCell =
-        {
-            row,
-            col
-        };
+    selectedCell = {
+        row,
+        col
+    };
 
 
     const words =
@@ -2577,10 +2667,6 @@ function selectCell(
         words.length > 1
     ){
 
-        /*
-        Clicking an intersection toggles Across / Down.
-        */
-
         const other =
             words.find(
                 word =>
@@ -2604,19 +2690,22 @@ function selectCell(
 
 
 /* ======================================================
-SELECT WORD FROM CLUE
+SELECT CLUE
 ====================================================== */
 
-function selectWord(word){
+function selectWord(
+    word
+){
 
     activeWord =
         word;
+
 
     currentDirection =
         word.direction;
 
 
-    const firstEmpty =
+    const empty =
         word.cells.find(
             cell =>
                 !grid[
@@ -2628,7 +2717,7 @@ function selectWord(word){
 
 
     selectedCell =
-        firstEmpty ||
+        empty ||
         word.cells[0];
 
 
@@ -2637,7 +2726,7 @@ function selectWord(word){
 
 
 /* ======================================================
-HIGHLIGHTS
+HIGHLIGHT CURRENT WORD
 ====================================================== */
 
 function updateHighlights(){
@@ -2662,10 +2751,12 @@ function updateHighlights(){
             ".clue"
         )
         .forEach(
-            clue =>
+            clue => {
+
                 clue.classList.remove(
                     "active"
-                )
+                );
+            }
         );
 
 
@@ -2728,7 +2819,7 @@ function updateHighlights(){
 
 
 /* ======================================================
-KEYBOARD
+KEYBOARD INPUT
 ====================================================== */
 
 document.addEventListener(
@@ -2743,11 +2834,13 @@ document.addEventListener(
                 .style.display !==
                 "block"
         ){
+
             return;
         }
 
 
         if(!selectedCell){
+
             return;
         }
 
@@ -2761,10 +2854,12 @@ document.addEventListener(
 
             event.preventDefault();
 
+
             enterLetter(
                 event.key
                     .toUpperCase()
             );
+
 
             return;
         }
@@ -2830,6 +2925,7 @@ document.addEventListener(
 
             event.preventDefault();
 
+
             cycleWord(
                 event.shiftKey
                 ? -1
@@ -2844,24 +2940,16 @@ document.addEventListener(
 ENTER LETTER
 ====================================================== */
 
-function enterLetter(letter){
+function enterLetter(
+    letter
+){
 
-    const data =
-        grid[
-            selectedCell.row
-        ][
-            selectedCell.col
-        ];
-
-
-    data.user =
-        letter;
-
-
-    removeCellValidation(
-        selectedCell.row,
+    grid[
+        selectedCell.row
+    ][
         selectedCell.col
-    );
+    ].user =
+        letter;
 
 
     moveAlongWord(
@@ -2878,7 +2966,7 @@ function enterLetter(letter){
 
 
 /* ======================================================
-DELETE LETTER
+BACKSPACE
 ====================================================== */
 
 function deleteLetter(){
@@ -2919,12 +3007,15 @@ function deleteLetter(){
 
 
 /* ======================================================
-MOVE ALONG WORD
+MOVE WITHIN ACTIVE WORD
 ====================================================== */
 
-function moveAlongWord(step){
+function moveAlongWord(
+    step
+){
 
     if(!activeWord){
+
         return;
     }
 
@@ -2939,24 +3030,27 @@ function moveAlongWord(step){
         );
 
 
-    if(index === -1){
+    if(
+        index === -1
+    ){
+
         return;
     }
 
 
-    const nextIndex =
+    const next =
         index + step;
 
 
     if(
-        nextIndex >= 0 &&
-        nextIndex <
+        next >= 0 &&
+        next <
         activeWord.cells.length
     ){
 
         selectedCell =
             activeWord.cells[
-                nextIndex
+                next
             ];
     }
 }
@@ -3001,23 +3095,19 @@ function moveCell(
 
 
 /* ======================================================
-TAB WORD MOVEMENT
+TAB BETWEEN CLUES
 ====================================================== */
 
-function cycleWord(direction){
+function cycleWord(
+    direction
+){
 
     const sorted =
         [...placedWords]
         .sort(
             (a,b) =>
                 a.number -
-                b.number ||
-                (
-                    a.direction ===
-                    "across"
-                    ? -1
-                    : 1
-                )
+                b.number
         );
 
 
@@ -3027,9 +3117,12 @@ function cycleWord(direction){
         );
 
 
-    if(index === -1){
+    if(
+        index === -1
+    ){
 
-        index = 0;
+        index =
+            0;
 
     }else{
 
@@ -3044,7 +3137,9 @@ function cycleWord(direction){
 
 
     selectWord(
-        sorted[index]
+        sorted[
+            index
+        ]
     );
 }
 
@@ -3053,7 +3148,9 @@ function cycleWord(direction){
 WORD SOLVED
 ====================================================== */
 
-function isWordSolved(word){
+function isWordSolved(
+    word
+){
 
     return word.cells.every(
         (
@@ -3065,7 +3162,9 @@ function isWordSolved(word){
             ][
                 cell.col
             ].user ===
-            word.answer[index]
+            word.answer[
+                index
+            ]
     );
 }
 
@@ -3087,6 +3186,7 @@ function updateSolvedClues(){
 
 
             if(!clue){
+
                 return;
             }
 
@@ -3162,6 +3262,7 @@ function checkPuzzle(){
                 !data ||
                 !data.user
             ){
+
                 continue;
             }
 
@@ -3179,11 +3280,13 @@ function checkPuzzle(){
 
                 correct++;
 
+
                 if(cell){
 
                     cell.classList.add(
                         "correct-cell"
                     );
+
 
                     cell.classList.remove(
                         "wrong-cell"
@@ -3194,11 +3297,13 @@ function checkPuzzle(){
 
                 wrong++;
 
+
                 if(cell){
 
                     cell.classList.add(
                         "wrong-cell"
                     );
+
 
                     cell.classList.remove(
                         "correct-cell"
@@ -3243,31 +3348,6 @@ function checkPuzzle(){
 
 
 /* ======================================================
-REMOVE VALIDATION STYLE
-====================================================== */
-
-function removeCellValidation(
-    row,
-    col
-){
-
-    const cell =
-        document.querySelector(
-            `.cell[data-row="${row}"][data-col="${col}"]`
-        );
-
-
-    if(cell){
-
-        cell.classList.remove(
-            "correct-cell",
-            "wrong-cell"
-        );
-    }
-}
-
-
-/* ======================================================
 REVEAL LETTER
 ====================================================== */
 
@@ -3281,6 +3361,7 @@ function revealLetter(){
             )
             .textContent =
             "Select a square first.";
+
 
         return;
     }
@@ -3335,7 +3416,8 @@ function revealWord(){
                 "statusMessage"
             )
             .textContent =
-            "Select a clue or word first.";
+            "Select a clue first.";
+
 
         return;
     }
@@ -3349,6 +3431,7 @@ function revealWord(){
             cell,
             index
         ) => {
+
 
             grid[
                 cell.row
@@ -3408,6 +3491,7 @@ function clearWrongLetters(){
                 !data ||
                 !data.user
             ){
+
                 continue;
             }
 
@@ -3443,7 +3527,7 @@ function clearWrongLetters(){
 
 
 /* ======================================================
-COMPLETE
+COMPLETION
 ====================================================== */
 
 function checkForCompletion(){
@@ -3455,6 +3539,7 @@ function checkForCompletion(){
 
 
     if(!complete){
+
         return;
     }
 
@@ -3467,7 +3552,7 @@ function checkForCompletion(){
 
 
 /* ======================================================
-FINISH GAME
+FINISH
 ====================================================== */
 
 function finishGame(){
