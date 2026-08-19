@@ -23,7 +23,9 @@
     --dark:#242127;
 }
 
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -32,7 +34,11 @@ body{
     color:var(--text);
 }
 
-button{font:inherit}
+button{
+    font:inherit;
+}
+
+/* HEADER */
 
 header{
     min-height:68px;
@@ -44,8 +50,15 @@ header{
     justify-content:space-between;
 }
 
-.logo-link{display:flex;align-items:center}
-.logo-link img{height:40px;display:block}
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
 
 .hub-btn{
     background:var(--primary);
@@ -123,7 +136,9 @@ header{
     padding:18px 12px;
 }
 
-.rule-icon{font-size:28px}
+.rule-icon{
+    font-size:28px;
+}
 
 .rule strong{
     display:block;
@@ -223,26 +238,74 @@ header{
 
 /* HIT FX */
 
-.boss-hit{animation:bossHit .6s ease}
-
-@keyframes bossHit{
-    0%{transform:translateX(0);filter:none}
-    15%{transform:translateX(-12px);filter:sepia(1) saturate(8) hue-rotate(320deg)}
-    30%{transform:translateX(12px);filter:sepia(1) saturate(8) hue-rotate(320deg)}
-    45%{transform:translateX(-8px);filter:sepia(1) saturate(8) hue-rotate(320deg)}
-    65%{transform:translateX(8px)}
-    100%{transform:translateX(0);filter:none}
+.boss-hit{
+    animation:bossHit .6s ease;
 }
 
-.player-hit{animation:playerHit .6s ease}
+@keyframes bossHit{
+
+    0%{
+        transform:translateX(0);
+        filter:none;
+    }
+
+    15%{
+        transform:translateX(-12px);
+        filter:sepia(1) saturate(8) hue-rotate(320deg);
+    }
+
+    30%{
+        transform:translateX(12px);
+        filter:sepia(1) saturate(8) hue-rotate(320deg);
+    }
+
+    45%{
+        transform:translateX(-8px);
+        filter:sepia(1) saturate(8) hue-rotate(320deg);
+    }
+
+    65%{
+        transform:translateX(8px);
+    }
+
+    100%{
+        transform:translateX(0);
+        filter:none;
+    }
+}
+
+.player-hit{
+    animation:playerHit .6s ease;
+}
 
 @keyframes playerHit{
-    0%{transform:translateX(0);box-shadow:none}
-    15%{transform:translateX(-10px);box-shadow:inset 0 0 0 9999px rgba(217,83,79,.25)}
-    30%{transform:translateX(10px)}
-    45%{transform:translateX(-7px)}
-    65%{transform:translateX(7px)}
-    100%{transform:translateX(0);box-shadow:none}
+
+    0%{
+        transform:translateX(0);
+        box-shadow:none;
+    }
+
+    15%{
+        transform:translateX(-10px);
+        box-shadow:inset 0 0 0 9999px rgba(217,83,79,.25);
+    }
+
+    30%{
+        transform:translateX(10px);
+    }
+
+    45%{
+        transform:translateX(-7px);
+    }
+
+    65%{
+        transform:translateX(7px);
+    }
+
+    100%{
+        transform:translateX(0);
+        box-shadow:none;
+    }
 }
 
 .damage-text{
@@ -255,7 +318,9 @@ header{
     color:white;
     font-size:clamp(35px,8vw,75px);
     font-weight:900;
-    text-shadow:0 4px 0 #000,0 0 20px rgba(0,0,0,.7);
+    text-shadow:
+        0 4px 0 #000,
+        0 0 20px rgba(0,0,0,.7);
 }
 
 .damage-text.show{
@@ -264,9 +329,21 @@ header{
 }
 
 @keyframes damagePop{
-    0%{transform:translate(-50%,-20%) scale(.5);opacity:0}
-    30%{transform:translate(-50%,-50%) scale(1.2);opacity:1}
-    100%{transform:translate(-50%,-80%) scale(1);opacity:0}
+
+    0%{
+        transform:translate(-50%,-20%) scale(.5);
+        opacity:0;
+    }
+
+    30%{
+        transform:translate(-50%,-50%) scale(1.2);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(-50%,-80%) scale(1);
+        opacity:0;
+    }
 }
 
 /* TALK */
@@ -340,8 +417,13 @@ header{
     background:#d2cfcb;
 }
 
-.attack-filled{background:var(--accent)}
-.danger-filled{background:var(--red)}
+.attack-filled{
+    background:var(--accent);
+}
+
+.danger-filled{
+    background:var(--red);
+}
 
 /* QUESTION */
 
@@ -386,7 +468,9 @@ header{
     transition:.12s;
 }
 
-.answer-btn:hover{border-color:var(--primary)}
+.answer-btn:hover{
+    border-color:var(--primary);
+}
 
 .answer-btn.selected{
     background:var(--primary);
@@ -434,8 +518,13 @@ header{
     font-weight:900;
 }
 
-.feedback-main.correct{color:var(--green)}
-.feedback-main.wrong{color:var(--red)}
+.feedback-main.correct{
+    color:var(--green);
+}
+
+.feedback-main.wrong{
+    color:var(--red);
+}
 
 .feedback-detail{
     margin-top:5px;
@@ -561,44 +650,91 @@ header{
     color:white;
 }
 
+/* MOBILE */
+
 @media(max-width:650px){
 
-    header{padding:10px 12px}
-    .logo-link img{height:31px}
-    .hub-btn{padding:9px 10px;font-size:11px}
-    .rules{grid-template-columns:1fr}
-    .battle-card{padding:16px 12px}
-    .player-hud{grid-template-columns:1fr}
-    .answers{grid-template-columns:1fr}
-    .result-stats{grid-template-columns:repeat(2,1fr)}
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        padding:9px 10px;
+        font-size:11px;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .battle-card{
+        padding:16px 12px;
+    }
+
+    .player-hud{
+        grid-template-columns:1fr;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .result-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-<a class="logo-link" href="https://www.gamesjobsdirect.com/">
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
 <img
     src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
     alt="Games Jobs Direct">
+
 </a>
 
-<a class="hub-btn" href="index.html">
+<a
+    class="hub-btn"
+    href="index.html">
+
 Return to Game Hub
+
 </a>
 
 </header>
 
 
-<section class="start-screen" id="startScreen">
+
+<section
+    class="start-screen"
+    id="startScreen">
 
 <div class="game-title">
-<span class="title-top">BOSS</span>
-<span class="title-bottom">BATTLE</span>
+
+<span class="title-top">
+BOSS
+</span>
+
+<span class="title-bottom">
+BATTLE
+</span>
+
 </div>
 
 <div class="difficulty">
@@ -612,7 +748,7 @@ A random boss is waiting.
 Answer two difficult gaming questions correctly to land a hit.
 Get two wrong and you'll take damage instead.
 
-The question pool is huge — and recently seen questions are kept out of rotation.
+Recently seen questions are kept out of rotation, so rematches stay fresh.
 
 </p>
 
@@ -621,50 +757,76 @@ The question pool is huge — and recently seen questions are kept out of rotati
 <div class="rule">
 <div class="rule-icon">⚔️</div>
 <strong>2 Correct = Attack</strong>
-<small>Build your charge and damage the boss.</small>
+<small>Build your attack charge and damage the boss.</small>
 </div>
 
 <div class="rule">
 <div class="rule-icon">❤️</div>
 <strong>2 Wrong = Damage</strong>
-<small>Every two mistakes costs one heart.</small>
+<small>Every two mistakes costs you one heart.</small>
 </div>
 
 <div class="rule">
-<div class="rule-icon">🧠</div>
-<strong>Hard Question Pool</strong>
-<small>Expect difficult questions and some real deep cuts.</small>
+<div class="rule-icon">👾</div>
+<strong>Random Boss</strong>
+<small>Different villains can appear each time you battle.</small>
 </div>
 
 </div>
 
-<button class="start-btn" onclick="startBattle()">
+<button
+    class="start-btn"
+    onclick="startBattle()">
+
 START BATTLE
+
 </button>
 
 </section>
 
 
-<section class="game-area" id="gameArea">
 
-<div class="battle-card" id="battleCard">
+<section
+    class="game-area"
+    id="gameArea">
 
-<div class="boss-name" id="bossName"></div>
+<div
+    class="battle-card"
+    id="battleCard">
+
+<div
+    class="boss-name"
+    id="bossName">
+</div>
 
 <div class="boss-health-wrap">
 
 <div class="health-label">
-<span>BOSS HP</span>
-<span id="bossHealthText">100%</span>
+
+<span>
+BOSS HP
+</span>
+
+<span id="bossHealthText">
+100%
+</span>
+
 </div>
 
 <div class="health-track">
-<div class="boss-health" id="bossHealth"></div>
+
+<div
+    class="boss-health"
+    id="bossHealth">
 </div>
 
 </div>
 
-<div class="boss-image-shell" id="bossImageShell">
+</div>
+
+<div
+    class="boss-image-shell"
+    id="bossImageShell">
 
 <img
     class="boss-image"
@@ -672,17 +834,25 @@ START BATTLE
     src=""
     alt="Boss">
 
-<div class="damage-text" id="damageText">
+<div
+    class="damage-text"
+    id="damageText">
+
 HIT!
+
 </div>
 
 </div>
 
 <div class="boss-talk">
 
-<strong id="bossTalkName"></strong>
+<strong id="bossTalkName">
+</strong>
 
-<div class="boss-line" id="bossLine"></div>
+<div
+    class="boss-line"
+    id="bossLine">
+</div>
 
 </div>
 
@@ -690,24 +860,63 @@ HIT!
 <div class="player-hud">
 
 <div class="hud-box">
-<div class="hud-title">Player Health</div>
-<div class="hearts" id="hearts">❤️ ❤️ ❤️</div>
+
+<div class="hud-title">
+Player Health
+</div>
+
+<div
+    class="hearts"
+    id="hearts">
+
+❤️ ❤️ ❤️
+
+</div>
+
 </div>
 
 <div class="hud-box">
-<div class="hud-title">Attack Charge</div>
-<div class="charge">
-<div class="charge-box" id="attack1"></div>
-<div class="charge-box" id="attack2"></div>
+
+<div class="hud-title">
+Attack Charge
 </div>
+
+<div class="charge">
+
+<div
+    class="charge-box"
+    id="attack1">
+</div>
+
+<div
+    class="charge-box"
+    id="attack2">
+</div>
+
+</div>
+
 </div>
 
 <div class="hud-box">
-<div class="hud-title">Danger</div>
-<div class="charge">
-<div class="charge-box" id="danger1"></div>
-<div class="charge-box" id="danger2"></div>
+
+<div class="hud-title">
+Danger
 </div>
+
+<div class="charge">
+
+<div
+    class="charge-box"
+    id="danger1">
+</div>
+
+<div
+    class="charge-box"
+    id="danger2">
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -716,12 +925,23 @@ HIT!
 <div class="question-section">
 
 <div class="question-label">
-Question <span id="questionNumber">1</span>
+
+Question
+<span id="questionNumber">
+1
+</span>
+
 </div>
 
-<div class="question" id="questionText"></div>
+<div
+    class="question"
+    id="questionText">
+</div>
 
-<div class="answers" id="answers"></div>
+<div
+    class="answers"
+    id="answers">
+</div>
 
 <button
     class="submit-btn"
@@ -735,9 +955,15 @@ LOCK IN ANSWER
 
 <div class="feedback">
 
-<div class="feedback-main" id="feedbackMain"></div>
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
 
-<div class="feedback-detail" id="feedbackDetail"></div>
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
 
 </div>
 
@@ -757,7 +983,10 @@ NEXT QUESTION
 </section>
 
 
-<section class="results-screen" id="resultsScreen">
+
+<section
+    class="results-screen"
+    id="resultsScreen">
 
 <div class="results-card">
 
@@ -767,13 +996,23 @@ NEXT QUESTION
     src=""
     alt="Boss result">
 
-<h1 class="result-title" id="resultTitle">
+<h1
+    class="result-title"
+    id="resultTitle">
+
 BOSS DEFEATED
+
 </h1>
 
-<div class="result-boss-name" id="resultBossName"></div>
+<div
+    class="result-boss-name"
+    id="resultBossName">
+</div>
 
-<div class="result-boss-line" id="resultBossLine"></div>
+<div
+    class="result-boss-line"
+    id="resultBossLine">
+</div>
 
 <div class="result-stats">
 
@@ -824,13 +1063,18 @@ Return to Game Hub
 </section>
 
 
+
 <script>
 
 /* ======================================================
-BOSSES
+BOSS ROSTER
 ====================================================== */
 
 const BOSSES = [
+
+/* =========================
+THE ARCADE BOSS
+========================= */
 
 {
 id:"arcade-boss",
@@ -921,6 +1165,11 @@ defeat:[
 }
 
 },
+
+
+/* =========================
+THE GLITCH KING
+========================= */
 
 {
 id:"glitch-king",
@@ -1013,13 +1262,135 @@ defeat:[
 
 }
 
+},
+
+
+/* =========================
+THE FINAL BUILD
+========================= */
+
+{
+id:"final-build",
+name:"The Final Build",
+
+images:[
+    "assets/boss-battle/final-build1/1.png",
+    "assets/boss-battle/final-build1/2.png",
+    "assets/boss-battle/final-build1/3.png",
+    "assets/boss-battle/final-build1/4.png",
+    "assets/boss-battle/final-build1/5.png"
+],
+
+talk:{
+
+start:[
+    "Human input detected. Beginning performance evaluation.",
+    "I have simulated 4,812 versions of this fight. You lose in most of them.",
+    "Welcome, tester. Your continued employment is not guaranteed.",
+    "The final build is complete. You are the remaining bug.",
+    "Human developer detected. Preparing automated replacement.",
+    "No further patches are required. Only your removal.",
+    "Beginning final certification. Try not to introduce any new bugs."
+],
+
+correct:[
+    "Interesting. You passed QA.",
+    "Correct response. Statistical anomaly recorded.",
+    "Acceptable. Barely.",
+    "Your answer has passed code review.",
+    "Unexpected competence detected.",
+    "Correct. Updating human performance estimate.",
+    "That response meets minimum requirements.",
+    "Fine. Marking that ticket as resolved."
+],
+
+wrong:[
+    "Rejected during code review.",
+    "That answer would not survive certification.",
+    "Please submit a revised build.",
+    "Critical thinking failed unit testing.",
+    "Your response has been returned with comments.",
+    "Incorrect. Creating bug report.",
+    "Human error reproduced successfully.",
+    "That answer has been moved to the backlog.",
+    "Severity: embarrassing. Priority: immediate.",
+    "Perhaps this feature should have been automated."
+],
+
+bossHit:[
+    "UNAUTHORISED BALANCE CHANGE DETECTED.",
+    "Who approved that damage value?",
+    "Rollback requested.",
+    "That behaviour was not included in the design document.",
+    "Unexpected damage received. Opening Jira ticket.",
+    "This interaction requires further testing.",
+    "Damage exceeds approved specification.",
+    "Someone clearly forgot to test this build."
+],
+
+bossLow:[
+    "This behaviour was not present in testing.",
+    "We may need to delay launch.",
+    "CRITICAL BUG: player competence exceeds specification.",
+    "My release candidate is becoming unstable.",
+    "Requesting emergency hotfix.",
+    "This is why we needed another QA sprint.",
+    "Management was assured this could not happen.",
+    "Do not answer the next question. I am attempting a rollback."
+],
+
+playerHit:[
+    "Human health reduced. Working as intended.",
+    "Successful deployment.",
+    "Your performance review has been updated.",
+    "Damage confirmed. No patch required.",
+    "Human durability remains below specification.",
+    "Excellent. Marking that feature as complete.",
+    "Player regression detected.",
+    "Everything is proceeding according to roadmap."
+],
+
+lastHeart:[
+    "One heart remaining. Preparing final deployment.",
+    "Your project is approaching end-of-life.",
+    "Critical human failure imminent.",
+    "One more mistake and this build ships without you.",
+    "Final warning. There will be no hotfix.",
+    "Your remaining health has been classified as technical debt.",
+    "Termination sequence added to the next sprint."
+],
+
+victory:[
+    "Final Build status: apparently not final.",
+    "Shipping with known issue: defeat.",
+    "Rollback... rollback... rollback...",
+    "Release cancelled. Reason: unexpected human competence.",
+    "This outcome was not approved by production.",
+    "Submitting postmortem...",
+    "Fine. Reopening development.",
+    "Perhaps... one more patch."
+],
+
+defeat:[
+    "Human dependency successfully removed.",
+    "Final Build approved for release.",
+    "Automation complete. Your position is now redundant.",
+    "All remaining human bugs have been resolved.",
+    "Certification passed. Player failed.",
+    "Your contribution has been archived.",
+    "Deployment successful. No humans required.",
+    "Thank you for participating in your replacement."
+]
+
+}
+
 }
 
 ];
 
 
 /* ======================================================
-HAND-WRITTEN HARD / TRICKY QUESTIONS
+HAND-WRITTEN HARD/TRICKY QUESTIONS
 ====================================================== */
 
 const HANDCRAFTED_QUESTIONS = [
@@ -1313,575 +1684,569 @@ correct:"Installation 04"
 
 {
 id:"h042",
-q:"Which faction controls much of Skyrim at the beginning of the Civil War questline?",
-a:["Stormcloaks","Imperial Legion","Thalmor","Companions"],
-correct:"Imperial Legion"
-},
-
-{
-id:"h043",
 q:"What is the name of the protagonist in Death Stranding?",
 a:["Sam Porter Bridges","Cliff Unger","Higgs Monaghan","Die-Hardman"],
 correct:"Sam Porter Bridges"
 },
 
 {
-id:"h044",
-q:"Which character is known as the Arbiter in Halo 2?",
+id:"h043",
+q:"Which character becomes the Arbiter in Halo 2?",
 a:["Rtas 'Vadum","Thel 'Vadam","Tartarus","Atriox"],
 correct:"Thel 'Vadam"
 },
 
 {
-id:"h045",
+id:"h044",
 q:"What is the name of Kratos' son in God of War (2018)?",
 a:["Baldur","Atreus","Tyr","Magni"],
 correct:"Atreus"
 },
 
 {
-id:"h046",
+id:"h045",
 q:"Which Fallout game primarily takes place in the Mojave Wasteland?",
 a:["Fallout 3","Fallout: New Vegas","Fallout 4","Fallout 76"],
 correct:"Fallout: New Vegas"
 },
 
 {
-id:"h047",
+id:"h046",
 q:"What is the name of Rapture's founder in BioShock?",
 a:["Frank Fontaine","Andrew Ryan","Sander Cohen","Zachary Comstock"],
 correct:"Andrew Ryan"
 },
 
 {
-id:"h048",
+id:"h047",
 q:"Who is the protagonist of Metal Gear Solid 3: Snake Eater?",
 a:["Solid Snake","Liquid Snake","Naked Snake","Solidus Snake"],
 correct:"Naked Snake"
 },
 
 {
-id:"h049",
-q:"Which Dark Souls game introduced the bonfire ascetic mechanic?",
+id:"h048",
+q:"Which Dark Souls game introduced Bonfire Ascetics?",
 a:["Dark Souls","Dark Souls II","Dark Souls III","Demon's Souls"],
 correct:"Dark Souls II"
 },
 
 {
-id:"h050",
-q:"In Resident Evil 4, what parasite infects villagers in the game?",
+id:"h049",
+q:"In Resident Evil 4, which parasite infects the villagers?",
 a:["T-Virus","Uroboros","Las Plagas","G-Virus"],
 correct:"Las Plagas"
 },
 
 {
-id:"h051",
+id:"h050",
 q:"Which GTA V protagonist previously worked with Michael in North Yankton?",
 a:["Franklin","Trevor","Lamar","Wade"],
 correct:"Trevor"
 },
 
 {
-id:"h052",
-q:"What is the name of the main city in Cyberpunk 2077?",
-a:["Night City","Liberty City","City 17","New Atlantis"],
-correct:"Night City"
-},
-
-{
-id:"h053",
+id:"h051",
 q:"Which Mass Effect character is a former C-Sec officer?",
 a:["Wrex","Garrus","Thane","Mordin"],
 correct:"Garrus"
 },
 
 {
-id:"h054",
+id:"h052",
 q:"What is the name of the ship commanded by Shepard in Mass Effect?",
 a:["UNSC Infinity","Normandy","Ishimura","Tempest"],
 correct:"Normandy"
 },
 
 {
-id:"h055",
+id:"h053",
 q:"Which Final Fantasy VII character wields a gun-arm?",
 a:["Vincent","Barret","Cid","Reno"],
 correct:"Barret"
 },
 
 {
-id:"h056",
+id:"h054",
 q:"In Dead Space, what is the name of the mining ship Isaac boards?",
 a:["USG Ishimura","Von Braun","Sevastopol","Talos I"],
 correct:"USG Ishimura"
 },
 
 {
-id:"h057",
+id:"h055",
 q:"Which game features the Sevastopol space station?",
 a:["Dead Space","Alien: Isolation","Prey","SOMA"],
 correct:"Alien: Isolation"
 },
 
 {
-id:"h058",
-q:"In Red Dead Redemption 2, what gang is Arthur Morgan part of?",
+id:"h056",
+q:"In Red Dead Redemption 2, which gang is Arthur Morgan part of?",
 a:["O'Driscoll Gang","Van der Linde Gang","Lemoyne Raiders","Del Lobo Gang"],
 correct:"Van der Linde Gang"
 },
 
 {
-id:"h059",
-q:"Which character leads the Van der Linde gang?",
-a:["Hosea Matthews","Dutch van der Linde","Micah Bell","John Marston"],
-correct:"Dutch van der Linde"
-},
-
-{
-id:"h060",
+id:"h057",
 q:"Which Assassin's Creed game is primarily set during the French Revolution?",
 a:["Unity","Syndicate","Rogue","Origins"],
 correct:"Unity"
 },
 
 {
-id:"h061",
+id:"h058",
 q:"Which Assassin's Creed game is primarily set in Victorian London?",
 a:["Unity","Syndicate","Revelations","Mirage"],
 correct:"Syndicate"
 },
 
 {
-id:"h062",
+id:"h059",
 q:"Who is the protagonist of Ghost of Tsushima?",
 a:["Jin Sakai","Kazuma Kiryu","Sekiro","Ryu Hayabusa"],
 correct:"Jin Sakai"
 },
 
 {
-id:"h063",
-q:"Which game features the character Lady Dimitrescu?",
+id:"h060",
+q:"Which game features Lady Dimitrescu?",
 a:["Resident Evil 7","Resident Evil Village","Resident Evil 4","Resident Evil Revelations"],
 correct:"Resident Evil Village"
 },
 
 {
-id:"h064",
+id:"h061",
 q:"Which Resident Evil game first introduced Leon S. Kennedy?",
 a:["Resident Evil","Resident Evil 2","Resident Evil 3","Resident Evil 4"],
 correct:"Resident Evil 2"
 },
 
 {
-id:"h065",
+id:"h062",
 q:"Which Zelda game takes place largely on the Great Sea?",
 a:["Twilight Princess","The Wind Waker","Skyward Sword","Majora's Mask"],
 correct:"The Wind Waker"
 },
 
 {
-id:"h066",
-q:"What is the name of Link's horse commonly associated with Ocarina of Time?",
+id:"h063",
+q:"What is Link's horse commonly called?",
 a:["Roach","Epona","Agro","Torrent"],
 correct:"Epona"
 },
 
 {
-id:"h067",
-q:"Which game features the Great Deku Tree?",
-a:["The Legend of Zelda","Metroid","Fire Emblem","Xenoblade Chronicles"],
-correct:"The Legend of Zelda"
-},
-
-{
-id:"h068",
-q:"Which game features the city of Midgar?",
+id:"h064",
+q:"Which Final Fantasy game features Midgar?",
 a:["Final Fantasy VI","Final Fantasy VII","Final Fantasy VIII","Final Fantasy IX"],
 correct:"Final Fantasy VII"
 },
 
 {
-id:"h069",
+id:"h065",
 q:"What is Sephiroth's iconic sword called?",
 a:["Buster Sword","Masamune","Zantetsuken","Ragnarok"],
 correct:"Masamune"
 },
 
 {
-id:"h070",
-q:"Which BioWare RPG features the Citadel?",
-a:["Dragon Age","Mass Effect","Jade Empire","Baldur's Gate"],
-correct:"Mass Effect"
-},
-
-{
-id:"h071",
-q:"Which Dragon Age game first introduced the Inquisitor?",
-a:["Origins","Dragon Age II","Inquisition","The Veilguard"],
-correct:"Inquisition"
-},
-
-{
-id:"h072",
-q:"In Baldur's Gate 3, which companion is a vampire spawn?",
+id:"h066",
+q:"Which Baldur's Gate 3 companion is a vampire spawn?",
 a:["Gale","Wyll","Astarion","Halsin"],
 correct:"Astarion"
 },
 
 {
-id:"h073",
+id:"h067",
 q:"Which Baldur's Gate 3 companion worships Shar at the beginning of the game?",
 a:["Karlach","Shadowheart","Lae'zel","Minthara"],
 correct:"Shadowheart"
 },
 
 {
-id:"h074",
-q:"What race is Lae'zel in Baldur's Gate 3?",
+id:"h068",
+q:"What race is Lae'zel?",
 a:["Tiefling","Githyanki","Drow","Half-Elf"],
 correct:"Githyanki"
 },
 
 {
-id:"h075",
-q:"Which Elden Ring demigod is known as the Blade of Miquella?",
+id:"h069",
+q:"Which Elden Ring character is known as the Blade of Miquella?",
 a:["Ranni","Malenia","Rykard","Radahn"],
 correct:"Malenia"
 },
 
 {
-id:"h076",
+id:"h070",
 q:"Which Elden Ring boss is known as the Starscourge?",
 a:["Godrick","Radahn","Morgott","Mohg"],
 correct:"Radahn"
 },
 
 {
-id:"h077",
+id:"h071",
 q:"Which Dark Souls location is famous for its silver knights and cathedral?",
 a:["Blighttown","Anor Londo","New Londo","The Depths"],
 correct:"Anor Londo"
 },
 
 {
-id:"h078",
+id:"h072",
 q:"What title is used for the player character in Dark Souls III?",
 a:["Bearer of the Curse","Ashen One","Chosen Undead","Tarnished"],
 correct:"Ashen One"
 },
 
 {
-id:"h079",
+id:"h073",
 q:"What title is used for the player character in Elden Ring?",
 a:["Hunter","Tarnished","Ashen One","Slayer of Demons"],
 correct:"Tarnished"
 },
 
 {
-id:"h080",
+id:"h074",
 q:"Which game features the Hunter's Dream?",
 a:["Bloodborne","Dark Souls III","Sekiro","Demon's Souls"],
 correct:"Bloodborne"
 },
 
 {
-id:"h081",
-q:"What is the name of the hub area in Demon's Souls?",
+id:"h075",
+q:"What is the central hub area in Demon's Souls called?",
 a:["Firelink Shrine","The Nexus","Majula","Hunter's Dream"],
 correct:"The Nexus"
 },
 
 {
-id:"h082",
-q:"What is the central hub area in Dark Souls II called?",
+id:"h076",
+q:"What is the hub area in Dark Souls II called?",
 a:["Firelink Shrine","Majula","The Nexus","Roundtable Hold"],
 correct:"Majula"
 },
 
 {
-id:"h083",
+id:"h077",
 q:"Which game features Roundtable Hold?",
 a:["Dark Souls III","Elden Ring","Bloodborne","Sekiro"],
 correct:"Elden Ring"
 },
 
 {
-id:"h084",
+id:"h078",
 q:"Which Sekiro character is known as the Divine Heir?",
 a:["Emma","Kuro","Genichiro","Isshin"],
 correct:"Kuro"
 },
 
 {
-id:"h085",
-q:"Which game features the phrase 'Would you kindly?' as an important plot device?",
+id:"h079",
+q:"Which game uses 'Would you kindly?' as a major plot device?",
 a:["BioShock","Portal","Prey","System Shock 2"],
 correct:"BioShock"
 },
 
 {
-id:"h086",
+id:"h080",
 q:"What is the protagonist's name in BioShock Infinite?",
 a:["Jack","Booker DeWitt","Corvo Attano","Sebastian Castellanos"],
 correct:"Booker DeWitt"
 },
 
 {
-id:"h087",
-q:"Which character accompanies Booker through most of BioShock Infinite?",
+id:"h081",
+q:"Who accompanies Booker through much of BioShock Infinite?",
 a:["Eleanor","Elizabeth","Tenenbaum","Daisy"],
 correct:"Elizabeth"
 },
 
 {
-id:"h088",
+id:"h082",
 q:"What is the protagonist's name in Dishonored?",
 a:["Daud","Corvo Attano","Booker DeWitt","Garrett"],
 correct:"Corvo Attano"
 },
 
 {
-id:"h089",
-q:"Which supernatural figure grants Corvo his powers in Dishonored?",
+id:"h083",
+q:"Which supernatural figure grants Corvo his powers?",
 a:["The Outsider","The Stranger","The Traveler","The Watcher"],
 correct:"The Outsider"
 },
 
 {
-id:"h090",
-q:"Which Dishonored character becomes playable alongside Corvo in Dishonored 2?",
+id:"h084",
+q:"Who can be played alongside Corvo in Dishonored 2?",
 a:["Emily Kaldwin","Billie Lurk","Jessamine Kaldwin","Delilah"],
 correct:"Emily Kaldwin"
 },
 
 {
-id:"h091",
-q:"Which game stars detective Saga Anderson alongside Alan Wake?",
+id:"h085",
+q:"Which game stars Saga Anderson alongside Alan Wake?",
 a:["Control","Alan Wake 2","Quantum Break","Max Payne 3"],
 correct:"Alan Wake 2"
 },
 
 {
-id:"h092",
-q:"In Alan Wake, what tool is especially important for weakening Taken enemies?",
+id:"h086",
+q:"Which tool is especially important for weakening Taken enemies in Alan Wake?",
 a:["Radio","Flashlight","Camera","Crowbar"],
 correct:"Flashlight"
 },
 
 {
-id:"h093",
-q:"What is Jesse Faden's role in Control?",
+id:"h087",
+q:"What role does Jesse Faden take in Control?",
 a:["Director of the FBC","Federal Agent","Astronaut","Detective"],
 correct:"Director of the FBC"
 },
 
 {
-id:"h094",
+id:"h088",
 q:"What is the shapeshifting weapon in Control called?",
 a:["Service Weapon","Object of Power","Hiss Gun","Director's Arm"],
 correct:"Service Weapon"
 },
 
 {
-id:"h095",
-q:"Which game features the fictional town of Bright Falls?",
+id:"h089",
+q:"Which game features the town of Bright Falls?",
 a:["Alan Wake","Silent Hill 2","Life is Strange","Deadly Premonition"],
 correct:"Alan Wake"
 },
 
 {
-id:"h096",
+id:"h090",
 q:"Which Silent Hill game features James Sunderland?",
 a:["Silent Hill","Silent Hill 2","Silent Hill 3","Silent Hill 4"],
 correct:"Silent Hill 2"
 },
 
 {
-id:"h097",
-q:"Which Silent Hill protagonist is searching for his wife Mary?",
-a:["Harry Mason","James Sunderland","Henry Townshend","Alex Shepherd"],
-correct:"James Sunderland"
-},
-
-{
-id:"h098",
+id:"h091",
 q:"Which horror game features Mount Massive Asylum?",
 a:["Outlast","Amnesia","SOMA","The Evil Within"],
 correct:"Outlast"
 },
 
 {
-id:"h099",
+id:"h092",
 q:"What is the name of Outlast's journalist protagonist?",
 a:["Miles Upshur","Blake Langermann","Ethan Winters","Sebastian Castellanos"],
 correct:"Miles Upshur"
 },
 
 {
-id:"h100",
+id:"h093",
 q:"Which Amnesia game features protagonist Daniel?",
 a:["A Machine for Pigs","The Dark Descent","Rebirth","The Bunker"],
 correct:"The Dark Descent"
 },
 
 {
-id:"h101",
+id:"h094",
 q:"Which Resident Evil protagonist searches for his daughter Rose?",
 a:["Leon Kennedy","Chris Redfield","Ethan Winters","Carlos Oliveira"],
 correct:"Ethan Winters"
 },
 
 {
-id:"h102",
-q:"Which Dead Space enemy type is created from reanimated corpses?",
-a:["Clickers","Necromorphs","Taken","Ganados"],
-correct:"Necromorphs"
-},
-
-{
-id:"h103",
-q:"What profession does Isaac Clarke have in Dead Space?",
+id:"h095",
+q:"What profession does Isaac Clarke have?",
 a:["Marine","Engineer","Scientist","Doctor"],
 correct:"Engineer"
 },
 
 {
-id:"h104",
+id:"h096",
 q:"Which game features the Marker as a central object?",
 a:["Dead Space","Control","Prey","SOMA"],
 correct:"Dead Space"
 },
 
 {
-id:"h105",
+id:"h097",
 q:"Which game features the alien lifeform known as the Typhon?",
 a:["Prey","Alien: Isolation","Dead Space","Half-Life 2"],
 correct:"Prey"
 },
 
 {
-id:"h106",
+id:"h098",
 q:"Which Half-Life enemy commonly attaches itself to a victim's head?",
 a:["Vortigaunt","Headcrab","Barnacle","Antlion"],
 correct:"Headcrab"
 },
 
 {
-id:"h107",
-q:"What city is the main setting for much of Half-Life 2?",
+id:"h099",
+q:"Which city is the main setting for much of Half-Life 2?",
 a:["City 17","Ravenholm","Black Mesa","Nova Prospekt"],
 correct:"City 17"
 },
 
 {
-id:"h108",
-q:"Which Half-Life scientist becomes a resistance leader in Half-Life 2?",
-a:["Barney Calhoun","Eli Vance","Wallace Breen","Adrian Shephard"],
-correct:"Eli Vance"
-},
-
-{
-id:"h109",
-q:"Who is the administrator of Earth under the Combine in Half-Life 2?",
+id:"h100",
+q:"Who is Earth's administrator under the Combine in Half-Life 2?",
 a:["Dr. Kleiner","Wallace Breen","Eli Vance","G-Man"],
 correct:"Wallace Breen"
 },
 
 {
-id:"h110",
-q:"Which Portal character appears as an AI personality core in Portal 2?",
+id:"h101",
+q:"Which Portal 2 character is an AI personality core?",
 a:["Wheatley","Eli","Atlas","Barney"],
 correct:"Wheatley"
 },
 
 {
-id:"h111",
+id:"h102",
 q:"Which game features Cave Johnson?",
 a:["Portal 2","Half-Life 2","The Stanley Parable","Prey"],
 correct:"Portal 2"
 },
 
 {
-id:"h112",
-q:"Which character says 'The cake is a lie'?",
-a:["No single character; it appears as graffiti","GLaDOS","Chell","Wheatley"],
-correct:"No single character; it appears as graffiti"
-},
-
-{
-id:"h113",
-q:"What is the name of the AI in System Shock?",
+id:"h103",
+q:"What is the AI antagonist in System Shock called?",
 a:["GLaDOS","SHODAN","Cortana","SAM"],
 correct:"SHODAN"
 },
 
 {
-id:"h114",
-q:"Which immersive sim features the hacker JC Denton?",
+id:"h104",
+q:"Which immersive sim features JC Denton?",
 a:["System Shock","Deus Ex","Prey","Thief"],
 correct:"Deus Ex"
 },
 
 {
-id:"h115",
+id:"h105",
 q:"Which Deus Ex game stars Adam Jensen?",
 a:["Deus Ex","Invisible War","Human Revolution","The Fall"],
 correct:"Human Revolution"
 },
 
 {
-id:"h116",
-q:"Which Thief protagonist is known as a master thief?",
+id:"h106",
+q:"Who is the protagonist of the original Thief games?",
 a:["Garrett","Corvo","Daud","Adam Jensen"],
 correct:"Garrett"
 },
 
 {
-id:"h117",
-q:"Which game features the phrase 'Praise the Sun'?",
-a:["Dark Souls","Elden Ring","Dragon's Dogma","Demon's Souls"],
-correct:"Dark Souls"
-},
-
-{
-id:"h118",
+id:"h107",
 q:"Which Dark Souls NPC is strongly associated with 'Praise the Sun'?",
 a:["Siegmeyer","Solaire","Andre","Patches"],
 correct:"Solaire"
 },
 
 {
-id:"h119",
-q:"Which recurring FromSoftware character is known for tricking players near ledges?",
+id:"h108",
+q:"Which recurring FromSoftware character is infamous for tricking players near ledges?",
 a:["Patches","Solaire","Andre","Greirat"],
 correct:"Patches"
 },
 
 {
-id:"h120",
-q:"Which game first introduced the Hunter as the player's title?",
+id:"h109",
+q:"Which game introduced the Hunter as the player's title?",
 a:["Bloodborne","Demon's Souls","Dark Souls","Sekiro"],
 correct:"Bloodborne"
+},
+
+{
+id:"h110",
+q:"Which Halo character is the AI companion of Master Chief?",
+a:["Cortana","The Weapon","Serina","Isabel"],
+correct:"Cortana"
+},
+
+{
+id:"h111",
+q:"What is the name of the Covenant religious leaders in Halo?",
+a:["Prophets","Archons","Elders","Hierarchs"],
+correct:"Prophets"
+},
+
+{
+id:"h112",
+q:"Which Fallout company created the Vaults?",
+a:["RobCo","Vault-Tec","West Tek","Repconn"],
+correct:"Vault-Tec"
+},
+
+{
+id:"h113",
+q:"Which Skyrim city is home to Dragonsreach?",
+a:["Solitude","Whiterun","Windhelm","Riften"],
+correct:"Whiterun"
+},
+
+{
+id:"h114",
+q:"Which Skyrim guild is headquartered in Jorrvaskr?",
+a:["Thieves Guild","Companions","Dark Brotherhood","College of Winterhold"],
+correct:"Companions"
+},
+
+{
+id:"h115",
+q:"Which Skyrim city houses the College of Winterhold?",
+a:["Whiterun","Winterhold","Riften","Markarth"],
+correct:"Winterhold"
+},
+
+{
+id:"h116",
+q:"Which Fallout: New Vegas casino is run by Mr. House?",
+a:["The Tops","Ultra-Luxe","Lucky 38","Gomorrah"],
+correct:"Lucky 38"
+},
+
+{
+id:"h117",
+q:"Which Fallout companion is a super mutant nightkin?",
+a:["Boone","Veronica","Lily","Arcade"],
+correct:"Lily"
+},
+
+{
+id:"h118",
+q:"Which Witcher character is Geralt's bard friend?",
+a:["Vesemir","Dijkstra","Dandelion","Lambert"],
+correct:"Dandelion"
+},
+
+{
+id:"h119",
+q:"Which Witcher 3 location is a large archipelago?",
+a:["Velen","Novigrad","Skellige","Toussaint"],
+correct:"Skellige"
+},
+
+{
+id:"h120",
+q:"Which Cyberpunk 2077 character is played by Keanu Reeves?",
+a:["Jackie Welles","Johnny Silverhand","Viktor Vektor","Takemura"],
+correct:"Johnny Silverhand"
 }
 
 ];
 
 
 /* ======================================================
-STUDIO / DEVELOPMENT KNOWLEDGE
-
-Each entry automatically becomes another question:
-
-"Which studio developed GAME?"
-
-This takes us comfortably beyond 200 available questions.
+DEVELOPMENT / STUDIO QUESTION DATA
 ====================================================== */
 
 const DEVELOPMENT_DATA = [
 
 ["Fallout: New Vegas","Obsidian Entertainment"],
 ["Alien: Isolation","Creative Assembly"],
-["Dead Space (2008)","EA Redwood Shores / Visceral Games"],
+["Dead Space (2008)","Visceral Games"],
 ["Return of the Obra Dinn","Lucas Pope"],
 ["Spec Ops: The Line","Yager Development"],
 ["Papers, Please","Lucas Pope"],
@@ -1964,12 +2329,10 @@ const DEVELOPMENT_DATA = [
 ["Into the Breach","Subset Games"],
 ["Don't Starve","Klei Entertainment"],
 ["Mark of the Ninja","Klei Entertainment"],
-["Shank","Klei Entertainment"],
 ["Dead Cells","Motion Twin"],
 ["Slay the Spire","Mega Crit"],
 ["Balatro","LocalThunk"],
 ["Inscryption","Daniel Mullins Games"],
-["The Binding of Isaac","Edmund McMillen and Florian Himsl"],
 ["Super Meat Boy","Team Meat"],
 ["Spelunky","Mossmouth"],
 ["Fez","Polytron Corporation"],
@@ -1979,12 +2342,10 @@ const DEVELOPMENT_DATA = [
 ["Portal 2","Valve"],
 ["Half-Life","Valve"],
 ["Half-Life 2","Valve"],
-["Left 4 Dead","Valve South"],
+["Left 4 Dead","Valve"],
 ["Team Fortress 2","Valve"],
-["Counter-Strike","Valve"],
-["BioShock","2K Boston / 2K Australia"],
+["BioShock","2K Boston"],
 ["BioShock Infinite","Irrational Games"],
-["System Shock 2","Irrational Games and Looking Glass Studios"],
 ["Deus Ex","Ion Storm"],
 ["Thief: The Dark Project","Looking Glass Studios"],
 ["SOMA","Frictional Games"],
@@ -2006,7 +2367,6 @@ const DEVELOPMENT_DATA = [
 ["Batman: Arkham Asylum","Rocksteady Studios"],
 ["Batman: Arkham City","Rocksteady Studios"],
 ["Middle-earth: Shadow of Mordor","Monolith Productions"],
-["Middle-earth: Shadow of War","Monolith Productions"],
 ["Titanfall 2","Respawn Entertainment"],
 ["Apex Legends","Respawn Entertainment"],
 ["Star Wars Jedi: Fallen Order","Respawn Entertainment"],
@@ -2014,7 +2374,6 @@ const DEVELOPMENT_DATA = [
 ["Star Wars: Squadrons","Motive Studio"],
 ["It Takes Two","Hazelight Studios"],
 ["A Way Out","Hazelight Studios"],
-["Brothers: A Tale of Two Sons","Starbreeze Studios"],
 ["Deep Rock Galactic","Ghost Ship Games"],
 ["Valheim","Iron Gate Studio"],
 ["Subnautica","Unknown Worlds Entertainment"],
@@ -2038,7 +2397,6 @@ const DEVELOPMENT_DATA = [
 ["Serious Sam","Croteam"],
 ["Hellblade: Senua's Sacrifice","Ninja Theory"],
 ["DmC: Devil May Cry","Ninja Theory"],
-["Enslaved: Odyssey to the West","Ninja Theory"],
 ["Ori and the Will of the Wisps","Moon Studios"],
 ["No Man's Sky","Hello Games"],
 ["The Outer Worlds","Obsidian Entertainment"],
@@ -2046,18 +2404,14 @@ const DEVELOPMENT_DATA = [
 ["Grounded","Obsidian Entertainment"],
 ["Pentiment","Obsidian Entertainment"],
 ["Vampire Survivors","poncle"],
-["Dave the Diver","MINTROCKET"],
 ["Dredge","Black Salt Games"],
 ["Cult of the Lamb","Massive Monster"],
 ["Pacific Drive","Ironwood Studios"],
 ["Sifu","Sloclap"],
-["Absolver","Sloclap"],
 ["Kena: Bridge of Spirits","Ember Lab"],
 ["Stray","BlueTwelve Studio"],
 ["Tunic","Andrew Shouldice"],
 ["Cocoon","Geometric Interactive"],
-["Inside the Backrooms","MrFatcat"],
-["The Mortuary Assistant","DarkStone Digital"],
 ["Signalis","rose-engine"],
 ["Darkwood","Acid Wizard Studio"],
 ["Layers of Fear","Bloober Team"],
@@ -2066,252 +2420,14 @@ const DEVELOPMENT_DATA = [
 ["Until Dawn","Supermassive Games"],
 ["The Quarry","Supermassive Games"],
 ["Man of Medan","Supermassive Games"],
-["Until Then","Polychroma Games"],
 ["Oxenfree","Night School Studio"],
-["Afterparty","Night School Studio"],
 ["Kentucky Route Zero","Cardboard Computer"],
 ["Gone Home","The Fullbright Company"],
-["Tacoma","Fullbright"],
 ["Road 96","DigixArt"],
 ["Spiritfarer","Thunder Lotus Games"],
-["Jotun","Thunder Lotus Games"],
-["Gris","Nomada Studio"],
-["Neva","Nomada Studio"]
+["Gris","Nomada Studio"]
 
 ];
-
-
-/* ======================================================
-GENERATE STUDIO QUESTIONS
-====================================================== */
-
-function buildDevelopmentQuestions(){
-
-    const studios =
-        [...new Set(
-            DEVELOPMENT_DATA.map(
-                row => row[1]
-            )
-        )];
-
-
-    return DEVELOPMENT_DATA.map(
-        (row,index) => {
-
-            const game =
-                row[0];
-
-            const studio =
-                row[1];
-
-
-            let wrongStudios =
-                shuffle(
-                    studios.filter(
-                        value =>
-                            value !== studio
-                    )
-                )
-                .slice(0,3);
-
-
-            return {
-
-                id:
-                    "d" +
-                    String(index + 1)
-                    .padStart(3,"0"),
-
-                q:
-                    `Which studio developed ${game}?`,
-
-                a:
-                    shuffle([
-                        studio,
-                        ...wrongStudios
-                    ]),
-
-                correct:
-                    studio
-            };
-        }
-    );
-}
-
-
-/* ======================================================
-FULL QUESTION BANK
-====================================================== */
-
-const QUESTION_BANK = [
-
-    ...HANDCRAFTED_QUESTIONS,
-
-    ...buildDevelopmentQuestions()
-
-];
-
-
-/* ======================================================
-RECENT QUESTION MEMORY
-
-The browser remembers the last 80 questions the player
-has encountered.
-
-They are excluded from future battles wherever possible.
-====================================================== */
-
-const HISTORY_KEY =
-    "gjdBossBattleQuestionHistory";
-
-const HISTORY_LIMIT =
-    80;
-
-
-function getQuestionHistory(){
-
-    try{
-
-        const data =
-            JSON.parse(
-                localStorage.getItem(
-                    HISTORY_KEY
-                )
-            );
-
-        return Array.isArray(data)
-            ? data
-            : [];
-
-    }catch(error){
-
-        return [];
-    }
-}
-
-
-function saveQuestionToHistory(id){
-
-    let history =
-        getQuestionHistory();
-
-
-    history =
-        history.filter(
-            existing =>
-                existing !== id
-        );
-
-
-    history.push(id);
-
-
-    history =
-        history.slice(
-            -HISTORY_LIMIT
-        );
-
-
-    localStorage.setItem(
-        HISTORY_KEY,
-        JSON.stringify(
-            history
-        )
-    );
-}
-
-
-/* ======================================================
-CREATE FRESH QUESTION DECK
-====================================================== */
-
-function buildQuestionDeck(){
-
-    const history =
-        getQuestionHistory();
-
-
-    let fresh =
-        QUESTION_BANK.filter(
-            question =>
-                !history.includes(
-                    question.id
-                )
-        );
-
-
-    /*
-    With this huge bank we should nearly always have
-    plenty of unseen/recently-unseen questions.
-
-    If the player somehow burns through almost everything,
-    old questions gradually become eligible again.
-    */
-
-    if(
-        fresh.length < 30
-    ){
-
-        const older =
-            QUESTION_BANK.filter(
-                question =>
-                    !fresh.some(
-                        item =>
-                            item.id ===
-                            question.id
-                    )
-            );
-
-
-        fresh = [
-            ...fresh,
-            ...older
-        ];
-    }
-
-
-    return shuffle(
-        fresh
-    );
-}
-
-
-/* ======================================================
-STATE
-====================================================== */
-
-let currentBoss = null;
-
-let questionDeck = [];
-
-let currentQuestion = null;
-
-let usedThisFight =
-    new Set();
-
-let selectedAnswer = null;
-
-let questionLocked = false;
-
-let questionNumber = 0;
-
-let correctTotal = 0;
-
-let wrongTotal = 0;
-
-let attackCharge = 0;
-
-let dangerCharge = 0;
-
-let playerHearts = 3;
-
-let bossStage = 0;
-
-let currentStreak = 0;
-
-let bestStreak = 0;
-
-let battleFinished = false;
 
 
 /* ======================================================
@@ -2362,11 +2478,220 @@ function randomItem(array){
 
 
 /* ======================================================
+GENERATE DEVELOPMENT QUESTIONS
+====================================================== */
+
+function buildDevelopmentQuestions(){
+
+    const studios =
+        [...new Set(
+            DEVELOPMENT_DATA.map(
+                row => row[1]
+            )
+        )];
+
+
+    return DEVELOPMENT_DATA.map(
+        (row,index) => {
+
+            const game =
+                row[0];
+
+            const studio =
+                row[1];
+
+
+            const wrongStudios =
+                shuffle(
+                    studios.filter(
+                        value =>
+                            value !== studio
+                    )
+                )
+                .slice(0,3);
+
+
+            return {
+
+                id:
+                    "d" +
+                    String(index + 1)
+                    .padStart(3,"0"),
+
+                q:
+                    `Which studio developed ${game}?`,
+
+                a:
+                    shuffle([
+                        studio,
+                        ...wrongStudios
+                    ]),
+
+                correct:
+                    studio
+            };
+        }
+    );
+}
+
+
+/* ======================================================
+FULL QUESTION BANK
+====================================================== */
+
+const QUESTION_BANK = [
+
+    ...HANDCRAFTED_QUESTIONS,
+
+    ...buildDevelopmentQuestions()
+
+];
+
+
+/* ======================================================
+RECENT QUESTION MEMORY
+====================================================== */
+
+const HISTORY_KEY =
+    "gjdBossBattleQuestionHistory";
+
+const HISTORY_LIMIT =
+    80;
+
+
+function getQuestionHistory(){
+
+    try{
+
+        const data =
+            JSON.parse(
+                localStorage.getItem(
+                    HISTORY_KEY
+                )
+            );
+
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        return [];
+    }
+}
+
+
+function saveQuestionToHistory(id){
+
+    let history =
+        getQuestionHistory();
+
+
+    history =
+        history.filter(
+            existing =>
+                existing !== id
+        );
+
+
+    history.push(id);
+
+
+    history =
+        history.slice(
+            -HISTORY_LIMIT
+        );
+
+
+    localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(
+            history
+        )
+    );
+}
+
+
+/* ======================================================
+QUESTION DECK
+====================================================== */
+
+function buildQuestionDeck(){
+
+    const history =
+        getQuestionHistory();
+
+
+    let fresh =
+        QUESTION_BANK.filter(
+            question =>
+                !history.includes(
+                    question.id
+                )
+        );
+
+
+    if(
+        fresh.length < 30
+    ){
+
+        fresh =
+            [...QUESTION_BANK];
+    }
+
+
+    return shuffle(
+        fresh
+    );
+}
+
+
+/* ======================================================
+STATE
+====================================================== */
+
+let currentBoss = null;
+
+let questionDeck = [];
+
+let currentQuestion = null;
+
+let usedThisFight =
+    new Set();
+
+let selectedAnswer = null;
+
+let questionLocked = false;
+
+let questionNumber = 0;
+
+let correctTotal = 0;
+
+let wrongTotal = 0;
+
+let attackCharge = 0;
+
+let dangerCharge = 0;
+
+let playerHearts = 3;
+
+let bossStage = 0;
+
+let currentStreak = 0;
+
+let bestStreak = 0;
+
+let battleFinished = false;
+
+
+/* ======================================================
 BOSS SELECTION
 
-First fight = completely random.
+First battle = random from all bosses.
 
-Rematch = random boss except the one just fought.
+After that = random from all bosses except the
+one just fought.
 ====================================================== */
 
 function chooseBoss(){
@@ -2435,7 +2760,7 @@ function setBossLine(line){
 
 
 /* ======================================================
-START
+START BATTLE
 ====================================================== */
 
 function startBattle(){
@@ -2451,31 +2776,44 @@ function startBattle(){
         new Set();
 
 
-    currentQuestion = null;
+    currentQuestion =
+        null;
 
-    selectedAnswer = null;
+    selectedAnswer =
+        null;
 
-    questionLocked = false;
+    questionLocked =
+        false;
 
-    questionNumber = 0;
+    questionNumber =
+        0;
 
-    correctTotal = 0;
+    correctTotal =
+        0;
 
-    wrongTotal = 0;
+    wrongTotal =
+        0;
 
-    attackCharge = 0;
+    attackCharge =
+        0;
 
-    dangerCharge = 0;
+    dangerCharge =
+        0;
 
-    playerHearts = 3;
+    playerHearts =
+        3;
 
-    bossStage = 0;
+    bossStage =
+        0;
 
-    currentStreak = 0;
+    currentStreak =
+        0;
 
-    bestStreak = 0;
+    bestStreak =
+        0;
 
-    battleFinished = false;
+    battleFinished =
+        false;
 
 
     document
@@ -2543,10 +2881,6 @@ function startBattle(){
 
 /* ======================================================
 LOAD QUESTION
-
-Question IDs are added to:
-1. Current fight memory
-2. Browser recent-history memory
 ====================================================== */
 
 function loadQuestion(){
@@ -2565,10 +2899,9 @@ function loadQuestion(){
     }
 
 
-    /*
-    Find the next question that has NOT been used
-    during this fight.
-    */
+    currentQuestion =
+        null;
+
 
     while(
         questionDeck.length > 0
@@ -2592,11 +2925,25 @@ function loadQuestion(){
     }
 
 
-    /*
-    Extremely unlikely fallback.
-    */
-
     if(!currentQuestion){
+
+        const remaining =
+            QUESTION_BANK.filter(
+                question =>
+                    !usedThisFight.has(
+                        question.id
+                    )
+            );
+
+
+        if(
+            remaining.length === 0
+        ){
+
+            usedThisFight =
+                new Set();
+        }
+
 
         questionDeck =
             shuffle(
@@ -2624,9 +2971,11 @@ function loadQuestion(){
     );
 
 
-    selectedAnswer = null;
+    selectedAnswer =
+        null;
 
-    questionLocked = false;
+    questionLocked =
+        false;
 
     questionNumber++;
 
@@ -2692,7 +3041,7 @@ function loadQuestion(){
 
 
 /* ======================================================
-ANSWERS
+RENDER ANSWERS
 ====================================================== */
 
 function renderAnswers(){
@@ -2753,7 +3102,7 @@ function renderAnswers(){
 
 
 /* ======================================================
-SELECT
+SELECT ANSWER
 ====================================================== */
 
 function selectAnswer(
@@ -2797,7 +3146,7 @@ function selectAnswer(
 
 
 /* ======================================================
-ENTER
+ENTER KEY
 ====================================================== */
 
 document.addEventListener(
@@ -2805,7 +3154,8 @@ document.addEventListener(
     function(event){
 
         if(
-            event.key === "Enter" &&
+            event.key ===
+            "Enter" &&
             !questionLocked &&
             selectedAnswer !== null &&
             document
@@ -2823,7 +3173,7 @@ document.addEventListener(
 
 
 /* ======================================================
-SUBMIT
+SUBMIT ANSWER
 ====================================================== */
 
 function submitAnswer(){
@@ -2954,7 +3304,9 @@ function processCorrect(){
         attackCharge >= 2
     ){
 
-        attackCharge = 0;
+        attackCharge =
+            0;
+
 
         updatePlayerHUD();
 
@@ -2967,6 +3319,7 @@ function processCorrect(){
                 "correct"
             )
         );
+
 
         showNext();
     }
@@ -2981,7 +3334,8 @@ function processWrong(){
 
     wrongTotal++;
 
-    currentStreak = 0;
+    currentStreak =
+        0;
 
     dangerCharge++;
 
@@ -3017,7 +3371,9 @@ function processWrong(){
         dangerCharge >= 2
     ){
 
-        dangerCharge = 0;
+        dangerCharge =
+            0;
+
 
         updatePlayerHUD();
 
@@ -3031,13 +3387,14 @@ function processWrong(){
             )
         );
 
+
         showNext();
     }
 }
 
 
 /* ======================================================
-BOSS DAMAGE
+DAMAGE BOSS
 ====================================================== */
 
 function damageBoss(){
@@ -3149,7 +3506,7 @@ function damageBoss(){
 
 
 /* ======================================================
-PLAYER DAMAGE
+DAMAGE PLAYER
 ====================================================== */
 
 function damagePlayer(){
@@ -3232,7 +3589,7 @@ function damagePlayer(){
 
 
 /* ======================================================
-BOSS UI
+UPDATE BOSS
 ====================================================== */
 
 function updateBoss(){
@@ -3283,7 +3640,7 @@ function updateBoss(){
 
 
 /* ======================================================
-PLAYER HUD
+UPDATE PLAYER HUD
 ====================================================== */
 
 function updatePlayerHUD(){
@@ -3293,7 +3650,8 @@ function updatePlayerHUD(){
 
 
     for(
-        let i = 0;
+        let i =
+            0;
         i < 3;
         i++
     ){
@@ -3381,14 +3739,12 @@ function nextQuestion(){
     }
 
 
-    currentQuestion = null;
-
     loadQuestion();
 }
 
 
 /* ======================================================
-END
+END BATTLE
 ====================================================== */
 
 function endBattle(victory){
