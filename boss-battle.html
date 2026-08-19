@@ -23,63 +23,41 @@
     --dark:#242127;
 }
 
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:var(--text);
 }
 
-button{
-    font:inherit;
-}
-
-
-/* =========================
-HEADER
-========================= */
+button{font:inherit}
 
 header{
     min-height:68px;
     background:white;
     border-bottom:1px solid var(--border);
     padding:12px 22px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-.logo-link{
-    display:flex;
-    align-items:center;
-}
-
-.logo-link img{
-    height:40px;
-    display:block;
-}
+.logo-link{display:flex;align-items:center}
+.logo-link img{height:40px;display:block}
 
 .hub-btn{
     background:var(--primary);
     color:white;
     text-decoration:none;
-
     padding:11px 17px;
     border-radius:10px;
-
     font-size:14px;
     font-weight:800;
 }
 
-
-/* =========================
-START
-========================= */
+/* START */
 
 .start-screen{
     max-width:900px;
@@ -96,9 +74,7 @@ START
 .title-top{
     display:block;
     color:var(--primary);
-
     font-size:clamp(52px,8vw,90px);
-
     font-weight:900;
     letter-spacing:-3px;
 }
@@ -106,12 +82,9 @@ START
 .title-bottom{
     display:block;
     color:var(--accent);
-
     font-size:clamp(70px,11vw,125px);
-
     font-weight:900;
     letter-spacing:-5px;
-
     text-shadow:
         0 4px 0 #9cb500,
         0 8px 12px rgba(0,0,0,.1);
@@ -126,29 +99,21 @@ START
 
 .difficulty{
     display:inline-block;
-
     margin-bottom:24px;
-
     background:var(--red);
     color:white;
-
     padding:8px 13px;
-
     border-radius:30px;
-
     font-size:11px;
     font-weight:900;
-
     letter-spacing:1px;
 }
 
 .rules{
     max-width:760px;
     margin:0 auto 30px;
-
     display:grid;
     grid-template-columns:repeat(3,1fr);
-
     gap:10px;
 }
 
@@ -158,9 +123,7 @@ START
     padding:18px 12px;
 }
 
-.rule-icon{
-    font-size:28px;
-}
+.rule-icon{font-size:28px}
 
 .rule strong{
     display:block;
@@ -176,68 +139,41 @@ START
 .start-btn{
     background:var(--accent);
     color:#222;
-
     border:0;
     border-radius:14px;
-
     padding:18px 52px;
-
     font-size:21px;
     font-weight:900;
-
     cursor:pointer;
-
     box-shadow:0 4px 0 #9cb500;
 }
 
-
-/* =========================
-GAME
-========================= */
+/* GAME */
 
 .game-area{
     display:none;
-
     max-width:1000px;
-
     margin:30px auto;
-
     padding:0 20px 70px;
 }
 
 .battle-card{
     position:relative;
-
     overflow:hidden;
-
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:22px;
-
     padding:24px;
-
     box-shadow:0 8px 22px rgba(0,0,0,.06);
 }
 
-
-/* =========================
-BOSS
-========================= */
-
 .boss-name{
     text-align:center;
-
     color:var(--primary);
-
     font-size:15px;
     font-weight:900;
-
     letter-spacing:1px;
-
     text-transform:uppercase;
-
     margin-bottom:9px;
 }
 
@@ -249,48 +185,34 @@ BOSS
 .health-label{
     display:flex;
     justify-content:space-between;
-
     margin-bottom:6px;
-
     font-size:12px;
     font-weight:900;
-
     color:var(--primary);
 }
 
 .health-track{
     height:18px;
-
     background:#dedbd7;
-
     border-radius:30px;
-
     overflow:hidden;
-
     border:2px solid #ccc7c2;
 }
 
 .boss-health{
     width:100%;
     height:100%;
-
     background:var(--red);
-
     transition:width .5s ease;
 }
 
 .boss-image-shell{
     position:relative;
-
     width:100%;
     max-width:780px;
-
     margin:0 auto;
-
     border-radius:18px;
-
     overflow:hidden;
-
     background:var(--dark);
 }
 
@@ -299,102 +221,41 @@ BOSS
     display:block;
 }
 
+/* HIT FX */
 
-/* =========================
-HIT EFFECTS
-========================= */
-
-.boss-hit{
-    animation:bossHit .6s ease;
-}
+.boss-hit{animation:bossHit .6s ease}
 
 @keyframes bossHit{
-
-    0%{
-        transform:translateX(0);
-        filter:none;
-    }
-
-    15%{
-        transform:translateX(-12px);
-        filter:sepia(1) saturate(8) hue-rotate(320deg);
-    }
-
-    30%{
-        transform:translateX(12px);
-        filter:sepia(1) saturate(8) hue-rotate(320deg);
-    }
-
-    45%{
-        transform:translateX(-8px);
-        filter:sepia(1) saturate(8) hue-rotate(320deg);
-    }
-
-    65%{
-        transform:translateX(8px);
-    }
-
-    100%{
-        transform:translateX(0);
-        filter:none;
-    }
+    0%{transform:translateX(0);filter:none}
+    15%{transform:translateX(-12px);filter:sepia(1) saturate(8) hue-rotate(320deg)}
+    30%{transform:translateX(12px);filter:sepia(1) saturate(8) hue-rotate(320deg)}
+    45%{transform:translateX(-8px);filter:sepia(1) saturate(8) hue-rotate(320deg)}
+    65%{transform:translateX(8px)}
+    100%{transform:translateX(0);filter:none}
 }
 
-.player-hit{
-    animation:playerHit .6s ease;
-}
+.player-hit{animation:playerHit .6s ease}
 
 @keyframes playerHit{
-
-    0%{
-        transform:translateX(0);
-        box-shadow:none;
-    }
-
-    15%{
-        transform:translateX(-10px);
-        box-shadow:inset 0 0 0 9999px rgba(217,83,79,.25);
-    }
-
-    30%{
-        transform:translateX(10px);
-    }
-
-    45%{
-        transform:translateX(-7px);
-    }
-
-    65%{
-        transform:translateX(7px);
-    }
-
-    100%{
-        transform:translateX(0);
-        box-shadow:none;
-    }
+    0%{transform:translateX(0);box-shadow:none}
+    15%{transform:translateX(-10px);box-shadow:inset 0 0 0 9999px rgba(217,83,79,.25)}
+    30%{transform:translateX(10px)}
+    45%{transform:translateX(-7px)}
+    65%{transform:translateX(7px)}
+    100%{transform:translateX(0);box-shadow:none}
 }
 
 .damage-text{
     position:absolute;
-
     top:50%;
     left:50%;
-
     transform:translate(-50%,-50%);
-
     display:none;
-
     z-index:10;
-
     color:white;
-
     font-size:clamp(35px,8vw,75px);
-
     font-weight:900;
-
-    text-shadow:
-        0 4px 0 #000,
-        0 0 20px rgba(0,0,0,.7);
+    text-shadow:0 4px 0 #000,0 0 20px rgba(0,0,0,.7);
 }
 
 .damage-text.show{
@@ -403,53 +264,28 @@ HIT EFFECTS
 }
 
 @keyframes damagePop{
-
-    0%{
-        transform:translate(-50%,-20%) scale(.5);
-        opacity:0;
-    }
-
-    30%{
-        transform:translate(-50%,-50%) scale(1.2);
-        opacity:1;
-    }
-
-    100%{
-        transform:translate(-50%,-80%) scale(1);
-        opacity:0;
-    }
+    0%{transform:translate(-50%,-20%) scale(.5);opacity:0}
+    30%{transform:translate(-50%,-50%) scale(1.2);opacity:1}
+    100%{transform:translate(-50%,-80%) scale(1);opacity:0}
 }
 
-
-/* =========================
-TRASH TALK
-========================= */
+/* TALK */
 
 .boss-talk{
     max-width:760px;
-
     margin:14px auto 22px;
-
     padding:14px 17px;
-
     background:var(--primary);
-
     color:white;
-
     border-radius:14px;
-
     text-align:center;
 }
 
 .boss-talk strong{
     display:block;
-
     color:var(--accent);
-
     font-size:11px;
-
     letter-spacing:1px;
-
     margin-bottom:5px;
 }
 
@@ -459,83 +295,55 @@ TRASH TALK
     line-height:1.4;
 }
 
-
-/* =========================
-PLAYER HUD
-========================= */
+/* HUD */
 
 .player-hud{
     max-width:760px;
-
     margin:0 auto 20px;
-
     display:grid;
-
     grid-template-columns:1fr 1fr 1fr;
-
     gap:10px;
 }
 
 .hud-box{
     background:var(--soft);
-
     border-radius:12px;
-
     padding:14px;
-
     text-align:center;
 }
 
 .hud-title{
     color:var(--primary);
-
     font-size:11px;
-
     font-weight:900;
-
     text-transform:uppercase;
-
     letter-spacing:.8px;
 }
 
 .hearts{
     margin-top:7px;
-
     font-size:25px;
-
     letter-spacing:3px;
 }
 
 .charge{
     display:flex;
     justify-content:center;
-
     gap:7px;
-
     margin-top:10px;
 }
 
 .charge-box{
     width:36px;
     height:16px;
-
     border-radius:5px;
-
     background:#d2cfcb;
 }
 
-.attack-filled{
-    background:var(--accent);
-}
+.attack-filled{background:var(--accent)}
+.danger-filled{background:var(--red)}
 
-.danger-filled{
-    background:var(--red);
-}
-
-
-/* =========================
-QUESTION
-========================= */
+/* QUESTION */
 
 .question-section{
     max-width:760px;
@@ -544,63 +352,41 @@ QUESTION
 
 .question-label{
     text-align:center;
-
     color:var(--muted);
-
     font-size:11px;
-
     text-transform:uppercase;
-
     font-weight:900;
-
     letter-spacing:1px;
 }
 
 .question{
     text-align:center;
-
     color:var(--primary);
-
     font-size:clamp(23px,4vw,32px);
-
     font-weight:900;
-
     line-height:1.25;
-
     margin:8px 0 18px;
 }
 
 .answers{
     display:grid;
-
     grid-template-columns:repeat(2,1fr);
-
     gap:10px;
 }
 
 .answer-btn{
     min-height:72px;
-
     border:2px solid var(--border);
-
     background:var(--soft);
-
     color:var(--primary);
-
     border-radius:12px;
-
     padding:13px;
-
     font-weight:900;
-
     cursor:pointer;
-
     transition:.12s;
 }
 
-.answer-btn:hover{
-    border-color:var(--primary);
-}
+.answer-btn:hover{border-color:var(--primary)}
 
 .answer-btn.selected{
     background:var(--primary);
@@ -620,28 +406,15 @@ QUESTION
     border-color:var(--red);
 }
 
-
-/* =========================
-SUBMIT / FEEDBACK
-========================= */
-
 .submit-btn{
     width:100%;
-
     margin-top:12px;
-
     padding:14px;
-
     border:0;
-
     border-radius:11px;
-
     background:var(--accent);
-
     color:#222;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
@@ -652,9 +425,7 @@ SUBMIT / FEEDBACK
 
 .feedback{
     min-height:72px;
-
     text-align:center;
-
     padding-top:15px;
 }
 
@@ -663,13 +434,8 @@ SUBMIT / FEEDBACK
     font-weight:900;
 }
 
-.feedback-main.correct{
-    color:var(--green);
-}
-
-.feedback-main.wrong{
-    color:var(--red);
-}
+.feedback-main.correct{color:var(--green)}
+.feedback-main.wrong{color:var(--red)}
 
 .feedback-detail{
     margin-top:5px;
@@ -678,167 +444,110 @@ SUBMIT / FEEDBACK
 
 .next-btn{
     display:none;
-
     width:100%;
-
     margin-top:6px;
-
     padding:14px;
-
     border:0;
-
     border-radius:11px;
-
     background:var(--primary);
-
     color:white;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
-
-/* =========================
-RESULTS
-========================= */
+/* RESULTS */
 
 .results-screen{
     display:none;
-
     max-width:850px;
-
     margin:45px auto;
-
     padding:0 20px 70px;
-
     text-align:center;
 }
 
 .results-card{
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:22px;
-
     padding:38px 25px;
 }
 
 .result-boss-image{
     max-width:650px;
-
     width:100%;
-
     border-radius:16px;
-
     display:block;
-
     margin:0 auto 24px;
 }
 
 .result-title{
     margin:0;
-
     color:var(--primary);
-
     font-size:clamp(48px,9vw,80px);
-
     line-height:.95;
-
     font-weight:900;
 }
 
 .result-boss-name{
     margin-top:12px;
-
     color:var(--primary);
-
     font-size:14px;
     font-weight:900;
-
     text-transform:uppercase;
-
     letter-spacing:1px;
 }
 
 .result-boss-line{
     max-width:600px;
-
     margin:12px auto 25px;
-
     padding:14px;
-
     border-radius:12px;
-
     background:var(--primary);
-
     color:white;
-
     font-weight:700;
 }
 
 .result-stats{
     max-width:650px;
-
     margin:25px auto;
-
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:9px;
 }
 
 .result-stat{
     background:var(--soft);
-
     border-radius:12px;
-
     padding:15px 8px;
 }
 
 .result-value{
     color:var(--primary);
-
     font-size:25px;
-
     font-weight:900;
 }
 
 .result-name{
     margin-top:4px;
-
     color:var(--muted);
-
     font-size:10px;
-
     font-weight:900;
-
     text-transform:uppercase;
 }
 
 .result-actions{
     display:flex;
-
     justify-content:center;
-
     gap:10px;
-
     flex-wrap:wrap;
 }
 
 .result-btn{
     border:0;
-
     border-radius:11px;
-
     padding:14px 22px;
-
     font-weight:900;
-
     text-decoration:none;
-
     cursor:pointer;
 }
 
@@ -852,99 +561,48 @@ RESULTS
     color:white;
 }
 
-
-/* =========================
-MOBILE
-========================= */
-
 @media(max-width:650px){
 
-    header{
-        padding:10px 12px;
-    }
-
-    .logo-link img{
-        height:31px;
-    }
-
-    .hub-btn{
-        padding:9px 10px;
-        font-size:11px;
-    }
-
-    .rules{
-        grid-template-columns:1fr;
-    }
-
-    .battle-card{
-        padding:16px 12px;
-    }
-
-    .player-hud{
-        grid-template-columns:1fr;
-    }
-
-    .answers{
-        grid-template-columns:1fr;
-    }
-
-    .result-stats{
-        grid-template-columns:repeat(2,1fr);
-    }
+    header{padding:10px 12px}
+    .logo-link img{height:31px}
+    .hub-btn{padding:9px 10px;font-size:11px}
+    .rules{grid-template-columns:1fr}
+    .battle-card{padding:16px 12px}
+    .player-hud{grid-template-columns:1fr}
+    .answers{grid-template-columns:1fr}
+    .result-stats{grid-template-columns:repeat(2,1fr)}
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-
 <header>
 
-<a
-    class="logo-link"
-    href="https://www.gamesjobsdirect.com/">
-
+<a class="logo-link" href="https://www.gamesjobsdirect.com/">
 <img
     src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
     alt="Games Jobs Direct">
-
 </a>
 
-<a
-    class="hub-btn"
-    href="index.html">
-
+<a class="hub-btn" href="index.html">
 Return to Game Hub
-
 </a>
 
 </header>
 
 
-
-<!-- START -->
-
-<section
-    class="start-screen"
-    id="startScreen">
+<section class="start-screen" id="startScreen">
 
 <div class="game-title">
-
-<span class="title-top">
-BOSS
-</span>
-
-<span class="title-bottom">
-BATTLE
-</span>
-
+<span class="title-top">BOSS</span>
+<span class="title-bottom">BATTLE</span>
 </div>
 
 <div class="difficulty">
-⚠ HARD GAMING TRIVIA
+⚠ HARD + TRICKY GAMING TRIVIA
 </div>
 
 <p class="intro">
@@ -954,125 +612,59 @@ A random boss is waiting.
 Answer two difficult gaming questions correctly to land a hit.
 Get two wrong and you'll take damage instead.
 
-Defeat your opponent before you lose all three hearts.
+The question pool is huge — and recently seen questions are kept out of rotation.
 
 </p>
 
 <div class="rules">
 
 <div class="rule">
-
-<div class="rule-icon">
-⚔️
+<div class="rule-icon">⚔️</div>
+<strong>2 Correct = Attack</strong>
+<small>Build your charge and damage the boss.</small>
 </div>
-
-<strong>
-2 Correct = Attack
-</strong>
-
-<small>
-Build your attack charge and damage the boss.
-</small>
-
-</div>
-
 
 <div class="rule">
-
-<div class="rule-icon">
-❤️
+<div class="rule-icon">❤️</div>
+<strong>2 Wrong = Damage</strong>
+<small>Every two mistakes costs one heart.</small>
 </div>
-
-<strong>
-2 Wrong = Damage
-</strong>
-
-<small>
-Every two mistakes costs you one heart.
-</small>
-
-</div>
-
 
 <div class="rule">
-
-<div class="rule-icon">
-👾
-</div>
-
-<strong>
-Random Boss
-</strong>
-
-<small>
-Different villains can appear each time you battle.
-</small>
-
+<div class="rule-icon">🧠</div>
+<strong>Hard Question Pool</strong>
+<small>Expect difficult questions and some real deep cuts.</small>
 </div>
 
 </div>
 
-<button
-    class="start-btn"
-    onclick="startBattle()">
-
+<button class="start-btn" onclick="startBattle()">
 START BATTLE
-
 </button>
 
 </section>
 
 
+<section class="game-area" id="gameArea">
 
-<!-- BATTLE -->
+<div class="battle-card" id="battleCard">
 
-<section
-    class="game-area"
-    id="gameArea">
-
-<div
-    class="battle-card"
-    id="battleCard">
-
-
-<div
-    class="boss-name"
-    id="bossName">
-
-THE ARCADE BOSS
-
-</div>
-
+<div class="boss-name" id="bossName"></div>
 
 <div class="boss-health-wrap">
 
 <div class="health-label">
-
-<span>
-BOSS HP
-</span>
-
-<span id="bossHealthText">
-100%
-</span>
-
+<span>BOSS HP</span>
+<span id="bossHealthText">100%</span>
 </div>
 
 <div class="health-track">
-
-<div
-    class="boss-health"
-    id="bossHealth">
+<div class="boss-health" id="bossHealth"></div>
 </div>
 
 </div>
 
-</div>
-
-
-<div
-    class="boss-image-shell"
-    id="bossImageShell">
+<div class="boss-image-shell" id="bossImageShell">
 
 <img
     class="boss-image"
@@ -1080,96 +672,43 @@ BOSS HP
     src=""
     alt="Boss">
 
-<div
-    class="damage-text"
-    id="damageText">
-
+<div class="damage-text" id="damageText">
 HIT!
-
 </div>
 
 </div>
-
 
 <div class="boss-talk">
 
-<strong id="bossTalkName">
-THE ARCADE BOSS
-</strong>
+<strong id="bossTalkName"></strong>
 
-<div
-    class="boss-line"
-    id="bossLine">
-</div>
+<div class="boss-line" id="bossLine"></div>
 
 </div>
 
 
 <div class="player-hud">
 
+<div class="hud-box">
+<div class="hud-title">Player Health</div>
+<div class="hearts" id="hearts">❤️ ❤️ ❤️</div>
+</div>
 
 <div class="hud-box">
-
-<div class="hud-title">
-Player Health
-</div>
-
-<div
-    class="hearts"
-    id="hearts">
-
-❤️ ❤️ ❤️
-
-</div>
-
-</div>
-
-
-<div class="hud-box">
-
-<div class="hud-title">
-Attack Charge
-</div>
-
+<div class="hud-title">Attack Charge</div>
 <div class="charge">
-
-<div
-    class="charge-box"
-    id="attack1">
+<div class="charge-box" id="attack1"></div>
+<div class="charge-box" id="attack2"></div>
 </div>
-
-<div
-    class="charge-box"
-    id="attack2">
 </div>
-
-</div>
-
-</div>
-
 
 <div class="hud-box">
-
-<div class="hud-title">
-Danger
-</div>
-
+<div class="hud-title">Danger</div>
 <div class="charge">
-
-<div
-    class="charge-box"
-    id="danger1">
+<div class="charge-box" id="danger1"></div>
+<div class="charge-box" id="danger2"></div>
 </div>
-
-<div
-    class="charge-box"
-    id="danger2">
 </div>
-
-</div>
-
-</div>
-
 
 </div>
 
@@ -1177,25 +716,12 @@ Danger
 <div class="question-section">
 
 <div class="question-label">
-
-Question
-<span id="questionNumber">
-1
-</span>
-
+Question <span id="questionNumber">1</span>
 </div>
 
-<div
-    class="question"
-    id="questionText">
-</div>
+<div class="question" id="questionText"></div>
 
-
-<div
-    class="answers"
-    id="answers">
-</div>
-
+<div class="answers" id="answers"></div>
 
 <button
     class="submit-btn"
@@ -1207,21 +733,13 @@ LOCK IN ANSWER
 
 </button>
 
-
 <div class="feedback">
 
-<div
-    class="feedback-main"
-    id="feedbackMain">
-</div>
+<div class="feedback-main" id="feedbackMain"></div>
 
-<div
-    class="feedback-detail"
-    id="feedbackDetail">
-</div>
+<div class="feedback-detail" id="feedbackDetail"></div>
 
 </div>
-
 
 <button
     class="next-btn"
@@ -1234,18 +752,12 @@ NEXT QUESTION
 
 </div>
 
-
 </div>
 
 </section>
 
 
-
-<!-- RESULTS -->
-
-<section
-    class="results-screen"
-    id="resultsScreen">
+<section class="results-screen" id="resultsScreen">
 
 <div class="results-card">
 
@@ -1255,96 +767,37 @@ NEXT QUESTION
     src=""
     alt="Boss result">
 
-<h1
-    class="result-title"
-    id="resultTitle">
-
+<h1 class="result-title" id="resultTitle">
 BOSS DEFEATED
-
 </h1>
 
-<div
-    class="result-boss-name"
-    id="resultBossName">
-</div>
+<div class="result-boss-name" id="resultBossName"></div>
 
-<div
-    class="result-boss-line"
-    id="resultBossLine">
-</div>
-
+<div class="result-boss-line" id="resultBossLine"></div>
 
 <div class="result-stats">
 
 <div class="result-stat">
-
-<div
-    class="result-value"
-    id="resultCorrect">
-
-0
-
+<div class="result-value" id="resultCorrect">0</div>
+<div class="result-name">Correct</div>
 </div>
-
-<div class="result-name">
-Correct
-</div>
-
-</div>
-
 
 <div class="result-stat">
-
-<div
-    class="result-value"
-    id="resultWrong">
-
-0
-
+<div class="result-value" id="resultWrong">0</div>
+<div class="result-name">Wrong</div>
 </div>
-
-<div class="result-name">
-Wrong
-</div>
-
-</div>
-
 
 <div class="result-stat">
-
-<div
-    class="result-value"
-    id="resultHearts">
-
-0
-
+<div class="result-value" id="resultHearts">0</div>
+<div class="result-name">Hearts Left</div>
 </div>
-
-<div class="result-name">
-Hearts Left
-</div>
-
-</div>
-
 
 <div class="result-stat">
-
-<div
-    class="result-value"
-    id="resultStreak">
-
-0
-
-</div>
-
-<div class="result-name">
-Best Streak
+<div class="result-value" id="resultStreak">0</div>
+<div class="result-name">Best Streak</div>
 </div>
 
 </div>
-
-</div>
-
 
 <div class="result-actions">
 
@@ -1371,26 +824,16 @@ Return to Game Hub
 </section>
 
 
-
 <script>
 
 /* ======================================================
-BOSS ROSTER
-
-IMPORTANT:
-
-The FIRST boss is selected completely randomly.
-
-Once a battle has happened, the next battle avoids
-immediately selecting the same boss again.
+BOSSES
 ====================================================== */
 
 const BOSSES = [
 
 {
-
 id:"arcade-boss",
-
 name:"The Arcade Boss",
 
 images:[
@@ -1479,15 +922,8 @@ defeat:[
 
 },
 
-
-/* =========================
-THE GLITCH KING
-========================= */
-
 {
-
 id:"glitch-king",
-
 name:"The Glitch King",
 
 images:[
@@ -1583,426 +1019,1261 @@ defeat:[
 
 
 /* ======================================================
-HARD QUESTION BANK
+HAND-WRITTEN HARD / TRICKY QUESTIONS
 ====================================================== */
 
-const QUESTION_BANK = [
+const HANDCRAFTED_QUESTIONS = [
 
 {
+id:"h001",
 q:"In The Legend of Zelda: Ocarina of Time, which Sage is associated with the Forest Temple?",
 a:["Ruto","Darunia","Saria","Impa"],
 correct:"Saria"
 },
 
 {
-q:"Which studio originally developed Fallout: New Vegas?",
-a:["Bethesda Game Studios","Obsidian Entertainment","Black Isle Studios","inXile Entertainment"],
-correct:"Obsidian Entertainment"
-},
-
-{
+id:"h002",
 q:"What is the name of the city in Disco Elysium?",
 a:["Dunwall","Revachol","Krat","Novigrad"],
 correct:"Revachol"
 },
 
 {
+id:"h003",
 q:"Which game introduced Raiden as its main playable protagonist for much of the story?",
 a:["Metal Gear Solid","Metal Gear Solid 2","Metal Gear Solid 3","Metal Gear Rising"],
 correct:"Metal Gear Solid 2"
 },
 
 {
+id:"h004",
 q:"Which developer created the original System Shock?",
 a:["Ion Storm","Looking Glass Studios","Origin Systems","Westwood Studios"],
 correct:"Looking Glass Studios"
 },
 
 {
-q:"What is the name of the underwater city in BioShock?",
-a:["Columbia","Rapture","Arcadia","Persephone"],
-correct:"Rapture"
-},
-
-{
-q:"Which studio developed Alien: Isolation?",
-a:["Relic Entertainment","Creative Assembly","Frictional Games","Rebellion"],
-correct:"Creative Assembly"
-},
-
-{
+id:"h005",
 q:"In Mass Effect, which species created the geth?",
 a:["Turians","Quarians","Asari","Salarians"],
 correct:"Quarians"
 },
 
 {
+id:"h006",
 q:"Which company developed the original Deus Ex?",
 a:["Looking Glass Studios","Ion Storm","Arkane Studios","Eidos Montréal"],
 correct:"Ion Storm"
 },
 
 {
+id:"h007",
 q:"Which game takes place primarily aboard the Talos I space station?",
 a:["SOMA","Prey","Dead Space","System Shock 2"],
 correct:"Prey"
 },
 
 {
+id:"h008",
 q:"In Bloodborne, what is the name of the city where the game takes place?",
 a:["Yharnam","Boletaria","Lothric","Anor Londo"],
 correct:"Yharnam"
 },
 
 {
-q:"Who developed Return of the Obra Dinn?",
-a:["Subset Games","Lucas Pope","Mobius Digital","Jonathan Blow"],
-correct:"Lucas Pope"
-},
-
-{
-q:"What was the first commercially released game developed by Supergiant Games?",
+id:"h009",
+q:"What was Supergiant Games' first commercially released game?",
 a:["Transistor","Bastion","Pyre","Hades"],
 correct:"Bastion"
 },
 
 {
+id:"h010",
 q:"Which game features the fictional country of Kyrat?",
 a:["Far Cry 3","Far Cry 4","Far Cry 5","Far Cry 6"],
 correct:"Far Cry 4"
 },
 
 {
-q:"Which developer created the original Thief: The Dark Project?",
-a:["Arkane Studios","Looking Glass Studios","Ion Storm","Eidos Montréal"],
-correct:"Looking Glass Studios"
-},
-
-{
-q:"In Dark Souls, what is the name of the blacksmith found in the Undead Parish?",
+id:"h011",
+q:"In Dark Souls, which blacksmith is found in the Undead Parish?",
 a:["Vamos","Rickert","Andre","Giant Blacksmith"],
 correct:"Andre"
 },
 
 {
+id:"h012",
 q:"Which game engine powered Half-Life 2 at launch?",
 a:["GoldSrc","Source","id Tech 4","Unreal Engine 2"],
 correct:"Source"
 },
 
 {
-q:"Which studio developed Spec Ops: The Line?",
-a:["Yager Development","Crytek","People Can Fly","MachineGames"],
-correct:"Yager Development"
-},
-
-{
+id:"h013",
 q:"In The Witcher 3, which kingdom is ruled by Radovid V?",
 a:["Nilfgaard","Redania","Skellige","Temeria"],
 correct:"Redania"
 },
 
 {
-q:"What is the name of the protagonist of Dead Space?",
-a:["Jacob Lee","Isaac Clarke","John Carver","Gordon Freeman"],
-correct:"Isaac Clarke"
-},
-
-{
-q:"Which studio originally created the Hitman franchise?",
-a:["Remedy Entertainment","IO Interactive","Arkane Studios","Eidos Montréal"],
-correct:"IO Interactive"
-},
-
-{
-q:"Which game features the character Andrew Ryan?",
+id:"h014",
+q:"Which game features Andrew Ryan?",
 a:["BioShock","Dishonored","Prey","Control"],
 correct:"BioShock"
 },
 
 {
+id:"h015",
 q:"In Halo lore, what is Master Chief's designation?",
 a:["John-117","Noble Six","Jerome-092","Jameson-043"],
 correct:"John-117"
 },
 
 {
-q:"Which studio developed the original Dead Space?",
-a:["Visceral Games","Motive Studio","BioWare","Respawn Entertainment"],
-correct:"Visceral Games"
-},
-
-{
-q:"Which game was created by Jonathan Blow before The Witness?",
+id:"h016",
+q:"Which game did Jonathan Blow release before The Witness?",
 a:["Fez","Braid","Limbo","Super Meat Boy"],
 correct:"Braid"
 },
 
 {
+id:"h017",
 q:"In Fallout: New Vegas, which faction is led by Caesar?",
 a:["NCR","Caesar's Legion","Brotherhood of Steel","Followers of the Apocalypse"],
 correct:"Caesar's Legion"
 },
 
 {
-q:"Who developed Papers, Please?",
-a:["Lucas Pope","Toby Fox","Edmund McMillen","Derek Yu"],
-correct:"Lucas Pope"
-},
-
-{
+id:"h018",
 q:"Which game is set aboard the Von Braun?",
 a:["System Shock 2","Dead Space","Prey","Alien: Isolation"],
 correct:"System Shock 2"
 },
 
 {
-q:"Which studio developed the first Dishonored game?",
-a:["Arkane Studios","Bethesda Game Studios","MachineGames","id Software"],
-correct:"Arkane Studios"
-},
-
-{
-q:"In Elden Ring, what is the name of the spectral steed given to the player?",
+id:"h019",
+q:"In Elden Ring, what is the player's spectral steed called?",
 a:["Torrent","Roach","Agro","Kelpie"],
 correct:"Torrent"
 },
 
 {
-q:"Which developer created Hotline Miami?",
-a:["Dennaton Games","Devolver Digital","Vlambeer","Housemarque"],
-correct:"Dennaton Games"
-},
-
-{
-q:"Which game features the world of Hallownest?",
+id:"h020",
+q:"Which game features the kingdom of Hallownest?",
 a:["Ori and the Blind Forest","Hollow Knight","Dead Cells","Blasphemous"],
 correct:"Hollow Knight"
 },
 
 {
-q:"Who developed the original Max Payne?",
-a:["Rockstar North","Remedy Entertainment","Monolith Productions","IO Interactive"],
-correct:"Remedy Entertainment"
-},
-
-{
-q:"Which FromSoftware title launched exclusively on PlayStation 4 in 2015?",
-a:["Bloodborne","Dark Souls II","Dark Souls III","Sekiro"],
-correct:"Bloodborne"
-},
-
-{
-q:"Which series features the fictional megacorporation Abstergo Industries?",
+id:"h021",
+q:"Which series features Abstergo Industries?",
 a:["Watch Dogs","Assassin's Creed","Deus Ex","Cyberpunk"],
 correct:"Assassin's Creed"
 },
 
 {
-q:"What is the name of the player character in SOMA?",
+id:"h022",
+q:"What is the name of the protagonist in SOMA?",
 a:["Simon Jarrett","Daniel Lamb","Blake Langermann","Miles Upshur"],
 correct:"Simon Jarrett"
 },
 
 {
-q:"Which developer created the original Metro 2033?",
-a:["GSC Game World","4A Games","Techland","Crytek"],
-correct:"4A Games"
-},
-
-{
-q:"In Hades, which weapon is known as the Heart-Seeking Bow?",
+id:"h023",
+q:"In Hades, which weapon is the Heart-Seeking Bow?",
 a:["Stygius","Coronacht","Varatha","Aegis"],
 correct:"Coronacht"
 },
 
 {
-q:"Which studio developed the first Life is Strange?",
-a:["Deck Nine","Don't Nod","Quantic Dream","Telltale Games"],
-correct:"Don't Nod"
-},
-
-{
-q:"Which game takes place in the fictional city of Dunwall?",
+id:"h024",
+q:"Which game takes place in Dunwall?",
 a:["Thief","Dishonored","BioShock Infinite","The Order: 1886"],
 correct:"Dishonored"
 },
 
 {
-q:"Which Nintendo studio developed Metroid Prime?",
-a:["HAL Laboratory","Retro Studios","Intelligent Systems","Next Level Games"],
-correct:"Retro Studios"
-},
-
-{
-q:"In Cyberpunk 2077, which operating system is used for performing quickhacks?",
+id:"h025",
+q:"In Cyberpunk 2077, which operating system is required for standard quickhacking?",
 a:["Cyberdeck","Sandevistan","Berserk","Kiroshi"],
 correct:"Cyberdeck"
 },
 
 {
-q:"Which developer made Outer Wilds?",
-a:["Mobius Digital","Annapurna Interactive","Campo Santo","Giant Sparrow"],
-correct:"Mobius Digital"
-},
-
-{
+id:"h026",
 q:"Which game features the kingdom of Boletaria?",
 a:["Dark Souls","Demon's Souls","Dragon's Dogma","Elden Ring"],
 correct:"Demon's Souls"
 },
 
 {
-q:"Which studio created the original F.E.A.R.?",
-a:["Monolith Productions","Raven Software","id Software","People Can Fly"],
-correct:"Monolith Productions"
-},
-
-{
+id:"h027",
 q:"In Portal 2, what was Wheatley designed to be?",
 a:["Security Core","Intelligence Dampening Sphere","Morality Core","Adventure Core"],
 correct:"Intelligence Dampening Sphere"
 },
 
 {
-q:"Which game introduced Plasmids as a major gameplay mechanic?",
-a:["BioShock","Prey","Deus Ex","Dishonored"],
-correct:"BioShock"
-},
-
-{
-q:"Which studio developed Kingdom Come: Deliverance?",
-a:["Warhorse Studios","Bohemia Interactive","CD Projekt Red","Larian Studios"],
-correct:"Warhorse Studios"
-},
-
-{
+id:"h028",
 q:"Which game features detective Harry Du Bois?",
 a:["Disco Elysium","Heavy Rain","L.A. Noire","The Wolf Among Us"],
 correct:"Disco Elysium"
 },
 
 {
-q:"In The Elder Scrolls IV: Oblivion, which Daedric Prince is the central antagonist?",
+id:"h029",
+q:"In Oblivion, which Daedric Prince is the central antagonist?",
 a:["Mehrunes Dagon","Molag Bal","Sheogorath","Azura"],
 correct:"Mehrunes Dagon"
 },
 
 {
-q:"Which developer created Amnesia: The Dark Descent?",
-a:["Frictional Games","Red Barrels","Bloober Team","Supermassive Games"],
-correct:"Frictional Games"
-},
-
-{
-q:"Which game takes place in the floating city of Columbia?",
-a:["BioShock 2","BioShock Infinite","Dishonored 2","Prey"],
+id:"h030",
+q:"Which BioShock game takes place in Columbia?",
+a:["BioShock","BioShock 2","BioShock Infinite","Burial at Sea"],
 correct:"BioShock Infinite"
 },
 
 {
-q:"Who developed the original Saints Row?",
-a:["Volition","Rockstar North","Avalanche Studios","Radical Entertainment"],
-correct:"Volition"
-},
-
-{
+id:"h031",
 q:"Which game features Razputin Aquato?",
 a:["Psychonauts","Broken Age","Costume Quest","Grim Fandango"],
 correct:"Psychonauts"
 },
 
 {
-q:"Which developer created the original Dying Light?",
-a:["Techland","Deep Silver","People Can Fly","Flying Wild Hog"],
-correct:"Techland"
-},
-
-{
+id:"h032",
 q:"In Final Fantasy VII, what is Cloud's iconic starting weapon?",
 a:["Gunblade","Masamune","Buster Sword","Ultima Weapon"],
 correct:"Buster Sword"
 },
 
 {
-q:"Which series takes place across the continent of Tamriel?",
-a:["Dragon Age","The Elder Scrolls","The Witcher","Dragon's Dogma"],
-correct:"The Elder Scrolls"
-},
-
-{
-q:"Which studio developed Ori and the Blind Forest?",
-a:["Moon Studios","Playdead","Team Cherry","Thunder Lotus"],
-correct:"Moon Studios"
-},
-
-{
-q:"In Control, what is the headquarters of the Federal Bureau of Control called?",
+id:"h033",
+q:"In Control, what is the Federal Bureau of Control headquarters called?",
 a:["The Oldest House","The Threshold","The Foundation","The Panopticon"],
 correct:"The Oldest House"
 },
 
 {
-q:"Which developer created RimWorld?",
-a:["Ludeon Studios","Klei Entertainment","Subset Games","Introversion Software"],
-correct:"Ludeon Studios"
-},
-
-{
-q:"Which series features the spacecraft Normandy?",
-a:["Halo","Mass Effect","Dead Space","Starfield"],
-correct:"Mass Effect"
-},
-
-{
-q:"Which studio originally developed The Stanley Parable?",
-a:["Galactic Cafe","Campo Santo","Giant Sparrow","Tomorrow Corporation"],
-correct:"Galactic Cafe"
-},
-
-{
+id:"h034",
 q:"In Sekiro, what title is commonly used for the protagonist?",
 a:["The Hunter","Wolf","The Tarnished","The Ashen One"],
 correct:"Wolf"
 },
 
 {
-q:"Which series features Aperture Science?",
-a:["Portal","Half-Life","The Talos Principle","The Stanley Parable"],
-correct:"Portal"
-},
-
-{
-q:"Which studio created the original Borderlands?",
-a:["Gearbox Software","Epic Games","People Can Fly","Splash Damage"],
-correct:"Gearbox Software"
-},
-
-{
+id:"h035",
 q:"Which game takes place on planet 4546B?",
 a:["No Man's Sky","Subnautica","The Outer Worlds","Outer Wilds"],
 correct:"Subnautica"
 },
 
 {
-q:"Which developer created the first Little Nightmares?",
-a:["Tarsier Studios","Playdead","Supermassive Games","Frictional Games"],
-correct:"Tarsier Studios"
-},
-
-{
+id:"h036",
 q:"In Half-Life, what is Gordon Freeman's profession?",
 a:["Security Officer","Theoretical Physicist","Engineer","Marine"],
 correct:"Theoretical Physicist"
 },
 
 {
-q:"Which title introduced Ezio Auditore as its protagonist?",
+id:"h037",
+q:"Which Assassin's Creed game first introduced Ezio Auditore?",
 a:["Assassin's Creed","Assassin's Creed II","Brotherhood","Revelations"],
 correct:"Assassin's Creed II"
+},
+
+{
+id:"h038",
+q:"What is the name of Geralt's horse in The Witcher 3?",
+a:["Agro","Torrent","Roach","Epona"],
+correct:"Roach"
+},
+
+{
+id:"h039",
+q:"Which Resident Evil character is known as the 'Master of Unlocking'?",
+a:["Claire Redfield","Jill Valentine","Rebecca Chambers","Ada Wong"],
+correct:"Jill Valentine"
+},
+
+{
+id:"h040",
+q:"What is the name of the AI antagonist in Portal?",
+a:["SHODAN","Cortana","GLaDOS","EDI"],
+correct:"GLaDOS"
+},
+
+{
+id:"h041",
+q:"Which Halo ring is the primary setting of the first Halo game?",
+a:["Installation 00","Installation 04","Installation 05","Installation 07"],
+correct:"Installation 04"
+},
+
+{
+id:"h042",
+q:"Which faction controls much of Skyrim at the beginning of the Civil War questline?",
+a:["Stormcloaks","Imperial Legion","Thalmor","Companions"],
+correct:"Imperial Legion"
+},
+
+{
+id:"h043",
+q:"What is the name of the protagonist in Death Stranding?",
+a:["Sam Porter Bridges","Cliff Unger","Higgs Monaghan","Die-Hardman"],
+correct:"Sam Porter Bridges"
+},
+
+{
+id:"h044",
+q:"Which character is known as the Arbiter in Halo 2?",
+a:["Rtas 'Vadum","Thel 'Vadam","Tartarus","Atriox"],
+correct:"Thel 'Vadam"
+},
+
+{
+id:"h045",
+q:"What is the name of Kratos' son in God of War (2018)?",
+a:["Baldur","Atreus","Tyr","Magni"],
+correct:"Atreus"
+},
+
+{
+id:"h046",
+q:"Which Fallout game primarily takes place in the Mojave Wasteland?",
+a:["Fallout 3","Fallout: New Vegas","Fallout 4","Fallout 76"],
+correct:"Fallout: New Vegas"
+},
+
+{
+id:"h047",
+q:"What is the name of Rapture's founder in BioShock?",
+a:["Frank Fontaine","Andrew Ryan","Sander Cohen","Zachary Comstock"],
+correct:"Andrew Ryan"
+},
+
+{
+id:"h048",
+q:"Who is the protagonist of Metal Gear Solid 3: Snake Eater?",
+a:["Solid Snake","Liquid Snake","Naked Snake","Solidus Snake"],
+correct:"Naked Snake"
+},
+
+{
+id:"h049",
+q:"Which Dark Souls game introduced the bonfire ascetic mechanic?",
+a:["Dark Souls","Dark Souls II","Dark Souls III","Demon's Souls"],
+correct:"Dark Souls II"
+},
+
+{
+id:"h050",
+q:"In Resident Evil 4, what parasite infects villagers in the game?",
+a:["T-Virus","Uroboros","Las Plagas","G-Virus"],
+correct:"Las Plagas"
+},
+
+{
+id:"h051",
+q:"Which GTA V protagonist previously worked with Michael in North Yankton?",
+a:["Franklin","Trevor","Lamar","Wade"],
+correct:"Trevor"
+},
+
+{
+id:"h052",
+q:"What is the name of the main city in Cyberpunk 2077?",
+a:["Night City","Liberty City","City 17","New Atlantis"],
+correct:"Night City"
+},
+
+{
+id:"h053",
+q:"Which Mass Effect character is a former C-Sec officer?",
+a:["Wrex","Garrus","Thane","Mordin"],
+correct:"Garrus"
+},
+
+{
+id:"h054",
+q:"What is the name of the ship commanded by Shepard in Mass Effect?",
+a:["UNSC Infinity","Normandy","Ishimura","Tempest"],
+correct:"Normandy"
+},
+
+{
+id:"h055",
+q:"Which Final Fantasy VII character wields a gun-arm?",
+a:["Vincent","Barret","Cid","Reno"],
+correct:"Barret"
+},
+
+{
+id:"h056",
+q:"In Dead Space, what is the name of the mining ship Isaac boards?",
+a:["USG Ishimura","Von Braun","Sevastopol","Talos I"],
+correct:"USG Ishimura"
+},
+
+{
+id:"h057",
+q:"Which game features the Sevastopol space station?",
+a:["Dead Space","Alien: Isolation","Prey","SOMA"],
+correct:"Alien: Isolation"
+},
+
+{
+id:"h058",
+q:"In Red Dead Redemption 2, what gang is Arthur Morgan part of?",
+a:["O'Driscoll Gang","Van der Linde Gang","Lemoyne Raiders","Del Lobo Gang"],
+correct:"Van der Linde Gang"
+},
+
+{
+id:"h059",
+q:"Which character leads the Van der Linde gang?",
+a:["Hosea Matthews","Dutch van der Linde","Micah Bell","John Marston"],
+correct:"Dutch van der Linde"
+},
+
+{
+id:"h060",
+q:"Which Assassin's Creed game is primarily set during the French Revolution?",
+a:["Unity","Syndicate","Rogue","Origins"],
+correct:"Unity"
+},
+
+{
+id:"h061",
+q:"Which Assassin's Creed game is primarily set in Victorian London?",
+a:["Unity","Syndicate","Revelations","Mirage"],
+correct:"Syndicate"
+},
+
+{
+id:"h062",
+q:"Who is the protagonist of Ghost of Tsushima?",
+a:["Jin Sakai","Kazuma Kiryu","Sekiro","Ryu Hayabusa"],
+correct:"Jin Sakai"
+},
+
+{
+id:"h063",
+q:"Which game features the character Lady Dimitrescu?",
+a:["Resident Evil 7","Resident Evil Village","Resident Evil 4","Resident Evil Revelations"],
+correct:"Resident Evil Village"
+},
+
+{
+id:"h064",
+q:"Which Resident Evil game first introduced Leon S. Kennedy?",
+a:["Resident Evil","Resident Evil 2","Resident Evil 3","Resident Evil 4"],
+correct:"Resident Evil 2"
+},
+
+{
+id:"h065",
+q:"Which Zelda game takes place largely on the Great Sea?",
+a:["Twilight Princess","The Wind Waker","Skyward Sword","Majora's Mask"],
+correct:"The Wind Waker"
+},
+
+{
+id:"h066",
+q:"What is the name of Link's horse commonly associated with Ocarina of Time?",
+a:["Roach","Epona","Agro","Torrent"],
+correct:"Epona"
+},
+
+{
+id:"h067",
+q:"Which game features the Great Deku Tree?",
+a:["The Legend of Zelda","Metroid","Fire Emblem","Xenoblade Chronicles"],
+correct:"The Legend of Zelda"
+},
+
+{
+id:"h068",
+q:"Which game features the city of Midgar?",
+a:["Final Fantasy VI","Final Fantasy VII","Final Fantasy VIII","Final Fantasy IX"],
+correct:"Final Fantasy VII"
+},
+
+{
+id:"h069",
+q:"What is Sephiroth's iconic sword called?",
+a:["Buster Sword","Masamune","Zantetsuken","Ragnarok"],
+correct:"Masamune"
+},
+
+{
+id:"h070",
+q:"Which BioWare RPG features the Citadel?",
+a:["Dragon Age","Mass Effect","Jade Empire","Baldur's Gate"],
+correct:"Mass Effect"
+},
+
+{
+id:"h071",
+q:"Which Dragon Age game first introduced the Inquisitor?",
+a:["Origins","Dragon Age II","Inquisition","The Veilguard"],
+correct:"Inquisition"
+},
+
+{
+id:"h072",
+q:"In Baldur's Gate 3, which companion is a vampire spawn?",
+a:["Gale","Wyll","Astarion","Halsin"],
+correct:"Astarion"
+},
+
+{
+id:"h073",
+q:"Which Baldur's Gate 3 companion worships Shar at the beginning of the game?",
+a:["Karlach","Shadowheart","Lae'zel","Minthara"],
+correct:"Shadowheart"
+},
+
+{
+id:"h074",
+q:"What race is Lae'zel in Baldur's Gate 3?",
+a:["Tiefling","Githyanki","Drow","Half-Elf"],
+correct:"Githyanki"
+},
+
+{
+id:"h075",
+q:"Which Elden Ring demigod is known as the Blade of Miquella?",
+a:["Ranni","Malenia","Rykard","Radahn"],
+correct:"Malenia"
+},
+
+{
+id:"h076",
+q:"Which Elden Ring boss is known as the Starscourge?",
+a:["Godrick","Radahn","Morgott","Mohg"],
+correct:"Radahn"
+},
+
+{
+id:"h077",
+q:"Which Dark Souls location is famous for its silver knights and cathedral?",
+a:["Blighttown","Anor Londo","New Londo","The Depths"],
+correct:"Anor Londo"
+},
+
+{
+id:"h078",
+q:"What title is used for the player character in Dark Souls III?",
+a:["Bearer of the Curse","Ashen One","Chosen Undead","Tarnished"],
+correct:"Ashen One"
+},
+
+{
+id:"h079",
+q:"What title is used for the player character in Elden Ring?",
+a:["Hunter","Tarnished","Ashen One","Slayer of Demons"],
+correct:"Tarnished"
+},
+
+{
+id:"h080",
+q:"Which game features the Hunter's Dream?",
+a:["Bloodborne","Dark Souls III","Sekiro","Demon's Souls"],
+correct:"Bloodborne"
+},
+
+{
+id:"h081",
+q:"What is the name of the hub area in Demon's Souls?",
+a:["Firelink Shrine","The Nexus","Majula","Hunter's Dream"],
+correct:"The Nexus"
+},
+
+{
+id:"h082",
+q:"What is the central hub area in Dark Souls II called?",
+a:["Firelink Shrine","Majula","The Nexus","Roundtable Hold"],
+correct:"Majula"
+},
+
+{
+id:"h083",
+q:"Which game features Roundtable Hold?",
+a:["Dark Souls III","Elden Ring","Bloodborne","Sekiro"],
+correct:"Elden Ring"
+},
+
+{
+id:"h084",
+q:"Which Sekiro character is known as the Divine Heir?",
+a:["Emma","Kuro","Genichiro","Isshin"],
+correct:"Kuro"
+},
+
+{
+id:"h085",
+q:"Which game features the phrase 'Would you kindly?' as an important plot device?",
+a:["BioShock","Portal","Prey","System Shock 2"],
+correct:"BioShock"
+},
+
+{
+id:"h086",
+q:"What is the protagonist's name in BioShock Infinite?",
+a:["Jack","Booker DeWitt","Corvo Attano","Sebastian Castellanos"],
+correct:"Booker DeWitt"
+},
+
+{
+id:"h087",
+q:"Which character accompanies Booker through most of BioShock Infinite?",
+a:["Eleanor","Elizabeth","Tenenbaum","Daisy"],
+correct:"Elizabeth"
+},
+
+{
+id:"h088",
+q:"What is the protagonist's name in Dishonored?",
+a:["Daud","Corvo Attano","Booker DeWitt","Garrett"],
+correct:"Corvo Attano"
+},
+
+{
+id:"h089",
+q:"Which supernatural figure grants Corvo his powers in Dishonored?",
+a:["The Outsider","The Stranger","The Traveler","The Watcher"],
+correct:"The Outsider"
+},
+
+{
+id:"h090",
+q:"Which Dishonored character becomes playable alongside Corvo in Dishonored 2?",
+a:["Emily Kaldwin","Billie Lurk","Jessamine Kaldwin","Delilah"],
+correct:"Emily Kaldwin"
+},
+
+{
+id:"h091",
+q:"Which game stars detective Saga Anderson alongside Alan Wake?",
+a:["Control","Alan Wake 2","Quantum Break","Max Payne 3"],
+correct:"Alan Wake 2"
+},
+
+{
+id:"h092",
+q:"In Alan Wake, what tool is especially important for weakening Taken enemies?",
+a:["Radio","Flashlight","Camera","Crowbar"],
+correct:"Flashlight"
+},
+
+{
+id:"h093",
+q:"What is Jesse Faden's role in Control?",
+a:["Director of the FBC","Federal Agent","Astronaut","Detective"],
+correct:"Director of the FBC"
+},
+
+{
+id:"h094",
+q:"What is the shapeshifting weapon in Control called?",
+a:["Service Weapon","Object of Power","Hiss Gun","Director's Arm"],
+correct:"Service Weapon"
+},
+
+{
+id:"h095",
+q:"Which game features the fictional town of Bright Falls?",
+a:["Alan Wake","Silent Hill 2","Life is Strange","Deadly Premonition"],
+correct:"Alan Wake"
+},
+
+{
+id:"h096",
+q:"Which Silent Hill game features James Sunderland?",
+a:["Silent Hill","Silent Hill 2","Silent Hill 3","Silent Hill 4"],
+correct:"Silent Hill 2"
+},
+
+{
+id:"h097",
+q:"Which Silent Hill protagonist is searching for his wife Mary?",
+a:["Harry Mason","James Sunderland","Henry Townshend","Alex Shepherd"],
+correct:"James Sunderland"
+},
+
+{
+id:"h098",
+q:"Which horror game features Mount Massive Asylum?",
+a:["Outlast","Amnesia","SOMA","The Evil Within"],
+correct:"Outlast"
+},
+
+{
+id:"h099",
+q:"What is the name of Outlast's journalist protagonist?",
+a:["Miles Upshur","Blake Langermann","Ethan Winters","Sebastian Castellanos"],
+correct:"Miles Upshur"
+},
+
+{
+id:"h100",
+q:"Which Amnesia game features protagonist Daniel?",
+a:["A Machine for Pigs","The Dark Descent","Rebirth","The Bunker"],
+correct:"The Dark Descent"
+},
+
+{
+id:"h101",
+q:"Which Resident Evil protagonist searches for his daughter Rose?",
+a:["Leon Kennedy","Chris Redfield","Ethan Winters","Carlos Oliveira"],
+correct:"Ethan Winters"
+},
+
+{
+id:"h102",
+q:"Which Dead Space enemy type is created from reanimated corpses?",
+a:["Clickers","Necromorphs","Taken","Ganados"],
+correct:"Necromorphs"
+},
+
+{
+id:"h103",
+q:"What profession does Isaac Clarke have in Dead Space?",
+a:["Marine","Engineer","Scientist","Doctor"],
+correct:"Engineer"
+},
+
+{
+id:"h104",
+q:"Which game features the Marker as a central object?",
+a:["Dead Space","Control","Prey","SOMA"],
+correct:"Dead Space"
+},
+
+{
+id:"h105",
+q:"Which game features the alien lifeform known as the Typhon?",
+a:["Prey","Alien: Isolation","Dead Space","Half-Life 2"],
+correct:"Prey"
+},
+
+{
+id:"h106",
+q:"Which Half-Life enemy commonly attaches itself to a victim's head?",
+a:["Vortigaunt","Headcrab","Barnacle","Antlion"],
+correct:"Headcrab"
+},
+
+{
+id:"h107",
+q:"What city is the main setting for much of Half-Life 2?",
+a:["City 17","Ravenholm","Black Mesa","Nova Prospekt"],
+correct:"City 17"
+},
+
+{
+id:"h108",
+q:"Which Half-Life scientist becomes a resistance leader in Half-Life 2?",
+a:["Barney Calhoun","Eli Vance","Wallace Breen","Adrian Shephard"],
+correct:"Eli Vance"
+},
+
+{
+id:"h109",
+q:"Who is the administrator of Earth under the Combine in Half-Life 2?",
+a:["Dr. Kleiner","Wallace Breen","Eli Vance","G-Man"],
+correct:"Wallace Breen"
+},
+
+{
+id:"h110",
+q:"Which Portal character appears as an AI personality core in Portal 2?",
+a:["Wheatley","Eli","Atlas","Barney"],
+correct:"Wheatley"
+},
+
+{
+id:"h111",
+q:"Which game features Cave Johnson?",
+a:["Portal 2","Half-Life 2","The Stanley Parable","Prey"],
+correct:"Portal 2"
+},
+
+{
+id:"h112",
+q:"Which character says 'The cake is a lie'?",
+a:["No single character; it appears as graffiti","GLaDOS","Chell","Wheatley"],
+correct:"No single character; it appears as graffiti"
+},
+
+{
+id:"h113",
+q:"What is the name of the AI in System Shock?",
+a:["GLaDOS","SHODAN","Cortana","SAM"],
+correct:"SHODAN"
+},
+
+{
+id:"h114",
+q:"Which immersive sim features the hacker JC Denton?",
+a:["System Shock","Deus Ex","Prey","Thief"],
+correct:"Deus Ex"
+},
+
+{
+id:"h115",
+q:"Which Deus Ex game stars Adam Jensen?",
+a:["Deus Ex","Invisible War","Human Revolution","The Fall"],
+correct:"Human Revolution"
+},
+
+{
+id:"h116",
+q:"Which Thief protagonist is known as a master thief?",
+a:["Garrett","Corvo","Daud","Adam Jensen"],
+correct:"Garrett"
+},
+
+{
+id:"h117",
+q:"Which game features the phrase 'Praise the Sun'?",
+a:["Dark Souls","Elden Ring","Dragon's Dogma","Demon's Souls"],
+correct:"Dark Souls"
+},
+
+{
+id:"h118",
+q:"Which Dark Souls NPC is strongly associated with 'Praise the Sun'?",
+a:["Siegmeyer","Solaire","Andre","Patches"],
+correct:"Solaire"
+},
+
+{
+id:"h119",
+q:"Which recurring FromSoftware character is known for tricking players near ledges?",
+a:["Patches","Solaire","Andre","Greirat"],
+correct:"Patches"
+},
+
+{
+id:"h120",
+q:"Which game first introduced the Hunter as the player's title?",
+a:["Bloodborne","Demon's Souls","Dark Souls","Sekiro"],
+correct:"Bloodborne"
 }
 
 ];
+
+
+/* ======================================================
+STUDIO / DEVELOPMENT KNOWLEDGE
+
+Each entry automatically becomes another question:
+
+"Which studio developed GAME?"
+
+This takes us comfortably beyond 200 available questions.
+====================================================== */
+
+const DEVELOPMENT_DATA = [
+
+["Fallout: New Vegas","Obsidian Entertainment"],
+["Alien: Isolation","Creative Assembly"],
+["Dead Space (2008)","EA Redwood Shores / Visceral Games"],
+["Return of the Obra Dinn","Lucas Pope"],
+["Spec Ops: The Line","Yager Development"],
+["Papers, Please","Lucas Pope"],
+["Hotline Miami","Dennaton Games"],
+["Max Payne","Remedy Entertainment"],
+["Metro 2033","4A Games"],
+["Life is Strange","Don't Nod"],
+["Metroid Prime","Retro Studios"],
+["Outer Wilds","Mobius Digital"],
+["F.E.A.R.","Monolith Productions"],
+["Kingdom Come: Deliverance","Warhorse Studios"],
+["Amnesia: The Dark Descent","Frictional Games"],
+["Saints Row","Volition"],
+["Psychonauts","Double Fine Productions"],
+["Dying Light","Techland"],
+["Ori and the Blind Forest","Moon Studios"],
+["RimWorld","Ludeon Studios"],
+["The Stanley Parable","Galactic Cafe"],
+["Borderlands","Gearbox Software"],
+["Little Nightmares","Tarsier Studios"],
+["The Last of Us","Naughty Dog"],
+["Uncharted: Drake's Fortune","Naughty Dog"],
+["Horizon Zero Dawn","Guerrilla Games"],
+["Ghost of Tsushima","Sucker Punch Productions"],
+["Marvel's Spider-Man","Insomniac Games"],
+["Ratchet & Clank","Insomniac Games"],
+["God of War (2018)","Santa Monica Studio"],
+["Bloodborne","FromSoftware"],
+["Elden Ring","FromSoftware"],
+["Sekiro: Shadows Die Twice","FromSoftware"],
+["Dark Souls","FromSoftware"],
+["Demon's Souls","FromSoftware"],
+["The Witcher 3: Wild Hunt","CD Projekt Red"],
+["Cyberpunk 2077","CD Projekt Red"],
+["Baldur's Gate 3","Larian Studios"],
+["Divinity: Original Sin 2","Larian Studios"],
+["Mass Effect","BioWare"],
+["Dragon Age: Origins","BioWare"],
+["Star Wars: Knights of the Old Republic","BioWare"],
+["The Elder Scrolls V: Skyrim","Bethesda Game Studios"],
+["Fallout 3","Bethesda Game Studios"],
+["Fallout 4","Bethesda Game Studios"],
+["DOOM (2016)","id Software"],
+["DOOM Eternal","id Software"],
+["Quake","id Software"],
+["Dishonored","Arkane Studios"],
+["Prey (2017)","Arkane Studios"],
+["Deathloop","Arkane Studios"],
+["Control","Remedy Entertainment"],
+["Alan Wake","Remedy Entertainment"],
+["Alan Wake 2","Remedy Entertainment"],
+["Quantum Break","Remedy Entertainment"],
+["Resident Evil 2 (2019)","Capcom"],
+["Resident Evil 4 (2023)","Capcom"],
+["Resident Evil 7: Biohazard","Capcom"],
+["Resident Evil Village","Capcom"],
+["Monster Hunter: World","Capcom"],
+["Monster Hunter Rise","Capcom"],
+["Street Fighter 6","Capcom"],
+["Devil May Cry 5","Capcom"],
+["Metal Gear Solid V: The Phantom Pain","Kojima Productions"],
+["Death Stranding","Kojima Productions"],
+["Hades","Supergiant Games"],
+["Bastion","Supergiant Games"],
+["Transistor","Supergiant Games"],
+["Pyre","Supergiant Games"],
+["Hollow Knight","Team Cherry"],
+["Celeste","Matt Makes Games"],
+["Cuphead","Studio MDHR"],
+["Stardew Valley","ConcernedApe"],
+["Undertale","Toby Fox"],
+["Disco Elysium","ZA/UM"],
+["Inside","Playdead"],
+["Limbo","Playdead"],
+["Firewatch","Campo Santo"],
+["What Remains of Edith Finch","Giant Sparrow"],
+["The Witness","Thekla"],
+["Braid","Number None"],
+["FTL: Faster Than Light","Subset Games"],
+["Into the Breach","Subset Games"],
+["Don't Starve","Klei Entertainment"],
+["Mark of the Ninja","Klei Entertainment"],
+["Shank","Klei Entertainment"],
+["Dead Cells","Motion Twin"],
+["Slay the Spire","Mega Crit"],
+["Balatro","LocalThunk"],
+["Inscryption","Daniel Mullins Games"],
+["The Binding of Isaac","Edmund McMillen and Florian Himsl"],
+["Super Meat Boy","Team Meat"],
+["Spelunky","Mossmouth"],
+["Fez","Polytron Corporation"],
+["Terraria","Re-Logic"],
+["Minecraft","Mojang"],
+["Portal","Valve"],
+["Portal 2","Valve"],
+["Half-Life","Valve"],
+["Half-Life 2","Valve"],
+["Left 4 Dead","Valve South"],
+["Team Fortress 2","Valve"],
+["Counter-Strike","Valve"],
+["BioShock","2K Boston / 2K Australia"],
+["BioShock Infinite","Irrational Games"],
+["System Shock 2","Irrational Games and Looking Glass Studios"],
+["Deus Ex","Ion Storm"],
+["Thief: The Dark Project","Looking Glass Studios"],
+["SOMA","Frictional Games"],
+["Outlast","Red Barrels"],
+["Phasmophobia","Kinetic Games"],
+["The Evil Within","Tango Gameworks"],
+["Hi-Fi Rush","Tango Gameworks"],
+["Lies of P","Round8 Studio"],
+["Nioh","Team Ninja"],
+["Nioh 2","Team Ninja"],
+["Wo Long: Fallen Dynasty","Team Ninja"],
+["Hitman: World of Assassination","IO Interactive"],
+["Hitman: Blood Money","IO Interactive"],
+["Tomb Raider (2013)","Crystal Dynamics"],
+["Rise of the Tomb Raider","Crystal Dynamics"],
+["Shadow of the Tomb Raider","Eidos-Montréal"],
+["Just Cause 2","Avalanche Studios"],
+["Mad Max","Avalanche Studios"],
+["Batman: Arkham Asylum","Rocksteady Studios"],
+["Batman: Arkham City","Rocksteady Studios"],
+["Middle-earth: Shadow of Mordor","Monolith Productions"],
+["Middle-earth: Shadow of War","Monolith Productions"],
+["Titanfall 2","Respawn Entertainment"],
+["Apex Legends","Respawn Entertainment"],
+["Star Wars Jedi: Fallen Order","Respawn Entertainment"],
+["Dead Space (2023)","Motive Studio"],
+["Star Wars: Squadrons","Motive Studio"],
+["It Takes Two","Hazelight Studios"],
+["A Way Out","Hazelight Studios"],
+["Brothers: A Tale of Two Sons","Starbreeze Studios"],
+["Deep Rock Galactic","Ghost Ship Games"],
+["Valheim","Iron Gate Studio"],
+["Subnautica","Unknown Worlds Entertainment"],
+["The Forest","Endnight Games"],
+["Sons of the Forest","Endnight Games"],
+["7 Days to Die","The Fun Pimps"],
+["Project Zomboid","The Indie Stone"],
+["Dwarf Fortress","Bay 12 Games"],
+["Cities: Skylines","Colossal Order"],
+["Civilization VI","Firaxis Games"],
+["XCOM 2","Firaxis Games"],
+["Total War: Warhammer","Creative Assembly"],
+["Age of Empires IV","Relic Entertainment"],
+["Company of Heroes","Relic Entertainment"],
+["Crusader Kings III","Paradox Development Studio"],
+["Europa Universalis IV","Paradox Development Studio"],
+["Stellaris","Paradox Development Studio"],
+["Frostpunk","11 bit studios"],
+["This War of Mine","11 bit studios"],
+["The Talos Principle","Croteam"],
+["Serious Sam","Croteam"],
+["Hellblade: Senua's Sacrifice","Ninja Theory"],
+["DmC: Devil May Cry","Ninja Theory"],
+["Enslaved: Odyssey to the West","Ninja Theory"],
+["Ori and the Will of the Wisps","Moon Studios"],
+["No Man's Sky","Hello Games"],
+["The Outer Worlds","Obsidian Entertainment"],
+["Pillars of Eternity","Obsidian Entertainment"],
+["Grounded","Obsidian Entertainment"],
+["Pentiment","Obsidian Entertainment"],
+["Vampire Survivors","poncle"],
+["Dave the Diver","MINTROCKET"],
+["Dredge","Black Salt Games"],
+["Cult of the Lamb","Massive Monster"],
+["Pacific Drive","Ironwood Studios"],
+["Sifu","Sloclap"],
+["Absolver","Sloclap"],
+["Kena: Bridge of Spirits","Ember Lab"],
+["Stray","BlueTwelve Studio"],
+["Tunic","Andrew Shouldice"],
+["Cocoon","Geometric Interactive"],
+["Inside the Backrooms","MrFatcat"],
+["The Mortuary Assistant","DarkStone Digital"],
+["Signalis","rose-engine"],
+["Darkwood","Acid Wizard Studio"],
+["Layers of Fear","Bloober Team"],
+["The Medium","Bloober Team"],
+["Observer","Bloober Team"],
+["Until Dawn","Supermassive Games"],
+["The Quarry","Supermassive Games"],
+["Man of Medan","Supermassive Games"],
+["Until Then","Polychroma Games"],
+["Oxenfree","Night School Studio"],
+["Afterparty","Night School Studio"],
+["Kentucky Route Zero","Cardboard Computer"],
+["Gone Home","The Fullbright Company"],
+["Tacoma","Fullbright"],
+["Road 96","DigixArt"],
+["Spiritfarer","Thunder Lotus Games"],
+["Jotun","Thunder Lotus Games"],
+["Gris","Nomada Studio"],
+["Neva","Nomada Studio"]
+
+];
+
+
+/* ======================================================
+GENERATE STUDIO QUESTIONS
+====================================================== */
+
+function buildDevelopmentQuestions(){
+
+    const studios =
+        [...new Set(
+            DEVELOPMENT_DATA.map(
+                row => row[1]
+            )
+        )];
+
+
+    return DEVELOPMENT_DATA.map(
+        (row,index) => {
+
+            const game =
+                row[0];
+
+            const studio =
+                row[1];
+
+
+            let wrongStudios =
+                shuffle(
+                    studios.filter(
+                        value =>
+                            value !== studio
+                    )
+                )
+                .slice(0,3);
+
+
+            return {
+
+                id:
+                    "d" +
+                    String(index + 1)
+                    .padStart(3,"0"),
+
+                q:
+                    `Which studio developed ${game}?`,
+
+                a:
+                    shuffle([
+                        studio,
+                        ...wrongStudios
+                    ]),
+
+                correct:
+                    studio
+            };
+        }
+    );
+}
+
+
+/* ======================================================
+FULL QUESTION BANK
+====================================================== */
+
+const QUESTION_BANK = [
+
+    ...HANDCRAFTED_QUESTIONS,
+
+    ...buildDevelopmentQuestions()
+
+];
+
+
+/* ======================================================
+RECENT QUESTION MEMORY
+
+The browser remembers the last 80 questions the player
+has encountered.
+
+They are excluded from future battles wherever possible.
+====================================================== */
+
+const HISTORY_KEY =
+    "gjdBossBattleQuestionHistory";
+
+const HISTORY_LIMIT =
+    80;
+
+
+function getQuestionHistory(){
+
+    try{
+
+        const data =
+            JSON.parse(
+                localStorage.getItem(
+                    HISTORY_KEY
+                )
+            );
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        return [];
+    }
+}
+
+
+function saveQuestionToHistory(id){
+
+    let history =
+        getQuestionHistory();
+
+
+    history =
+        history.filter(
+            existing =>
+                existing !== id
+        );
+
+
+    history.push(id);
+
+
+    history =
+        history.slice(
+            -HISTORY_LIMIT
+        );
+
+
+    localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(
+            history
+        )
+    );
+}
+
+
+/* ======================================================
+CREATE FRESH QUESTION DECK
+====================================================== */
+
+function buildQuestionDeck(){
+
+    const history =
+        getQuestionHistory();
+
+
+    let fresh =
+        QUESTION_BANK.filter(
+            question =>
+                !history.includes(
+                    question.id
+                )
+        );
+
+
+    /*
+    With this huge bank we should nearly always have
+    plenty of unseen/recently-unseen questions.
+
+    If the player somehow burns through almost everything,
+    old questions gradually become eligible again.
+    */
+
+    if(
+        fresh.length < 30
+    ){
+
+        const older =
+            QUESTION_BANK.filter(
+                question =>
+                    !fresh.some(
+                        item =>
+                            item.id ===
+                            question.id
+                    )
+            );
+
+
+        fresh = [
+            ...fresh,
+            ...older
+        ];
+    }
+
+
+    return shuffle(
+        fresh
+    );
+}
 
 
 /* ======================================================
@@ -2014,6 +2285,9 @@ let currentBoss = null;
 let questionDeck = [];
 
 let currentQuestion = null;
+
+let usedThisFight =
+    new Set();
 
 let selectedAnswer = null;
 
@@ -2050,7 +2324,8 @@ function shuffle(array){
         [...array];
 
     for(
-        let i = copy.length - 1;
+        let i =
+            copy.length - 1;
         i > 0;
         i--
     ){
@@ -2087,16 +2362,11 @@ function randomItem(array){
 
 
 /* ======================================================
-CHOOSE BOSS
+BOSS SELECTION
 
-FIRST FIGHT:
-Random from ALL bosses.
+First fight = completely random.
 
-REMATCH:
-Random from everyone EXCEPT the boss just fought.
-
-As more bosses are added later this will continue
-working automatically.
+Rematch = random boss except the one just fought.
 ====================================================== */
 
 function chooseBoss(){
@@ -2122,10 +2392,6 @@ function chooseBoss(){
     }
 
 
-    /*
-    Safety fallback.
-    */
-
     if(
         availableBosses.length === 0
     ){
@@ -2143,7 +2409,7 @@ function chooseBoss(){
 
 
 /* ======================================================
-BOSS DIALOGUE
+DIALOGUE
 ====================================================== */
 
 function randomBossLine(category){
@@ -2169,22 +2435,20 @@ function setBossLine(line){
 
 
 /* ======================================================
-START BATTLE
+START
 ====================================================== */
 
 function startBattle(){
-
-    /*
-    Pick the villain BEFORE resetting the fight.
-    */
 
     chooseBoss();
 
 
     questionDeck =
-        shuffle(
-            QUESTION_BANK
-        );
+        buildQuestionDeck();
+
+
+    usedThisFight =
+        new Set();
 
 
     currentQuestion = null;
@@ -2279,6 +2543,10 @@ function startBattle(){
 
 /* ======================================================
 LOAD QUESTION
+
+Question IDs are added to:
+1. Current fight memory
+2. Browser recent-history memory
 ====================================================== */
 
 function loadQuestion(){
@@ -2293,14 +2561,67 @@ function loadQuestion(){
     ){
 
         questionDeck =
-            shuffle(
-                QUESTION_BANK
-            );
+            buildQuestionDeck();
     }
 
 
-    currentQuestion =
-        questionDeck.pop();
+    /*
+    Find the next question that has NOT been used
+    during this fight.
+    */
+
+    while(
+        questionDeck.length > 0
+    ){
+
+        const candidate =
+            questionDeck.pop();
+
+
+        if(
+            !usedThisFight.has(
+                candidate.id
+            )
+        ){
+
+            currentQuestion =
+                candidate;
+
+            break;
+        }
+    }
+
+
+    /*
+    Extremely unlikely fallback.
+    */
+
+    if(!currentQuestion){
+
+        questionDeck =
+            shuffle(
+                QUESTION_BANK.filter(
+                    question =>
+                        !usedThisFight.has(
+                            question.id
+                        )
+                )
+            );
+
+
+        currentQuestion =
+            questionDeck.pop();
+    }
+
+
+    usedThisFight.add(
+        currentQuestion.id
+    );
+
+
+    saveQuestionToHistory(
+        currentQuestion.id
+    );
 
 
     selectedAnswer = null;
@@ -2484,8 +2805,7 @@ document.addEventListener(
     function(event){
 
         if(
-            event.key ===
-            "Enter" &&
+            event.key === "Enter" &&
             !questionLocked &&
             selectedAnswer !== null &&
             document
@@ -2717,7 +3037,7 @@ function processWrong(){
 
 
 /* ======================================================
-DAMAGE BOSS
+BOSS DAMAGE
 ====================================================== */
 
 function damageBoss(){
@@ -2829,7 +3149,7 @@ function damageBoss(){
 
 
 /* ======================================================
-DAMAGE PLAYER
+PLAYER DAMAGE
 ====================================================== */
 
 function damagePlayer(){
@@ -2912,7 +3232,7 @@ function damagePlayer(){
 
 
 /* ======================================================
-UPDATE BOSS
+BOSS UI
 ====================================================== */
 
 function updateBoss(){
@@ -3060,6 +3380,8 @@ function nextQuestion(){
         return;
     }
 
+
+    currentQuestion = null;
 
     loadQuestion();
 }
