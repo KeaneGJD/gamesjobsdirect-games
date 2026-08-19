@@ -38,8 +38,6 @@ button{
     font:inherit;
 }
 
-/* HEADER */
-
 header{
     min-height:68px;
     background:white;
@@ -69,8 +67,6 @@ header{
     font-size:14px;
     font-weight:800;
 }
-
-/* START */
 
 .start-screen{
     max-width:900px;
@@ -163,8 +159,6 @@ header{
     box-shadow:0 4px 0 #9cb500;
 }
 
-/* GAME */
-
 .game-area{
     display:none;
     max-width:1000px;
@@ -235,8 +229,6 @@ header{
     width:100%;
     display:block;
 }
-
-/* HIT FX */
 
 .boss-hit{
     animation:bossHit .6s ease;
@@ -346,8 +338,6 @@ header{
     }
 }
 
-/* TALK */
-
 .boss-talk{
     max-width:760px;
     margin:14px auto 22px;
@@ -371,8 +361,6 @@ header{
     font-weight:700;
     line-height:1.4;
 }
-
-/* HUD */
 
 .player-hud{
     max-width:760px;
@@ -424,8 +412,6 @@ header{
 .danger-filled{
     background:var(--red);
 }
-
-/* QUESTION */
 
 .question-section{
     max-width:760px;
@@ -544,8 +530,6 @@ header{
     cursor:pointer;
 }
 
-/* RESULTS */
-
 .results-screen{
     display:none;
     max-width:850px;
@@ -650,8 +634,6 @@ header{
     color:white;
 }
 
-/* MOBILE */
-
 @media(max-width:650px){
 
     header{
@@ -690,12 +672,9 @@ header{
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -718,7 +697,6 @@ Return to Game Hub
 </a>
 
 </header>
-
 
 
 <section
@@ -783,7 +761,6 @@ START BATTLE
 </button>
 
 </section>
-
 
 
 <section
@@ -856,7 +833,6 @@ HIT!
 
 </div>
 
-
 <div class="player-hud">
 
 <div class="hud-box">
@@ -921,7 +897,6 @@ Danger
 
 </div>
 
-
 <div class="question-section">
 
 <div class="question-label">
@@ -981,7 +956,6 @@ NEXT QUESTION
 </div>
 
 </section>
-
 
 
 <section
@@ -1061,7 +1035,6 @@ Return to Game Hub
 </div>
 
 </section>
-
 
 
 <script>
@@ -1384,13 +1357,135 @@ defeat:[
 
 }
 
+},
+
+
+/* =========================
+THE LORE KEEPER
+========================= */
+
+{
+id:"lore-keeper",
+name:"The Lore Keeper",
+
+images:[
+    "assets/boss-battle/lore-keeper/1.png",
+    "assets/boss-battle/lore-keeper/2.png",
+    "assets/boss-battle/lore-keeper/3.png",
+    "assets/boss-battle/lore-keeper/4.png",
+    "assets/boss-battle/lore-keeper/5.png"
+],
+
+talk:{
+
+start:[
+    "Ah. Another self-proclaimed master of games enters my library.",
+    "I have studied a thousand worlds. You have merely played in them.",
+    "Your knowledge shall be tested. I expect this to be brief.",
+    "Approach, adventurer. Let us discover how little you truly know.",
+    "I remember games released before you learned to hold a controller.",
+    "Welcome to the archives. Try not to embarrass yourself among the books.",
+    "The tomes foretold your arrival. They were considerably less impressed than you might hope."
+],
+
+correct:[
+    "Hmm. Perhaps you are not entirely hopeless.",
+    "Correct. Even a novice occasionally remembers their lessons.",
+    "You have read beyond the first page. Impressive.",
+    "Very well. One point to the apprentice.",
+    "Knowledge! From you? Remarkable.",
+    "A respectable answer. Do not become accustomed to my praise.",
+    "Perhaps your gaming education was not entirely wasted.",
+    "Correct. I shall reluctantly record that in the archives."
+],
+
+wrong:[
+    "Oh dear. Shall I fetch the strategy guide?",
+    "And you dare call yourself a gamer?",
+    "Incorrect. The archives weep.",
+    "Such confidence. Such spectacular ignorance.",
+    "Perhaps you skipped that particular chapter.",
+    "I have encountered NPCs with greater wisdom.",
+    "Your gaming education is clearly incomplete.",
+    "A fascinating answer. Entirely wrong, of course.",
+    "Even the footnotes knew that one.",
+    "I shall pretend I did not hear that."
+],
+
+bossHit:[
+    "IMPOSSIBLE! You knew enough to wound me?",
+    "Mind the robes!",
+    "A fortunate strike. Nothing more.",
+    "You dare turn knowledge against its keeper?",
+    "Perhaps I underestimated your studies.",
+    "Careful! These robes are older than your favourite franchise.",
+    "You wield trivia like a barbarian wields an axe.",
+    "A hit? From an apprentice? Unacceptable."
+],
+
+bossLow:[
+    "Enough! There are clearly flaws in these questions.",
+    "You have studied forbidden walkthroughs, haven't you?",
+    "My centuries of knowledge cannot end like this!",
+    "Stop! I demand a more obscure category!",
+    "How do you KNOW these things?",
+    "The archives did not predict this.",
+    "Perhaps I should have chosen questions from the expansion manuals.",
+    "I refuse to become a footnote in my own library."
+],
+
+playerHit:[
+    "Consider that your first lesson.",
+    "Knowledge is power. Unfortunately, you possess neither.",
+    "Return when you've completed your studies.",
+    "Another page missing from your education.",
+    "A painful reminder to read the lore entries.",
+    "You should have studied the optional dialogue.",
+    "Let that wound serve as a bookmark.",
+    "Class remains in session."
+],
+
+lastHeart:[
+    "One heart remains, adventurer. Choose your answer wisely.",
+    "Your tale approaches its final chapter.",
+    "The archives have already begun recording your defeat.",
+    "One more mistake and you become a footnote.",
+    "Your legend grows remarkably short.",
+    "Even the glossary is concerned for you.",
+    "One final error and your story ends here."
+],
+
+victory:[
+    "Impossible... I knew EVERYTHING.",
+    "Perhaps... there remains something even I could learn.",
+    "The apprentice... surpasses the master.",
+    "Close the archives. We shall never speak of this.",
+    "Very well. You have earned your place among the learned.",
+    "The books were wrong. Disturbing.",
+    "I concede. But I shall be fact-checking every one of those answers.",
+    "Your name shall be recorded in the archives... reluctantly."
+],
+
+defeat:[
+    "And thus concludes the shortest legend ever written.",
+    "Return to the tutorial, apprentice.",
+    "Your name shall be recorded... in very small print.",
+    "The archives remain undefeated.",
+    "Perhaps try something easier. A loading-screen tip, perhaps.",
+    "Knowledge has prevailed. As it generally does.",
+    "Your chapter ends here.",
+    "Do come back after you've read literally anything."
+]
+
+}
+
 }
 
 ];
 
 
 /* ======================================================
-HAND-WRITTEN HARD/TRICKY QUESTIONS
+HARD / TRICKY QUESTIONS
 ====================================================== */
 
 const HANDCRAFTED_QUESTIONS = [
@@ -2239,7 +2334,7 @@ correct:"Johnny Silverhand"
 
 
 /* ======================================================
-DEVELOPMENT / STUDIO QUESTION DATA
+DEVELOPMENT QUESTION DATA
 ====================================================== */
 
 const DEVELOPMENT_DATA = [
@@ -2687,11 +2782,6 @@ let battleFinished = false;
 
 /* ======================================================
 BOSS SELECTION
-
-First battle = random from all bosses.
-
-After that = random from all bosses except the
-one just fought.
 ====================================================== */
 
 function chooseBoss(){
