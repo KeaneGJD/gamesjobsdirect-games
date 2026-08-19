@@ -1,0 +1,3001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Boss Battle | Games Jobs Direct</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --soft:#f3f1ee;
+    --dark:#242127;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+button{
+    font:inherit;
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    min-height:68px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    padding:12px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+
+    padding:11px 17px;
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================
+START
+========================= */
+
+.start-screen{
+    max-width:900px;
+    margin:55px auto;
+    padding:0 20px;
+    text-align:center;
+}
+
+.game-title{
+    line-height:.86;
+    margin-bottom:25px;
+}
+
+.title-top{
+    display:block;
+    color:var(--primary);
+
+    font-size:clamp(52px,8vw,90px);
+
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.title-bottom{
+    display:block;
+    color:var(--accent);
+
+    font-size:clamp(70px,11vw,125px);
+
+    font-weight:900;
+    letter-spacing:-5px;
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 12px rgba(0,0,0,.1);
+}
+
+.intro{
+    max-width:650px;
+
+    margin:15px auto 28px;
+
+    color:var(--muted);
+    line-height:1.55;
+}
+
+.difficulty{
+    display:inline-block;
+
+    margin-bottom:24px;
+
+    background:var(--red);
+    color:white;
+
+    padding:8px 13px;
+
+    border-radius:30px;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.rules{
+    max-width:760px;
+
+    margin:0 auto 30px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+}
+
+.rule{
+    background:white;
+    border-radius:13px;
+    padding:18px 12px;
+}
+
+.rule-icon{
+    font-size:28px;
+}
+
+.rule strong{
+    display:block;
+    color:var(--primary);
+    margin:7px 0 4px;
+}
+
+.rule small{
+    color:var(--muted);
+    line-height:1.4;
+}
+
+.start-btn{
+    background:var(--accent);
+    color:#222;
+
+    border:0;
+    border-radius:14px;
+
+    padding:18px 52px;
+
+    font-size:21px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #9cb500;
+}
+
+
+/* =========================
+GAME
+========================= */
+
+.game-area{
+    display:none;
+
+    max-width:1000px;
+
+    margin:30px auto;
+
+    padding:0 20px 70px;
+}
+
+.battle-card{
+    position:relative;
+
+    overflow:hidden;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:24px;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.06);
+}
+
+
+/* =========================
+BOSS
+========================= */
+
+.boss-name{
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:14px;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:9px;
+}
+
+.boss-health-wrap{
+    max-width:750px;
+    margin:0 auto 14px;
+}
+
+.health-label{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:6px;
+
+    font-size:12px;
+    font-weight:900;
+
+    color:var(--primary);
+}
+
+.health-track{
+    height:18px;
+
+    background:#dedbd7;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    border:2px solid #ccc7c2;
+}
+
+.boss-health{
+    width:100%;
+    height:100%;
+
+    background:var(--red);
+
+    transition:width .5s ease;
+}
+
+.boss-image-shell{
+    position:relative;
+
+    width:100%;
+    max-width:780px;
+
+    margin:0 auto;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:var(--dark);
+}
+
+.boss-image{
+    width:100%;
+    display:block;
+}
+
+
+/* =========================
+HIT EFFECTS
+========================= */
+
+.boss-hit{
+    animation:bossHit .6s ease;
+}
+
+@keyframes bossHit{
+
+    0%{
+        transform:translateX(0);
+        filter:none;
+    }
+
+    15%{
+        transform:translateX(-12px);
+        filter:sepia(1) saturate(8) hue-rotate(320deg);
+    }
+
+    30%{
+        transform:translateX(12px);
+        filter:sepia(1) saturate(8) hue-rotate(320deg);
+    }
+
+    45%{
+        transform:translateX(-8px);
+        filter:sepia(1) saturate(8) hue-rotate(320deg);
+    }
+
+    65%{
+        transform:translateX(8px);
+    }
+
+    100%{
+        transform:translateX(0);
+        filter:none;
+    }
+}
+
+.player-hit{
+    animation:playerHit .6s ease;
+}
+
+@keyframes playerHit{
+
+    0%{
+        transform:translateX(0);
+        box-shadow:none;
+    }
+
+    15%{
+        transform:translateX(-10px);
+        box-shadow:inset 0 0 0 9999px rgba(217,83,79,.25);
+    }
+
+    30%{
+        transform:translateX(10px);
+    }
+
+    45%{
+        transform:translateX(-7px);
+    }
+
+    65%{
+        transform:translateX(7px);
+    }
+
+    100%{
+        transform:translateX(0);
+        box-shadow:none;
+    }
+}
+
+.damage-text{
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    display:none;
+
+    z-index:10;
+
+    color:white;
+
+    font-size:clamp(35px,8vw,75px);
+
+    font-weight:900;
+
+    text-shadow:
+        0 4px 0 #000,
+        0 0 20px rgba(0,0,0,.7);
+}
+
+.damage-text.show{
+    display:block;
+    animation:damagePop .75s ease forwards;
+}
+
+@keyframes damagePop{
+
+    0%{
+        transform:translate(-50%,-20%) scale(.5);
+        opacity:0;
+    }
+
+    30%{
+        transform:translate(-50%,-50%) scale(1.2);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(-50%,-80%) scale(1);
+        opacity:0;
+    }
+}
+
+
+/* =========================
+TRASH TALK
+========================= */
+
+.boss-talk{
+    max-width:760px;
+
+    margin:14px auto 22px;
+
+    padding:14px 17px;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:14px;
+
+    text-align:center;
+}
+
+.boss-talk strong{
+    display:block;
+
+    color:var(--accent);
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    margin-bottom:5px;
+}
+
+.boss-line{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.4;
+}
+
+
+/* =========================
+PLAYER HUD
+========================= */
+
+.player-hud{
+    max-width:760px;
+
+    margin:0 auto 20px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 1fr;
+
+    gap:10px;
+}
+
+.hud-box{
+    background:var(--soft);
+
+    border-radius:12px;
+
+    padding:14px;
+
+    text-align:center;
+}
+
+.hud-title{
+    color:var(--primary);
+
+    font-size:11px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+}
+
+.hearts{
+    margin-top:7px;
+
+    font-size:25px;
+
+    letter-spacing:3px;
+}
+
+.charge{
+    display:flex;
+
+    justify-content:center;
+
+    gap:7px;
+
+    margin-top:10px;
+}
+
+.charge-box{
+    width:36px;
+    height:16px;
+
+    border-radius:5px;
+
+    background:#d2cfcb;
+}
+
+.attack-filled{
+    background:var(--accent);
+}
+
+.danger-filled{
+    background:var(--red);
+}
+
+.question-count{
+    margin-top:7px;
+
+    color:var(--primary);
+
+    font-size:23px;
+    font-weight:900;
+}
+
+
+/* =========================
+QUESTION
+========================= */
+
+.question-section{
+    max-width:760px;
+
+    margin:0 auto;
+}
+
+.question-label{
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.question{
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:clamp(23px,4vw,32px);
+
+    font-weight:900;
+
+    line-height:1.25;
+
+    margin:8px 0 18px;
+}
+
+.answers{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+}
+
+.answer-btn{
+    min-height:72px;
+
+    border:2px solid var(--border);
+
+    background:var(--soft);
+
+    color:var(--primary);
+
+    border-radius:12px;
+
+    padding:13px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.12s;
+}
+
+.answer-btn:hover{
+    border-color:var(--primary);
+}
+
+.answer-btn.selected{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+.answer-btn.correct-answer{
+    background:var(--green);
+    color:white;
+    border-color:var(--green);
+}
+
+.answer-btn.wrong-answer{
+    background:var(--red);
+    color:white;
+    border-color:var(--red);
+}
+
+
+/* =========================
+SUBMIT / FEEDBACK
+========================= */
+
+.submit-btn{
+    width:100%;
+
+    margin-top:12px;
+
+    padding:14px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:var(--accent);
+
+    color:#222;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.submit-btn:disabled{
+    opacity:.4;
+    cursor:default;
+}
+
+.feedback{
+    min-height:72px;
+
+    text-align:center;
+
+    padding-top:15px;
+}
+
+.feedback-main{
+    font-size:21px;
+    font-weight:900;
+}
+
+.feedback-main.correct{
+    color:var(--green);
+}
+
+.feedback-main.wrong{
+    color:var(--red);
+}
+
+.feedback-detail{
+    margin-top:5px;
+    color:var(--muted);
+}
+
+.next-btn{
+    display:none;
+
+    width:100%;
+
+    margin-top:6px;
+
+    padding:14px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+RESULTS
+========================= */
+
+.results-screen{
+    display:none;
+
+    max-width:850px;
+
+    margin:45px auto;
+
+    padding:0 20px 70px;
+
+    text-align:center;
+}
+
+.results-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:38px 25px;
+}
+
+.result-boss-image{
+    max-width:650px;
+
+    width:100%;
+
+    border-radius:16px;
+
+    display:block;
+
+    margin:0 auto 24px;
+}
+
+.result-title{
+    margin:0;
+
+    color:var(--primary);
+
+    font-size:clamp(48px,9vw,80px);
+
+    line-height:.95;
+
+    font-weight:900;
+}
+
+.result-boss-line{
+    max-width:600px;
+
+    margin:16px auto 25px;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-weight:700;
+}
+
+.result-stats{
+    max-width:650px;
+
+    margin:25px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:9px;
+}
+
+.result-stat{
+    background:var(--soft);
+
+    border-radius:12px;
+
+    padding:15px 8px;
+}
+
+.result-value{
+    color:var(--primary);
+
+    font-size:25px;
+
+    font-weight:900;
+}
+
+.result-name{
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.result-actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.result-btn{
+    border:0;
+
+    border-radius:11px;
+
+    padding:14px 22px;
+
+    font-weight:900;
+
+    text-decoration:none;
+
+    cursor:pointer;
+}
+
+.rematch{
+    background:var(--accent);
+    color:#222;
+}
+
+.return-hub{
+    background:var(--primary);
+    color:white;
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        padding:9px 10px;
+        font-size:11px;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .battle-card{
+        padding:16px 12px;
+    }
+
+    .player-hud{
+        grid-template-columns:1fr;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .result-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+<img
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
+</a>
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</header>
+
+
+
+<!-- =========================
+START
+========================= -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+<div class="game-title">
+
+<span class="title-top">
+BOSS
+</span>
+
+<span class="title-bottom">
+BATTLE
+</span>
+
+</div>
+
+<div class="difficulty">
+⚠ HARD GAMING TRIVIA
+</div>
+
+<p class="intro">
+
+This boss won't go down easily.
+
+Answer two difficult gaming questions correctly to land a hit.
+Get two wrong and you'll take damage instead.
+
+Defeat the boss before you lose all three hearts.
+
+</p>
+
+<div class="rules">
+
+<div class="rule">
+
+<div class="rule-icon">
+⚔️
+</div>
+
+<strong>
+2 Correct = Attack
+</strong>
+
+<small>
+Build your attack charge and damage the boss.
+</small>
+
+</div>
+
+<div class="rule">
+
+<div class="rule-icon">
+❤️
+</div>
+
+<strong>
+2 Wrong = Damage
+</strong>
+
+<small>
+Every two mistakes costs you one heart.
+</small>
+
+</div>
+
+<div class="rule">
+
+<div class="rule-icon">
+👾
+</div>
+
+<strong>
+8 Correct To Win
+</strong>
+
+<small>
+Push the boss through four damage stages.
+</small>
+
+</div>
+
+</div>
+
+<button
+    class="start-btn"
+    onclick="startBattle()">
+
+START BATTLE
+
+</button>
+
+</section>
+
+
+
+<!-- =========================
+BATTLE
+========================= -->
+
+<section
+    class="game-area"
+    id="gameArea">
+
+<div
+    class="battle-card"
+    id="battleCard">
+
+
+<div class="boss-name">
+THE ARCADE BOSS
+</div>
+
+
+<div class="boss-health-wrap">
+
+<div class="health-label">
+
+<span>
+BOSS HP
+</span>
+
+<span id="bossHealthText">
+100%
+</span>
+
+</div>
+
+<div class="health-track">
+
+<div
+    class="boss-health"
+    id="bossHealth">
+</div>
+
+</div>
+
+</div>
+
+
+<div
+    class="boss-image-shell"
+    id="bossImageShell">
+
+<img
+    class="boss-image"
+    id="bossImage"
+    src="assets/boss-battle/1.png"
+    alt="Boss">
+
+<div
+    class="damage-text"
+    id="damageText">
+
+HIT!
+
+</div>
+
+</div>
+
+
+<div class="boss-talk">
+
+<strong>
+THE BOSS
+</strong>
+
+<div
+    class="boss-line"
+    id="bossLine">
+
+Another challenger? This shouldn't take long.
+
+</div>
+
+</div>
+
+
+<div class="player-hud">
+
+
+<div class="hud-box">
+
+<div class="hud-title">
+Player Health
+</div>
+
+<div
+    class="hearts"
+    id="hearts">
+
+❤️ ❤️ ❤️
+
+</div>
+
+</div>
+
+
+<div class="hud-box">
+
+<div class="hud-title">
+Attack Charge
+</div>
+
+<div class="charge">
+
+<div
+    class="charge-box"
+    id="attack1">
+</div>
+
+<div
+    class="charge-box"
+    id="attack2">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hud-box">
+
+<div class="hud-title">
+Danger
+</div>
+
+<div class="charge">
+
+<div
+    class="charge-box"
+    id="danger1">
+</div>
+
+<div
+    class="charge-box"
+    id="danger2">
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="question-section">
+
+<div class="question-label">
+
+Question
+<span id="questionNumber">1</span>
+
+</div>
+
+<div
+    class="question"
+    id="questionText">
+</div>
+
+<div
+    class="answers"
+    id="answers">
+</div>
+
+<button
+    class="submit-btn"
+    id="submitButton"
+    onclick="submitAnswer()"
+    disabled>
+
+LOCK IN ANSWER
+
+</button>
+
+
+<div class="feedback">
+
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+<div
+    class="feedback-detail"
+    id="feedbackDetail">
+</div>
+
+</div>
+
+
+<button
+    class="next-btn"
+    id="nextButton"
+    onclick="nextQuestion()">
+
+NEXT QUESTION
+
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+RESULTS
+========================= -->
+
+<section
+    class="results-screen"
+    id="resultsScreen">
+
+<div class="results-card">
+
+<img
+    class="result-boss-image"
+    id="resultBossImage"
+    src="assets/boss-battle/5.png"
+    alt="Boss result">
+
+<h1
+    class="result-title"
+    id="resultTitle">
+
+BOSS DEFEATED
+
+</h1>
+
+<div
+    class="result-boss-line"
+    id="resultBossLine">
+
+I demand a rematch.
+
+</div>
+
+
+<div class="result-stats">
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultCorrect">
+
+0
+
+</div>
+
+<div class="result-name">
+Correct
+</div>
+
+</div>
+
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultWrong">
+
+0
+
+</div>
+
+<div class="result-name">
+Wrong
+</div>
+
+</div>
+
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultHearts">
+
+0
+
+</div>
+
+<div class="result-name">
+Hearts Left
+</div>
+
+</div>
+
+
+<div class="result-stat">
+
+<div
+    class="result-value"
+    id="resultStreak">
+
+0
+
+</div>
+
+<div class="result-name">
+Best Streak
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result-actions">
+
+<button
+    class="result-btn rematch"
+    onclick="startBattle()">
+
+Rematch
+
+</button>
+
+<a
+    class="result-btn return-hub"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+/* ======================================================
+BOSS VISUAL STATES
+====================================================== */
+
+const BOSS_STAGES = [
+
+{
+health:100,
+image:"assets/boss-battle/1.png"
+},
+
+{
+health:75,
+image:"assets/boss-battle/2.png"
+},
+
+{
+health:50,
+image:"assets/boss-battle/3.png"
+},
+
+{
+health:35,
+image:"assets/boss-battle/4.png"
+},
+
+{
+health:0,
+image:"assets/boss-battle/5.png"
+}
+
+];
+
+
+/* ======================================================
+HARD QUESTION BANK
+====================================================== */
+
+const QUESTION_BANK = [
+
+{
+q:"In The Legend of Zelda: Ocarina of Time, which Sage is associated with the Forest Temple?",
+a:["Ruto","Darunia","Saria","Impa"],
+correct:"Saria"
+},
+
+{
+q:"Which studio originally developed Fallout: New Vegas?",
+a:["Bethesda Game Studios","Obsidian Entertainment","Black Isle Studios","inXile Entertainment"],
+correct:"Obsidian Entertainment"
+},
+
+{
+q:"What is the name of the city in Disco Elysium?",
+a:["Dunwall","Revachol","Krat","Novigrad"],
+correct:"Revachol"
+},
+
+{
+q:"Which game introduced the character Raiden as its main playable protagonist for much of the story?",
+a:["Metal Gear Solid","Metal Gear Solid 2","Metal Gear Solid 3","Metal Gear Rising"],
+correct:"Metal Gear Solid 2"
+},
+
+{
+q:"Which developer created the original System Shock?",
+a:["Ion Storm","Looking Glass Studios","Origin Systems","Westwood Studios"],
+correct:"Looking Glass Studios"
+},
+
+{
+q:"What is the name of the underwater city in BioShock?",
+a:["Columbia","Rapture","Arcadia","Persephone"],
+correct:"Rapture"
+},
+
+{
+q:"Which studio developed Alien: Isolation?",
+a:["Relic Entertainment","Creative Assembly","Frictional Games","Rebellion"],
+correct:"Creative Assembly"
+},
+
+{
+q:"In Mass Effect, which species created the geth?",
+a:["Turians","Quarians","Asari","Salarians"],
+correct:"Quarians"
+},
+
+{
+q:"Which company developed the original Deus Ex?",
+a:["Looking Glass Studios","Ion Storm","Arkane Studios","Eidos Montréal"],
+correct:"Ion Storm"
+},
+
+{
+q:"Which game takes place primarily aboard the Talos I space station?",
+a:["SOMA","Prey","Dead Space","System Shock 2"],
+correct:"Prey"
+},
+
+{
+q:"In Bloodborne, what is the name of the city where the game takes place?",
+a:["Yharnam","Boletaria","Lothric","Anor Londo"],
+correct:"Yharnam"
+},
+
+{
+q:"Which studio developed Return of the Obra Dinn?",
+a:["Subset Games","Lucas Pope","Mobius Digital","Jonathan Blow"],
+correct:"Lucas Pope"
+},
+
+{
+q:"What was the first commercially released game developed by Supergiant Games?",
+a:["Transistor","Bastion","Pyre","Hades"],
+correct:"Bastion"
+},
+
+{
+q:"Which game features the fictional country of Kyrat?",
+a:["Far Cry 3","Far Cry 4","Far Cry 5","Far Cry 6"],
+correct:"Far Cry 4"
+},
+
+{
+q:"Which developer created the original Thief: The Dark Project?",
+a:["Arkane Studios","Looking Glass Studios","Ion Storm","Eidos Montréal"],
+correct:"Looking Glass Studios"
+},
+
+{
+q:"In Dark Souls, what is the name of the blacksmith found in the Undead Parish?",
+a:["Vamos","Rickert","Andre","Giant Blacksmith"],
+correct:"Andre"
+},
+
+{
+q:"Which game engine powered Half-Life 2 at launch?",
+a:["GoldSrc","Source","id Tech 4","Unreal Engine 2"],
+correct:"Source"
+},
+
+{
+q:"Which studio developed Spec Ops: The Line?",
+a:["Yager Development","Crytek","People Can Fly","MachineGames"],
+correct:"Yager Development"
+},
+
+{
+q:"In The Witcher 3, which kingdom is ruled by Radovid V?",
+a:["Nilfgaard","Redania","Skellige","Temeria"],
+correct:"Redania"
+},
+
+{
+q:"What is the name of the protagonist of Dead Space?",
+a:["Jacob Lee","Isaac Clarke","John Carver","Gordon Freeman"],
+correct:"Isaac Clarke"
+},
+
+{
+q:"Which studio originally created the Hitman franchise?",
+a:["Remedy Entertainment","IO Interactive","Arkane Studios","Eidos Montréal"],
+correct:"IO Interactive"
+},
+
+{
+q:"Which game features the character Andrew Ryan?",
+a:["BioShock","Dishonored","Prey","Control"],
+correct:"BioShock"
+},
+
+{
+q:"In Halo lore, what is the designation of Master Chief?",
+a:["John-117","Noble Six","Jerome-092","Jameson-043"],
+correct:"John-117"
+},
+
+{
+q:"Which studio developed the original Dead Space?",
+a:["Visceral Games","Motive Studio","BioWare","Respawn Entertainment"],
+correct:"Visceral Games"
+},
+
+{
+q:"Which game was created by Jonathan Blow before The Witness?",
+a:["Fez","Braid","Limbo","Super Meat Boy"],
+correct:"Braid"
+},
+
+{
+q:"In Fallout: New Vegas, which faction is led by Caesar?",
+a:["NCR","The Legion","Brotherhood of Steel","Followers of the Apocalypse"],
+correct:"The Legion"
+},
+
+{
+q:"Which developer created Papers, Please?",
+a:["Lucas Pope","Toby Fox","Edmund McMillen","Derek Yu"],
+correct:"Lucas Pope"
+},
+
+{
+q:"Which game is set aboard the Von Braun?",
+a:["System Shock 2","Dead Space","Prey","Alien: Isolation"],
+correct:"System Shock 2"
+},
+
+{
+q:"Which studio developed the first Dishonored game?",
+a:["Arkane Studios","Bethesda Game Studios","MachineGames","id Software"],
+correct:"Arkane Studios"
+},
+
+{
+q:"In Elden Ring, what is the name of the spectral steed given to the player?",
+a:["Torrent","Roach","Agro","Kelpie"],
+correct:"Torrent"
+},
+
+{
+q:"Which developer created Hotline Miami?",
+a:["Dennaton Games","Devolver Digital","Vlambeer","Housemarque"],
+correct:"Dennaton Games"
+},
+
+{
+q:"Which game features the world of Hallownest?",
+a:["Ori and the Blind Forest","Hollow Knight","Dead Cells","Blasphemous"],
+correct:"Hollow Knight"
+},
+
+{
+q:"Who developed the original Max Payne?",
+a:["Rockstar North","Remedy Entertainment","Monolith Productions","IO Interactive"],
+correct:"Remedy Entertainment"
+},
+
+{
+q:"In Resident Evil 4, what is the first name of the merchant-like character who repeatedly helps Leon?",
+a:["Luis","There is no given name","Ramón","Bitores"],
+correct:"There is no given name"
+},
+
+{
+q:"Which title was FromSoftware's first game released for the PlayStation 4?",
+a:["Bloodborne","Dark Souls II","Dark Souls III","Sekiro"],
+correct:"Bloodborne"
+},
+
+{
+q:"Which series features the fictional megacorporation Abstergo Industries?",
+a:["Watch Dogs","Assassin's Creed","Deus Ex","Cyberpunk"],
+correct:"Assassin's Creed"
+},
+
+{
+q:"What is the name of the player character in SOMA?",
+a:["Simon Jarrett","Daniel Lamb","Blake Langermann","Miles Upshur"],
+correct:"Simon Jarrett"
+},
+
+{
+q:"Which developer created the original Metro 2033?",
+a:["GSC Game World","4A Games","Techland","Crytek"],
+correct:"4A Games"
+},
+
+{
+q:"In Hades, which weapon is known as the Heart-Seeking Bow?",
+a:["Stygius","Coronacht","Varatha","Aegis"],
+correct:"Coronacht"
+},
+
+{
+q:"Which studio developed the first Life is Strange?",
+a:["Deck Nine","Don't Nod","Quantic Dream","Telltale Games"],
+correct:"Don't Nod"
+},
+
+{
+q:"Which game takes place in the fictional city of Dunwall?",
+a:["Thief","Dishonored","BioShock Infinite","The Order: 1886"],
+correct:"Dishonored"
+},
+
+{
+q:"Which Nintendo studio developed Metroid Prime?",
+a:["HAL Laboratory","Retro Studios","Intelligent Systems","Next Level Games"],
+correct:"Retro Studios"
+},
+
+{
+q:"In Cyberpunk 2077, what is the name of the operating system that allows V to perform quickhacks?",
+a:["Cyberdeck","Sandevistan","Berserk","Kiroshi"],
+correct:"Cyberdeck"
+},
+
+{
+q:"Which developer made Outer Wilds?",
+a:["Mobius Digital","Annapurna Interactive","Campo Santo","Giant Sparrow"],
+correct:"Mobius Digital"
+},
+
+{
+q:"Which game features the kingdom of Boletaria?",
+a:["Dark Souls","Demon's Souls","Dragon's Dogma","Elden Ring"],
+correct:"Demon's Souls"
+},
+
+{
+q:"Which studio created the original F.E.A.R.?",
+a:["Monolith Productions","Raven Software","id Software","People Can Fly"],
+correct:"Monolith Productions"
+},
+
+{
+q:"In Portal 2, what is Wheatley's official role when Chell first encounters him?",
+a:["Security Core","Intelligence Dampening Sphere","Morality Core","Adventure Core"],
+correct:"Intelligence Dampening Sphere"
+},
+
+{
+q:"Which game introduced the fictional drug called Plasmids?",
+a:["BioShock","Prey","Deus Ex","Dishonored"],
+correct:"BioShock"
+},
+
+{
+q:"Which studio developed Kingdom Come: Deliverance?",
+a:["Warhorse Studios","Bohemia Interactive","CD Projekt Red","Larian Studios"],
+correct:"Warhorse Studios"
+},
+
+{
+q:"Which game features the detective Harry Du Bois?",
+a:["Disco Elysium","Heavy Rain","L.A. Noire","The Wolf Among Us"],
+correct:"Disco Elysium"
+},
+
+{
+q:"In The Elder Scrolls IV: Oblivion, which Daedric Prince is the central antagonist?",
+a:["Mehrunes Dagon","Molag Bal","Sheogorath","Mehrunes Razor"],
+correct:"Mehrunes Dagon"
+},
+
+{
+q:"Which developer created the original Amnesia: The Dark Descent?",
+a:["Frictional Games","Red Barrels","Bloober Team","Supermassive Games"],
+correct:"Frictional Games"
+},
+
+{
+q:"Which game takes place in the city of Columbia?",
+a:["BioShock 2","BioShock Infinite","Dishonored 2","Prey"],
+correct:"BioShock Infinite"
+},
+
+{
+q:"Who developed the original Saints Row?",
+a:["Volition","Rockstar North","Avalanche Studios","Radical Entertainment"],
+correct:"Volition"
+},
+
+{
+q:"Which game features a protagonist named Razputin Aquato?",
+a:["Psychonauts","Broken Age","Costume Quest","Grim Fandango"],
+correct:"Psychonauts"
+},
+
+{
+q:"Which developer created the original Dying Light?",
+a:["Techland","Dead Island Studios","People Can Fly","Flying Wild Hog"],
+correct:"Techland"
+},
+
+{
+q:"In Final Fantasy VII, what is the name of Cloud's enormous sword?",
+a:["Gunblade","Masamune","Buster Sword","Ultima Weapon"],
+correct:"Buster Sword"
+},
+
+{
+q:"Which game features the fictional continent of Tamriel?",
+a:["Dragon Age","The Elder Scrolls","The Witcher","Dragon's Dogma"],
+correct:"The Elder Scrolls"
+},
+
+{
+q:"Which studio developed the first Ori game?",
+a:["Moon Studios","Playdead","Team Cherry","Thunder Lotus"],
+correct:"Moon Studios"
+},
+
+{
+q:"In Control, what is the name of the building occupied by the Federal Bureau of Control?",
+a:["The Oldest House","The Threshold","The Foundation","The Panopticon"],
+correct:"The Oldest House"
+},
+
+{
+q:"Which developer created RimWorld?",
+a:["Ludeon Studios","Klei Entertainment","Subset Games","Introversion Software"],
+correct:"Ludeon Studios"
+},
+
+{
+q:"Which game features a spacecraft called the Normandy?",
+a:["Halo","Mass Effect","Dead Space","Starfield"],
+correct:"Mass Effect"
+},
+
+{
+q:"Which developer created The Stanley Parable?",
+a:["Galactic Cafe","Campo Santo","Giant Sparrow","Tomorrow Corporation"],
+correct:"Galactic Cafe"
+},
+
+{
+q:"In Sekiro, what title is commonly used for the protagonist?",
+a:["The Hunter","Wolf","The Tarnished","The Ashen One"],
+correct:"Wolf"
+},
+
+{
+q:"Which game features the fictional corporation Aperture Science?",
+a:["Portal","Half-Life","The Talos Principle","The Stanley Parable"],
+correct:"Portal"
+},
+
+{
+q:"Which studio created the original Borderlands?",
+a:["Gearbox Software","Epic Games","People Can Fly","Splash Damage"],
+correct:"Gearbox Software"
+},
+
+{
+q:"Which game takes place on the planet 4546B?",
+a:["No Man's Sky","Subnautica","The Outer Worlds","Outer Wilds"],
+correct:"Subnautica"
+},
+
+{
+q:"Which developer created the first Little Nightmares?",
+a:["Tarsier Studios","Playdead","Supermassive Games","Frictional Games"],
+correct:"Tarsier Studios"
+},
+
+{
+q:"In Half-Life, what is Gordon Freeman's profession?",
+a:["Security officer","Theoretical physicist","Engineer","Marine"],
+correct:"Theoretical physicist"
+},
+
+{
+q:"Which title introduced Ezio Auditore as a protagonist?",
+a:["Assassin's Creed","Assassin's Creed II","Brotherhood","Revelations"],
+correct:"Assassin's Creed II"
+}
+
+];
+
+
+/* ======================================================
+BOSS DIALOGUE
+====================================================== */
+
+const TALK = {
+
+start:[
+    "Another challenger? This shouldn't take long.",
+    "I've deleted save files tougher than you.",
+    "Hope you didn't skip the tutorial.",
+    "Eight correct answers? You'll be lucky to get two."
+],
+
+correct:[
+    "Lucky guess. Do it again.",
+    "Hmm. You actually knew that one.",
+    "Don't get confident.",
+    "One correct answer doesn't make you a speedrunner.",
+    "Fine. I'll give you that one."
+],
+
+wrong:[
+    "Is that seriously your answer?",
+    "I've seen NPCs make better decisions.",
+    "That answer belongs in the bargain bin.",
+    "Keep guessing like that. You're doing my job for me.",
+    "Were you playing with the monitor turned off?"
+],
+
+bossHit:[
+    "HEY! That actually hurt!",
+    "Okay... maybe I underestimated you.",
+    "You'll pay for that.",
+    "Cheap shot!",
+    "Right. Now I'm annoyed."
+],
+
+bossLow:[
+    "This was not supposed to happen.",
+    "Stop answering things correctly!",
+    "You're really starting to annoy me.",
+    "We can still talk about this.",
+    "Surely you've got something better to do?"
+],
+
+playerHit:[
+    "There we go. Now we're getting somewhere.",
+    "That's one heart gone.",
+    "Your health bar is looking a little nervous.",
+    "You might want to start worrying.",
+    "I barely even had to try."
+],
+
+lastHeart:[
+    "One heart left. No pressure.",
+    "Next hit could be your last.",
+    "I can already see the Game Over screen.",
+    "Careful. You're running out of continues."
+],
+
+victory:[
+    "I demand a recount.",
+    "You got lucky. Seventy questions and you got THOSE ones?",
+    "Fine. You win. This time.",
+    "Tell nobody about this.",
+    "I was clearly suffering from input lag."
+],
+
+defeat:[
+    "Come back when you've finished the tutorial.",
+    "GAME OVER. Just as predicted.",
+    "Better luck after a few more side quests.",
+    "Should I lower the difficulty for you?",
+    "I told you this wouldn't take long."
+]
+
+};
+
+
+/* ======================================================
+STATE
+====================================================== */
+
+let questionDeck = [];
+
+let currentQuestion = null;
+
+let selectedAnswer = null;
+
+let questionLocked = false;
+
+let questionNumber = 0;
+
+let correctTotal = 0;
+
+let wrongTotal = 0;
+
+let attackCharge = 0;
+
+let dangerCharge = 0;
+
+let playerHearts = 3;
+
+let bossStage = 0;
+
+let currentStreak = 0;
+
+let bestStreak = 0;
+
+let battleFinished = false;
+
+
+/* ======================================================
+UTILITIES
+====================================================== */
+
+function shuffle(array){
+
+    const copy =
+        [...array];
+
+    for(
+        let i =
+            copy.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+        [
+            copy[i],
+            copy[j]
+        ] =
+        [
+            copy[j],
+            copy[i]
+        ];
+    }
+
+    return copy;
+}
+
+
+function randomLine(category){
+
+    const lines =
+        TALK[category];
+
+    return lines[
+        Math.floor(
+            Math.random() *
+            lines.length
+        )
+    ];
+}
+
+
+function setBossLine(line){
+
+    document
+        .getElementById(
+            "bossLine"
+        )
+        .textContent =
+        line;
+}
+
+
+/* ======================================================
+START
+====================================================== */
+
+function startBattle(){
+
+    questionDeck =
+        shuffle(
+            QUESTION_BANK
+        );
+
+    currentQuestion = null;
+
+    selectedAnswer = null;
+
+    questionLocked = false;
+
+    questionNumber = 0;
+
+    correctTotal = 0;
+
+    wrongTotal = 0;
+
+    attackCharge = 0;
+
+    dangerCharge = 0;
+
+    playerHearts = 3;
+
+    bossStage = 0;
+
+    currentStreak = 0;
+
+    bestStreak = 0;
+
+    battleFinished = false;
+
+
+    document
+        .getElementById(
+            "startScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultsScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "gameArea"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "battleCard"
+        )
+        .className =
+        "battle-card";
+
+
+    setBossLine(
+        randomLine("start")
+    );
+
+
+    updateBoss();
+
+    updatePlayerHUD();
+
+    loadQuestion();
+}
+
+
+/* ======================================================
+LOAD QUESTION
+====================================================== */
+
+function loadQuestion(){
+
+    if(battleFinished){
+        return;
+    }
+
+
+    if(
+        questionDeck.length === 0
+    ){
+
+        questionDeck =
+            shuffle(
+                QUESTION_BANK
+            );
+    }
+
+
+    currentQuestion =
+        questionDeck.pop();
+
+
+    selectedAnswer =
+        null;
+
+
+    questionLocked =
+        false;
+
+
+    questionNumber++;
+
+
+    document
+        .getElementById(
+            "questionNumber"
+        )
+        .textContent =
+        questionNumber;
+
+
+    document
+        .getElementById(
+            "questionText"
+        )
+        .textContent =
+        currentQuestion.q;
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .textContent =
+        "";
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .className =
+        "feedback-main";
+
+
+    document
+        .getElementById(
+            "feedbackDetail"
+        )
+        .textContent =
+        "";
+
+
+    document
+        .getElementById(
+            "nextButton"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "submitButton"
+        )
+        .disabled =
+        true;
+
+
+    renderAnswers();
+}
+
+
+/* ======================================================
+ANSWERS
+====================================================== */
+
+function renderAnswers(){
+
+    const container =
+        document
+        .getElementById(
+            "answers"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    const shuffledAnswers =
+        shuffle(
+            currentQuestion.a
+        );
+
+
+    shuffledAnswers.forEach(
+        answer => {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer-btn";
+
+
+            button.textContent =
+                answer;
+
+
+            button.dataset.answer =
+                answer;
+
+
+            button.onclick =
+                () =>
+                selectAnswer(
+                    button,
+                    answer
+                );
+
+
+            container.appendChild(
+                button
+            );
+        }
+    );
+}
+
+
+/* ======================================================
+SELECT
+====================================================== */
+
+function selectAnswer(
+    button,
+    answer
+){
+
+    if(questionLocked){
+        return;
+    }
+
+
+    selectedAnswer =
+        answer;
+
+
+    document
+        .querySelectorAll(
+            ".answer-btn"
+        )
+        .forEach(
+            btn =>
+                btn.classList.remove(
+                    "selected"
+                )
+        );
+
+
+    button.classList.add(
+        "selected"
+    );
+
+
+    document
+        .getElementById(
+            "submitButton"
+        )
+        .disabled =
+        false;
+}
+
+
+/* ======================================================
+ENTER KEY
+====================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            !questionLocked &&
+            selectedAnswer !== null &&
+            document
+                .getElementById(
+                    "gameArea"
+                )
+                .style.display ===
+                "block"
+        ){
+
+            submitAnswer();
+        }
+    }
+);
+
+
+/* ======================================================
+SUBMIT
+====================================================== */
+
+function submitAnswer(){
+
+    if(
+        questionLocked ||
+        selectedAnswer === null
+    ){
+        return;
+    }
+
+
+    questionLocked =
+        true;
+
+
+    const correct =
+        selectedAnswer ===
+        currentQuestion.correct;
+
+
+    document
+        .querySelectorAll(
+            ".answer-btn"
+        )
+        .forEach(
+            button => {
+
+
+                button.disabled =
+                    true;
+
+
+                if(
+                    button.dataset.answer ===
+                    currentQuestion.correct
+                ){
+
+                    button.classList.add(
+                        "correct-answer"
+                    );
+                }
+
+
+                if(
+                    button.dataset.answer ===
+                    selectedAnswer &&
+                    !correct
+                ){
+
+                    button.classList.add(
+                        "wrong-answer"
+                    );
+                }
+            }
+        );
+
+
+    document
+        .getElementById(
+            "submitButton"
+        )
+        .disabled =
+        true;
+
+
+    if(correct){
+
+        processCorrect();
+
+    }else{
+
+        processWrong();
+    }
+}
+
+
+/* ======================================================
+CORRECT
+====================================================== */
+
+function processCorrect(){
+
+    correctTotal++;
+
+    currentStreak++;
+
+    bestStreak =
+        Math.max(
+            bestStreak,
+            currentStreak
+        );
+
+
+    attackCharge++;
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .textContent =
+        "Correct!";
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .className =
+        "feedback-main correct";
+
+
+    document
+        .getElementById(
+            "feedbackDetail"
+        )
+        .textContent =
+        attackCharge >= 2
+        ? "Attack charged!"
+        : "One more correct answer to attack.";
+
+
+    updatePlayerHUD();
+
+
+    if(
+        attackCharge >= 2
+    ){
+
+        attackCharge = 0;
+
+        updatePlayerHUD();
+
+        damageBoss();
+
+    }else{
+
+        setBossLine(
+            randomLine(
+                "correct"
+            )
+        );
+
+        showNext();
+    }
+}
+
+
+/* ======================================================
+WRONG
+====================================================== */
+
+function processWrong(){
+
+    wrongTotal++;
+
+    currentStreak = 0;
+
+    dangerCharge++;
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .textContent =
+        "Wrong!";
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .className =
+        "feedback-main wrong";
+
+
+    document
+        .getElementById(
+            "feedbackDetail"
+        )
+        .textContent =
+        `Correct answer: ${currentQuestion.correct}`;
+
+
+    updatePlayerHUD();
+
+
+    if(
+        dangerCharge >= 2
+    ){
+
+        dangerCharge = 0;
+
+        updatePlayerHUD();
+
+        damagePlayer();
+
+    }else{
+
+        setBossLine(
+            randomLine(
+                "wrong"
+            )
+        );
+
+        showNext();
+    }
+}
+
+
+/* ======================================================
+BOSS DAMAGE
+====================================================== */
+
+function damageBoss(){
+
+    bossStage++;
+
+
+    const shell =
+        document
+        .getElementById(
+            "bossImageShell"
+        );
+
+
+    const damage =
+        document
+        .getElementById(
+            "damageText"
+        );
+
+
+    shell.classList.remove(
+        "boss-hit"
+    );
+
+
+    void shell.offsetWidth;
+
+
+    shell.classList.add(
+        "boss-hit"
+    );
+
+
+    damage.textContent =
+        bossStage >=
+        BOSS_STAGES.length - 1
+        ? "FINAL HIT!"
+        : "HIT!";
+
+
+    damage.classList.remove(
+        "show"
+    );
+
+
+    void damage.offsetWidth;
+
+
+    damage.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        () => {
+
+            updateBoss();
+
+        },
+        260
+    );
+
+
+    if(
+        bossStage >=
+        BOSS_STAGES.length - 1
+    ){
+
+        setBossLine(
+            "Wait... we can talk about this."
+        );
+
+
+        setTimeout(
+            () => endBattle(true),
+            950
+        );
+
+        return;
+    }
+
+
+    if(
+        bossStage >= 3
+    ){
+
+        setBossLine(
+            randomLine(
+                "bossLow"
+            )
+        );
+
+    }else{
+
+        setBossLine(
+            randomLine(
+                "bossHit"
+            )
+        );
+    }
+
+
+    setTimeout(
+        showNext,
+        650
+    );
+}
+
+
+/* ======================================================
+PLAYER DAMAGE
+====================================================== */
+
+function damagePlayer(){
+
+    playerHearts--;
+
+
+    const card =
+        document
+        .getElementById(
+            "battleCard"
+        );
+
+
+    card.classList.remove(
+        "player-hit"
+    );
+
+
+    void card.offsetWidth;
+
+
+    card.classList.add(
+        "player-hit"
+    );
+
+
+    updatePlayerHUD();
+
+
+    if(
+        playerHearts <= 0
+    ){
+
+        setBossLine(
+            randomLine(
+                "defeat"
+            )
+        );
+
+
+        setTimeout(
+            () => endBattle(false),
+            900
+        );
+
+        return;
+    }
+
+
+    if(
+        playerHearts === 1
+    ){
+
+        setBossLine(
+            randomLine(
+                "lastHeart"
+            )
+        );
+
+    }else{
+
+        setBossLine(
+            randomLine(
+                "playerHit"
+            )
+        );
+    }
+
+
+    setTimeout(
+        showNext,
+        650
+    );
+}
+
+
+/* ======================================================
+BOSS UI
+====================================================== */
+
+function updateBoss(){
+
+    const stage =
+        BOSS_STAGES[
+            Math.min(
+                bossStage,
+                BOSS_STAGES.length - 1
+            )
+        ];
+
+
+    document
+        .getElementById(
+            "bossImage"
+        )
+        .src =
+        stage.image;
+
+
+    document
+        .getElementById(
+            "bossHealth"
+        )
+        .style.width =
+        stage.health + "%";
+
+
+    document
+        .getElementById(
+            "bossHealthText"
+        )
+        .textContent =
+        stage.health + "%";
+}
+
+
+/* ======================================================
+PLAYER HUD
+====================================================== */
+
+function updatePlayerHUD(){
+
+    let heartsText =
+        "";
+
+
+    for(
+        let i = 0;
+        i < 3;
+        i++
+    ){
+
+        heartsText +=
+            i < playerHearts
+            ? "❤️ "
+            : "🖤 ";
+    }
+
+
+    document
+        .getElementById(
+            "hearts"
+        )
+        .textContent =
+        heartsText.trim();
+
+
+    document
+        .getElementById(
+            "attack1"
+        )
+        .className =
+        attackCharge >= 1
+        ? "charge-box attack-filled"
+        : "charge-box";
+
+
+    document
+        .getElementById(
+            "attack2"
+        )
+        .className =
+        attackCharge >= 2
+        ? "charge-box attack-filled"
+        : "charge-box";
+
+
+    document
+        .getElementById(
+            "danger1"
+        )
+        .className =
+        dangerCharge >= 1
+        ? "charge-box danger-filled"
+        : "charge-box";
+
+
+    document
+        .getElementById(
+            "danger2"
+        )
+        .className =
+        dangerCharge >= 2
+        ? "charge-box danger-filled"
+        : "charge-box";
+}
+
+
+/* ======================================================
+NEXT
+====================================================== */
+
+function showNext(){
+
+    if(battleFinished){
+        return;
+    }
+
+
+    document
+        .getElementById(
+            "nextButton"
+        )
+        .style.display =
+        "block";
+}
+
+
+function nextQuestion(){
+
+    if(battleFinished){
+        return;
+    }
+
+
+    loadQuestion();
+}
+
+
+/* ======================================================
+END BATTLE
+====================================================== */
+
+function endBattle(victory){
+
+    if(battleFinished){
+        return;
+    }
+
+
+    battleFinished =
+        true;
+
+
+    document
+        .getElementById(
+            "gameArea"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultsScreen"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "resultCorrect"
+        )
+        .textContent =
+        correctTotal;
+
+
+    document
+        .getElementById(
+            "resultWrong"
+        )
+        .textContent =
+        wrongTotal;
+
+
+    document
+        .getElementById(
+            "resultHearts"
+        )
+        .textContent =
+        playerHearts;
+
+
+    document
+        .getElementById(
+            "resultStreak"
+        )
+        .textContent =
+        bestStreak;
+
+
+    if(victory){
+
+        document
+            .getElementById(
+                "resultTitle"
+            )
+            .textContent =
+            "BOSS DEFEATED";
+
+
+        document
+            .getElementById(
+                "resultBossImage"
+            )
+            .src =
+            "assets/boss-battle/5.png";
+
+
+        document
+            .getElementById(
+                "resultBossLine"
+            )
+            .textContent =
+            randomLine(
+                "victory"
+            );
+
+    }else{
+
+        document
+            .getElementById(
+                "resultTitle"
+            )
+            .textContent =
+            "YOU WERE DEFEATED";
+
+
+        const stage =
+            BOSS_STAGES[
+                Math.min(
+                    bossStage,
+                    3
+                )
+            ];
+
+
+        document
+            .getElementById(
+                "resultBossImage"
+            )
+            .src =
+            stage.image;
+
+
+        document
+            .getElementById(
+                "resultBossLine"
+            )
+            .textContent =
+            randomLine(
+                "defeat"
+            );
+    }
+}
+
+</script>
+
+</body>
+</html>
