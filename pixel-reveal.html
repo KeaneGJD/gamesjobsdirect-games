@@ -38,17 +38,11 @@ input{
     font:inherit;
 }
 
-
-/* =========================
-HEADER
-========================= */
-
 header{
     min-height:68px;
     background:white;
     border-bottom:1px solid var(--border);
     padding:12px 22px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -68,18 +62,11 @@ header{
     background:var(--primary);
     color:white;
     text-decoration:none;
-
     padding:11px 17px;
     border-radius:10px;
-
     font-size:14px;
     font-weight:800;
 }
-
-
-/* =========================
-START
-========================= */
 
 .start-screen{
     max-width:900px;
@@ -95,25 +82,18 @@ START
 
 .title-top{
     display:block;
-
     color:var(--primary);
-
     font-size:clamp(52px,8vw,90px);
-
     font-weight:900;
     letter-spacing:-3px;
 }
 
 .title-bottom{
     display:block;
-
     color:var(--accent);
-
     font-size:clamp(70px,11vw,125px);
-
     font-weight:900;
     letter-spacing:-5px;
-
     text-shadow:
         0 4px 0 #9cb500,
         0 8px 12px rgba(0,0,0,.1);
@@ -121,30 +101,22 @@ START
 
 .intro{
     max-width:640px;
-
     margin:15px auto 28px;
-
     color:var(--muted);
-
     line-height:1.55;
 }
 
 .rules{
     max-width:720px;
-
     margin:0 auto 30px;
-
     display:grid;
     grid-template-columns:repeat(3,1fr);
-
     gap:10px;
 }
 
 .rule{
     background:white;
-
     border-radius:13px;
-
     padding:18px 12px;
 }
 
@@ -154,222 +126,138 @@ START
 
 .rule strong{
     display:block;
-
     color:var(--primary);
-
     margin:7px 0 4px;
 }
 
 .rule small{
     color:var(--muted);
-
     line-height:1.4;
 }
 
 .start-btn{
     background:var(--accent);
     color:#222;
-
     border:0;
     border-radius:14px;
-
     padding:18px 52px;
-
     font-size:21px;
     font-weight:900;
-
     cursor:pointer;
-
     box-shadow:0 4px 0 #9cb500;
 }
 
-
-/* =========================
-GAME
-========================= */
-
 .game-area{
     display:none;
-
     max-width:980px;
-
     margin:35px auto;
-
     padding:0 20px 60px;
 }
 
 .game-card{
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:20px;
-
     padding:26px;
-
     box-shadow:0 8px 20px rgba(0,0,0,.05);
 }
 
-
-/* =========================
-HUD
-========================= */
-
 .hud{
     display:flex;
-
     justify-content:space-between;
     align-items:center;
-
     gap:12px;
-
     flex-wrap:wrap;
-
     margin-bottom:18px;
 }
 
 .progress-text{
     color:var(--primary);
-
     font-weight:900;
 }
 
 .score-pill{
     background:var(--primary);
-
     color:white;
-
     border-radius:20px;
-
     padding:9px 15px;
-
     font-size:13px;
     font-weight:900;
 }
 
 .points-pill{
     background:var(--accent);
-
     color:#222;
-
     border-radius:20px;
-
     padding:9px 15px;
-
     font-size:13px;
     font-weight:900;
 }
 
-
-/* =========================
-PROGRESS
-========================= */
-
 .progress-track{
     height:9px;
-
     background:#e6e3df;
-
     border-radius:20px;
-
     overflow:hidden;
-
     margin-bottom:24px;
 }
 
 .progress-fill{
     height:100%;
-
     width:20%;
-
     background:var(--accent);
-
     transition:.25s;
 }
-
-
-/* =========================
-IMAGE
-========================= */
 
 .image-shell{
     width:100%;
     max-width:850px;
-
     margin:0 auto;
-
     aspect-ratio:16 / 9;
-
     background:#111;
-
     border-radius:18px;
-
     overflow:hidden;
-
     position:relative;
 }
 
 .pixel-canvas{
     width:100%;
     height:100%;
-
     display:block;
-
     image-rendering:pixelated;
 }
 
 .reveal-stage{
     position:absolute;
-
     top:14px;
     left:14px;
-
     background:rgba(0,0,0,.72);
-
     color:white;
-
     border-radius:20px;
-
     padding:7px 11px;
-
     font-size:11px;
     font-weight:900;
 }
 
-
-/* =========================
-GUESS AREA
-========================= */
-
 .guess-area{
     max-width:680px;
-
     margin:22px auto 0;
-
     text-align:center;
 }
 
 .guess-title{
     color:var(--primary);
-
     font-size:24px;
-
     font-weight:900;
-
     margin-bottom:12px;
 }
 
 .answer-input{
     width:100%;
-
     padding:15px;
-
     border:2px solid var(--border);
-
     border-radius:11px;
-
     text-align:center;
-
     outline:none;
 }
 
@@ -379,47 +267,30 @@ GUESS AREA
 
 .submit-btn{
     width:100%;
-
     margin-top:10px;
-
     padding:14px;
-
     border:0;
-
     border-radius:11px;
-
     background:var(--accent);
-
     color:#222;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
 .action-row{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:10px;
-
     margin-top:10px;
 }
 
 .reveal-btn{
     padding:13px;
-
     border:0;
-
     border-radius:11px;
-
     background:var(--primary);
-
     color:white;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
@@ -429,17 +300,11 @@ GUESS AREA
 
 .skip-btn{
     padding:13px;
-
     border:0;
-
     border-radius:11px;
-
     background:#ddd9d4;
-
     color:#444;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
@@ -448,37 +313,21 @@ button:disabled{
     cursor:default;
 }
 
-
-/* =========================
-GUESSES
-========================= */
-
 .guesses-left{
     margin-top:13px;
-
     color:var(--muted);
-
     font-size:13px;
-
     font-weight:800;
 }
 
-
-/* =========================
-FEEDBACK
-========================= */
-
 .feedback{
     min-height:80px;
-
     margin-top:18px;
-
     text-align:center;
 }
 
 .feedback-main{
     font-size:24px;
-
     font-weight:900;
 }
 
@@ -492,189 +341,126 @@ FEEDBACK
 
 .feedback-detail{
     margin-top:5px;
-
     color:var(--muted);
 }
 
 .next-btn{
     display:none;
-
     margin:16px auto 0;
-
     padding:13px 28px;
-
     border:0;
-
     border-radius:11px;
-
     background:var(--accent);
-
     color:#222;
-
     font-weight:900;
-
     cursor:pointer;
 }
 
-
-/* =========================
-RESULTS
-========================= */
-
 .results-screen{
     display:none;
-
     max-width:850px;
-
     margin:50px auto;
-
     padding:0 20px 70px;
-
     text-align:center;
 }
 
 .results-card{
     background:white;
-
     border:1px solid var(--border);
-
     border-radius:20px;
-
     padding:40px 25px;
 }
 
 .results-title{
     margin:0;
-
     color:var(--primary);
-
     font-size:clamp(48px,9vw,80px);
-
     line-height:.95;
-
     font-weight:900;
 }
 
 .final-score{
     color:var(--primary);
-
     font-size:80px;
-
     font-weight:900;
-
     margin-top:20px;
 }
 
 .final-score-label{
     color:var(--muted);
-
     font-size:13px;
-
     font-weight:900;
-
     text-transform:uppercase;
 }
 
 .results-stats{
     max-width:600px;
-
     margin:28px auto;
-
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:10px;
 }
 
 .result-stat{
     background:var(--soft);
-
     border-radius:12px;
-
     padding:16px 10px;
 }
 
 .result-value{
     color:var(--primary);
-
     font-size:27px;
-
     font-weight:900;
 }
 
 .result-name{
     color:var(--muted);
-
     font-size:11px;
-
     font-weight:900;
-
     text-transform:uppercase;
-
     margin-top:4px;
 }
 
 .result-actions{
     display:flex;
-
     justify-content:center;
-
     gap:10px;
-
     flex-wrap:wrap;
 }
 
 .result-btn{
     border:0;
-
     border-radius:11px;
-
     padding:14px 22px;
-
     font-weight:900;
-
     cursor:pointer;
-
     text-decoration:none;
 }
 
 .play-again{
     background:var(--accent);
-
     color:#222;
 }
 
 .return-hub{
     background:var(--primary);
-
     color:white;
 }
 
-
-/* =========================
-REVIEW
-========================= */
-
 .review-section{
     margin-top:34px;
-
     text-align:left;
 }
 
 .review-section h2{
     text-align:center;
-
     color:var(--primary);
 }
 
 .review-item{
     background:var(--soft);
-
     border-radius:12px;
-
     padding:14px 16px;
-
     margin-bottom:9px;
 }
 
@@ -685,11 +471,6 @@ REVIEW
 .review-item span{
     color:var(--muted);
 }
-
-
-/* =========================
-MOBILE
-========================= */
 
 @media(max-width:650px){
 
@@ -703,7 +484,6 @@ MOBILE
 
     .hub-btn{
         font-size:11px;
-
         padding:9px 10px;
     }
 
@@ -722,50 +502,30 @@ MOBILE
     .results-stats{
         grid-template-columns:1fr;
     }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <header>
 
-<a
-    class="logo-link"
-    href="https://www.gamesjobsdirect.com/">
-
+<a class="logo-link" href="https://www.gamesjobsdirect.com/">
 <img
     src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
     alt="Games Jobs Direct">
-
 </a>
 
-
-<a
-    class="hub-btn"
-    href="index.html">
-
+<a class="hub-btn" href="index.html">
 Return to Game Hub
-
 </a>
 
 </header>
 
 
-
-<!-- =========================
-START
-========================= -->
-
-<section
-    class="start-screen"
-    id="startScreen">
-
+<section class="start-screen" id="startScreen">
 
 <div class="game-title">
 
@@ -779,7 +539,6 @@ REVEAL
 
 </div>
 
-
 <p class="intro">
 
 Identify five games from increasingly clear screenshots.
@@ -789,161 +548,78 @@ but revealing the full image ends that round with zero points.
 
 </p>
 
-
 <div class="rules">
 
+<div class="rule">
+<div class="rule-icon">🖼️</div>
+<strong>5 Games</strong>
+<small>A random selection every playthrough.</small>
+</div>
 
 <div class="rule">
-
-<div class="rule-icon">
-🖼️
+<div class="rule-icon">🔍</div>
+<strong>Reveal Carefully</strong>
+<small>More clarity means fewer points.</small>
 </div>
-
-<strong>
-5 Games
-</strong>
-
-<small>
-A random selection every playthrough.
-</small>
-
-</div>
-
 
 <div class="rule">
-
-<div class="rule-icon">
-🔍
+<div class="rule-icon">🏆</div>
+<strong>Know The Exact Game</strong>
+<small>Sequels need the correct number.</small>
 </div>
-
-<strong>
-Reveal Carefully
-</strong>
-
-<small>
-More clarity means fewer points.
-</small>
 
 </div>
 
-
-<div class="rule">
-
-<div class="rule-icon">
-🏆
-</div>
-
-<strong>
-Don't Fully Reveal
-</strong>
-
-<small>
-Reveal the answer and that image is worth 0.
-</small>
-
-</div>
-
-
-</div>
-
-
-<button
-    class="start-btn"
-    onclick="startGame()">
-
+<button class="start-btn" onclick="startGame()">
 START GAME
-
 </button>
-
 
 </section>
 
 
-
-<!-- =========================
-GAME
-========================= -->
-
-<section
-    class="game-area"
-    id="gameArea">
-
+<section class="game-area" id="gameArea">
 
 <div class="game-card">
 
-
 <div class="hud">
 
-
-<div
-    class="progress-text"
-    id="progressText">
-
+<div class="progress-text" id="progressText">
 Game 1 of 5
-
 </div>
 
-
-<div
-    class="points-pill"
-    id="pointsDisplay">
-
+<div class="points-pill" id="pointsDisplay">
 Worth 1000 pts
-
 </div>
-
 
 <div class="score-pill">
-
 SCORE:
-<span id="scoreDisplay">
-0
-</span>
-
+<span id="scoreDisplay">0</span>
 </div>
 
-
 </div>
-
 
 <div class="progress-track">
-
-<div
-    class="progress-fill"
-    id="progressFill">
+<div class="progress-fill" id="progressFill"></div>
 </div>
-
-</div>
-
 
 <div class="image-shell">
-
 
 <canvas
     class="pixel-canvas"
     id="pixelCanvas">
 </canvas>
 
-
-<div
-    class="reveal-stage"
-    id="revealStage">
-
+<div class="reveal-stage" id="revealStage">
 Pixel Level 1 of 4
-
 </div>
 
-
 </div>
-
 
 <div class="guess-area">
-
 
 <div class="guess-title">
 Which game is this?
 </div>
-
 
 <input
     class="answer-input"
@@ -951,7 +627,6 @@ Which game is this?
     type="text"
     autocomplete="off"
     placeholder="Type your guess...">
-
 
 <button
     class="submit-btn"
@@ -962,9 +637,7 @@ Submit Guess
 
 </button>
 
-
 <div class="action-row">
-
 
 <button
     class="reveal-btn"
@@ -975,7 +648,6 @@ Reveal More
 
 </button>
 
-
 <button
     class="skip-btn"
     id="skipButton"
@@ -985,36 +657,19 @@ Skip This Game
 
 </button>
 
-
 </div>
 
-
-<div
-    class="guesses-left"
-    id="guessesLeft">
-
+<div class="guesses-left" id="guessesLeft">
 3 guesses remaining
-
 </div>
 
-
 </div>
-
 
 <div class="feedback">
 
+<div class="feedback-main" id="feedbackMain"></div>
 
-<div
-    class="feedback-main"
-    id="feedbackMain">
-</div>
-
-
-<div
-    class="feedback-detail"
-    id="feedbackDetail">
-</div>
-
+<div class="feedback-detail" id="feedbackDetail"></div>
 
 <button
     class="next-btn"
@@ -1025,110 +680,49 @@ Next Game →
 
 </button>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
 
-
-<!-- =========================
-RESULTS
-========================= -->
-
-<section
-    class="results-screen"
-    id="resultsScreen">
-
+<section class="results-screen" id="resultsScreen">
 
 <div class="results-card">
 
-
 <h1 class="results-title">
-
-PIXEL REVEAL<br>
-COMPLETE
-
+PIXEL REVEAL<br>COMPLETE
 </h1>
 
-
-<div
-    class="final-score"
-    id="finalScore">
-
+<div class="final-score" id="finalScore">
 0
-
 </div>
-
 
 <div class="final-score-label">
 Total Points
 </div>
 
-
 <div class="results-stats">
 
+<div class="result-stat">
+<div class="result-value" id="correctCount">0</div>
+<div class="result-name">Games Guessed</div>
+</div>
 
 <div class="result-stat">
-
-<div
-    class="result-value"
-    id="correctCount">
-
-0
-
+<div class="result-value" id="bestGuess">0</div>
+<div class="result-name">Best Guess</div>
 </div>
-
-<div class="result-name">
-Games Guessed
-</div>
-
-</div>
-
 
 <div class="result-stat">
-
-<div
-    class="result-value"
-    id="bestGuess">
-
-0
-
-</div>
-
-<div class="result-name">
-Best Guess
+<div class="result-value" id="revealCount">0</div>
+<div class="result-name">Extra Reveals</div>
 </div>
 
 </div>
-
-
-<div class="result-stat">
-
-<div
-    class="result-value"
-    id="revealCount">
-
-0
-
-</div>
-
-<div class="result-name">
-Extra Reveals
-</div>
-
-</div>
-
-
-</div>
-
 
 <div class="result-actions">
-
 
 <button
     class="result-btn play-again"
@@ -1138,7 +732,6 @@ Play Again
 
 </button>
 
-
 <a
     class="result-btn return-hub"
     href="index.html">
@@ -1147,36 +740,34 @@ Return to Game Hub
 
 </a>
 
-
 </div>
 
-
 <div class="review-section">
-
 
 <h2>
 Your Games
 </h2>
 
-
-<div id="reviewList">
-</div>
-
+<div id="reviewList"></div>
 
 </div>
 
-
 </div>
-
 
 </section>
-
 
 
 <script>
 
 /* ======================================================
 GAME BANK
+
+requiredNumber:
+If present, the player's answer MUST contain one of
+these forms.
+
+This prevents "Resident Evil" from counting as
+"Resident Evil 4", while still accepting RE4, IV, four etc.
 ====================================================== */
 
 const GAME_BANK = [
@@ -1195,7 +786,6 @@ image:"assets/pixel-reveal/2.png",
 answer:"Marvel's Spider-Man",
 accepted:[
     "marvels spider man",
-    "marvel's spider-man",
     "marvels spiderman",
     "spider man",
     "spiderman"
@@ -1214,24 +804,35 @@ accepted:[
 {
 image:"assets/pixel-reveal/4.png",
 answer:"Grand Theft Auto V",
+requiredNumber:[
+    "5",
+    "v",
+    "five"
+],
 accepted:[
     "grand theft auto v",
     "grand theft auto 5",
     "grand theft auto five",
     "gta v",
     "gta 5",
-    "gta five",
-    "gta"
+    "gta five"
 ]
 },
 
 {
 image:"assets/pixel-reveal/5.png",
 answer:"Red Dead Redemption 2",
+requiredNumber:[
+    "2",
+    "ii",
+    "two"
+],
 accepted:[
     "red dead redemption 2",
     "red dead redemption ii",
+    "red dead redemption two",
     "red dead 2",
+    "red dead ii",
     "rdr2",
     "rdr 2"
 ]
@@ -1240,11 +841,20 @@ accepted:[
 {
 image:"assets/pixel-reveal/6.png",
 answer:"The Witcher 3: Wild Hunt",
+requiredNumber:[
+    "3",
+    "iii",
+    "three"
+],
 accepted:[
     "the witcher 3 wild hunt",
     "witcher 3 wild hunt",
+    "the witcher iii wild hunt",
+    "witcher iii wild hunt",
     "the witcher 3",
-    "witcher 3"
+    "witcher 3",
+    "the witcher iii",
+    "witcher iii"
 ]
 },
 
@@ -1340,13 +950,18 @@ accepted:[
 {
 image:"assets/pixel-reveal/16.png",
 answer:"Metal Gear Solid V: The Phantom Pain",
+requiredNumber:[
+    "5",
+    "v",
+    "five"
+],
 accepted:[
     "metal gear solid v the phantom pain",
     "metal gear solid 5 the phantom pain",
+    "metal gear solid five the phantom pain",
     "metal gear solid v",
     "metal gear solid 5",
-    "the phantom pain",
-    "phantom pain",
+    "metal gear solid five",
     "mgsv",
     "mgs5"
 ]
@@ -1417,8 +1032,14 @@ accepted:[
 {
 image:"assets/pixel-reveal/24.png",
 answer:"Nioh 2",
+requiredNumber:[
+    "2",
+    "ii",
+    "two"
+],
 accepted:[
     "nioh 2",
+    "nioh ii",
     "nioh two"
 ]
 },
@@ -1443,12 +1064,17 @@ accepted:[
 {
 image:"assets/pixel-reveal/27.png",
 answer:"Dark Souls III",
+requiredNumber:[
+    "3",
+    "iii",
+    "three"
+],
 accepted:[
     "dark souls iii",
     "dark souls 3",
     "dark souls three",
-    "darksouls 3",
-    "darksouls iii"
+    "darksouls iii",
+    "darksouls 3"
 ]
 },
 
@@ -1472,10 +1098,17 @@ accepted:[
 {
 image:"assets/pixel-reveal/30.png",
 answer:"Divinity: Original Sin 2",
+requiredNumber:[
+    "2",
+    "ii",
+    "two"
+],
 accepted:[
     "divinity original sin 2",
     "divinity original sin ii",
+    "divinity original sin two",
     "divinity 2",
+    "divinity ii",
     "dos2"
 ]
 },
@@ -1503,9 +1136,15 @@ accepted:[
 {
 image:"assets/pixel-reveal/33.png",
 answer:"Baldur's Gate 3",
+requiredNumber:[
+    "3",
+    "iii",
+    "three"
+],
 accepted:[
     "baldurs gate 3",
     "baldurs gate iii",
+    "baldurs gate three",
     "bg3"
 ]
 },
@@ -1518,6 +1157,8 @@ accepted:[
     "the elder scrolls 5 skyrim",
     "elder scrolls v skyrim",
     "elder scrolls 5 skyrim",
+    "the elder scrolls skyrim",
+    "elder scrolls skyrim",
     "skyrim"
 ]
 },
@@ -1525,8 +1166,14 @@ accepted:[
 {
 image:"assets/pixel-reveal/35.png",
 answer:"Resident Evil 2",
+requiredNumber:[
+    "2",
+    "ii",
+    "two"
+],
 accepted:[
     "resident evil 2",
+    "resident evil ii",
     "resident evil two",
     "re2"
 ]
@@ -1535,8 +1182,14 @@ accepted:[
 {
 image:"assets/pixel-reveal/36.png",
 answer:"Resident Evil 4",
+requiredNumber:[
+    "4",
+    "iv",
+    "four"
+],
 accepted:[
     "resident evil 4",
+    "resident evil iv",
     "resident evil four",
     "re4"
 ]
@@ -1545,11 +1198,18 @@ accepted:[
 {
 image:"assets/pixel-reveal/37.png",
 answer:"Resident Evil 7: Biohazard",
+requiredNumber:[
+    "7",
+    "vii",
+    "seven"
+],
 accepted:[
     "resident evil 7 biohazard",
     "resident evil vii biohazard",
+    "resident evil seven biohazard",
     "resident evil 7",
     "resident evil vii",
+    "resident evil seven",
     "re7"
 ]
 },
@@ -1619,11 +1279,6 @@ accepted:[
 
 /* ======================================================
 SETTINGS
-
-Only FOUR playable pixel stages.
-
-If the player reveals beyond Stage 4,
-the full cover is displayed and the round ends for 0.
 ====================================================== */
 
 const GAMES_PER_RUN = 5;
@@ -1660,27 +1315,15 @@ STATE
 ====================================================== */
 
 let sessionGames = [];
-
 let currentIndex = 0;
-
 let totalScore = 0;
-
 let correctCount = 0;
-
 let bestGuess = 0;
-
 let extraRevealCount = 0;
-
 let revealIndex = 0;
-
-let guessesRemaining =
-    MAX_GUESSES;
-
+let guessesRemaining = MAX_GUESSES;
 let roundLocked = false;
-
-let currentImage =
-    new Image();
-
+let currentImage = new Image();
 let reviewResults = [];
 
 
@@ -1690,15 +1333,9 @@ SHUFFLE
 
 function shuffle(array){
 
-    const copy =
-        [...array];
+    const copy = [...array];
 
-    for(
-        let i =
-            copy.length - 1;
-        i > 0;
-        i--
-    ){
+    for(let i = copy.length - 1; i > 0; i--){
 
         const j =
             Math.floor(
@@ -1706,14 +1343,8 @@ function shuffle(array){
                 (i + 1)
             );
 
-        [
-            copy[i],
-            copy[j]
-        ] =
-        [
-            copy[j],
-            copy[i]
-        ];
+        [copy[i],copy[j]] =
+            [copy[j],copy[i]];
     }
 
     return copy;
@@ -1721,7 +1352,7 @@ function shuffle(array){
 
 
 /* ======================================================
-ANSWER NORMALISATION
+NORMALISE
 ====================================================== */
 
 function normalise(text){
@@ -1729,76 +1360,33 @@ function normalise(text){
     return text
         .toLowerCase()
         .trim()
-
         .replace(/&/g,"and")
-
         .replace(/[’']/g,"")
-
-        .replace(
-            /[:.,!?_\-–—]/g,
-            " "
-        )
-
-        .replace(
-            /\s+/g,
-            " "
-        )
-
+        .replace(/[:.,!?_\-–—]/g," ")
+        .replace(/\s+/g," ")
         .trim();
 }
 
 
 /* ======================================================
-LEVENSHTEIN DISTANCE
-
-Allows very small spelling slips.
-
-For example:
-
-ghost of tsushima
-ghosts of tsushima
-
-Difference = just one character.
+LEVENSHTEIN
 ====================================================== */
 
 function levenshtein(a,b){
 
     const matrix = [];
 
-
-    for(
-        let i = 0;
-        i <= b.length;
-        i++
-    ){
-
-        matrix[i] =
-            [i];
+    for(let i = 0; i <= b.length; i++){
+        matrix[i] = [i];
     }
 
-
-    for(
-        let j = 0;
-        j <= a.length;
-        j++
-    ){
-
-        matrix[0][j] =
-            j;
+    for(let j = 0; j <= a.length; j++){
+        matrix[0][j] = j;
     }
 
+    for(let i = 1; i <= b.length; i++){
 
-    for(
-        let i = 1;
-        i <= b.length;
-        i++
-    ){
-
-        for(
-            let j = 1;
-            j <= a.length;
-            j++
-        ){
+        for(let j = 1; j <= a.length; j++){
 
             if(
                 b.charAt(i - 1) ===
@@ -1812,92 +1400,104 @@ function levenshtein(a,b){
 
                 matrix[i][j] =
                     Math.min(
-
                         matrix[i - 1][j - 1] + 1,
-
                         matrix[i][j - 1] + 1,
-
                         matrix[i - 1][j] + 1
-
                     );
             }
         }
     }
-
 
     return matrix[b.length][a.length];
 }
 
 
 /* ======================================================
+NUMBER REQUIREMENT
+====================================================== */
+
+function hasRequiredNumber(
+    playerAnswer,
+    requiredNumbers
+){
+
+    if(
+        !requiredNumbers ||
+        requiredNumbers.length === 0
+    ){
+        return true;
+    }
+
+    const player =
+        normalise(playerAnswer);
+
+    const words =
+        player.split(" ");
+
+    return requiredNumbers.some(
+        required =>
+            words.includes(
+                normalise(required)
+            ) ||
+            player.includes(
+                normalise(required)
+            )
+    );
+}
+
+
+/* ======================================================
 ANSWER MATCHING
-
-1. Exact accepted answer.
-2. Small typo tolerance.
-
-Short answers remain stricter so someone can't type
-something wildly different and get the point.
 ====================================================== */
 
 function answerMatches(
     playerAnswer,
-    acceptedAnswers
+    game
 ){
 
     const player =
-        normalise(
-            playerAnswer
-        );
-
+        normalise(playerAnswer);
 
     if(!player){
         return false;
     }
 
 
+    /*
+    Numbered games MUST include their identifying number.
+    */
+
+    if(
+        !hasRequiredNumber(
+            playerAnswer,
+            game.requiredNumber
+        )
+    ){
+        return false;
+    }
+
+
     for(
         const accepted of
-        acceptedAnswers
+        game.accepted
     ){
 
         const answer =
-            normalise(
-                accepted
-            );
+            normalise(accepted);
 
-
-        /*
-        Exact match.
-        */
 
         if(
-            player ===
-            answer
+            player === answer
         ){
-
             return true;
         }
 
-
-        /*
-        Typo tolerance.
-
-        Long game titles:
-        up to 2 character difference.
-
-        Medium titles:
-        1 character.
-
-        Very short titles:
-        exact only.
-        */
 
         const length =
             Math.max(
                 player.length,
                 answer.length
             );
-
 
         let allowedDistance = 0;
 
@@ -1924,11 +1524,9 @@ function answerMatches(
             ) <=
             allowedDistance
         ){
-
             return true;
         }
     }
-
 
     return false;
 }
@@ -1941,193 +1539,127 @@ START
 function startGame(){
 
     sessionGames =
-        shuffle(
-            GAME_BANK
-        )
+        shuffle(GAME_BANK)
         .slice(
             0,
             GAMES_PER_RUN
         );
 
-
     currentIndex = 0;
-
     totalScore = 0;
-
     correctCount = 0;
-
     bestGuess = 0;
-
     extraRevealCount = 0;
-
     reviewResults = [];
 
-
     document
-        .getElementById(
-            "startScreen"
-        )
+        .getElementById("startScreen")
         .style.display =
         "none";
 
-
     document
-        .getElementById(
-            "resultsScreen"
-        )
+        .getElementById("resultsScreen")
         .style.display =
         "none";
 
-
     document
-        .getElementById(
-            "gameArea"
-        )
+        .getElementById("gameArea")
         .style.display =
         "block";
-
 
     loadGame();
 }
 
 
 /* ======================================================
-LOAD ROUND
+LOAD GAME
 ====================================================== */
 
 function loadGame(){
 
     revealIndex = 0;
-
     guessesRemaining =
         MAX_GUESSES;
 
     roundLocked = false;
 
-
     const game =
-        sessionGames[
-            currentIndex
-        ];
-
+        sessionGames[currentIndex];
 
     document
-        .getElementById(
-            "progressText"
-        )
+        .getElementById("progressText")
         .textContent =
         `Game ${currentIndex + 1} of ${GAMES_PER_RUN}`;
 
-
     document
-        .getElementById(
-            "progressFill"
-        )
+        .getElementById("progressFill")
         .style.width =
         `${((currentIndex + 1) / GAMES_PER_RUN) * 100}%`;
 
-
     document
-        .getElementById(
-            "scoreDisplay"
-        )
+        .getElementById("scoreDisplay")
         .textContent =
         totalScore;
 
-
     const input =
-        document.getElementById(
-            "answerInput"
-        );
-
+        document
+        .getElementById("answerInput");
 
     input.value = "";
-
-    input.disabled =
-        false;
-
+    input.disabled = false;
 
     document
-        .getElementById(
-            "submitButton"
-        )
+        .getElementById("submitButton")
         .disabled =
         false;
 
-
     document
-        .getElementById(
-            "revealButton"
-        )
+        .getElementById("revealButton")
         .disabled =
         false;
 
-
     document
-        .getElementById(
-            "revealButton"
-        )
+        .getElementById("revealButton")
         .className =
         "reveal-btn";
 
-
     document
-        .getElementById(
-            "skipButton"
-        )
+        .getElementById("skipButton")
         .disabled =
         false;
 
-
     document
-        .getElementById(
-            "feedbackMain"
-        )
+        .getElementById("feedbackMain")
         .textContent =
         "";
 
-
     document
-        .getElementById(
-            "feedbackMain"
-        )
+        .getElementById("feedbackMain")
         .className =
         "feedback-main";
 
-
     document
-        .getElementById(
-            "feedbackDetail"
-        )
+        .getElementById("feedbackDetail")
         .textContent =
         "";
 
-
     document
-        .getElementById(
-            "nextButton"
-        )
+        .getElementById("nextButton")
         .style.display =
         "none";
 
-
     updateRoundUI();
-
 
     currentImage =
         new Image();
 
-
     currentImage.onload =
         () => {
-
             drawPixelatedImage();
         };
 
-
     currentImage.src =
         game.image;
-
 
     setTimeout(
         () => input.focus(),
@@ -2137,44 +1669,36 @@ function loadGame(){
 
 
 /* ======================================================
-DRAW PIXELATED IMAGE
+PIXELATED IMAGE
 ====================================================== */
 
 function drawPixelatedImage(){
 
     const canvas =
-        document.getElementById(
+        document
+        .getElementById(
             "pixelCanvas"
         );
 
-
     const context =
-        canvas.getContext(
-            "2d"
-        );
-
+        canvas.getContext("2d");
 
     const displayWidth =
         1200;
 
-
     const displayHeight =
         675;
-
 
     canvas.width =
         displayWidth;
 
-
     canvas.height =
         displayHeight;
-
 
     const stage =
         PIXEL_STAGES[
             revealIndex
         ];
-
 
     context.clearRect(
         0,
@@ -2183,22 +1707,16 @@ function drawPixelatedImage(){
         displayHeight
     );
 
-
     const smallCanvas =
         document.createElement(
             "canvas"
         );
 
-
     const smallContext =
-        smallCanvas.getContext(
-            "2d"
-        );
-
+        smallCanvas.getContext("2d");
 
     const smallWidth =
         stage.width;
-
 
     const smallHeight =
         Math.round(
@@ -2206,14 +1724,11 @@ function drawPixelatedImage(){
             9 / 16
         );
 
-
     smallCanvas.width =
         smallWidth;
 
-
     smallCanvas.height =
         smallHeight;
-
 
     smallContext.drawImage(
         currentImage,
@@ -2223,10 +1738,8 @@ function drawPixelatedImage(){
         smallHeight
     );
 
-
     context.imageSmoothingEnabled =
         false;
-
 
     context.drawImage(
         smallCanvas,
@@ -2243,38 +1756,31 @@ function drawPixelatedImage(){
 
 
 /* ======================================================
-DRAW FULL ANSWER IMAGE
+FULL IMAGE
 ====================================================== */
 
 function drawFullImage(){
 
     const canvas =
-        document.getElementById(
+        document
+        .getElementById(
             "pixelCanvas"
         );
 
-
     const context =
-        canvas.getContext(
-            "2d"
-        );
-
+        canvas.getContext("2d");
 
     const displayWidth =
         1200;
 
-
     const displayHeight =
         675;
-
 
     canvas.width =
         displayWidth;
 
-
     canvas.height =
         displayHeight;
-
 
     context.clearRect(
         0,
@@ -2283,10 +1789,8 @@ function drawFullImage(){
         displayHeight
     );
 
-
     context.imageSmoothingEnabled =
         true;
-
 
     context.drawImage(
         currentImage,
@@ -2309,14 +1813,12 @@ function updateRoundUI(){
             revealIndex
         ];
 
-
     document
         .getElementById(
             "pointsDisplay"
         )
         .textContent =
         `Worth ${stage.points} pts`;
-
 
     document
         .getElementById(
@@ -2325,7 +1827,6 @@ function updateRoundUI(){
         .textContent =
         `Pixel Level ${revealIndex + 1} of ${PIXEL_STAGES.length}`;
 
-
     document
         .getElementById(
             "guessesLeft"
@@ -2333,17 +1834,11 @@ function updateRoundUI(){
         .textContent =
         `${guessesRemaining} guess${guessesRemaining === 1 ? "" : "es"} remaining`;
 
-
     const revealButton =
-        document.getElementById(
+        document
+        .getElementById(
             "revealButton"
         );
-
-
-    /*
-    At the final pixelated stage,
-    the next reveal gives away the answer.
-    */
 
     if(
         revealIndex ===
@@ -2353,7 +1848,6 @@ function updateRoundUI(){
         revealButton.textContent =
             "Reveal Answer — 0 pts";
 
-
         revealButton.className =
             "reveal-btn final-reveal";
 
@@ -2362,7 +1856,6 @@ function updateRoundUI(){
         revealButton.textContent =
             "Reveal More";
 
-
         revealButton.className =
             "reveal-btn";
     }
@@ -2370,10 +1863,7 @@ function updateRoundUI(){
 
 
 /* ======================================================
-REVEAL MORE
-
-If already on the final pixelated level,
-revealing again ends the round for ZERO.
+REVEAL
 ====================================================== */
 
 function revealMore(){
@@ -2381,7 +1871,6 @@ function revealMore(){
     if(roundLocked){
         return;
     }
-
 
     if(
         revealIndex <
@@ -2399,17 +1888,12 @@ function revealMore(){
         return;
     }
 
-
-    /*
-    Final reveal = surrender.
-    */
-
     revealAnswer();
 }
 
 
 /* ======================================================
-REVEAL ANSWER - ZERO POINTS
+REVEAL ANSWER
 ====================================================== */
 
 function revealAnswer(){
@@ -2418,21 +1902,14 @@ function revealAnswer(){
         return;
     }
 
-
     roundLocked = true;
 
-
     const game =
-        sessionGames[
-            currentIndex
-        ];
-
+        sessionGames[currentIndex];
 
     extraRevealCount++;
 
-
     drawFullImage();
-
 
     document
         .getElementById(
@@ -2441,14 +1918,12 @@ function revealAnswer(){
         .textContent =
         "Answer Revealed";
 
-
     document
         .getElementById(
             "pointsDisplay"
         )
         .textContent =
         "Worth 0 pts";
-
 
     document
         .getElementById(
@@ -2457,14 +1932,12 @@ function revealAnswer(){
         .textContent =
         "Answer revealed — 0 points";
 
-
     document
         .getElementById(
             "feedbackMain"
         )
         .className =
         "feedback-main wrong";
-
 
     document
         .getElementById(
@@ -2473,9 +1946,7 @@ function revealAnswer(){
         .textContent =
         game.answer;
 
-
     lockRound();
-
 
     reviewResults.push({
 
@@ -2493,13 +1964,12 @@ function revealAnswer(){
 
     });
 
-
     showNextButton();
 }
 
 
 /* ======================================================
-SUBMIT GUESS
+SUBMIT
 ====================================================== */
 
 function submitGuess(){
@@ -2508,34 +1978,29 @@ function submitGuess(){
         return;
     }
 
-
     const input =
-        document.getElementById(
+        document
+        .getElementById(
             "answerInput"
         );
-
 
     const guess =
         input.value.trim();
 
-
     if(!guess){
         return;
     }
-
 
     const game =
         sessionGames[
             currentIndex
         ];
 
-
     const correct =
         answerMatches(
             guess,
-            game.accepted
+            game
         );
-
 
     if(correct){
 
@@ -2544,9 +2009,7 @@ function submitGuess(){
         return;
     }
 
-
     guessesRemaining--;
-
 
     document
         .getElementById(
@@ -2555,14 +2018,12 @@ function submitGuess(){
         .textContent =
         "Not quite!";
 
-
     document
         .getElementById(
             "feedbackMain"
         )
         .className =
         "feedback-main wrong";
-
 
     if(
         guessesRemaining > 0
@@ -2575,23 +2036,19 @@ function submitGuess(){
             .textContent =
             "Try again or reveal more of the image.";
 
-
-        input.value =
-            "";
-
+        input.value = "";
 
         updateRoundUI();
 
         return;
     }
 
-
     finishRoundWrong();
 }
 
 
 /* ======================================================
-ENTER KEY
+ENTER
 ====================================================== */
 
 document
@@ -2623,32 +2080,26 @@ function finishRoundCorrect(){
 
     roundLocked = true;
 
-
     const game =
         sessionGames[
             currentIndex
         ];
-
 
     const points =
         PIXEL_STAGES[
             revealIndex
         ].points;
 
-
     totalScore +=
         points;
 
-
     correctCount++;
-
 
     bestGuess =
         Math.max(
             bestGuess,
             points
         );
-
 
     document
         .getElementById(
@@ -2657,14 +2108,12 @@ function finishRoundCorrect(){
         .textContent =
         totalScore;
 
-
     document
         .getElementById(
             "feedbackMain"
         )
         .textContent =
         `Correct! +${points} points`;
-
 
     document
         .getElementById(
@@ -2673,7 +2122,6 @@ function finishRoundCorrect(){
         .className =
         "feedback-main correct";
 
-
     document
         .getElementById(
             "feedbackDetail"
@@ -2681,14 +2129,7 @@ function finishRoundCorrect(){
         .textContent =
         game.answer;
 
-
-    /*
-    After the answer is locked,
-    showing the cover is fine.
-    */
-
     drawFullImage();
-
 
     document
         .getElementById(
@@ -2697,9 +2138,7 @@ function finishRoundCorrect(){
         .textContent =
         "Correct";
 
-
     lockRound();
-
 
     reviewResults.push({
 
@@ -2717,7 +2156,6 @@ function finishRoundCorrect(){
 
     });
 
-
     showNextButton();
 }
 
@@ -2730,12 +2168,10 @@ function finishRoundWrong(){
 
     roundLocked = true;
 
-
     const game =
         sessionGames[
             currentIndex
         ];
-
 
     document
         .getElementById(
@@ -2744,14 +2180,12 @@ function finishRoundWrong(){
         .textContent =
         "Out of guesses!";
 
-
     document
         .getElementById(
             "feedbackMain"
         )
         .className =
         "feedback-main wrong";
-
 
     document
         .getElementById(
@@ -2760,7 +2194,6 @@ function finishRoundWrong(){
         .textContent =
         `Answer: ${game.answer}`;
 
-
     document
         .getElementById(
             "pointsDisplay"
@@ -2768,9 +2201,7 @@ function finishRoundWrong(){
         .textContent =
         "Worth 0 pts";
 
-
     drawFullImage();
-
 
     document
         .getElementById(
@@ -2779,9 +2210,7 @@ function finishRoundWrong(){
         .textContent =
         "Answer Revealed";
 
-
     lockRound();
-
 
     reviewResults.push({
 
@@ -2799,7 +2228,6 @@ function finishRoundWrong(){
 
     });
 
-
     showNextButton();
 }
 
@@ -2814,16 +2242,12 @@ function skipGame(){
         return;
     }
 
-
-    roundLocked =
-        true;
-
+    roundLocked = true;
 
     const game =
         sessionGames[
             currentIndex
         ];
-
 
     document
         .getElementById(
@@ -2832,14 +2256,12 @@ function skipGame(){
         .textContent =
         "Skipped";
 
-
     document
         .getElementById(
             "feedbackMain"
         )
         .className =
         "feedback-main wrong";
-
 
     document
         .getElementById(
@@ -2848,7 +2270,6 @@ function skipGame(){
         .textContent =
         `Answer: ${game.answer}`;
 
-
     document
         .getElementById(
             "pointsDisplay"
@@ -2856,9 +2277,7 @@ function skipGame(){
         .textContent =
         "Worth 0 pts";
 
-
     drawFullImage();
-
 
     document
         .getElementById(
@@ -2867,9 +2286,7 @@ function skipGame(){
         .textContent =
         "Answer Revealed";
 
-
     lockRound();
-
 
     reviewResults.push({
 
@@ -2887,13 +2304,12 @@ function skipGame(){
 
     });
 
-
     showNextButton();
 }
 
 
 /* ======================================================
-LOCK ROUND
+LOCK
 ====================================================== */
 
 function lockRound(){
@@ -2905,7 +2321,6 @@ function lockRound(){
         .disabled =
         true;
 
-
     document
         .getElementById(
             "submitButton"
@@ -2913,14 +2328,12 @@ function lockRound(){
         .disabled =
         true;
 
-
     document
         .getElementById(
             "revealButton"
         )
         .disabled =
         true;
-
 
     document
         .getElementById(
@@ -2938,21 +2351,18 @@ NEXT BUTTON
 function showNextButton(){
 
     const button =
-        document.getElementById(
+        document
+        .getElementById(
             "nextButton"
         );
-
 
     button.style.display =
         "block";
 
-
     button.textContent =
         currentIndex ===
         GAMES_PER_RUN - 1
-
         ? "See Results →"
-
         : "Next Game →";
 }
 
@@ -2964,7 +2374,6 @@ NEXT GAME
 function nextGame(){
 
     currentIndex++;
-
 
     if(
         currentIndex >=
@@ -2981,7 +2390,7 @@ function nextGame(){
 
 
 /* ======================================================
-FINISH GAME
+FINISH
 ====================================================== */
 
 function finishGame(){
@@ -2993,14 +2402,12 @@ function finishGame(){
         .style.display =
         "none";
 
-
     document
         .getElementById(
             "resultsScreen"
         )
         .style.display =
         "block";
-
 
     document
         .getElementById(
@@ -3009,14 +2416,12 @@ function finishGame(){
         .textContent =
         totalScore;
 
-
     document
         .getElementById(
             "correctCount"
         )
         .textContent =
         `${correctCount}/${GAMES_PER_RUN}`;
-
 
     document
         .getElementById(
@@ -3025,7 +2430,6 @@ function finishGame(){
         .textContent =
         bestGuess;
 
-
     document
         .getElementById(
             "revealCount"
@@ -3033,43 +2437,36 @@ function finishGame(){
         .textContent =
         extraRevealCount;
 
-
     buildReview();
 }
 
 
 /* ======================================================
-RESULT REVIEW
+REVIEW
 ====================================================== */
 
 function buildReview(){
 
     const list =
-        document.getElementById(
+        document
+        .getElementById(
             "reviewList"
         );
 
-
-    list.innerHTML =
-        "";
-
+    list.innerHTML = "";
 
     reviewResults.forEach(
         (result,index) => {
-
 
             const item =
                 document.createElement(
                     "div"
                 );
 
-
             item.className =
                 "review-item";
 
-
             let resultText;
-
 
             if(
                 result.correct
@@ -3084,7 +2481,6 @@ function buildReview(){
                     `${result.status} — 0 points`;
             }
 
-
             item.innerHTML =
                 `
                 <strong>
@@ -3097,7 +2493,6 @@ function buildReview(){
                     ${resultText}
                 </span>
                 `;
-
 
             list.appendChild(
                 item
