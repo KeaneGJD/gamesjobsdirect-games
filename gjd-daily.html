@@ -1,0 +1,3415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GJD Daily | Games Jobs Direct</title>
+
+<style>
+
+:root{
+    --primary:#553179;
+    --accent:#bedc00;
+    --bg:#eae8e5;
+    --white:#ffffff;
+    --text:#222222;
+    --muted:#6b6b6b;
+    --border:#d8d5d1;
+    --green:#49a84f;
+    --red:#d9534f;
+    --soft:#f3f1ee;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+button,
+input{
+    font:inherit;
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    min-height:68px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    padding:12px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo-link img{
+    height:40px;
+    display:block;
+}
+
+.hub-btn{
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+
+    padding:11px 17px;
+    border-radius:10px;
+
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================
+LAYOUT
+========================= */
+
+.wrapper{
+    max-width:850px;
+    margin:42px auto 70px;
+    padding:0 20px;
+}
+
+
+/* =========================
+START
+========================= */
+
+.start-screen{
+    text-align:center;
+}
+
+.daily-label{
+    display:inline-block;
+
+    background:var(--primary);
+    color:white;
+
+    padding:7px 13px;
+    border-radius:50px;
+
+    font-size:12px;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    margin-bottom:15px;
+}
+
+.main-title{
+    margin:0;
+
+    font-size:clamp(62px,12vw,115px);
+
+    font-weight:900;
+
+    line-height:.82;
+
+    letter-spacing:-5px;
+}
+
+.main-title .g{
+    color:var(--primary);
+}
+
+.main-title .daily{
+    display:block;
+    color:var(--accent);
+
+    text-shadow:
+        0 4px 0 #9cb500,
+        0 8px 14px rgba(0,0,0,.08);
+}
+
+.daily-number{
+    margin-top:19px;
+
+    color:var(--primary);
+
+    font-size:17px;
+    font-weight:900;
+}
+
+.intro{
+    max-width:610px;
+
+    margin:16px auto 27px;
+
+    color:var(--muted);
+
+    font-size:16px;
+    line-height:1.55;
+}
+
+
+/* =========================
+CHALLENGE PREVIEW
+========================= */
+
+.preview-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    gap:9px;
+
+    max-width:680px;
+
+    margin:0 auto 28px;
+}
+
+.preview{
+    background:white;
+
+    border-radius:13px;
+
+    padding:17px 8px;
+}
+
+.preview-icon{
+    font-size:28px;
+}
+
+.preview-name{
+    display:block;
+
+    margin-top:7px;
+
+    color:var(--primary);
+
+    font-size:12px;
+    font-weight:900;
+}
+
+.start-btn{
+    border:0;
+
+    background:var(--accent);
+    color:#222;
+
+    border-radius:14px;
+
+    padding:18px 45px;
+
+    font-size:20px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #9cb500;
+}
+
+.reset-info{
+    margin-top:17px;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+/* =========================
+PROGRESS
+========================= */
+
+.progress{
+    display:flex;
+
+    justify-content:center;
+
+    gap:7px;
+
+    margin-bottom:18px;
+}
+
+.progress-box{
+    width:46px;
+    height:7px;
+
+    background:#d4d0cc;
+
+    border-radius:20px;
+}
+
+.progress-box.current{
+    background:var(--primary);
+}
+
+.progress-box.done{
+    background:var(--accent);
+}
+
+
+/* =========================
+QUESTION CARD
+========================= */
+
+.game-screen{
+    display:none;
+}
+
+.question-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+    text-align:center;
+}
+
+.question-type{
+    display:inline-block;
+
+    background:var(--primary);
+    color:white;
+
+    border-radius:50px;
+
+    padding:7px 12px;
+
+    font-size:11px;
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+
+    margin-bottom:18px;
+}
+
+.question-number{
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-bottom:6px;
+}
+
+.question-title{
+    color:var(--primary);
+
+    font-size:clamp(25px,5vw,37px);
+
+    font-weight:900;
+
+    margin:0 0 20px;
+}
+
+
+/* =========================
+GUESS GAME
+========================= */
+
+.emoji-display{
+    font-size:clamp(52px,10vw,80px);
+
+    line-height:1.25;
+
+    margin:18px 0;
+}
+
+.clue-box{
+    max-width:560px;
+
+    margin:14px auto;
+
+    background:var(--soft);
+
+    border-radius:11px;
+
+    padding:13px;
+
+    color:var(--muted);
+
+    font-size:14px;
+}
+
+.text-answer{
+    width:100%;
+    max-width:500px;
+
+    display:block;
+
+    margin:18px auto 10px;
+
+    padding:15px;
+
+    border:2px solid var(--border);
+
+    border-radius:11px;
+
+    text-align:center;
+
+    outline:none;
+}
+
+.text-answer:focus{
+    border-color:var(--primary);
+}
+
+
+/* =========================
+MULTIPLE CHOICE
+========================= */
+
+.answers{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+    max-width:650px;
+
+    margin:20px auto 0;
+}
+
+.answer-btn{
+    min-height:70px;
+
+    border:2px solid var(--border);
+
+    background:var(--soft);
+
+    border-radius:12px;
+
+    padding:12px;
+
+    color:var(--primary);
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.answer-btn:hover{
+    border-color:var(--primary);
+}
+
+.answer-btn.selected{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+
+/* =========================
+SUBMIT
+========================= */
+
+.submit-btn{
+    width:100%;
+    max-width:500px;
+
+    margin:18px auto 0;
+
+    display:block;
+
+    border:0;
+
+    background:var(--accent);
+    color:#222;
+
+    border-radius:11px;
+
+    padding:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.submit-btn:disabled{
+    opacity:.4;
+    cursor:default;
+}
+
+
+/* =========================
+FEEDBACK
+========================= */
+
+.feedback{
+    min-height:68px;
+
+    padding-top:17px;
+}
+
+.feedback-main{
+    font-size:22px;
+    font-weight:900;
+}
+
+.correct{
+    color:var(--green);
+}
+
+.wrong{
+    color:var(--red);
+}
+
+.feedback-answer{
+    color:var(--muted);
+
+    margin-top:5px;
+}
+
+
+/* =========================
+NEXT
+========================= */
+
+.next-btn{
+    display:none;
+
+    width:100%;
+    max-width:500px;
+
+    margin:5px auto 0;
+
+    border:0;
+
+    background:var(--primary);
+    color:white;
+
+    border-radius:11px;
+
+    padding:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+RESULT
+========================= */
+
+.result-screen{
+    display:none;
+
+    text-align:center;
+}
+
+.result-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:38px 24px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.complete-label{
+    color:var(--accent);
+
+    font-size:15px;
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.result-title{
+    color:var(--primary);
+
+    font-size:clamp(45px,9vw,80px);
+
+    margin:5px 0 20px;
+
+    line-height:.95;
+
+    font-weight:900;
+}
+
+.score{
+    font-size:clamp(70px,15vw,120px);
+
+    color:var(--primary);
+
+    font-weight:900;
+
+    line-height:1;
+}
+
+.score-label{
+    color:var(--muted);
+
+    font-weight:700;
+
+    margin-top:6px;
+}
+
+.result-grid{
+    max-width:500px;
+
+    margin:28px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:9px;
+}
+
+.stat{
+    background:var(--soft);
+
+    border-radius:12px;
+
+    padding:16px 8px;
+}
+
+.stat-value{
+    color:var(--primary);
+
+    font-size:25px;
+
+    font-weight:900;
+}
+
+.stat-name{
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    font-weight:900;
+}
+
+.result-blocks{
+    display:flex;
+
+    justify-content:center;
+
+    gap:7px;
+
+    margin:23px 0;
+}
+
+.result-block{
+    width:46px;
+    height:46px;
+
+    border-radius:9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    font-weight:900;
+}
+
+.result-block.good{
+    background:var(--accent);
+}
+
+.result-block.bad{
+    background:#d7d3cf;
+}
+
+.tomorrow{
+    margin:24px 0;
+
+    color:var(--muted);
+}
+
+.countdown{
+    display:block;
+
+    color:var(--primary);
+
+    font-size:27px;
+    font-weight:900;
+
+    margin-top:5px;
+}
+
+.result-actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:9px;
+
+    flex-wrap:wrap;
+}
+
+.result-btn{
+    border:0;
+
+    border-radius:11px;
+
+    padding:14px 20px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.share-btn{
+    background:var(--accent);
+    color:#222;
+}
+
+.games-btn{
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+}
+
+.share-message{
+    min-height:20px;
+
+    margin-top:12px;
+
+    color:var(--green);
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:10px 12px;
+    }
+
+    .logo-link img{
+        height:31px;
+    }
+
+    .hub-btn{
+        font-size:11px;
+        padding:9px 10px;
+    }
+
+    .wrapper{
+        margin-top:30px;
+    }
+
+    .preview-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question-card{
+        padding:22px 14px;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .result-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<a
+    class="logo-link"
+    href="https://www.gamesjobsdirect.com/">
+
+<img
+    src="https://www.gamesjobsdirect.com/assets/img/default-logo.svg"
+    alt="Games Jobs Direct">
+
+</a>
+
+
+<a
+    class="hub-btn"
+    href="index.html">
+
+Return to Game Hub
+
+</a>
+
+</header>
+
+
+
+<main class="wrapper">
+
+
+<!-- =========================
+START SCREEN
+========================= -->
+
+<section
+    class="start-screen"
+    id="startScreen">
+
+
+<div class="daily-label">
+⭐ NEW CHALLENGE EVERY DAY
+</div>
+
+
+<h1 class="main-title">
+
+<span class="g">
+GJD
+</span>
+
+<span class="daily">
+DAILY
+</span>
+
+</h1>
+
+
+<div
+    class="daily-number"
+    id="dailyNumberStart">
+</div>
+
+
+<p class="intro">
+
+Four gaming challenges. One daily score.
+
+Everyone gets the same challenge today — see how well you know your games and come back tomorrow for another.
+
+</p>
+
+
+<div class="preview-grid">
+
+
+<div class="preview">
+
+<div class="preview-icon">
+🎮
+</div>
+
+<span class="preview-name">
+Guess The Game
+</span>
+
+</div>
+
+
+<div class="preview">
+
+<div class="preview-icon">
+🧠
+</div>
+
+<span class="preview-name">
+Gaming Trivia
+</span>
+
+</div>
+
+
+<div class="preview">
+
+<div class="preview-icon">
+📅
+</div>
+
+<span class="preview-name">
+Which Came First?
+</span>
+
+</div>
+
+
+<div class="preview">
+
+<div class="preview-icon">
+🏢
+</div>
+
+<span class="preview-name">
+Guess The Studio
+</span>
+
+</div>
+
+
+</div>
+
+
+<button
+    class="start-btn"
+    id="startButton"
+    onclick="startDaily()">
+
+PLAY TODAY'S CHALLENGE
+
+</button>
+
+
+<div
+    class="reset-info"
+    id="startResetInfo">
+
+New challenge every day
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+GAME SCREEN
+========================= -->
+
+<section
+    class="game-screen"
+    id="gameScreen">
+
+
+<div
+    class="progress"
+    id="progress">
+</div>
+
+
+<div class="question-card">
+
+
+<div
+    class="question-type"
+    id="questionType">
+</div>
+
+
+<div
+    class="question-number"
+    id="questionNumber">
+</div>
+
+
+<h2
+    class="question-title"
+    id="questionTitle">
+</h2>
+
+
+<div id="questionContent">
+</div>
+
+
+<div class="feedback">
+
+<div
+    class="feedback-main"
+    id="feedbackMain">
+</div>
+
+<div
+    class="feedback-answer"
+    id="feedbackAnswer">
+</div>
+
+</div>
+
+
+<button
+    class="next-btn"
+    id="nextButton"
+    onclick="nextQuestion()">
+
+NEXT CHALLENGE
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+RESULT SCREEN
+========================= -->
+
+<section
+    class="result-screen"
+    id="resultScreen">
+
+
+<div class="result-card">
+
+
+<div class="complete-label">
+DAILY COMPLETE
+</div>
+
+
+<h1
+    class="result-title"
+    id="resultDailyNumber">
+
+GJD DAILY
+
+</h1>
+
+
+<div
+    class="score"
+    id="finalScore">
+
+0/4
+
+</div>
+
+
+<div class="score-label">
+TODAY'S SCORE
+</div>
+
+
+<div
+    class="result-blocks"
+    id="resultBlocks">
+</div>
+
+
+<div class="result-grid">
+
+
+<div class="stat">
+
+<div
+    class="stat-value"
+    id="currentStreak">
+
+0
+
+</div>
+
+<div class="stat-name">
+Current Streak
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div
+    class="stat-value"
+    id="bestStreak">
+
+0
+
+</div>
+
+<div class="stat-name">
+Best Streak
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div
+    class="stat-value"
+    id="gamesPlayed">
+
+0
+
+</div>
+
+<div class="stat-name">
+Dailies Played
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="tomorrow">
+
+Next GJD Daily in
+
+<span
+    class="countdown"
+    id="countdown">
+
+00:00:00
+
+</span>
+
+</div>
+
+
+<div class="result-actions">
+
+
+<button
+    class="result-btn share-btn"
+    onclick="shareResult()">
+
+Share Result
+
+</button>
+
+
+<a
+    class="result-btn games-btn"
+    href="index.html">
+
+Play More Games
+
+</a>
+
+
+</div>
+
+
+<div
+    class="share-message"
+    id="shareMessage">
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* ======================================================
+DAILY SYSTEM
+
+August 19, 2026 = GJD Daily #1.
+
+We use UTC dates so everybody gets the same challenge
+regardless of where they live.
+====================================================== */
+
+const DAILY_START =
+    Date.UTC(2026,7,19);
+
+const MS_PER_DAY =
+    86400000;
+
+
+function getTodayUTC(){
+
+    const now = new Date();
+
+    return Date.UTC(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate()
+    );
+}
+
+
+function getDailyIndex(){
+
+    return Math.floor(
+        (
+            getTodayUTC() -
+            DAILY_START
+        ) /
+        MS_PER_DAY
+    );
+}
+
+
+function getDailyNumber(){
+
+    return getDailyIndex() + 1;
+}
+
+
+function getDailyKey(){
+
+    return "gjdDaily-" +
+        getTodayUTC();
+}
+
+
+/* ======================================================
+SEEDED NUMBER
+
+This makes question selection predictable.
+
+Same date = same questions for everybody.
+====================================================== */
+
+function seededIndex(
+    seed,
+    length,
+    offset
+){
+
+    let value =
+        (
+            (
+                seed + 1
+            ) *
+            (
+                9301 +
+                offset * 7919
+            ) +
+            49297
+        ) %
+        233280;
+
+
+    value =
+        value /
+        233280;
+
+
+    return Math.floor(
+        value * length
+    );
+}
+
+
+/* ======================================================
+CONTENT BANKS
+
+These are deliberately separate so we can massively
+expand each category later without changing the game.
+====================================================== */
+
+
+/* =========================
+GUESS THE GAME
+========================= */
+
+const GAME_BANK = [
+
+{
+emoji:"🟩 ⛏️ 🧱 🐷",
+clue:"A sandbox game originally released in 2011.",
+answer:"Minecraft",
+accepted:[
+    "minecraft"
+]
+},
+
+{
+emoji:"👽 🔫 💍 🚀",
+clue:"A sci-fi shooter series starring a supersoldier.",
+answer:"Halo",
+accepted:[
+    "halo",
+    "halo combat evolved"
+]
+},
+
+{
+emoji:"🐎 🤠 🔫 🌵",
+clue:"An open-world western from Rockstar Games.",
+answer:"Red Dead Redemption",
+accepted:[
+    "red dead redemption",
+    "rdr"
+]
+},
+
+{
+emoji:"🏙️ 🚗 💰 🔫",
+clue:"Rockstar's hugely successful open-world crime series.",
+answer:"Grand Theft Auto",
+accepted:[
+    "grand theft auto",
+    "gta"
+]
+},
+
+{
+emoji:"🧟 🏠 🧪 🚓",
+clue:"A survival horror franchise associated with Raccoon City.",
+answer:"Resident Evil",
+accepted:[
+    "resident evil"
+]
+},
+
+{
+emoji:"⚔️ 🐺 🧙 🐴",
+clue:"An RPG series starring Geralt of Rivia.",
+answer:"The Witcher",
+accepted:[
+    "the witcher",
+    "witcher"
+]
+},
+
+{
+emoji:"🏹 🤖 🌄 🦖",
+clue:"Aloy battles machine creatures in this PlayStation series.",
+answer:"Horizon",
+accepted:[
+    "horizon",
+    "horizon zero dawn",
+    "horizon forbidden west"
+]
+},
+
+{
+emoji:"🍄 👨🏻 👑 🐢",
+clue:"One of Nintendo's most famous franchises.",
+answer:"Super Mario",
+accepted:[
+    "super mario",
+    "mario"
+]
+},
+
+{
+emoji:"⚔️ 🛡️ 🐉 ❄️",
+clue:"You play the Dragonborn in this Bethesda RPG.",
+answer:"The Elder Scrolls V: Skyrim",
+accepted:[
+    "skyrim",
+    "the elder scrolls v skyrim",
+    "the elder scrolls 5 skyrim"
+]
+},
+
+{
+emoji:"☢️ 🏚️ 🔫 🤖",
+clue:"Bethesda's post-apocalyptic RPG franchise.",
+answer:"Fallout",
+accepted:[
+    "fallout"
+]
+},
+
+{
+emoji:"🕷️ 🏙️ 🦸 🔴",
+clue:"A PlayStation superhero series developed by Insomniac Games.",
+answer:"Marvel's Spider-Man",
+accepted:[
+    "marvels spider man",
+    "marvel's spider-man",
+    "spider man",
+    "spiderman"
+]
+},
+
+{
+emoji:"🏝️ 🔫 🐯 💥",
+clue:"An Ubisoft first-person shooter series known for exotic open worlds.",
+answer:"Far Cry",
+accepted:[
+    "far cry",
+    "farcry"
+]
+},
+
+{
+emoji:"🧑‍🚀 🌌 🪐 🔍",
+clue:"A space exploration mystery built around a repeating time loop.",
+answer:"Outer Wilds",
+accepted:[
+    "outer wilds"
+]
+},
+
+{
+emoji:"🐈 🌆 🤖 🧡",
+clue:"You explore a futuristic city as a cat.",
+answer:"Stray",
+accepted:[
+    "stray"
+]
+},
+
+{
+emoji:"🔥 ⚔️ 💀 🏰",
+clue:"A famously difficult action RPG series from FromSoftware.",
+answer:"Dark Souls",
+accepted:[
+    "dark souls",
+    "darksouls"
+]
+},
+
+{
+emoji:"🧑‍🚀 🔴 🛠️ 👻",
+clue:"Trust is difficult aboard this multiplayer spaceship.",
+answer:"Among Us",
+accepted:[
+    "among us",
+    "amongus"
+]
+},
+
+{
+emoji:"🏹 🏛️ 🦅 ⚔️",
+clue:"A long-running Ubisoft series about Assassins and Templars.",
+answer:"Assassin's Creed",
+accepted:[
+    "assassins creed",
+    "assassin's creed"
+]
+},
+
+{
+emoji:"🟦 🔫 🟧 🧪",
+clue:"A Valve puzzle game built around linked doorways.",
+answer:"Portal",
+accepted:[
+    "portal",
+    "portal 2"
+]
+},
+
+{
+emoji:"🧟 🔨 🏚️ 🌙",
+clue:"A survival game where the seventh night can be particularly dangerous.",
+answer:"7 Days to Die",
+accepted:[
+    "7 days to die",
+    "seven days to die"
+]
+},
+
+{
+emoji:"🦊 🗡️ 🏯 👻",
+clue:"A samurai adventure set during the Mongol invasion of Tsushima.",
+answer:"Ghost of Tsushima",
+accepted:[
+    "ghost of tsushima"
+]
+}
+
+];
+
+
+/* =========================
+TRIVIA
+========================= */
+
+const TRIVIA_BANK = [
+
+{
+question:"Which company created the original PlayStation?",
+answers:[
+    "Nintendo",
+    "Sony",
+    "Sega",
+    "Microsoft"
+],
+correct:"Sony"
+},
+
+{
+question:"What is the name of Link's kingdom in The Legend of Zelda?",
+answers:[
+    "Midgar",
+    "Hyrule",
+    "Albion",
+    "Tamriel"
+],
+correct:"Hyrule"
+},
+
+{
+question:"Which studio developed The Witcher 3?",
+answers:[
+    "BioWare",
+    "Bethesda",
+    "CD Projekt Red",
+    "Obsidian"
+],
+correct:"CD Projekt Red"
+},
+
+{
+question:"Which game features the city of Rapture?",
+answers:[
+    "BioShock",
+    "Dishonored",
+    "Fallout",
+    "Half-Life"
+],
+correct:"BioShock"
+},
+
+{
+question:"Who is Mario's brother?",
+answers:[
+    "Wario",
+    "Luigi",
+    "Toad",
+    "Yoshi"
+],
+correct:"Luigi"
+},
+
+{
+question:"Which studio created Elden Ring?",
+answers:[
+    "Capcom",
+    "FromSoftware",
+    "Square Enix",
+    "Team Ninja"
+],
+correct:"FromSoftware"
+},
+
+{
+question:"Which Pokémon is number 25 in the original Pokédex?",
+answers:[
+    "Pikachu",
+    "Meowth",
+    "Jigglypuff",
+    "Raichu"
+],
+correct:"Pikachu"
+},
+
+{
+question:"Which company owns the Xbox brand?",
+answers:[
+    "Microsoft",
+    "Sony",
+    "Valve",
+    "Nintendo"
+],
+correct:"Microsoft"
+},
+
+{
+question:"Which game stars Arthur Morgan?",
+answers:[
+    "GTA V",
+    "Red Dead Redemption 2",
+    "Mafia III",
+    "Call of Juarez"
+],
+correct:"Red Dead Redemption 2"
+},
+
+{
+question:"Which series features Master Chief?",
+answers:[
+    "Mass Effect",
+    "Destiny",
+    "Halo",
+    "DOOM"
+],
+correct:"Halo"
+},
+
+{
+question:"What type of game is Civilization primarily?",
+answers:[
+    "Fighting",
+    "Strategy",
+    "Racing",
+    "Platformer"
+],
+correct:"Strategy"
+},
+
+{
+question:"Which game features the character GLaDOS?",
+answers:[
+    "Portal",
+    "Half-Life",
+    "BioShock",
+    "Control"
+],
+correct:"Portal"
+},
+
+{
+question:"Which company publishes Grand Theft Auto?",
+answers:[
+    "Ubisoft",
+    "Electronic Arts",
+    "Rockstar Games",
+    "Activision"
+],
+correct:"Rockstar Games"
+},
+
+{
+question:"Which game features the Dragonborn?",
+answers:[
+    "Dragon Age",
+    "Skyrim",
+    "Dark Souls",
+    "Baldur's Gate"
+],
+correct:"Skyrim"
+},
+
+{
+question:"Which game engine is developed by Epic Games?",
+answers:[
+    "Unity",
+    "Godot",
+    "Unreal Engine",
+    "Source"
+],
+correct:"Unreal Engine"
+},
+
+{
+question:"Which franchise features Leon S. Kennedy?",
+answers:[
+    "Silent Hill",
+    "Resident Evil",
+    "Dead Space",
+    "Fatal Frame"
+],
+correct:"Resident Evil"
+},
+
+{
+question:"Which studio developed Hades?",
+answers:[
+    "Supergiant Games",
+    "Team Cherry",
+    "Motion Twin",
+    "Klei"
+],
+correct:"Supergiant Games"
+},
+
+{
+question:"Which Nintendo series features Samus Aran?",
+answers:[
+    "Metroid",
+    "Star Fox",
+    "F-Zero",
+    "Fire Emblem"
+],
+correct:"Metroid"
+},
+
+{
+question:"Which game features Night City?",
+answers:[
+    "Cyberpunk 2077",
+    "Deus Ex",
+    "Watch Dogs",
+    "The Ascent"
+],
+correct:"Cyberpunk 2077"
+},
+
+{
+question:"Which game is primarily associated with Creepers?",
+answers:[
+    "Terraria",
+    "Minecraft",
+    "Roblox",
+    "Fortnite"
+],
+correct:"Minecraft"
+}
+
+];
+
+
+/* =========================
+WHICH CAME FIRST
+
+Keep the games reasonably close in release period.
+========================= */
+
+const FIRST_BANK = [
+
+{
+a:"Super Mario 64",
+yearA:1996,
+b:"Final Fantasy VII",
+yearB:1997
+},
+
+{
+a:"Half-Life",
+yearA:1998,
+b:"System Shock 2",
+yearB:1999
+},
+
+{
+a:"Halo: Combat Evolved",
+yearA:2001,
+b:"The Elder Scrolls III: Morrowind",
+yearB:2002
+},
+
+{
+a:"Star Wars: Knights of the Old Republic",
+yearA:2003,
+b:"Half-Life 2",
+yearB:2004
+},
+
+{
+a:"Resident Evil 4",
+yearA:2005,
+b:"The Elder Scrolls IV: Oblivion",
+yearB:2006
+},
+
+{
+a:"BioShock",
+yearA:2007,
+b:"Fallout 3",
+yearB:2008
+},
+
+{
+a:"Batman: Arkham Asylum",
+yearA:2009,
+b:"Mass Effect 2",
+yearB:2010
+},
+
+{
+a:"The Elder Scrolls V: Skyrim",
+yearA:2011,
+b:"Dishonored",
+yearB:2012
+},
+
+{
+a:"Grand Theft Auto V",
+yearA:2013,
+b:"Alien: Isolation",
+yearB:2014
+},
+
+{
+a:"The Witcher 3",
+yearA:2015,
+b:"DOOM",
+yearB:2016
+},
+
+{
+a:"The Legend of Zelda: Breath of the Wild",
+yearA:2017,
+b:"God of War",
+yearB:2018
+},
+
+{
+a:"Sekiro: Shadows Die Twice",
+yearA:2019,
+b:"Hades",
+yearB:2020
+},
+
+{
+a:"Resident Evil Village",
+yearA:2021,
+b:"Elden Ring",
+yearB:2022
+},
+
+{
+a:"Baldur's Gate 3",
+yearA:2023,
+b:"Balatro",
+yearB:2024
+},
+
+{
+a:"Portal",
+yearA:2007,
+b:"Left 4 Dead",
+yearB:2008
+},
+
+{
+a:"Uncharted 2",
+yearA:2009,
+b:"Red Dead Redemption",
+yearB:2010
+},
+
+{
+a:"Dark Souls",
+yearA:2011,
+b:"Borderlands 2",
+yearB:2012
+},
+
+{
+a:"The Last of Us",
+yearA:2013,
+b:"Dragon Age: Inquisition",
+yearB:2014
+},
+
+{
+a:"Bloodborne",
+yearA:2015,
+b:"Titanfall 2",
+yearB:2016
+},
+
+{
+a:"Horizon Zero Dawn",
+yearA:2017,
+b:"Red Dead Redemption 2",
+yearB:2018
+}
+
+];
+
+
+/* =========================
+GUESS THE STUDIO
+========================= */
+
+const STUDIO_BANK = [
+
+{
+clue:"This studio created Grand Theft Auto and Red Dead Redemption.",
+answer:"Rockstar Games",
+accepted:[
+    "rockstar",
+    "rockstar games"
+]
+},
+
+{
+clue:"This Japanese developer is known for Dark Souls, Bloodborne and Elden Ring.",
+answer:"FromSoftware",
+accepted:[
+    "fromsoftware",
+    "from software"
+]
+},
+
+{
+clue:"This studio created The Witcher series and Cyberpunk 2077.",
+answer:"CD Projekt Red",
+accepted:[
+    "cd projekt red",
+    "cdpr",
+    "cd projekt"
+]
+},
+
+{
+clue:"This PlayStation studio created The Last of Us and Uncharted.",
+answer:"Naughty Dog",
+accepted:[
+    "naughty dog"
+]
+},
+
+{
+clue:"This company created League of Legends and Valorant.",
+answer:"Riot Games",
+accepted:[
+    "riot",
+    "riot games"
+]
+},
+
+{
+clue:"This studio is famous for Half-Life, Portal and Steam.",
+answer:"Valve",
+accepted:[
+    "valve",
+    "valve corporation"
+]
+},
+
+{
+clue:"This British studio is known for RuneScape.",
+answer:"Jagex",
+accepted:[
+    "jagex"
+]
+},
+
+{
+clue:"This studio created Hades, Bastion and Transistor.",
+answer:"Supergiant Games",
+accepted:[
+    "supergiant",
+    "supergiant games"
+]
+},
+
+{
+clue:"This developer created Minecraft.",
+answer:"Mojang Studios",
+accepted:[
+    "mojang",
+    "mojang studios"
+]
+},
+
+{
+clue:"This studio created the modern Spider-Man games and Ratchet & Clank.",
+answer:"Insomniac Games",
+accepted:[
+    "insomniac",
+    "insomniac games"
+]
+},
+
+{
+clue:"This Japanese company is behind Resident Evil, Monster Hunter and Street Fighter.",
+answer:"Capcom",
+accepted:[
+    "capcom"
+]
+},
+
+{
+clue:"This studio developed Horizon Zero Dawn and Horizon Forbidden West.",
+answer:"Guerrilla Games",
+accepted:[
+    "guerrilla",
+    "guerrilla games"
+]
+},
+
+{
+clue:"This company is behind Assassin's Creed, Far Cry and Rainbow Six.",
+answer:"Ubisoft",
+accepted:[
+    "ubisoft"
+]
+},
+
+{
+clue:"This studio developed Baldur's Gate 3 and Divinity: Original Sin 2.",
+answer:"Larian Studios",
+accepted:[
+    "larian",
+    "larian studios"
+]
+},
+
+{
+clue:"This developer is known for Fallout: New Vegas, The Outer Worlds and Pillars of Eternity.",
+answer:"Obsidian Entertainment",
+accepted:[
+    "obsidian",
+    "obsidian entertainment"
+]
+},
+
+{
+clue:"This studio developed the Forza Horizon series.",
+answer:"Playground Games",
+accepted:[
+    "playground",
+    "playground games"
+]
+},
+
+{
+clue:"This Finnish studio created Control and Alan Wake.",
+answer:"Remedy Entertainment",
+accepted:[
+    "remedy",
+    "remedy entertainment"
+]
+},
+
+{
+clue:"This developer created Celeste.",
+answer:"Extremely OK Games",
+accepted:[
+    "extremely ok games",
+    "extremely ok",
+    "matt makes games"
+]
+},
+
+{
+clue:"This studio created Stardew Valley.",
+answer:"ConcernedApe",
+accepted:[
+    "concernedape",
+    "concerned ape",
+    "eric barone"
+]
+},
+
+{
+clue:"This developer created Hollow Knight.",
+answer:"Team Cherry",
+accepted:[
+    "team cherry"
+]
+}
+
+];
+
+
+/* ======================================================
+GAME STATE
+====================================================== */
+
+let questions = [];
+
+let currentQuestion = 0;
+
+let results = [];
+
+let selectedAnswer = null;
+
+let answered = false;
+
+
+/* ======================================================
+NORMALISE TEXT
+====================================================== */
+
+function normalise(value){
+
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/[’']/g,"")
+        .replace(/[:.,!?-]/g," ")
+        .replace(/\s+/g," ");
+}
+
+
+/* ======================================================
+BUILD TODAY'S QUESTIONS
+====================================================== */
+
+function buildDailyQuestions(){
+
+    const seed =
+        getDailyIndex();
+
+
+    const game =
+        GAME_BANK[
+            seededIndex(
+                seed,
+                GAME_BANK.length,
+                1
+            )
+        ];
+
+
+    const trivia =
+        TRIVIA_BANK[
+            seededIndex(
+                seed,
+                TRIVIA_BANK.length,
+                2
+            )
+        ];
+
+
+    const first =
+        FIRST_BANK[
+            seededIndex(
+                seed,
+                FIRST_BANK.length,
+                3
+            )
+        ];
+
+
+    const studio =
+        STUDIO_BANK[
+            seededIndex(
+                seed,
+                STUDIO_BANK.length,
+                4
+            )
+        ];
+
+
+    questions = [
+
+        {
+            type:"Guess The Game",
+            icon:"🎮",
+            mode:"game",
+            data:game
+        },
+
+        {
+            type:"Gaming Trivia",
+            icon:"🧠",
+            mode:"trivia",
+            data:trivia
+        },
+
+        {
+            type:"Which Came First?",
+            icon:"📅",
+            mode:"first",
+            data:first
+        },
+
+        {
+            type:"Guess The Studio",
+            icon:"🏢",
+            mode:"studio",
+            data:studio
+        }
+
+    ];
+}
+
+
+/* ======================================================
+LOAD PAGE
+====================================================== */
+
+function initialise(){
+
+    buildDailyQuestions();
+
+
+    document
+        .getElementById(
+            "dailyNumberStart"
+        )
+        .textContent =
+        "DAILY #" +
+        getDailyNumber();
+
+
+    const saved =
+        getSavedDaily();
+
+
+    if(saved){
+
+        showSavedResult(saved);
+
+    }else{
+
+        updateStartCountdown();
+    }
+}
+
+
+/* ======================================================
+SAVED DAILY
+====================================================== */
+
+function getSavedDaily(){
+
+    try{
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    getDailyKey()
+                )
+            );
+
+
+        if(
+            saved &&
+            Array.isArray(saved.results)
+        ){
+            return saved;
+        }
+
+
+    }catch(error){}
+
+
+    return null;
+}
+
+
+/* ======================================================
+START
+====================================================== */
+
+function startDaily(){
+
+    const saved =
+        getSavedDaily();
+
+
+    if(saved){
+
+        showSavedResult(saved);
+
+        return;
+    }
+
+
+    currentQuestion = 0;
+
+    results = [];
+
+    selectedAnswer = null;
+
+    answered = false;
+
+
+    document
+        .getElementById(
+            "startScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "gameScreen"
+        )
+        .style.display =
+        "block";
+
+
+    renderQuestion();
+}
+
+
+/* ======================================================
+PROGRESS
+====================================================== */
+
+function renderProgress(){
+
+    const progress =
+        document.getElementById(
+            "progress"
+        );
+
+
+    progress.innerHTML = "";
+
+
+    questions.forEach(
+        (question,index) => {
+
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+
+            box.className =
+                "progress-box";
+
+
+            if(
+                index <
+                currentQuestion
+            ){
+
+                box.classList.add(
+                    "done"
+                );
+
+            }else if(
+                index ===
+                currentQuestion
+            ){
+
+                box.classList.add(
+                    "current"
+                );
+            }
+
+
+            progress.appendChild(
+                box
+            );
+        }
+    );
+}
+
+
+/* ======================================================
+RENDER QUESTION
+====================================================== */
+
+function renderQuestion(){
+
+    answered = false;
+
+    selectedAnswer = null;
+
+
+    const question =
+        questions[
+            currentQuestion
+        ];
+
+
+    renderProgress();
+
+
+    document
+        .getElementById(
+            "questionType"
+        )
+        .textContent =
+        question.icon +
+        " " +
+        question.type;
+
+
+    document
+        .getElementById(
+            "questionNumber"
+        )
+        .textContent =
+        `Challenge ${currentQuestion + 1} of 4`;
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .textContent =
+        "";
+
+
+    document
+        .getElementById(
+            "feedbackMain"
+        )
+        .className =
+        "feedback-main";
+
+
+    document
+        .getElementById(
+            "feedbackAnswer"
+        )
+        .textContent =
+        "";
+
+
+    document
+        .getElementById(
+            "nextButton"
+        )
+        .style.display =
+        "none";
+
+
+    if(
+        question.mode === "game"
+    ){
+
+        renderGameQuestion(
+            question.data
+        );
+
+    }else if(
+        question.mode === "trivia"
+    ){
+
+        renderTriviaQuestion(
+            question.data
+        );
+
+    }else if(
+        question.mode === "first"
+    ){
+
+        renderFirstQuestion(
+            question.data
+        );
+
+    }else if(
+        question.mode === "studio"
+    ){
+
+        renderStudioQuestion(
+            question.data
+        );
+    }
+}
+
+
+/* ======================================================
+GUESS GAME
+====================================================== */
+
+function renderGameQuestion(data){
+
+    document
+        .getElementById(
+            "questionTitle"
+        )
+        .textContent =
+        "Which game is this?";
+
+
+    document
+        .getElementById(
+            "questionContent"
+        )
+        .innerHTML =
+        `
+        <div class="emoji-display">
+            ${data.emoji}
+        </div>
+
+        <div class="clue-box">
+            ${data.clue}
+        </div>
+
+        <input
+            class="text-answer"
+            id="textGuess"
+            type="text"
+            autocomplete="off"
+            placeholder="Type your answer..."
+        >
+
+        <button
+            class="submit-btn"
+            onclick="submitTextAnswer()">
+
+            Submit Answer
+
+        </button>
+        `;
+
+
+    const input =
+        document.getElementById(
+            "textGuess"
+        );
+
+
+    input.addEventListener(
+        "keydown",
+        event => {
+
+            if(
+                event.key === "Enter"
+            ){
+
+                submitTextAnswer();
+            }
+        }
+    );
+
+
+    input.focus();
+}
+
+
+/* ======================================================
+STUDIO
+====================================================== */
+
+function renderStudioQuestion(data){
+
+    document
+        .getElementById(
+            "questionTitle"
+        )
+        .textContent =
+        "Which studio is this?";
+
+
+    document
+        .getElementById(
+            "questionContent"
+        )
+        .innerHTML =
+        `
+        <div class="clue-box">
+            ${data.clue}
+        </div>
+
+        <input
+            class="text-answer"
+            id="textGuess"
+            type="text"
+            autocomplete="off"
+            placeholder="Type the studio..."
+        >
+
+        <button
+            class="submit-btn"
+            onclick="submitTextAnswer()">
+
+            Submit Answer
+
+        </button>
+        `;
+
+
+    const input =
+        document.getElementById(
+            "textGuess"
+        );
+
+
+    input.addEventListener(
+        "keydown",
+        event => {
+
+            if(
+                event.key === "Enter"
+            ){
+
+                submitTextAnswer();
+            }
+        }
+    );
+
+
+    input.focus();
+}
+
+
+/* ======================================================
+TEXT ANSWER
+====================================================== */
+
+function submitTextAnswer(){
+
+    if(answered){
+        return;
+    }
+
+
+    const input =
+        document.getElementById(
+            "textGuess"
+        );
+
+
+    if(!input){
+        return;
+    }
+
+
+    const guess =
+        normalise(
+            input.value
+        );
+
+
+    if(!guess){
+        return;
+    }
+
+
+    const data =
+        questions[
+            currentQuestion
+        ].data;
+
+
+    const correct =
+        data.accepted.some(
+            answer =>
+            normalise(answer) === guess
+        );
+
+
+    finishQuestion(
+        correct,
+        data.answer
+    );
+}
+
+
+/* ======================================================
+TRIVIA
+====================================================== */
+
+function renderTriviaQuestion(data){
+
+    document
+        .getElementById(
+            "questionTitle"
+        )
+        .textContent =
+        data.question;
+
+
+    const answers =
+        data.answers
+        .map(
+            answer =>
+            `
+            <button
+                class="answer-btn"
+                onclick="selectChoice(this,'${escapeQuote(answer)}')">
+
+                ${answer}
+
+            </button>
+            `
+        )
+        .join("");
+
+
+    document
+        .getElementById(
+            "questionContent"
+        )
+        .innerHTML =
+        `
+        <div class="answers">
+            ${answers}
+        </div>
+
+        <button
+            class="submit-btn"
+            id="choiceSubmit"
+            onclick="submitChoice()"
+            disabled>
+
+            Submit Answer
+
+        </button>
+        `;
+}
+
+
+/* ======================================================
+WHICH CAME FIRST
+====================================================== */
+
+function renderFirstQuestion(data){
+
+    document
+        .getElementById(
+            "questionTitle"
+        )
+        .textContent =
+        "Which game released first?";
+
+
+    document
+        .getElementById(
+            "questionContent"
+        )
+        .innerHTML =
+        `
+        <div class="answers">
+
+            <button
+                class="answer-btn"
+                onclick="selectChoice(this,'A')">
+
+                ${data.a}
+
+            </button>
+
+            <button
+                class="answer-btn"
+                onclick="selectChoice(this,'B')">
+
+                ${data.b}
+
+            </button>
+
+        </div>
+
+        <button
+            class="submit-btn"
+            id="choiceSubmit"
+            onclick="submitChoice()"
+            disabled>
+
+            Submit Answer
+
+        </button>
+        `;
+}
+
+
+/* ======================================================
+CHOICE SELECTION
+====================================================== */
+
+function selectChoice(
+    button,
+    value
+){
+
+    if(answered){
+        return;
+    }
+
+
+    selectedAnswer =
+        value;
+
+
+    document
+        .querySelectorAll(
+            ".answer-btn"
+        )
+        .forEach(
+            answer =>
+            answer.classList.remove(
+                "selected"
+            )
+        );
+
+
+    button.classList.add(
+        "selected"
+    );
+
+
+    const submit =
+        document.getElementById(
+            "choiceSubmit"
+        );
+
+
+    if(submit){
+
+        submit.disabled =
+            false;
+    }
+}
+
+
+/* ======================================================
+SUBMIT CHOICE
+====================================================== */
+
+function submitChoice(){
+
+    if(
+        answered ||
+        selectedAnswer === null
+    ){
+        return;
+    }
+
+
+    const question =
+        questions[
+            currentQuestion
+        ];
+
+
+    if(
+        question.mode ===
+        "trivia"
+    ){
+
+        const correct =
+            selectedAnswer ===
+            question.data.correct;
+
+
+        finishQuestion(
+            correct,
+            question.data.correct
+        );
+
+    }else if(
+        question.mode ===
+        "first"
+    ){
+
+        const data =
+            question.data;
+
+
+        const correctValue =
+            data.yearA <
+            data.yearB
+            ? "A"
+            : "B";
+
+
+        const correct =
+            selectedAnswer ===
+            correctValue;
+
+
+        const answerText =
+            correctValue === "A"
+            ? `${data.a} (${data.yearA})`
+            : `${data.b} (${data.yearB})`;
+
+
+        finishQuestion(
+            correct,
+            answerText
+        );
+    }
+}
+
+
+/* ======================================================
+QUESTION RESULT
+====================================================== */
+
+function finishQuestion(
+    correct,
+    correctAnswer
+){
+
+    if(answered){
+        return;
+    }
+
+
+    answered = true;
+
+
+    results.push(
+        correct
+    );
+
+
+    const feedback =
+        document.getElementById(
+            "feedbackMain"
+        );
+
+
+    feedback.textContent =
+        correct
+        ? "Correct!"
+        : "Not quite!";
+
+
+    feedback.className =
+        correct
+        ? "feedback-main correct"
+        : "feedback-main wrong";
+
+
+    document
+        .getElementById(
+            "feedbackAnswer"
+        )
+        .textContent =
+        correct
+        ? correctAnswer
+        : `Answer: ${correctAnswer}`;
+
+
+    document
+        .querySelectorAll(
+            ".answer-btn"
+        )
+        .forEach(
+            button =>
+            button.disabled =
+            true
+        );
+
+
+    const input =
+        document.getElementById(
+            "textGuess"
+        );
+
+
+    if(input){
+        input.disabled = true;
+    }
+
+
+    const submitButtons =
+        document
+        .querySelectorAll(
+            ".submit-btn"
+        );
+
+
+    submitButtons.forEach(
+        button =>
+        button.disabled =
+        true
+    );
+
+
+    const next =
+        document.getElementById(
+            "nextButton"
+        );
+
+
+    next.style.display =
+        "block";
+
+
+    next.textContent =
+        currentQuestion ===
+        questions.length - 1
+        ? "SEE TODAY'S SCORE"
+        : "NEXT CHALLENGE";
+}
+
+
+/* ======================================================
+NEXT
+====================================================== */
+
+function nextQuestion(){
+
+    if(!answered){
+        return;
+    }
+
+
+    if(
+        currentQuestion >=
+        questions.length - 1
+    ){
+
+        completeDaily();
+
+        return;
+    }
+
+
+    currentQuestion++;
+
+    renderQuestion();
+}
+
+
+/* ======================================================
+COMPLETE DAILY
+====================================================== */
+
+function completeDaily(){
+
+    const score =
+        results.filter(Boolean)
+        .length;
+
+
+    const stats =
+        updateStats();
+
+
+    const saveData = {
+
+        dailyNumber:
+            getDailyNumber(),
+
+        score:score,
+
+        results:[
+            ...results
+        ],
+
+        stats:stats
+
+    };
+
+
+    localStorage.setItem(
+        getDailyKey(),
+        JSON.stringify(saveData)
+    );
+
+
+    showResult(saveData);
+}
+
+
+/* ======================================================
+STREAKS
+====================================================== */
+
+function updateStats(){
+
+    let stats = {
+
+        currentStreak:0,
+        bestStreak:0,
+        gamesPlayed:0,
+        lastPlayed:null
+
+    };
+
+
+    try{
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    "gjdDailyStats"
+                )
+            );
+
+
+        if(saved){
+
+            stats = {
+                ...stats,
+                ...saved
+            };
+        }
+
+    }catch(error){}
+
+
+    const today =
+        getTodayUTC();
+
+
+    const yesterday =
+        today -
+        MS_PER_DAY;
+
+
+    if(
+        stats.lastPlayed ===
+        today
+    ){
+
+        return stats;
+    }
+
+
+    if(
+        stats.lastPlayed ===
+        yesterday
+    ){
+
+        stats.currentStreak++;
+
+    }else{
+
+        stats.currentStreak = 1;
+    }
+
+
+    stats.gamesPlayed++;
+
+
+    stats.bestStreak =
+        Math.max(
+            stats.bestStreak,
+            stats.currentStreak
+        );
+
+
+    stats.lastPlayed =
+        today;
+
+
+    localStorage.setItem(
+        "gjdDailyStats",
+        JSON.stringify(stats)
+    );
+
+
+    return stats;
+}
+
+
+/* ======================================================
+RESULT SCREEN
+====================================================== */
+
+function showResult(data){
+
+    document
+        .getElementById(
+            "startScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "gameScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "resultScreen"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "resultDailyNumber"
+        )
+        .textContent =
+        "GJD DAILY #" +
+        data.dailyNumber;
+
+
+    document
+        .getElementById(
+            "finalScore"
+        )
+        .textContent =
+        data.score +
+        "/4";
+
+
+    document
+        .getElementById(
+            "currentStreak"
+        )
+        .textContent =
+        data.stats.currentStreak;
+
+
+    document
+        .getElementById(
+            "bestStreak"
+        )
+        .textContent =
+        data.stats.bestStreak;
+
+
+    document
+        .getElementById(
+            "gamesPlayed"
+        )
+        .textContent =
+        data.stats.gamesPlayed;
+
+
+    const blocks =
+        document.getElementById(
+            "resultBlocks"
+        );
+
+
+    blocks.innerHTML = "";
+
+
+    const icons =
+        ["🎮","🧠","📅","🏢"];
+
+
+    data.results.forEach(
+        (correct,index) => {
+
+
+            const block =
+                document.createElement(
+                    "div"
+                );
+
+
+            block.className =
+                correct
+                ? "result-block good"
+                : "result-block bad";
+
+
+            block.textContent =
+                icons[index];
+
+
+            blocks.appendChild(
+                block
+            );
+        }
+    );
+
+
+    updateCountdown();
+}
+
+
+function showSavedResult(data){
+
+    showResult(data);
+}
+
+
+/* ======================================================
+COUNTDOWN
+====================================================== */
+
+function getCountdownText(){
+
+    const now =
+        new Date();
+
+
+    const nextMidnight =
+        Date.UTC(
+            now.getUTCFullYear(),
+            now.getUTCMonth(),
+            now.getUTCDate() + 1
+        );
+
+
+    let remaining =
+        nextMidnight -
+        now.getTime();
+
+
+    if(remaining < 0){
+        remaining = 0;
+    }
+
+
+    const hours =
+        Math.floor(
+            remaining /
+            3600000
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                remaining %
+                3600000
+            ) /
+            60000
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                remaining %
+                60000
+            ) /
+            1000
+        );
+
+
+    return [
+        hours,
+        minutes,
+        seconds
+    ]
+    .map(
+        value =>
+        String(value)
+        .padStart(2,"0")
+    )
+    .join(":");
+}
+
+
+function updateCountdown(){
+
+    const element =
+        document.getElementById(
+            "countdown"
+        );
+
+
+    if(element){
+
+        element.textContent =
+            getCountdownText();
+    }
+}
+
+
+function updateStartCountdown(){
+
+    const element =
+        document.getElementById(
+            "startResetInfo"
+        );
+
+
+    if(element){
+
+        element.textContent =
+            "Next challenge in " +
+            getCountdownText();
+    }
+}
+
+
+setInterval(
+    () => {
+
+        updateCountdown();
+
+        updateStartCountdown();
+
+    },
+    1000
+);
+
+
+/* ======================================================
+SHARE RESULT
+====================================================== */
+
+function shareResult(){
+
+    const saved =
+        getSavedDaily();
+
+
+    if(!saved){
+        return;
+    }
+
+
+    const icons =
+        ["🎮","🧠","📅","🏢"];
+
+
+    const blocks =
+        saved.results
+        .map(
+            (correct,index) =>
+            `${icons[index]} ${correct ? "🟩" : "⬜"}`
+        )
+        .join("\n");
+
+
+    const text =
+`GJD DAILY #${saved.dailyNumber} 🎮
+
+${blocks}
+
+${saved.score}/4
+🔥 ${saved.stats.currentStreak} day streak
+
+Games Jobs Direct`;
+
+
+    if(
+        navigator.share
+    ){
+
+        navigator.share({
+            text:text
+        })
+        .catch(
+            () => {}
+        );
+
+    }else if(
+        navigator.clipboard
+    ){
+
+        navigator.clipboard
+        .writeText(text)
+        .then(
+            () => {
+
+                document
+                    .getElementById(
+                        "shareMessage"
+                    )
+                    .textContent =
+                    "Result copied!";
+            }
+        );
+    }
+}
+
+
+/* ======================================================
+SAFE QUOTE
+====================================================== */
+
+function escapeQuote(value){
+
+    return value
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'");
+}
+
+
+/* ======================================================
+INITIALISE
+====================================================== */
+
+initialise();
+
+</script>
+
+
+</body>
+
+</html>
